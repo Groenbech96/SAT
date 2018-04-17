@@ -2,12 +2,31 @@
 //  Literal.h
 //  SAT
 //
-//  Created by Magnus Hartvig Grønbech on 17/04/2018.
+//  Created by
+//  Christian Schmidt - DTU,
+//  Casper Skjærris    - DTU,
+//  Magnus Grønbech   - DTU
+//  Date: 28/02/2018.
 //  Copyright © 2018 DTU. All rights reserved.
 //
 
 #ifndef Literal_h
 #define Literal_h
 
+#include "Variable.hpp"
+
+namespace cnf {
+    
+    /**
+     * Literal consist of two tings
+     * (1) a pointer to a variable in the formula
+     * (2) a flag that is true if literal is negated in formula
+     */
+    struct Literal {
+        Variable * pVar;
+        bool isNegated;
+    };
+    
+}
 
 #endif /* Literal_h */

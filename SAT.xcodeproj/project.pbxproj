@@ -51,7 +51,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3AC21CCC20866D71004D4384 /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = googletest/googletest/xcode/includes/gtest/Build/Products/Release/gtest.framework; sourceTree = "<group>"; };
 		3AC21CCF20867287004D4384 /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = lib/gtest.framework; sourceTree = "<group>"; };
 		3AE7B3BF20865FAB008B28D7 /* SAT */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SAT; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE7B3C220865FAB008B28D7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -113,7 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				3AC21CCF20867287004D4384 /* gtest.framework */,
-				3AC21CCC20866D71004D4384 /* gtest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -161,13 +159,13 @@
 		3AE7B3CA20865FF0008B28D7 /* cnf */ = {
 			isa = PBXGroup;
 			children = (
-				3AE7B3E9208661A0008B28D7 /* Formula.cpp */,
-				3AE7B3EA208661A0008B28D7 /* Formula.hpp */,
 				3AE7B3EC208661A8008B28D7 /* Clause.cpp */,
 				3AE7B3ED208661A8008B28D7 /* Clause.hpp */,
+				3AE7B3E9208661A0008B28D7 /* Formula.cpp */,
+				3AE7B3EA208661A0008B28D7 /* Formula.hpp */,
+				3AE7B3F2208661C9008B28D7 /* Literal.h */,
 				3AE7B3EF208661B6008B28D7 /* Variable.cpp */,
 				3AE7B3F0208661B6008B28D7 /* Variable.hpp */,
-				3AE7B3F2208661C9008B28D7 /* Literal.h */,
 			);
 			path = cnf;
 			sourceTree = "<group>";
@@ -477,7 +475,9 @@
 		3AE7B3C720865FAB008B28D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = /usr/local/Cellar/boost/1.66.0/include;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -485,7 +485,9 @@
 		3AE7B3C820865FAB008B28D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = /usr/local/Cellar/boost/1.66.0/include;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
