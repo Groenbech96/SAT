@@ -9,7 +9,7 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>SatTests.xcscheme</key>
+		<key>SatTest.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
@@ -18,6 +18,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>3AE7B3BE20865FAB008B28D7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3AE7B3FD20866263008B28D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
