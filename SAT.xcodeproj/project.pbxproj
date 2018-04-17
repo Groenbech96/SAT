@@ -8,10 +8,51 @@
 
 /* Begin PBXBuildFile section */
 		3AE7B3C320865FAB008B28D7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3C220865FAB008B28D7 /* main.cpp */; };
+		3AE7B3D6208660BC008B28D7 /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3D4208660BC008B28D7 /* App.cpp */; };
+		3AE7B3D9208660F6008B28D7 /* Solver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3D7208660F6008B28D7 /* Solver.cpp */; };
+		3AE7B3DC2086611C008B28D7 /* ProbabilisticSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3DA2086611C008B28D7 /* ProbabilisticSolver.cpp */; };
+		3AE7B3DF20866156008B28D7 /* CompleteSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3DD20866156008B28D7 /* CompleteSolver.cpp */; };
+		3AE7B3E220866177008B28D7 /* Schonings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E020866177008B28D7 /* Schonings.cpp */; };
+		3AE7B3E520866187008B28D7 /* Grasp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E320866187008B28D7 /* Grasp.cpp */; };
+		3AE7B3E820866191008B28D7 /* CDCL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E620866191008B28D7 /* CDCL.cpp */; };
+		3AE7B3EB208661A0008B28D7 /* Formula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E9208661A0008B28D7 /* Formula.cpp */; };
+		3AE7B3EE208661A8008B28D7 /* Clause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3EC208661A8008B28D7 /* Clause.cpp */; };
+		3AE7B3F1208661B6008B28D7 /* Variable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3EF208661B6008B28D7 /* Variable.cpp */; };
+		3AE7B3F5208661DB008B28D7 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F3208661DB008B28D7 /* Graph.cpp */; };
+		3AE7B3F8208661E9008B28D7 /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F6208661E9008B28D7 /* Parser.cpp */; };
+		3AE7B40620866283008B28D7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B40520866283008B28D7 /* main.cpp */; };
+		3AE7B408208662B1008B28D7 /* SolverTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B407208662B1008B28D7 /* SolverTest.cpp */; };
+		3AE7B40A208662BE008B28D7 /* FormulaTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B409208662BE008B28D7 /* FormulaTest.cpp */; };
+		3AE7B40C208662CB008B28D7 /* VariableTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B40B208662CB008B28D7 /* VariableTest.cpp */; };
+		3AE7B40E208662DC008B28D7 /* ClauseTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B40D208662DC008B28D7 /* ClauseTest.cpp */; };
+		3AE7B410208662F2008B28D7 /* AlgorithmTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B40F208662F2008B28D7 /* AlgorithmTest.cpp */; };
+		3AE7B4112086630C008B28D7 /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3D4208660BC008B28D7 /* App.cpp */; };
+		3AE7B4132086630C008B28D7 /* Solver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3D7208660F6008B28D7 /* Solver.cpp */; };
+		3AE7B4152086630C008B28D7 /* ProbabilisticSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3DA2086611C008B28D7 /* ProbabilisticSolver.cpp */; };
+		3AE7B4172086630C008B28D7 /* CompleteSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3DD20866156008B28D7 /* CompleteSolver.cpp */; };
+		3AE7B4192086630C008B28D7 /* Schonings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E020866177008B28D7 /* Schonings.cpp */; };
+		3AE7B41B2086630C008B28D7 /* Grasp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E320866187008B28D7 /* Grasp.cpp */; };
+		3AE7B41D2086630C008B28D7 /* CDCL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E620866191008B28D7 /* CDCL.cpp */; };
+		3AE7B41F2086630C008B28D7 /* Formula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E9208661A0008B28D7 /* Formula.cpp */; };
+		3AE7B4212086630C008B28D7 /* Clause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3EC208661A8008B28D7 /* Clause.cpp */; };
+		3AE7B4232086630C008B28D7 /* Variable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3EF208661B6008B28D7 /* Variable.cpp */; };
+		3AE7B4252086630C008B28D7 /* Literal.h in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F2208661C9008B28D7 /* Literal.h */; };
+		3AE7B4262086630C008B28D7 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F3208661DB008B28D7 /* Graph.cpp */; };
+		3AE7B4282086630C008B28D7 /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F6208661E9008B28D7 /* Parser.cpp */; };
+		3AE7B42A2086630C008B28D7 /* Randomizer.h in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F920866209008B28D7 /* Randomizer.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		3AE7B3BD20865FAB008B28D7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		3AE7B3FC20866263008B28D7 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -25,10 +66,51 @@
 /* Begin PBXFileReference section */
 		3AE7B3BF20865FAB008B28D7 /* SAT */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SAT; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE7B3C220865FAB008B28D7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3AE7B3D4208660BC008B28D7 /* App.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = App.cpp; sourceTree = "<group>"; };
+		3AE7B3D5208660BC008B28D7 /* App.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
+		3AE7B3D7208660F6008B28D7 /* Solver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Solver.cpp; sourceTree = "<group>"; };
+		3AE7B3D8208660F6008B28D7 /* Solver.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Solver.hpp; sourceTree = "<group>"; };
+		3AE7B3DA2086611C008B28D7 /* ProbabilisticSolver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ProbabilisticSolver.cpp; sourceTree = "<group>"; };
+		3AE7B3DB2086611C008B28D7 /* ProbabilisticSolver.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ProbabilisticSolver.hpp; sourceTree = "<group>"; };
+		3AE7B3DD20866156008B28D7 /* CompleteSolver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CompleteSolver.cpp; sourceTree = "<group>"; };
+		3AE7B3DE20866156008B28D7 /* CompleteSolver.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CompleteSolver.hpp; sourceTree = "<group>"; };
+		3AE7B3E020866177008B28D7 /* Schonings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Schonings.cpp; sourceTree = "<group>"; };
+		3AE7B3E120866177008B28D7 /* Schonings.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Schonings.hpp; sourceTree = "<group>"; };
+		3AE7B3E320866187008B28D7 /* Grasp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Grasp.cpp; sourceTree = "<group>"; };
+		3AE7B3E420866187008B28D7 /* Grasp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Grasp.hpp; sourceTree = "<group>"; };
+		3AE7B3E620866191008B28D7 /* CDCL.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CDCL.cpp; sourceTree = "<group>"; };
+		3AE7B3E720866191008B28D7 /* CDCL.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CDCL.hpp; sourceTree = "<group>"; };
+		3AE7B3E9208661A0008B28D7 /* Formula.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Formula.cpp; sourceTree = "<group>"; };
+		3AE7B3EA208661A0008B28D7 /* Formula.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Formula.hpp; sourceTree = "<group>"; };
+		3AE7B3EC208661A8008B28D7 /* Clause.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Clause.cpp; sourceTree = "<group>"; };
+		3AE7B3ED208661A8008B28D7 /* Clause.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Clause.hpp; sourceTree = "<group>"; };
+		3AE7B3EF208661B6008B28D7 /* Variable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Variable.cpp; sourceTree = "<group>"; };
+		3AE7B3F0208661B6008B28D7 /* Variable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Variable.hpp; sourceTree = "<group>"; };
+		3AE7B3F2208661C9008B28D7 /* Literal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Literal.h; sourceTree = "<group>"; };
+		3AE7B3F3208661DB008B28D7 /* Graph.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Graph.cpp; sourceTree = "<group>"; };
+		3AE7B3F4208661DB008B28D7 /* Graph.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Graph.hpp; sourceTree = "<group>"; };
+		3AE7B3F6208661E9008B28D7 /* Parser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Parser.cpp; sourceTree = "<group>"; };
+		3AE7B3F7208661E9008B28D7 /* Parser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Parser.hpp; sourceTree = "<group>"; };
+		3AE7B3F920866209008B28D7 /* Randomizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Randomizer.h; sourceTree = "<group>"; };
+		3AE7B3FE20866263008B28D7 /* SatTests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SatTests; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AE7B40020866263008B28D7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3AE7B40520866283008B28D7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3AE7B407208662B1008B28D7 /* SolverTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SolverTest.cpp; sourceTree = "<group>"; };
+		3AE7B409208662BE008B28D7 /* FormulaTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FormulaTest.cpp; sourceTree = "<group>"; };
+		3AE7B40B208662CB008B28D7 /* VariableTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VariableTest.cpp; sourceTree = "<group>"; };
+		3AE7B40D208662DC008B28D7 /* ClauseTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ClauseTest.cpp; sourceTree = "<group>"; };
+		3AE7B40F208662F2008B28D7 /* AlgorithmTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AlgorithmTest.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3AE7B3BC20865FAB008B28D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AE7B3FB20866263008B28D7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,7 +123,11 @@
 		3AE7B3B620865FAB008B28D7 = {
 			isa = PBXGroup;
 			children = (
-				3AE7B3C120865FAB008B28D7 /* SAT */,
+				3AE7B3D120866069008B28D7 /* data */,
+				3AE7B3CF20866049008B28D7 /* test */,
+				3AE7B3CE2086603A008B28D7 /* lib */,
+				3AE7B3CC20866010008B28D7 /* src */,
+				3AE7B3FF20866263008B28D7 /* SatTests */,
 				3AE7B3C020865FAB008B28D7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,16 +136,134 @@
 			isa = PBXGroup;
 			children = (
 				3AE7B3BF20865FAB008B28D7 /* SAT */,
+				3AE7B3FE20866263008B28D7 /* SatTests */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3AE7B3C120865FAB008B28D7 /* SAT */ = {
+		3AE7B3C920865FE3008B28D7 /* algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				3AE7B3D7208660F6008B28D7 /* Solver.cpp */,
+				3AE7B3D8208660F6008B28D7 /* Solver.hpp */,
+				3AE7B3DA2086611C008B28D7 /* ProbabilisticSolver.cpp */,
+				3AE7B3DB2086611C008B28D7 /* ProbabilisticSolver.hpp */,
+				3AE7B3DD20866156008B28D7 /* CompleteSolver.cpp */,
+				3AE7B3DE20866156008B28D7 /* CompleteSolver.hpp */,
+				3AE7B3E020866177008B28D7 /* Schonings.cpp */,
+				3AE7B3E120866177008B28D7 /* Schonings.hpp */,
+				3AE7B3E320866187008B28D7 /* Grasp.cpp */,
+				3AE7B3E420866187008B28D7 /* Grasp.hpp */,
+				3AE7B3E620866191008B28D7 /* CDCL.cpp */,
+				3AE7B3E720866191008B28D7 /* CDCL.hpp */,
+			);
+			path = algorithm;
+			sourceTree = "<group>";
+		};
+		3AE7B3CA20865FF0008B28D7 /* cnf */ = {
+			isa = PBXGroup;
+			children = (
+				3AE7B3E9208661A0008B28D7 /* Formula.cpp */,
+				3AE7B3EA208661A0008B28D7 /* Formula.hpp */,
+				3AE7B3EC208661A8008B28D7 /* Clause.cpp */,
+				3AE7B3ED208661A8008B28D7 /* Clause.hpp */,
+				3AE7B3EF208661B6008B28D7 /* Variable.cpp */,
+				3AE7B3F0208661B6008B28D7 /* Variable.hpp */,
+				3AE7B3F2208661C9008B28D7 /* Literal.h */,
+			);
+			path = cnf;
+			sourceTree = "<group>";
+		};
+		3AE7B3CB20866006008B28D7 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				3AE7B3F3208661DB008B28D7 /* Graph.cpp */,
+				3AE7B3F4208661DB008B28D7 /* Graph.hpp */,
+				3AE7B3F6208661E9008B28D7 /* Parser.cpp */,
+				3AE7B3F7208661E9008B28D7 /* Parser.hpp */,
+				3AE7B3F920866209008B28D7 /* Randomizer.h */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		3AE7B3CC20866010008B28D7 /* src */ = {
 			isa = PBXGroup;
 			children = (
 				3AE7B3C220865FAB008B28D7 /* main.cpp */,
+				3AE7B3CD20866030008B28D7 /* app */,
+				3AE7B3C920865FE3008B28D7 /* algorithm */,
+				3AE7B3CA20865FF0008B28D7 /* cnf */,
+				3AE7B3CB20866006008B28D7 /* util */,
 			);
-			path = SAT;
+			path = src;
+			sourceTree = "<group>";
+		};
+		3AE7B3CD20866030008B28D7 /* app */ = {
+			isa = PBXGroup;
+			children = (
+				3AE7B3D4208660BC008B28D7 /* App.cpp */,
+				3AE7B3D5208660BC008B28D7 /* App.hpp */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		3AE7B3CE2086603A008B28D7 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		3AE7B3CF20866049008B28D7 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				3AE7B3D02086605C008B28D7 /* unittest */,
+				3AE7B40520866283008B28D7 /* main.cpp */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		3AE7B3D02086605C008B28D7 /* unittest */ = {
+			isa = PBXGroup;
+			children = (
+				3AE7B407208662B1008B28D7 /* SolverTest.cpp */,
+				3AE7B409208662BE008B28D7 /* FormulaTest.cpp */,
+				3AE7B40B208662CB008B28D7 /* VariableTest.cpp */,
+				3AE7B40D208662DC008B28D7 /* ClauseTest.cpp */,
+				3AE7B40F208662F2008B28D7 /* AlgorithmTest.cpp */,
+			);
+			path = unittest;
+			sourceTree = "<group>";
+		};
+		3AE7B3D120866069008B28D7 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				3AE7B3D320866088008B28D7 /* plots */,
+				3AE7B3D220866078008B28D7 /* cnfs */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		3AE7B3D220866078008B28D7 /* cnfs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = cnfs;
+			sourceTree = "<group>";
+		};
+		3AE7B3D320866088008B28D7 /* plots */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = plots;
+			sourceTree = "<group>";
+		};
+		3AE7B3FF20866263008B28D7 /* SatTests */ = {
+			isa = PBXGroup;
+			children = (
+				3AE7B40020866263008B28D7 /* main.cpp */,
+			);
+			path = SatTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,6 +286,23 @@
 			productReference = 3AE7B3BF20865FAB008B28D7 /* SAT */;
 			productType = "com.apple.product-type.tool";
 		};
+		3AE7B3FD20866263008B28D7 /* SatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AE7B40220866263008B28D7 /* Build configuration list for PBXNativeTarget "SatTests" */;
+			buildPhases = (
+				3AE7B3FA20866263008B28D7 /* Sources */,
+				3AE7B3FB20866263008B28D7 /* Frameworks */,
+				3AE7B3FC20866263008B28D7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SatTests;
+			productName = SatTests;
+			productReference = 3AE7B3FE20866263008B28D7 /* SatTests */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -92,6 +313,9 @@
 				ORGANIZATIONNAME = DTU;
 				TargetAttributes = {
 					3AE7B3BE20865FAB008B28D7 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					3AE7B3FD20866263008B28D7 = {
 						CreatedOnToolsVersion = 9.3;
 					};
 				};
@@ -109,6 +333,7 @@
 			projectRoot = "";
 			targets = (
 				3AE7B3BE20865FAB008B28D7 /* SAT */,
+				3AE7B3FD20866263008B28D7 /* SatTests */,
 			);
 		};
 /* End PBXProject section */
@@ -118,7 +343,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AE7B3EB208661A0008B28D7 /* Formula.cpp in Sources */,
+				3AE7B3D9208660F6008B28D7 /* Solver.cpp in Sources */,
 				3AE7B3C320865FAB008B28D7 /* main.cpp in Sources */,
+				3AE7B3E520866187008B28D7 /* Grasp.cpp in Sources */,
+				3AE7B3F5208661DB008B28D7 /* Graph.cpp in Sources */,
+				3AE7B3E220866177008B28D7 /* Schonings.cpp in Sources */,
+				3AE7B3DF20866156008B28D7 /* CompleteSolver.cpp in Sources */,
+				3AE7B3DC2086611C008B28D7 /* ProbabilisticSolver.cpp in Sources */,
+				3AE7B3D6208660BC008B28D7 /* App.cpp in Sources */,
+				3AE7B3EE208661A8008B28D7 /* Clause.cpp in Sources */,
+				3AE7B3E820866191008B28D7 /* CDCL.cpp in Sources */,
+				3AE7B3F1208661B6008B28D7 /* Variable.cpp in Sources */,
+				3AE7B3F8208661E9008B28D7 /* Parser.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AE7B3FA20866263008B28D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AE7B4112086630C008B28D7 /* App.cpp in Sources */,
+				3AE7B4132086630C008B28D7 /* Solver.cpp in Sources */,
+				3AE7B4152086630C008B28D7 /* ProbabilisticSolver.cpp in Sources */,
+				3AE7B4172086630C008B28D7 /* CompleteSolver.cpp in Sources */,
+				3AE7B4192086630C008B28D7 /* Schonings.cpp in Sources */,
+				3AE7B41B2086630C008B28D7 /* Grasp.cpp in Sources */,
+				3AE7B41D2086630C008B28D7 /* CDCL.cpp in Sources */,
+				3AE7B41F2086630C008B28D7 /* Formula.cpp in Sources */,
+				3AE7B4212086630C008B28D7 /* Clause.cpp in Sources */,
+				3AE7B4232086630C008B28D7 /* Variable.cpp in Sources */,
+				3AE7B4252086630C008B28D7 /* Literal.h in Sources */,
+				3AE7B4262086630C008B28D7 /* Graph.cpp in Sources */,
+				3AE7B4282086630C008B28D7 /* Parser.cpp in Sources */,
+				3AE7B42A2086630C008B28D7 /* Randomizer.h in Sources */,
+				3AE7B408208662B1008B28D7 /* SolverTest.cpp in Sources */,
+				3AE7B410208662F2008B28D7 /* AlgorithmTest.cpp in Sources */,
+				3AE7B40620866283008B28D7 /* main.cpp in Sources */,
+				3AE7B40A208662BE008B28D7 /* FormulaTest.cpp in Sources */,
+				3AE7B40C208662CB008B28D7 /* VariableTest.cpp in Sources */,
+				3AE7B40E208662DC008B28D7 /* ClauseTest.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +514,22 @@
 			};
 			name = Release;
 		};
+		3AE7B40320866263008B28D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3AE7B40420866263008B28D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -267,6 +547,15 @@
 			buildConfigurations = (
 				3AE7B3C720865FAB008B28D7 /* Debug */,
 				3AE7B3C820865FAB008B28D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AE7B40220866263008B28D7 /* Build configuration list for PBXNativeTarget "SatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AE7B40320866263008B28D7 /* Debug */,
+				3AE7B40420866263008B28D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
