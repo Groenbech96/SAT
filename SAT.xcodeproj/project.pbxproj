@@ -93,7 +93,6 @@
 		3AE7B3F7208661E9008B28D7 /* Parser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Parser.hpp; sourceTree = "<group>"; };
 		3AE7B3F920866209008B28D7 /* Randomizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Randomizer.h; sourceTree = "<group>"; };
 		3AE7B3FE20866263008B28D7 /* SatTests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SatTests; sourceTree = BUILT_PRODUCTS_DIR; };
-		3AE7B40020866263008B28D7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3AE7B40520866283008B28D7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3AE7B407208662B1008B28D7 /* SolverTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SolverTest.cpp; sourceTree = "<group>"; };
 		3AE7B409208662BE008B28D7 /* FormulaTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FormulaTest.cpp; sourceTree = "<group>"; };
@@ -124,11 +123,10 @@
 			isa = PBXGroup;
 			children = (
 				3AE7B3D120866069008B28D7 /* data */,
-				3AE7B3CF20866049008B28D7 /* test */,
 				3AE7B3CE2086603A008B28D7 /* lib */,
-				3AE7B3CC20866010008B28D7 /* src */,
-				3AE7B3FF20866263008B28D7 /* SatTests */,
 				3AE7B3C020865FAB008B28D7 /* Products */,
+				3AE7B3CC20866010008B28D7 /* src */,
+				3AE7B3CF20866049008B28D7 /* test */,
 			);
 			sourceTree = "<group>";
 		};
@@ -256,14 +254,6 @@
 			children = (
 			);
 			path = plots;
-			sourceTree = "<group>";
-		};
-		3AE7B3FF20866263008B28D7 /* SatTests */ = {
-			isa = PBXGroup;
-			children = (
-				3AE7B40020866263008B28D7 /* main.cpp */,
-			);
-			path = SatTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
