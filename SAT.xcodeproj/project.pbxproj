@@ -13,6 +13,7 @@
 		3AC21CC820866869004D4384 /* ClauseTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B40D208662DC008B28D7 /* ClauseTest.cpp */; };
 		3AC21CC920866869004D4384 /* AlgorithmTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B40F208662F2008B28D7 /* AlgorithmTest.cpp */; };
 		3AC21CCA20866869004D4384 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B40520866283008B28D7 /* main.cpp */; };
+		3AC21CD020867287004D4384 /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC21CCF20867287004D4384 /* gtest.framework */; };
 		3AE7B3C320865FAB008B28D7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3C220865FAB008B28D7 /* main.cpp */; };
 		3AE7B3D6208660BC008B28D7 /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3D4208660BC008B28D7 /* App.cpp */; };
 		3AE7B3D9208660F6008B28D7 /* Solver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3D7208660F6008B28D7 /* Solver.cpp */; };
@@ -50,6 +51,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3AC21CCC20866D71004D4384 /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = googletest/googletest/xcode/includes/gtest/Build/Products/Release/gtest.framework; sourceTree = "<group>"; };
+		3AC21CCF20867287004D4384 /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = lib/gtest.framework; sourceTree = "<group>"; };
 		3AE7B3BF20865FAB008B28D7 /* SAT */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SAT; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE7B3C220865FAB008B28D7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3AE7B3D4208660BC008B28D7 /* App.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = App.cpp; sourceTree = "<group>"; };
@@ -99,12 +102,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AC21CD020867287004D4384 /* gtest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3AC21CCB20866D71004D4384 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3AC21CCF20867287004D4384 /* gtest.framework */,
+				3AC21CCC20866D71004D4384 /* gtest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3AE7B3B620865FAB008B28D7 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +126,7 @@
 				3AE7B3C020865FAB008B28D7 /* Products */,
 				3AE7B3CC20866010008B28D7 /* src */,
 				3AE7B3CF20866049008B28D7 /* test */,
+				3AC21CCB20866D71004D4384 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -480,6 +494,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/googletest/googletest/xcode/includes/gtest/Build/Products/Release",
+					"$(PROJECT_DIR)/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -488,6 +507,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/googletest/googletest/xcode/includes/gtest/Build/Products/Release",
+					"$(PROJECT_DIR)/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
