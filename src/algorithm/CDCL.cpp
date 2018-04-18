@@ -53,7 +53,7 @@ void algorithms::CDCL::pickBranchingVariable(int decisionLevel) {
     
     std::unordered_map<int, cnf::Clause *> clauseSet = formula.getClauseSet();
     
-    cnf::Clause* c;
+    cnf::Clause* c = new cnf::Clause;
     int nMin = std::numeric_limits<int>::max();
     
     // Pick the clause with the smallest number of unassigned variables
@@ -69,14 +69,15 @@ void algorithms::CDCL::pickBranchingVariable(int decisionLevel) {
             }
             
         }
-        
-        if (n < nMin && n > 1) {
-            nMin = n;
-            c = clausekv->second;
+        if (!clausekv->second->isSatisfied()){
+            if (n < nMin && n > 1) {
+                nMin = n;
+                c = clausekv->second;
+            }
         }
     }
     
-    
+    std::cout << c->string() << std::endl;
     // Pick the first unassigned variable
     for(auto kv : c->getLiterals()) {
         cnf::VariableAssignment a = kv.second.pVar->getAssignment();
