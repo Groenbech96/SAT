@@ -82,6 +82,7 @@ boost::optional<cnf::Literal&> cnf::Clause::getLiteral(int id) {
 }
 
 bool cnf::Clause::containsConflict() {
+    this->evaluate();
     return this->conflict;
 }
 

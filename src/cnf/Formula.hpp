@@ -106,6 +106,8 @@ namespace cnf {
         ///
         std::string string();
         
+        void addClause(std::unordered_map<int, Literal> l);
+        
     private:
         /**
          * SAT type

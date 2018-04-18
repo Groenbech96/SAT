@@ -161,7 +161,8 @@ bool cnf::Formula::hasUnsatisfiedClauses() {
     
     for(auto kv = this->getClauseSet().begin(); kv != this->getClauseSet().end(); kv++) {
         
-        if (!kv->second->isSatisfied()) {
+        bool b = kv->second->isSatisfied();
+        if (!b) {
             return true;
         }
     }
@@ -180,6 +181,17 @@ boost::optional<cnf::Clause *> cnf::Formula::containsConflict() {
     
     return boost::none;
 }
+
+void cnf::Formula::addClause(std::unordered_map<int, cnf::Literal> l) {
+    
+    cnf::Clause *c = new Clause(this->m, l);
+    // Important is to update m after insert! Do to zero index in map!!!
+    this->clauseSet.insert({this->m, c});
+    this->m++;
+    
+    
+}
+
 
 std::string cnf::Formula::string() {
     

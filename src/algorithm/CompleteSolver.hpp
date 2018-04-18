@@ -27,7 +27,7 @@ namespace algorithms {
         
         // Helper functions
         
-        std::unordered_set<int> *clauseToSet(cnf::Clause *clause);
+        std::unordered_map<int, cnf::Literal> *clauseToMap(cnf::Clause *clause);
         bool isImpliedLiteralAtDesicionLvl(cnf::Literal l, int d);
         
         virtual void setup(cnf::Formula formula) = 0;
@@ -42,9 +42,10 @@ namespace algorithms {
         int conflictAnalysis();
         
         void resolutionOperation(
-                                 std::unordered_set<cnf::Literal>* tempClauseSet, cnf::Clause* antecedentClause,
+                                 std::unordered_map<int, cnf::Literal>* tempClauseSet,
+                                 cnf::Clause* antecedentClause,
                                  std::queue<cnf::Literal>* q,
-                                 std::unordered_set<int> *visited,
+                                 std::unordered_map<int, cnf::Literal>* visited,
                                  int decisionLevel);
         
         

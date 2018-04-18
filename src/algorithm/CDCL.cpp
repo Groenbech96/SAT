@@ -10,7 +10,7 @@
 
 void algorithms::CDCL::setup(cnf::Formula formula) {
     this->formula = formula;
-    this->graph = *(new util::Graph);
+    this->graph = util::Graph();
 }
 
 bool algorithms::CDCL::solve() {
@@ -19,7 +19,7 @@ bool algorithms::CDCL::solve() {
     
     // Lines 1-3
     if(CDCL::unitPropagation(decisionLevel) == CONFLICT) {
-        return 0;
+        return false;
     }
     
     while(this->formula.hasUnassignedVariables()) {
@@ -27,7 +27,8 @@ bool algorithms::CDCL::solve() {
         decisionLevel++;
         
         // If conflict
-        if(CDCL::unitPropagation(decisionLevel) == CONFLICT) {
+        UnitPropagationResult result = CDCL::unitPropagation(decisionLevel);
+        if(result == CONFLICT) {
             int beta = CDCL::conflictAnalysis();
             if(beta < 0) {
                 return 0;
@@ -35,6 +36,8 @@ bool algorithms::CDCL::solve() {
                 CDCL::backtrack(beta);
                 decisionLevel=beta;
             }
+        } else if(result == SOLVED) {
+            return 1;
         }
         
         
