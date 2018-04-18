@@ -9,6 +9,22 @@
 #ifndef CDCL_hpp
 #define CDCL_hpp
 
-#include <stdio.h>
+#include "CompleteSolver.hpp"
+
+namespace algorithms {
+    
+    class CDCL : public CompleteSolver {
+        
+    public:
+        CDCL() = default;
+        
+        
+        
+        
+        
+    };
+    
+}
+
 
 #endif /* CDCL_hpp */

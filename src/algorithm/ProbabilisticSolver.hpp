@@ -9,6 +9,19 @@
 #ifndef ProbabilisticSolver_hpp
 #define ProbabilisticSolver_hpp
 
-#include <stdio.h>
+#include "Solver.hpp"
 
+namespace algorithms {
+    
+    class ProbabilisticSolver : public Solver {
+
+    public:
+        ProbabilisticSolver() : Solver() {};
+        virtual ~ProbabilisticSolver() = default;
+        
+        virtual void setup(cnf::Formula formula) = 0;
+        virtual bool solve() = 0;
+        
+    };
+}
 #endif /* ProbabilisticSolver_hpp */

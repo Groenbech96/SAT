@@ -9,6 +9,46 @@
 #ifndef CompleteSolver_hpp
 #define CompleteSolver_hpp
 
-#include <stdio.h>
+#include "Solver.hpp"
+#include "Graph.hpp"
+#include <set>
+#include <queue>
+
+namespace algorithms {
+    
+    enum UnitPropagationResult {
+        SIMPLIFIED, SOLVED, CONFLICT, NOT_SIMPLIFIED
+    };
+    
+    class CompleteSolver : public Solver {
+        
+    protected:
+        util::Graph graph;
+        
+        // Helper functions
+        
+        std::unordered_set<int> *clauseToSet(cnf::Clause *clause);
+        bool isImpliedLiteralAtDesicionLvl(cnf::Literal l, int d);
+        
+    public:
+        CompleteSolver();
+        virtual ~CompleteSolver();
+        
+        UnitPropagationResult unitPropagation(int decisionLevel);
+        
+        int conflictAnalysis();
+        
+        void resolutionOperation(
+                                 std::unordered_set<cnf::Literal>* tempClauseSet, cnf::Clause* antecedentClause,
+                                 std::queue<cnf::Literal>* q,
+                                 std::unordered_set<int> *visited,
+                                 int decisionLevel);
+        
+        
+        
+    };
+    
+
+}
 
 #endif /* CompleteSolver_hpp */

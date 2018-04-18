@@ -44,7 +44,7 @@ cnf::Formula::Formula(int k,
     this->k = k;
     this->m = m;
     this->n = n;
-    
+ 
 }
 
 cnf::Formula::Formula(int k, int m, int n) : k(k), m(m), n(n) {

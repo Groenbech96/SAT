@@ -9,6 +9,28 @@
 #ifndef Schonings_hpp
 #define Schonings_hpp
 
-#include <stdio.h>
+#include "ProbabilisticSolver.hpp"
+#include "Randomizer.h"
+
+namespace algorithms {
+    
+    class Schonings : public ProbabilisticSolver {
+        
+    public:
+        Schonings() : ProbabilisticSolver() {}
+        ~Schonings() = default;
+        /// Setup a formula to solve
+        
+        void setup(cnf::Formula formula) override;
+    
+        /// Solve method for Schonings
+        bool solve() override;
+       
+    private:
+        
+        
+    };
+    
+}
 
 #endif /* Schonings_hpp */
