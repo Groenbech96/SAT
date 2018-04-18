@@ -10,7 +10,7 @@
 
 void algorithms::CDCL::setup(cnf::Formula formula) {
     this->formula = formula;
-    this->graph = *(new util::Graph);
+    this->graph = util::Graph();
 }
 
 bool algorithms::CDCL::solve() {
@@ -19,7 +19,7 @@ bool algorithms::CDCL::solve() {
     
     // Lines 1-3
     if(CDCL::unitPropagation(decisionLevel) == CONFLICT) {
-        return 0;
+        return false;
     }
     
     while(this->formula.hasUnassignedVariables()) {
@@ -27,7 +27,8 @@ bool algorithms::CDCL::solve() {
         decisionLevel++;
         
         // If conflict
-        if(CDCL::unitPropagation(decisionLevel) == CONFLICT) {
+        UnitPropagationResult result = CDCL::unitPropagation(decisionLevel);
+        if(result == CONFLICT) {
             int beta = CDCL::conflictAnalysis();
             if(beta < 0) {
                 return 0;
@@ -35,6 +36,8 @@ bool algorithms::CDCL::solve() {
                 CDCL::backtrack(beta);
                 decisionLevel=beta;
             }
+        } else if(result == SOLVED) {
+            return 1;
         }
         
         
@@ -50,7 +53,7 @@ void algorithms::CDCL::pickBranchingVariable(int decisionLevel) {
     
     std::unordered_map<int, cnf::Clause *> clauseSet = formula.getClauseSet();
     
-    cnf::Clause* c;
+    cnf::Clause* c = new cnf::Clause;
     int nMin = std::numeric_limits<int>::max();
     
     // Pick the clause with the smallest number of unassigned variables
@@ -66,14 +69,15 @@ void algorithms::CDCL::pickBranchingVariable(int decisionLevel) {
             }
             
         }
-        
-        if (n < nMin && n > 1) {
-            nMin = n;
-            c = clausekv->second;
+        if (!clausekv->second->isSatisfied()){
+            if (n < nMin && n > 1) {
+                nMin = n;
+                c = clausekv->second;
+            }
         }
     }
     
-    
+    std::cout << c->string() << std::endl;
     // Pick the first unassigned variable
     for(auto kv : c->getLiterals()) {
         cnf::VariableAssignment a = kv.second.pVar->getAssignment();

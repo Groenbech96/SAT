@@ -11,7 +11,6 @@
 
 algorithms::UnitPropagationResult algorithms::CompleteSolver::unitPropagation(int decisionLevel) {
     
-    
     auto unitClause = this->formula.getUnitClause();
     
     //While unsatisfied clauses still exist
@@ -39,11 +38,7 @@ algorithms::UnitPropagationResult algorithms::CompleteSolver::unitPropagation(in
         
         boost::optional<cnf::Clause *> conflictClause = this->formula.containsConflict();
         
-        //Test if the formula is either satisfied or contains a conflict
-        if (!this->formula.hasUnsatisfiedClauses()) {
-            return SOLVED;
-        } else if(conflictClause != boost::none){
-            
+        if(conflictClause != boost::none) {
             // Add conflict vertex to implication graph
             this->graph.addVertex(nullptr, decisionLevel, conflictClause.get()->getId());
             
@@ -52,6 +47,8 @@ algorithms::UnitPropagationResult algorithms::CompleteSolver::unitPropagation(in
             }
             
             return CONFLICT;
+        } else if(!this->formula.hasUnsatisfiedClauses()) {
+            return SOLVED;
         }
         
         unitClause = this->formula.getUnitClause();
@@ -72,53 +69,101 @@ int algorithms::CompleteSolver::conflictAnalysis() {
     auto antecedentClause = this->formula.getClauseSet().find(antecedentClauseID)->second;
 
     // Queue of literals assigned in this decision level
-    std::queue<cnf::Literal> *q;
-    std::unordered_set<int> *visitedLiterals;
+    std::queue<cnf::Literal> *q = new std::queue<cnf::Literal>;
+    std::unordered_map<int, cnf::Literal> *visitedLiterals = new std::unordered_map<int, cnf::Literal>;
     // Temporary learning clause - set
-    auto tempClause = clauseToSet(antecedentClause);
+    
+    auto tempClause = clauseToMap(antecedentClause);
 
     for(auto it = tempClause->begin(); it != tempClause->end(); ++it) {
+        //int id = it->first;
+        //cnf::Literal l = antecedentClause->getLiteral(id).get();
 
-        int id = *it;
-        cnf::Literal l = antecedentClause->getLiteral(id).get();
-
-        if(isImpliedLiteralAtDesicionLvl(l, currentDecisionLevel))
-            q->push(l);
+        if(isImpliedLiteralAtDesicionLvl(it->second, currentDecisionLevel))
+            q->push(it->second);
     }
 
     while(!q->empty()) {
 
-        auto v = this->graph.getVertex(q->front().pVar);
-        visitedLiterals->insert(q->front().pVar->getKey());
+        auto l = q->front();
+        auto v = this->graph.getVertex(l.pVar);
+        
+        visitedLiterals->insert({l.pVar->getKey(), l});
+        
+        //visitedLiterals->insert(q->front().pVar->getKey(), q->front());
         q->pop();
+        
+        int antecedentClauseID = v->antecedentClauseID;
+        auto antecedentClause = this->formula.getClauseSet().find(antecedentClauseID)->second;
+        
+        resolutionOperation(tempClause, antecedentClause, q, visitedLiterals, currentDecisionLevel);
 
-
-
-        q->pop();
     }
     
-    
-        for(auto l : *tempClause) {
-            //if(isImpliedLiteralAtDesicionLvl(l, currentDecisionLevel))
-            //    q->push(l);
-            
-        }
-    
-        while(!q->empty()) {
-    
-            // get the vertex from the first var in que and remove it from queue
-            auto v = this->graph.getVertex(q->front().pVar);
-            visitedLiterals->insert(q->front().pVar->getKey());
-            q->pop();
-    
-            int clID = v->antecedentClauseID;
-            auto antecedentCluase = this->formula.getClauseSet().find(clID);
-    
-            //resolutionOperation(tempClause, antecedentClause, q, visitedLiterals, currentDecisionLevel);
+    this->formula.addClause(*tempClause);
+    delete tempClause;
 
-        }
     return 0;
 }
+
+void algorithms::CompleteSolver::resolutionOperation(std::unordered_map<int, cnf::Literal>* tempClauseMap,
+                                             cnf::Clause* antecedentClause,
+                                             std::queue<cnf::Literal>* q,
+                                             std::unordered_map<int, cnf::Literal>* visited,
+                                             int decisionLevel) {
+
+    std::unordered_set<int> duplicateLiterals;
+    // create copy of antecendentClauseObject
+    cnf::Clause antecedentClauseTemp = *antecedentClause;
+    auto it = tempClauseMap->begin();
+
+    // Loop through the literals currently in the tempClauseSet
+    while(it != tempClauseMap->end()) {
+
+        auto l = it->second;
+        
+        boost::optional<cnf::Literal &> search = antecedentClauseTemp.getLiteral(l.pVar->getKey());
+
+        if(search != boost::none) {
+
+            // Resolution operation - deletion of neg/not-neg pair of variables
+            if((search->isNegated && !l.isNegated) || (!search->isNegated && l.isNegated)) {
+
+                it = tempClauseMap->erase(it);
+                antecedentClauseTemp.removeLiteral(search.get().pVar->getKey());
+
+            }
+            else {
+
+                duplicateLiterals.insert(search.get().pVar->getKey());
+                it++;
+
+            }
+        }
+        else {
+            it++;
+        }
+    }
+
+    
+    // Merge tempClauseSet with antecedentClause
+    for (auto kv = antecedentClauseTemp.getLiterals().begin(); kv != antecedentClauseTemp.getLiterals().end(); ++kv) {
+        if (duplicateLiterals.count(kv->first) == 0) {
+
+            tempClauseMap->insert({kv->first, kv->second});
+
+            if(visited->count(kv->first) == 0
+               && isImpliedLiteralAtDesicionLvl(kv->second, decisionLevel))
+            {
+                // Update queue
+                q->push(kv->second);
+                visited->insert({kv->first, kv->second});
+            }
+        }
+    }
+}
+
+
 
 bool algorithms::CompleteSolver::isImpliedLiteralAtDesicionLvl(cnf::Literal l, int d) {
     auto vex = this->graph.getVertex(l.pVar);
@@ -126,13 +171,11 @@ bool algorithms::CompleteSolver::isImpliedLiteralAtDesicionLvl(cnf::Literal l, i
 
 }
 
-std::unordered_set<int> *algorithms::CompleteSolver::clauseToSet(cnf::Clause *clause) {
-    
-    std::unordered_set<int> *l;
+std::unordered_map<int, cnf::Literal> *algorithms::CompleteSolver::clauseToMap(cnf::Clause *clause) {
+    std::unordered_map<int, cnf::Literal> *l = new std::unordered_map<int, cnf::Literal>;
     
     for(auto kv = clause->getLiterals().begin(); kv != clause->getLiterals().end(); kv++) {
-        auto literal = kv->second;
-        literal.isNegated ? l->insert(-kv->first) : l->insert(kv->first);
+        l->insert({kv->first, kv->second});
     }
     
     return l;
