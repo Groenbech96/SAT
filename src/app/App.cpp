@@ -17,6 +17,12 @@ int Application::App::run() {
         
         algorithms::CDCL *c = new algorithms::CDCL();
         
+        f->getVariableSet().find(21)->second->setAssignment(cnf::VariableAssignment::FALSE);
+        
+        f->getVariableSet().find(31)->second->setAssignment(cnf::VariableAssignment::FALSE);
+        f->getVariableSet().find(1)->second->setAssignment(cnf::VariableAssignment::FALSE);
+        
+        
         c->setup(*f);
         c->solve();
         

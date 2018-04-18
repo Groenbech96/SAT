@@ -63,7 +63,8 @@ int algorithms::CompleteSolver::conflictAnalysis() {
     util::vertex* conflictVertex = this->graph.getVertex(nullptr);
 
     int currentDecisionLevel = conflictVertex->decisionLevel;
-
+    int beta;
+    
     // Get the antecedent clause of k
     int antecedentClauseID = conflictVertex->antecedentClauseID;
     auto antecedentClause = this->formula.getClauseSet().find(antecedentClauseID)->second;
