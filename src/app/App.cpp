@@ -12,7 +12,7 @@ int Application::App::run() {
     
     try {
         
-        auto parser = new util::Parser("/Users/gronbech/Desktop/Software/c++/SAT/data/cnfs/uf20-91/test.cnf");
+        auto parser = new util::Parser("/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs");
         cnf::Formula *f = parser->parse();
         
         algorithms::CDCL *c = new algorithms::CDCL();
