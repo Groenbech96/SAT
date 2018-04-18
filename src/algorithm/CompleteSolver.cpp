@@ -63,7 +63,7 @@ int algorithms::CompleteSolver::conflictAnalysis() {
     util::vertex* conflictVertex = this->graph.getVertex(nullptr);
 
     int currentDecisionLevel = conflictVertex->decisionLevel;
-    int beta;
+    int beta = 0;
     
     // Get the antecedent clause of k
     int antecedentClauseID = conflictVertex->antecedentClauseID;
@@ -74,9 +74,9 @@ int algorithms::CompleteSolver::conflictAnalysis() {
     std::unordered_map<int, cnf::Literal> *visitedLiterals = new std::unordered_map<int, cnf::Literal>;
     // Temporary learning clause - set
     
-    auto tempClause = clauseToMap(antecedentClause);
+    auto tempClauseMap = clauseToMap(antecedentClause);
 
-    for(auto it = tempClause->begin(); it != tempClause->end(); ++it) {
+    for(auto it = tempClauseMap->begin(); it != tempClauseMap->end(); ++it) {
         //int id = it->first;
         //cnf::Literal l = antecedentClause->getLiteral(id).get();
 
@@ -97,12 +97,46 @@ int algorithms::CompleteSolver::conflictAnalysis() {
         int antecedentClauseID = v->antecedentClauseID;
         auto antecedentClause = this->formula.getClauseSet().find(antecedentClauseID)->second;
         
-        resolutionOperation(tempClause, antecedentClause, q, visitedLiterals, currentDecisionLevel);
+        resolutionOperation(tempClauseMap, antecedentClause, q, visitedLiterals, currentDecisionLevel);
 
     }
     
-    this->formula.addClause(*tempClause);
-    delete tempClause;
+    int assertionLevel;
+    
+    if(tempClauseMap->size() == 1) {
+        
+        auto pvar = tempClauseMap->begin()->second.pVar;
+        auto vex = this->graph.getVertex(pvar);
+        assertionLevel = vex->decisionLevel;
+        
+    } else {
+        int m1,m2 = -1;
+        util::vertex* v1 = new util::vertex(new cnf::Variable(), -1, -1);
+        util::vertex* v2 = new util::vertex(new cnf::Variable(), -1, -1);
+        for(auto it = tempClauseMap->begin(); it != tempClauseMap->end(); ++it) {
+            auto pvar = it->second.pVar;
+            auto vex = this->graph.getVertex(pvar);
+            
+            // get second highest decision lvl
+            if(vex->decisionLevel > m2) {
+                if(vex->decisionLevel > m1) {
+                    v2 = v1;
+                    m2 = m1;
+                    m1 = vex->decisionLevel;
+                    
+                } else {
+                    m2 = vex->decisionLevel;
+                }
+            }
+            
+        }
+        assertionLevel = m2;
+    }
+    
+    if ()
+    
+    this->formula.addClause(*tempClauseMap);
+    delete tempClauseMap;
 
     return 0;
 }

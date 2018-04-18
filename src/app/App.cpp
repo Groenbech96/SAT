@@ -12,7 +12,7 @@ int Application::App::run() {
     
     try {
         
-        auto parser = new util::Parser("/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/uf20-91/test.cnf");
+        auto parser = new util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/test.cnf");
         cnf::Formula *f = parser->parse();
         
         algorithms::CDCL *c = new algorithms::CDCL();
@@ -23,6 +23,7 @@ int Application::App::run() {
         f->getVariableSet().find(1)->second->setAssignment(cnf::VariableAssignment::FALSE);
         
         
+
         c->setup(*f);
         c->solve();
         
