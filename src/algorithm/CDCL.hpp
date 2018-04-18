@@ -16,8 +16,17 @@ namespace algorithms {
     class CDCL : public CompleteSolver {
         
     public:
-        CDCL() = default;
+        CDCL()   = default;
+        ~CDCL()  = default;
         
+        void setup(cnf::Formula formula) override;
+        bool solve() override;
+        
+        void pickBranchingVariable(int decisionLevel);
+        
+        void backtrack(int beta);
+        
+        void printGraph();
         
         
         

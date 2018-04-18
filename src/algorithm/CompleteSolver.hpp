@@ -30,9 +30,12 @@ namespace algorithms {
         std::unordered_set<int> *clauseToSet(cnf::Clause *clause);
         bool isImpliedLiteralAtDesicionLvl(cnf::Literal l, int d);
         
+        virtual void setup(cnf::Formula formula) = 0;
+        virtual bool solve() = 0;
+        
     public:
-        CompleteSolver();
-        virtual ~CompleteSolver();
+        CompleteSolver() = default;
+        virtual ~CompleteSolver() = default;
         
         UnitPropagationResult unitPropagation(int decisionLevel);
         
