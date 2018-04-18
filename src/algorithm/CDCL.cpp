@@ -77,7 +77,7 @@ void algorithms::CDCL::pickBranchingVariable(int decisionLevel) {
         }
     }
     
-    std::cout << c->string() << std::endl;
+    
     // Pick the first unassigned variable
     for(auto kv : c->getLiterals()) {
         cnf::VariableAssignment a = kv.second.pVar->getAssignment();

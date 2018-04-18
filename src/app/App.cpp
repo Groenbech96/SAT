@@ -7,6 +7,7 @@
 //
 
 #include "App.hpp"
+#include "rapidjson/writer.h"
 
 int Application::App::run() {
     
