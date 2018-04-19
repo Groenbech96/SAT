@@ -59,21 +59,7 @@ void algorithms::CDCL::pickBranchingVariable(int decisionLevel) {
     // Pick the clause with the smallest number of unassigned variables
     for(auto clausekv = clauseSet.begin(); clausekv != clauseSet.end(); clausekv++) {
         
-        int n = 0;
-        
-        for(auto kv : clausekv->second->getLiterals()) {
-            cnf::VariableAssignment a = kv.second.pVar->getAssignment();
-            
-            if (a == cnf::UNASSIGNED) {
-                n++;
-            }
-            
-        }
-        
-        if (n < nMin && n > 1) {
-            nMin = n;
-            c = clausekv->second;
-        }
+       
     }
     
     
