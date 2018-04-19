@@ -28,7 +28,8 @@ namespace util {
     ///
     /// adjacency list of outgoing edges
     struct vertex {
-        std::vector<vertex*> adjacent;
+        std::vector<vertex*> outgoingEdges;
+        std::vector<vertex*> ingoingEdges;
         int decisionLevel;
         int antecedentClauseID;
         cnf::Variable* var;
@@ -53,6 +54,8 @@ namespace util {
         /// \param from Variable edge starts at
         /// \param to Variable edge ends at
         void addEdge(cnf::Variable* from, cnf::Variable* to);
+        
+        bool deleteVertex(cnf::Variable* vex);
         
         util::vertex* getVertex(cnf::Variable * v);
         std::string stringJsStyle();

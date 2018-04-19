@@ -47,8 +47,6 @@ bool algorithms::CDCL::solve() {
         } else if(result == SOLVED) {
             return true;
         }
-        
-        
     }
     return true;
 }
@@ -107,7 +105,7 @@ void algorithms::CDCL::pickBranchingVariable(int decisionLevel) {
 
 
 // TODO: Implement
-void algorithms::CDCL::backtrack(int beta) {
+void algorithms::CDCL::backtrack(int backtrackLevel) {
     
 }
 
