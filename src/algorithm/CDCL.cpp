@@ -37,22 +37,20 @@ bool algorithms::CDCL::solve() {
         // If conflict
         UnitPropagationResult result = CDCL::unitPropagation(decisionLevel);
         if(result == CONFLICT) {
-            int beta = CDCL::conflictAnalysis();
-            if(beta < 0) {
-                return 0;
+            int backtrackLevel = CDCL::conflictAnalysis();
+            if(backtrackLevel < 0) {
+                return false;
             } else {
-                CDCL::backtrack(beta);
-                decisionLevel=beta;
+                CDCL::backtrack(backtrackLevel);
+                decisionLevel=backtrackLevel;
             }
         } else if(result == SOLVED) {
-            return 1;
+            return true;
         }
         
         
     }
-    return 0;
-    
-    
+    return true;
 }
 
 

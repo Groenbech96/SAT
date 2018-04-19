@@ -107,33 +107,31 @@ int algorithms::CompleteSolver::conflictAnalysis() {
         
         auto pvar = tempClauseMap->begin()->second.pVar;
         auto vex = this->graph.getVertex(pvar);
-        assertionLevel = vex->decisionLevel;
+        auto vexDL = vex->decisionLevel;
+        assertionLevel = (vexDL == 0) ? -1 : 0;
         
     } else {
-        int m1,m2 = -1;
-        util::vertex* v1 = new util::vertex(new cnf::Variable(), -1, -1);
-        util::vertex* v2 = new util::vertex(new cnf::Variable(), -1, -1);
+        
+        int m1 = -1;
+        int m2 = -1;
+   
         for(auto it = tempClauseMap->begin(); it != tempClauseMap->end(); ++it) {
+            
             auto pvar = it->second.pVar;
             auto vex = this->graph.getVertex(pvar);
             
             // get second highest decision lvl
             if(vex->decisionLevel > m2) {
                 if(vex->decisionLevel > m1) {
-                    v2 = v1;
                     m2 = m1;
                     m1 = vex->decisionLevel;
-                    
                 } else {
                     m2 = vex->decisionLevel;
                 }
             }
-            
         }
         assertionLevel = m2;
     }
-    
-    if ()
     
     this->formula.addClause(*tempClauseMap);
     delete tempClauseMap;
