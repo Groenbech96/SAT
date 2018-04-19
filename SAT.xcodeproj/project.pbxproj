@@ -1090,6 +1090,7 @@
 		3AE7B40D208662DC008B28D7 /* ClauseTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ClauseTest.cpp; sourceTree = "<group>"; };
 		3AE7B40F208662F2008B28D7 /* AlgorithmTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AlgorithmTest.cpp; sourceTree = "<group>"; };
 		3AE7B42F208667D2008B28D7 /* SatTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SatTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F365A41208783D200F4AB30 /* rapidjson */ = {isa = PBXFileReference; lastKnownFileType = folder; path = rapidjson; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2219,6 +2220,7 @@
 		3AE7B3CE2086603A008B28D7 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				6F365A41208783D200F4AB30 /* rapidjson */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -2491,7 +2493,10 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = /usr/local/Cellar/boost/1.66.0/include;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/lib",
+					/usr/local/Cellar/boost/1.66.0/include,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2501,7 +2506,10 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = /usr/local/Cellar/boost/1.66.0/include;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/lib",
+					/usr/local/Cellar/boost/1.66.0/include,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
