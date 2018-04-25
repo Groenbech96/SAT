@@ -115,6 +115,38 @@ TEST_F(AlgorithmFixture, CDCLUnitPropagationTestTwo) {
 }
 
 
+TEST_F(AlgorithmFixture, CDCLUnitResolutionTest) {
+    
+    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/A_unitTest4.cnf").parse();
+    
+    algorithms::CDCL *solver = new algorithms::CDCL();
+    solver->setup(*f);
+    
+    f->getVariable(20).get()->setAssignment(cnf::FALSE);
+    solver->addToImplicationGraph(f->getVariable(20).get(), 2, -1);
+    f->getVariable(30).get()->setAssignment(cnf::FALSE);
+    solver->addToImplicationGraph(f->getVariable(30).get(), 3, -1);
+    f->getVariable(0).get()->setAssignment(cnf::FALSE);
+    solver->addToImplicationGraph(f->getVariable(0).get(), 5, -1);
+    
+    auto s = solver->unitPropagation(5);
+    ASSERT_TRUE(s == algorithms::CONFLICT);
+    ASSERT_EQ(solver->getGraphSize(), 9);
+    
+    // ALL ABOVE THIS WORKS
+    
+    int beta = solver->conflictAnalysis();
+    ASSERT_EQ(beta, 2);
+    
+    
+    
+}
+
+
+
+
+
+
 
 TEST_F(AlgorithmFixture, CDCLConflictAnalysis) {
     
@@ -145,8 +177,8 @@ TEST_F(AlgorithmFixture, CDCLConflictAnalysis) {
     ASSERT_TRUE(c.getLiteral(1).get().isNegated);
     ASSERT_TRUE(c.getLiteral(6).get().isNegated);
  
-    std::cout << "new clause" <<  std::endl;
-    std::cout << f->getLastAddedClause().string() <<  std::endl;
+    //std::cout << "new clause" <<  std::endl;
+    //std::cout << f->getLastAddedClause().string() <<  std::endl;
     
 }
 
@@ -180,8 +212,8 @@ TEST_F(AlgorithmFixture, CDCLBackTrack) {
     ASSERT_TRUE(c.getLiteral(1).get().isNegated);
     ASSERT_TRUE(c.getLiteral(6).get().isNegated);
     
-    std::cout << "new clause" <<  std::endl;
-    std::cout << f->getLastAddedClause().string() <<  std::endl;
+    //std::cout << "new clause" <<  std::endl;
+    //std::cout << f->getLastAddedClause().string() <<  std::endl;
     
     solver->backtrack(beta);
     ASSERT_EQ(solver->getGraphSize(), 2);
@@ -219,8 +251,8 @@ TEST_F(AlgorithmFixture, CDCLCombinedSimulation) {
     ASSERT_TRUE(c.getLiteral(1).get().isNegated);
     ASSERT_TRUE(c.getLiteral(6).get().isNegated);
     
-    std::cout << "new clause" <<  std::endl;
-    std::cout << f->getLastAddedClause().string() <<  std::endl;
+    //std::cout << "new clause" <<  std::endl;
+    //std::cout << f->getLastAddedClause().string() <<  std::endl;
     
     solver->backtrack(beta);
     ASSERT_EQ(solver->getGraphSize(), 2);
@@ -252,8 +284,8 @@ TEST_F(AlgorithmFixture, CDCLCombinedSimulation) {
     ASSERT_TRUE(c.getLiteral(3).get().isNegated);
     ASSERT_FALSE(c.getLiteral(6).get().isNegated);
     
-    std::cout << "new clause" <<  std::endl;
-    std::cout << f->getLastAddedClause().string() <<  std::endl;
+    //std::cout << "new clause" <<  std::endl;
+    //std::cout << f->getLastAddedClause().string() <<  std::endl;
     
     solver->backtrack(beta);
     ASSERT_EQ(solver->getGraphSize(), 3);
@@ -301,8 +333,8 @@ TEST_F(AlgorithmFixture, CDCLCombinedSimulation) {
     
     ASSERT_TRUE(c.getLiteral(7).get().isNegated);
     
-    std::cout << "new clause" <<  std::endl;
-    std::cout << f->getLastAddedClause().string() <<  std::endl;
+    //std::cout << "new clause" <<  std::endl;
+    //std::cout << f->getLastAddedClause().string() <<  std::endl;
     
     solver->backtrack(beta);
     ASSERT_EQ(solver->getGraphSize(), 0);
@@ -351,12 +383,12 @@ TEST_F(AlgorithmFixture, CDCLCombinedSimulation) {
 /// Test that schonings can solve all satisfiable SAT problems from folder
 ///
 TEST_F(AlgorithmFixture, CDCLAlgoritmCompleteTest) {
-    /**
-    algorithms::CDCL * c = new algorithms::CDCL();
+    
+    // algorithms::CDCL * c = new algorithms::CDCL();
     
     // Do this for all files in folder "uf20-91"
-    for(int i = 4; i <= 4; i++) {
-        
+    for(int i = 21; i <= 21; i++) {
+        algorithms::CDCL * c = new algorithms::CDCL();
         std::string file = this->satisfiableClauses + "uf20-0"+ std::to_string(i) + ".cnf";
         util::Parser *p = new util::Parser(file.c_str());
         cnf::Formula *f = p->parse();
@@ -364,13 +396,13 @@ TEST_F(AlgorithmFixture, CDCLAlgoritmCompleteTest) {
         c->setup(*f);
         ASSERT_TRUE(c->solve());
         //ASSERT_FALSE(c->getFormulaState().hasUnassignedVariables());
-        //ASSERT_FALSE(c->getFormulaState().hasUnsatisfiedClauses());
+        ASSERT_FALSE(c->getFormulaState().hasUnsatisfiedClauses());
         std::cout << "done " << std::endl;
         
         delete f;
         delete p;
-        
-    } **/
+        delete c;
+    }
         
 
     ASSERT_EQ(true, true);

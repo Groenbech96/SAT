@@ -194,9 +194,6 @@ boost::optional<cnf::Clause *> cnf::Formula::containsConflict() {
 void cnf::Formula::addClause(std::unordered_map<int, cnf::Literal> l) {
     
     cnf::Clause *c = new Clause(this->m, l);
-    if(this->m >= 116) {
-        std::cout << "test" << std::endl;
-    }
     this->lastAddedClause = *c;
     // Important is to update m after insert! Do to zero index in map!!!
     this->clauseSet.insert({this->m, c});

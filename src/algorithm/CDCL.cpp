@@ -28,7 +28,7 @@ bool algorithms::CDCL::solve() {
     }
     
     // Run as long as variables needs to be assigned
-    while(this->formula.hasUnassignedVariables()) {
+    while(this->formula.hasUnsatisfiedClauses()) {
         
         // Pick variable and add it to Implication Graph
         auto var = pickBranchingVariable();

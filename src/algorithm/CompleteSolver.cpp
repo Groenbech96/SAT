@@ -53,7 +53,7 @@ algorithms::UnitPropagationResult algorithms::CompleteSolver::unitPropagation(in
                 }
                 this->graph.addEdge(literals->second.pVar, nullptr);
             }
-            std::cout << "conflict found " + conflictClause.get()->string()  << std::endl;
+            //std::cout << "conflict found " + conflictClause.get()->string()  << std::endl;
             
             return CONFLICT;
             
@@ -89,7 +89,7 @@ int algorithms::CompleteSolver::conflictAnalysis() {
     // Temporary learning clause - set
     
     auto tempClauseMap = convertClauseToMap(antecedentClause);
-    std::cout << "conflict analysis started with " + antecedentClause->string()  << std::endl;
+    //std::cout << "conflict analysis started with " + antecedentClause->string()  << std::endl;
     
     
     int literalInCurrentDL = 0;
@@ -170,9 +170,10 @@ int algorithms::CompleteSolver::conflictAnalysis() {
     }
     
     
+    //std::cout << "this should not" << std::endl;
     assertionLevel = getAssertionLevel(tempClauseMap);
 
-    std::cout << "this should not" << std::endl;
+    
     this->formula.addClause(*tempClauseMap);
     delete tempClauseMap;
     delete q;
@@ -212,17 +213,23 @@ int algorithms::CompleteSolver::getAssertionLevel(std::unordered_map<int, cnf::L
             //std::cout << "error 6" << std::endl;
         }
         
+
         // get second highest decision lvl
         if(vex->decisionLevel > m2) {
             if(vex->decisionLevel > m1) {
                 m2 = m1;
                 m1 = vex->decisionLevel;
-            } else {
+            } else if (vex->decisionLevel != m1) {
                 m2 = vex->decisionLevel;
             }
         }
     }
     
+    // No second highest found
+    // Learned clause only contains one decision level
+    if( m2 == -1) {
+        return m1;
+    }
     return m2;
 }
 
