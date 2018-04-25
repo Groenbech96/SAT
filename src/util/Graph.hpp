@@ -14,8 +14,10 @@
 #define Graph_hpp
 
 #include <vector>
-#include <map>
+#include <set>
+#include <unordered_map>
 #include <string>
+#include <boost/optional.hpp>
 #include "Variable.hpp"
 
 namespace util {
@@ -28,7 +30,8 @@ namespace util {
     ///
     /// adjacency list of outgoing edges
     struct vertex {
-        std::vector<vertex*> adjacent;
+        std::vector<vertex*> outgoingEdges;
+        std::vector<vertex*> ingoingEdges;
         int decisionLevel;
         int antecedentClauseID;
         cnf::Variable* var;
@@ -39,14 +42,14 @@ namespace util {
     class Graph
     {
     public:
-        typedef std::map<cnf::Variable*, vertex *> variableGraph;
-        
-        variableGraph graphMap;
+        /// Map og variables and vertexes 
+        std::unordered_map<cnf::Variable*, vertex *> graphMap;
         
         Graph() = default;
         /// Add vertex to the graph.
         /// \param variable Variable to add
         /// \param decisionLevel Decision level it was added at
+        /// \param antecedentClauseID Antecedent Clause ID
         void addVertex(cnf::Variable *variable, int decisionLevel, int antecedentClauseID);
         
         /// Add outgoing edge from one vertex to another
@@ -54,7 +57,17 @@ namespace util {
         /// \param to Variable edge ends at
         void addEdge(cnf::Variable* from, cnf::Variable* to);
         
-        util::vertex* getVertex(cnf::Variable * v);
+        bool deleteVertex(cnf::Variable* var);
+        bool deleteVertex(util::vertex* vex);
+        
+        void backtrack(util::vertex* v, int lvl);
+        
+        //  util::vertex* getVertex(cnf::Variable * v);
+        
+        boost::optional<util::vertex*>getVertex(cnf::Variable *v);
+        
+        std::set<util::vertex *> rm;
+        
         std::string stringJsStyle();
         
     };

@@ -16,6 +16,7 @@
 
 namespace algorithms {
     
+    // Result returned from unitPropagation
     enum UnitPropagationResult {
         SIMPLIFIED, SOLVED, CONFLICT, NOT_SIMPLIFIED
     };
@@ -27,8 +28,10 @@ namespace algorithms {
         
         // Helper functions
         
-        std::unordered_map<int, cnf::Literal> *clauseToMap(cnf::Clause *clause);
-        bool isImpliedLiteralAtDesicionLvl(cnf::Literal l, int d);
+        std::unordered_map<int, cnf::Literal> *convertClauseToMap(cnf::Clause *clause);
+        bool isImpliedLiteralAtDesicionLevel(cnf::Literal l, int d);
+        
+        int getAssertionLevel(std::unordered_map<int, cnf::Literal> *map);
         
         virtual void setup(cnf::Formula formula) = 0;
         virtual bool solve() = 0;
@@ -38,6 +41,7 @@ namespace algorithms {
         virtual ~CompleteSolver() = default;
         
         UnitPropagationResult unitPropagation(int decisionLevel);
+        
         
         int conflictAnalysis();
         
@@ -49,6 +53,7 @@ namespace algorithms {
                                  int decisionLevel);
         
         
+        int getGraphSize();
         
     };
     

@@ -49,6 +49,7 @@ cnf::Formula* util::Parser::parse() {
                 int nVars;
                 int nClauses;
                 
+                
                 std::string p, cnf;
                 auto in = new std::istringstream(line); // This way we can get numbers easily
                 *in >> p >> cnf >> nVars >> nClauses; // The information is now stored in variables
@@ -56,6 +57,11 @@ cnf::Formula* util::Parser::parse() {
                 
                 std::unordered_map<int, cnf::Variable *> variableSet;
                 std::unordered_map<int, cnf::Clause *> clauseSet;
+                std::set<int> usedVars;
+                std::set<int> allVars;
+                for(int i = 0; i < nVars; i++) {
+                    allVars.insert(i);
+                }
                 int clauseCounter = 0;
                 
                 // Create nVar new variables
@@ -78,6 +84,10 @@ cnf::Formula* util::Parser::parse() {
                         auto inLine = new std::istringstream(line);
                         std::unordered_map<int, cnf::Literal> clauseLiterals = this->parseLine(inLine, variableSet);
                         
+                        for(auto it : clauseLiterals) {
+                            usedVars.insert(it.first);
+                        }
+                        
                         // Line end
                         auto pClause = new cnf::Clause(clauseCounter, clauseLiterals);
                         clauseSet.insert({clauseCounter, pClause});
@@ -89,6 +99,17 @@ cnf::Formula* util::Parser::parse() {
                     }
                     
                 }
+                
+                std::set<int> diff;
+                std::set_difference(allVars.begin(), allVars.end(), usedVars.begin(), usedVars.end(), std::inserter(diff, diff.begin()));
+                
+                for(auto i : diff) {
+                    auto v = variableSet.find(i);
+                    delete v->second;
+                    variableSet.erase(i);
+                }
+                
+                nVars = (int)variableSet.size();
                 
                 // TODO: Implement more than 3-SAT here
                 f = new cnf::Formula(3, nClauses, nVars, variableSet, clauseSet);

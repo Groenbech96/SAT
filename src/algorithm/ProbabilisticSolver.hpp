@@ -22,6 +22,10 @@ namespace algorithms {
         virtual void setup(cnf::Formula formula) = 0;
         virtual bool solve() = 0;
         
+    protected:
+        /// List containing unsatisfied_clauses
+        std::vector<cnf::Clause *> unsatisfied_clauses;
+        
     };
 }
 #endif /* ProbabilisticSolver_hpp */

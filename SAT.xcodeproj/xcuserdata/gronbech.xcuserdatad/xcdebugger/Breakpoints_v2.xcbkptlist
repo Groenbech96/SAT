@@ -9,14 +9,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "src/algorithm/CDCL.cpp"
-            timestampString = "545751925.041068"
+            filePath = "test/unittest/AlgorithmTest.cpp"
+            timestampString = "546347456.114291"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "algorithms::CDCL::solve()"
-            landmarkType = "7">
+            startingLineNumber = "339"
+            endingLineNumber = "339"
+            landmarkName = "TEST_F(AlgorithmFixture, CDCLCombinedSimulation)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -25,76 +25,44 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "src/algorithm/CompleteSolver.cpp"
-            timestampString = "545751925.041986"
+            filePath = "test/unittest/AlgorithmTest.cpp"
+            timestampString = "546347456.1143579"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
-            landmarkName = "algorithms::CompleteSolver::unitPropagation(int decisionLevel)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/algorithm/CDCL.cpp"
-            timestampString = "545751925.044006"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "algorithms::CDCL::pickBranchingVariable(int decisionLevel)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/algorithm/CDCL.cpp"
-            timestampString = "545751925.044395"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "algorithms::CDCL::pickBranchingVariable(int decisionLevel)"
-            landmarkType = "7">
+            startingLineNumber = "350"
+            endingLineNumber = "350"
+            landmarkName = "TEST_F(AlgorithmFixture, CDCLCombinedSimulation)"
+            landmarkType = "9">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "algorithms::CDCL::pickBranchingVariable(int)"
-                  moduleName = "SAT"
+                  symbolName = "AlgorithmFixture_CDCLCombinedSimulation_Test::TestBody()"
+                  moduleName = "SatTest"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/src/algorithm/CDCL.cpp"
-                  timestampString = "545738165.257864"
+                  urlString = "file:///Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/test/unittest/AlgorithmTest.cpp"
+                  timestampString = "546179391.000682"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "1962">
+                  startingLineNumber = "295"
+                  endingLineNumber = "295"
+                  offsetFromSymbolStart = "28887">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "algorithms::CDCL::pickBranchingVariable(int)"
-                  moduleName = "SAT"
+                  symbolName = "AlgorithmFixture_CDCLCombinedSimulation_Test::TestBody()"
+                  moduleName = "SatTest"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/src/algorithm/CDCL.cpp"
-                  timestampString = "545738165.260044"
+                  urlString = "file:///Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/test/unittest/AlgorithmTest.cpp"
+                  timestampString = "546179391.005897"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "2690">
+                  startingLineNumber = "295"
+                  endingLineNumber = "295"
+                  offsetFromSymbolStart = "28953">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -105,14 +73,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "src/cnf/Clause.cpp"
-            timestampString = "545751925.044546"
+            filePath = "test/unittest/AlgorithmTest.cpp"
+            timestampString = "546347456.114405"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "cnf::Clause::evaluate()"
-            landmarkType = "7">
+            startingLineNumber = "368"
+            endingLineNumber = "368"
+            landmarkName = "TEST_F(AlgorithmFixture, CDCLCombinedSimulation)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -121,94 +89,70 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "src/cnf/Clause.cpp"
-            timestampString = "545751925.04524"
+            filePath = "test/unittest/AlgorithmTest.cpp"
+            timestampString = "546347456.114449"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "cnf::Clause::evaluate()"
-            landmarkType = "7">
+            startingLineNumber = "369"
+            endingLineNumber = "369"
+            landmarkName = "TEST_F(AlgorithmFixture, CDCLCombinedSimulation)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AlgorithmFixture_CDCLCombinedSimulation_Test::TestBody()"
+                  moduleName = "SatTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/test/unittest/AlgorithmTest.cpp"
+                  timestampString = "546179825.117331"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "314"
+                  endingLineNumber = "314"
+                  offsetFromSymbolStart = "33026">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AlgorithmFixture_CDCLCombinedSimulation_Test::TestBody()"
+                  moduleName = "SatTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/test/unittest/AlgorithmTest.cpp"
+                  timestampString = "546179825.120198"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "314"
+                  endingLineNumber = "314"
+                  offsetFromSymbolStart = "33092">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "No"
-            ignoreCount = "0"
+            ignoreCount = "21"
             continueAfterRunningActions = "No"
-            filePath = "src/cnf/Formula.cpp"
-            timestampString = "545751925.045674"
+            filePath = "src/algorithm/CompleteSolver.cpp"
+            timestampString = "546347456.114494"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "cnf::Formula::hasUnsatisfiedClauses()"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
+            landmarkName = "algorithms::CompleteSolver::resolutionOperation(std::unordered_map&lt;int, cnf::Literal&gt;* tempClauseMap, cnf::Clause* antecedentClause, std::queue&lt;cnf::Literal&gt;* q, std::unordered_map&lt;int, cnf::Literal&gt;* visited, int decisionLevel)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/cnf/Formula.cpp"
-            timestampString = "545751925.04609"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
-            landmarkName = "cnf::Formula::hasUnsatisfiedClauses()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/cnf/Formula.cpp"
-            timestampString = "545751925.046268"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "cnf::Formula::hasUnsatisfiedClauses()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/algorithm/CDCL.cpp"
-            timestampString = "545751925.046398"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "algorithms::CDCL::solve()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/app/App.cpp"
-            timestampString = "545751925.0465291"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "Application::App::run()"
-            landmarkType = "7">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
+                  <ActionContent
+                     consoleCommand = "">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -218,59 +162,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/algorithm/CompleteSolver.cpp"
-            timestampString = "545751925.046867"
+            timestampString = "546347456.114537"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "algorithms::CompleteSolver::unitPropagation(int decisionLevel)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/cnf/Formula.cpp"
-            timestampString = "545751925.047307"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "cnf::Formula::containsConflict()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/algorithm/CompleteSolver.cpp"
-            timestampString = "545751925.04742"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "algorithms::CompleteSolver::conflictAnalysis()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/algorithm/CompleteSolver.cpp"
-            timestampString = "545751925.047923"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
             landmarkName = "algorithms::CompleteSolver::resolutionOperation(std::unordered_map&lt;int, cnf::Literal&gt;* tempClauseMap, cnf::Clause* antecedentClause, std::queue&lt;cnf::Literal&gt;* q, std::unordered_map&lt;int, cnf::Literal&gt;* visited, int decisionLevel)"
             landmarkType = "7">
          </BreakpointContent>
@@ -281,14 +177,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "src/algorithm/CompleteSolver.cpp"
-            timestampString = "545751925.048316"
+            filePath = "test/unittest/AlgorithmTest.cpp"
+            timestampString = "546347456.114576"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "algorithms::CompleteSolver::conflictAnalysis()"
-            landmarkType = "7">
+            startingLineNumber = "287"
+            endingLineNumber = "287"
+            landmarkName = "TEST_F(AlgorithmFixture, CDCLCombinedSimulation)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -297,30 +193,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "src/app/App.cpp"
-            timestampString = "545751925.048669"
+            filePath = "test/unittest/AlgorithmTest.cpp"
+            timestampString = "546347456.114617"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "Application::App::run()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "src/algorithm/CDCL.cpp"
-            timestampString = "545751925.048781"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "algorithms::CDCL::solve()"
-            landmarkType = "7">
+            startingLineNumber = "290"
+            endingLineNumber = "290"
+            landmarkName = "TEST_F(AlgorithmFixture, CDCLCombinedSimulation)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -330,12 +210,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/algorithm/CDCL.cpp"
-            timestampString = "545751925.048897"
+            timestampString = "546347456.114658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "algorithms::CDCL::solve()"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "algorithms::CDCL::backtrack(int backtrackLevel)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -345,12 +225,204 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "src/algorithm/CompleteSolver.cpp"
-            timestampString = "545751925.049001"
+            filePath = "test/unittest/AlgorithmTest.cpp"
+            timestampString = "546347456.1147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "398"
+            endingLineNumber = "398"
+            landmarkName = "TEST_F(AlgorithmFixture, CDCLAlgoritmCompleteTest)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AlgorithmFixture_CDCLAlgoritmCompleteTest_Test::TestBody()"
+                  moduleName = "SatTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/test/unittest/AlgorithmTest.cpp"
+                  timestampString = "546209035.1195509"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "343"
+                  endingLineNumber = "343"
+                  offsetFromSymbolStart = "2785">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AlgorithmFixture_CDCLAlgoritmCompleteTest_Test::TestBody()"
+                  moduleName = "SatTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/test/unittest/AlgorithmTest.cpp"
+                  timestampString = "546209035.123753"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "343"
+                  endingLineNumber = "343"
+                  offsetFromSymbolStart = "2899">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "test/unittest/AlgorithmTest.cpp"
+            timestampString = "546347456.1147389"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
+            landmarkName = "TEST_F(AlgorithmFixture, CDCLAlgoritmCompleteTest)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "test/unittest/AlgorithmTest.cpp"
+            timestampString = "546347456.114778"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "397"
+            endingLineNumber = "397"
+            landmarkName = "TEST_F(AlgorithmFixture, CDCLAlgoritmCompleteTest)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AlgorithmFixture_CDCLAlgoritmCompleteTest_Test::TestBody()"
+                  moduleName = "SatTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/test/unittest/AlgorithmTest.cpp"
+                  timestampString = "546212321.273823"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "342"
+                  endingLineNumber = "342"
+                  offsetFromSymbolStart = "1870">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AlgorithmFixture_CDCLAlgoritmCompleteTest_Test::TestBody()"
+                  moduleName = "SatTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/test/unittest/AlgorithmTest.cpp"
+                  timestampString = "546212321.2793159"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "342"
+                  endingLineNumber = "342"
+                  offsetFromSymbolStart = "1962">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/cnf/Formula.cpp"
+            timestampString = "546347456.114819"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "cnf::Formula::hasUnsatisfiedClauses()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/util/Graph.cpp"
+            timestampString = "546344706.659096"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "util::Graph::backtrack(util::vertex *vex, int level)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "test/unittest/AlgorithmTest.cpp"
+            timestampString = "546347456.114879"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "TEST_F(AlgorithmFixture, CDCLUnitPropagationTestTwo)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AlgorithmFixture_CDCLUnitPropagationTestTwo_Test::TestBody()"
+                  moduleName = "SatTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/test/unittest/AlgorithmTest.cpp"
+                  timestampString = "546245689.419428"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "2584">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AlgorithmFixture_CDCLUnitPropagationTestTwo_Test::TestBody()"
+                  moduleName = "SatTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/test/unittest/AlgorithmTest.cpp"
+                  timestampString = "546245689.4282041"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "2682">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/algorithm/CompleteSolver.cpp"
+            timestampString = "546347456.114921"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "algorithms::CompleteSolver::unitPropagation(int decisionLevel)"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,11 +434,253 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/algorithm/CompleteSolver.cpp"
-            timestampString = "545751925.049391"
+            timestampString = "546347456.114961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "algorithms::CompleteSolver::unitPropagation(int decisionLevel)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/algorithm/CompleteSolver.cpp"
+            timestampString = "546347456.115"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "algorithms::CompleteSolver::conflictAnalysis()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "test/unittest/AlgorithmTest.cpp"
+            timestampString = "546347456.115038"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "TEST_F(AlgorithmFixture, CDCLUnitResolutionTest)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "test/unittest/AlgorithmTest.cpp"
+            timestampString = "546347456.115078"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "TEST_F(AlgorithmFixture, CDCLUnitResolutionTest)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AlgorithmFixture_CDCLUnitResolutionTest_Test::TestBody()"
+                  moduleName = "SatTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/test/unittest/AlgorithmTest.cpp"
+                  timestampString = "546344772.98551"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "1526">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AlgorithmFixture_CDCLUnitResolutionTest_Test::TestBody()"
+                  moduleName = "SatTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/test/unittest/AlgorithmTest.cpp"
+                  timestampString = "546344772.988593"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "1624">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "test/unittest/AlgorithmTest.cpp"
+            timestampString = "546347456.115119"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "TEST_F(AlgorithmFixture, CDCLUnitResolutionTest)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "test/unittest/AlgorithmTest.cpp"
+            timestampString = "546347456.115163"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "TEST_F(AlgorithmFixture, CDCLUnitResolutionTest)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AlgorithmFixture_CDCLUnitResolutionTest_Test::TestBody()"
+                  moduleName = "SatTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/test/unittest/AlgorithmTest.cpp"
+                  timestampString = "546345073.632961"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "139"
+                  endingLineNumber = "139"
+                  offsetFromSymbolStart = "1985">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AlgorithmFixture_CDCLUnitResolutionTest_Test::TestBody()"
+                  moduleName = "SatTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/test/unittest/AlgorithmTest.cpp"
+                  timestampString = "546345073.6378241"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "139"
+                  endingLineNumber = "139"
+                  offsetFromSymbolStart = "2065">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/algorithm/CompleteSolver.cpp"
+            timestampString = "546347456.115205"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "algorithms::CompleteSolver::getAssertionLevel(std::unordered_map&lt;int, cnf::Literal&gt; *map)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/algorithm/CompleteSolver.cpp"
+            timestampString = "546347456.115245"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "algorithms::CompleteSolver::conflictAnalysis()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.AddressBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            symbolName = "*0x10041ac81">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/algorithm/CompleteSolver.cpp"
+            timestampString = "546347456.1152869"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "algorithms::CompleteSolver::conflictAnalysis()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/algorithm/CDCL.cpp"
+            timestampString = "546347456.115325"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "algorithms::CDCL::solve()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/algorithm/CompleteSolver.cpp"
+            timestampString = "546348848.37288"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "algorithms::CompleteSolver::conflictAnalysis()"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,11 +692,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/algorithm/CompleteSolver.cpp"
-            timestampString = "545757654.303197"
+            timestampString = "546348856.0621639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "algorithms::CompleteSolver::conflictAnalysis()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "src/algorithm/CompleteSolver.cpp"
+            timestampString = "546348857.9143471"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "algorithms::CompleteSolver::conflictAnalysis()"
             landmarkType = "7">
          </BreakpointContent>
