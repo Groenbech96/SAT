@@ -22,13 +22,17 @@ namespace algorithms {
         void setup(cnf::Formula formula) override;
         bool solve() override;
         
-        void pickBranchingVariable(int decisionLevel);
+        cnf::Variable* pickBranchingVariable();
         
         void backtrack(int beta);
         
         void printGraph();
         
-    
+        void addToImplicationGraph(cnf::Variable *v, int decisionLvl, int antecedentClause);
+        
+        cnf::Formula & getFormulaState();
+        
+    private:
         
         
         

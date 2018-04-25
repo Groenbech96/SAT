@@ -17,20 +17,24 @@ algorithms::UnitPropagationResult algorithms::CompleteSolver::unitPropagation(in
     while( unitClause != boost::none) {
         
         boost::optional<cnf::Literal> l = unitClause.get()->getUnitLiteral();
-        std::cout << unitClause.get()->string() << std::endl;
+        // std::cout << unitClause.get()->string() << std::endl;
         if (l != boost::none) {
 
             cnf::Literal unpackedLiteral = l.get();
 
             //Assigns the variable to the value making the literal evaluate to true
             unpackedLiteral.pVar->setAssignment((!unpackedLiteral.isNegated) ? cnf::TRUE : cnf::FALSE);
-
+          
             // Add the implied variable to the implication graph
             this->graph.addVertex(unpackedLiteral.pVar, decisionLevel, unitClause.get()->getId());
-
+            
             // Add edges from all other variables in the same clause
             for(auto literals = unitClause.get()->getLiterals().begin(); literals != unitClause.get()->getLiterals().end();literals++ ){
                 if (literals->second.pVar != unpackedLiteral.pVar) {
+                    // DEBUG
+                    if(literals->second.pVar->getAssignment() == cnf::UNASSIGNED) {
+                        std::cout << "ERROR FAILED" << std::endl;
+                    }
                     this->graph.addEdge(literals->second.pVar, unpackedLiteral.pVar);
                 }
             }
@@ -43,13 +47,19 @@ algorithms::UnitPropagationResult algorithms::CompleteSolver::unitPropagation(in
             this->graph.addVertex(nullptr, decisionLevel, conflictClause.get()->getId());
             
             for(auto literals = conflictClause.get()->getLiterals().begin(); literals != conflictClause.get()->getLiterals().end();literals++ ){
+                // DEBUG
+                if(literals->second.pVar->getAssignment() == cnf::UNASSIGNED) {
+                    std::cout << "ERROR FAILED" << std::endl;
+                }
                 this->graph.addEdge(literals->second.pVar, nullptr);
             }
+            std::cout << "conflict found " + conflictClause.get()->string()  << std::endl;
             
             return CONFLICT;
-        } else if(!this->formula.hasUnsatisfiedClauses()) {
-            return SOLVED;
-        }
+            
+        } //else if(!this->formula.hasUnsatisfiedClauses()) {
+         //   return SOLVED;
+        // }
         
         unitClause = this->formula.getUnitClause();
     }
@@ -60,10 +70,14 @@ algorithms::UnitPropagationResult algorithms::CompleteSolver::unitPropagation(in
 int algorithms::CompleteSolver::conflictAnalysis() {
     
     // Get the conflict clause k
-    util::vertex* conflictVertex = this->graph.getVertex(nullptr);
-
+    
+    auto search = this->graph.getVertex(nullptr);
+    util::vertex* conflictVertex = search.get();
+    
+    if(search == boost::none) { exit(10); }
+    
     int currentDecisionLevel = conflictVertex->decisionLevel;
-    int beta = 0;
+    int assertionLevel;
     
     // Get the antecedent clause of k
     int antecedentClauseID = conflictVertex->antecedentClauseID;
@@ -74,70 +88,145 @@ int algorithms::CompleteSolver::conflictAnalysis() {
     std::unordered_map<int, cnf::Literal> *visitedLiterals = new std::unordered_map<int, cnf::Literal>;
     // Temporary learning clause - set
     
-    auto tempClauseMap = clauseToMap(antecedentClause);
-
+    auto tempClauseMap = convertClauseToMap(antecedentClause);
+    std::cout << "conflict analysis started with " + antecedentClause->string()  << std::endl;
+    
+    
+    int literalInCurrentDL = 0;
     for(auto it = tempClauseMap->begin(); it != tempClauseMap->end(); ++it) {
-        //int id = it->first;
+       
+        auto search = this->graph.getVertex(it->second.pVar);
+        auto vex = search.get();
+        if(search == boost::none) {
+            // Do some error handling here
+            // TODO: ERROR HANDLE
+            //std::cout << "error 2" << std::endl;
+        }
+        if(vex->decisionLevel == currentDecisionLevel) {
+            literalInCurrentDL++;
+        }
         //cnf::Literal l = antecedentClause->getLiteral(id).get();
-
-        if(isImpliedLiteralAtDesicionLvl(it->second, currentDecisionLevel))
+        
+        //std::cout << "here 1" << std::endl;
+        if(isImpliedLiteralAtDesicionLevel(it->second, currentDecisionLevel))
             q->push(it->second);
     }
-
+    
+    // If the first clause what a UIP, then return it
+    if(literalInCurrentDL == 1) {
+        this->formula.addClause(*tempClauseMap);
+        int lvl = getAssertionLevel(tempClauseMap);
+        delete tempClauseMap;
+        delete q;
+        delete visitedLiterals;
+        return lvl;
+    }
+    
     while(!q->empty()) {
 
         auto l = q->front();
-        auto v = this->graph.getVertex(l.pVar);
+        q->pop();
         
         visitedLiterals->insert({l.pVar->getKey(), l});
-        
-        //visitedLiterals->insert(q->front().pVar->getKey(), q->front());
-        q->pop();
+    
+        auto search = this->graph.getVertex(l.pVar);
+        auto v = search.get();
+        if(search == boost::none) {
+            // Do some error handling here
+            // TODO: ERROR HANDLE
+            //std::cout << "error 3" << std::endl;
+        }
         
         int antecedentClauseID = v->antecedentClauseID;
         auto antecedentClause = this->formula.getClauseSet().find(antecedentClauseID)->second;
         
         resolutionOperation(tempClauseMap, antecedentClause, q, visitedLiterals, currentDecisionLevel);
-
-    }
-    
-    int assertionLevel;
-    
-    if(tempClauseMap->size() == 1) {
         
-        auto pvar = tempClauseMap->begin()->second.pVar;
-        auto vex = this->graph.getVertex(pvar);
-        auto vexDL = vex->decisionLevel;
-        assertionLevel = (vexDL == 0) ? -1 : 0;
-        
-    } else {
-        
-        int m1 = -1;
-        int m2 = -1;
-   
+        int literalInCurrentDL = 0;
         for(auto it = tempClauseMap->begin(); it != tempClauseMap->end(); ++it) {
-            
-            auto pvar = it->second.pVar;
-            auto vex = this->graph.getVertex(pvar);
-            
-            // get second highest decision lvl
-            if(vex->decisionLevel > m2) {
-                if(vex->decisionLevel > m1) {
-                    m2 = m1;
-                    m1 = vex->decisionLevel;
-                } else {
-                    m2 = vex->decisionLevel;
-                }
+            auto search = this->graph.getVertex(it->second.pVar);
+            auto vex = search.get();
+            if(search == boost::none) {
+                // Do some error handling here
+                // TODO: ERROR HANDLE
+                //std::cout << "error 4" << std::endl;
+            }
+            if(vex->decisionLevel == currentDecisionLevel) {
+                literalInCurrentDL++;
             }
         }
-        assertionLevel = m2;
+        
+        // If learned clause is UIP, then return it
+        if(literalInCurrentDL == 1) {
+            this->formula.addClause(*tempClauseMap);
+            int lvl = getAssertionLevel(tempClauseMap);
+            delete tempClauseMap;
+            delete q;
+            delete visitedLiterals;
+            
+            return lvl;
+        }
+        
     }
     
+    
+    assertionLevel = getAssertionLevel(tempClauseMap);
+
+    std::cout << "this should not" << std::endl;
     this->formula.addClause(*tempClauseMap);
     delete tempClauseMap;
-
-    return 0;
+    delete q;
+    delete visitedLiterals;
+    return assertionLevel;
 }
+
+
+int algorithms::CompleteSolver::getAssertionLevel(std::unordered_map<int, cnf::Literal> *map) {
+    int m1 = -1;
+    int m2 = -1;
+    
+    if(map->size() == 1) {
+        
+        auto pvar = map->begin()->second.pVar;
+        auto search = this->graph.getVertex(pvar);
+        auto vex = search.get();
+        if(search == boost::none) {
+            // Do some error handling here
+            // TODO: ERROR HANDLE
+            //std::cout << "error 5" << std::endl;
+        }
+        auto vexDL = vex->decisionLevel;
+        return (vexDL == 0) ? -1 : 0;
+ 
+    }
+    
+    
+    for(auto it = map->begin(); it != map->end(); ++it) {
+        
+        auto pvar = it->second.pVar;
+        auto search = this->graph.getVertex(pvar);
+        auto vex = search.get();
+        if(search == boost::none) {
+            // Do some error handling here
+            // TODO: ERROR HANDLE
+            //std::cout << "error 6" << std::endl;
+        }
+        
+        // get second highest decision lvl
+        if(vex->decisionLevel > m2) {
+            if(vex->decisionLevel > m1) {
+                m2 = m1;
+                m1 = vex->decisionLevel;
+            } else {
+                m2 = vex->decisionLevel;
+            }
+        }
+    }
+    
+    return m2;
+}
+
+
 
 void algorithms::CompleteSolver::resolutionOperation(std::unordered_map<int, cnf::Literal>* tempClauseMap,
                                              cnf::Clause* antecedentClause,
@@ -181,12 +270,15 @@ void algorithms::CompleteSolver::resolutionOperation(std::unordered_map<int, cnf
     
     // Merge tempClauseSet with antecedentClause
     for (auto kv = antecedentClauseTemp.getLiterals().begin(); kv != antecedentClauseTemp.getLiterals().end(); ++kv) {
-        if (duplicateLiterals.count(kv->first) == 0) {
+        int i = kv->first;
+        auto c = kv->second;
+        if (duplicateLiterals.count(i) == 0) {
 
-            tempClauseMap->insert({kv->first, kv->second});
-
-            if(visited->count(kv->first) == 0
-               && isImpliedLiteralAtDesicionLvl(kv->second, decisionLevel))
+            tempClauseMap->insert({i, c});
+            
+            //std::cout << "here 2" << std::endl; ERROR HERE
+            if(visited->count(i) == 0
+               && isImpliedLiteralAtDesicionLevel(c, decisionLevel))
             {
                 // Update queue
                 q->push(kv->second);
@@ -198,13 +290,21 @@ void algorithms::CompleteSolver::resolutionOperation(std::unordered_map<int, cnf
 
 
 
-bool algorithms::CompleteSolver::isImpliedLiteralAtDesicionLvl(cnf::Literal l, int d) {
-    auto vex = this->graph.getVertex(l.pVar);
+bool algorithms::CompleteSolver::isImpliedLiteralAtDesicionLevel(cnf::Literal l, int d) {
+    auto search = this->graph.getVertex(l.pVar);
+    
+    if(search == boost::none) {
+        // Do some error handling here
+        // TODO: ERROR HANDLE
+        //std::cout << "error 7" << std::endl;
+    }
+    auto vex = search.get();
     return d == vex->decisionLevel && vex->antecedentClauseID != -1;
 
 }
 
-std::unordered_map<int, cnf::Literal> *algorithms::CompleteSolver::clauseToMap(cnf::Clause *clause) {
+std::unordered_map<int, cnf::Literal> *algorithms::CompleteSolver::convertClauseToMap(cnf::Clause *clause) {
+    
     std::unordered_map<int, cnf::Literal> *l = new std::unordered_map<int, cnf::Literal>;
     
     for(auto kv = clause->getLiterals().begin(); kv != clause->getLiterals().end(); kv++) {
@@ -212,6 +312,11 @@ std::unordered_map<int, cnf::Literal> *algorithms::CompleteSolver::clauseToMap(c
     }
     
     return l;
+}
+
+
+int algorithms::CompleteSolver::getGraphSize() {
+    return (int) this->graph.graphMap.size();
 }
 
 

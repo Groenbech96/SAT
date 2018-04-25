@@ -11,76 +11,104 @@
 void algorithms::CDCL::setup(cnf::Formula formula) {
     this->formula = formula;
     this->graph = util::Graph();
-    
-    
-    this->graph.addVertex(this->formula.getVariableSet().find(31)->second, 3, -1);
-    this->graph.addVertex(this->formula.getVariableSet().find(1)->second, 5, -1);
-    this->graph.addVertex(this->formula.getVariableSet().find(21)->second, 2, -1);
 
 }
 
 bool algorithms::CDCL::solve() {
     
+    // We start with decision level 0
     int decisionLevel = 0;
-    
-    // Lines 1-3
-//    if(CDCL::unitPropagation(decisionLevel) == CONFLICT) {
-//        return false;
-//    }
+    // int debugCount = 0;
     
     
-    decisionLevel = 4;
+    // If CNF has unit clause without any assignments
+    // and it cannot be solved, then it is unsatisfiable
+    if(CDCL::unitPropagation(decisionLevel) == CONFLICT) {
+        return false;
+    }
+    
+    // Run as long as variables needs to be assigned
     while(this->formula.hasUnassignedVariables()) {
-        //pickBranchingVariable(decisionLevel);
+        
+        // Pick variable and add it to Implication Graph
+        auto var = pickBranchingVariable();
         decisionLevel++;
         
-        // If conflict
-        UnitPropagationResult result = CDCL::unitPropagation(decisionLevel);
-        if(result == CONFLICT) {
-            int backtrackLevel = CDCL::conflictAnalysis();
-            if(backtrackLevel < 0) {
-                return false;
-            } else {
-                CDCL::backtrack(backtrackLevel);
-                decisionLevel=backtrackLevel;
+        addToImplicationGraph(var, decisionLevel, -1);
+        
+        
+        // We want to unit propagate and backtrack until no conflicts are found
+        while(true) {
+        
+            auto res = unitPropagation(decisionLevel);
+            if(res == CONFLICT) {
+                
+                int beta = conflictAnalysis();
+                if(beta < 0)
+                    return false;
+                else {
+                    
+                    backtrack(beta);
+                    decisionLevel = beta;
+                }
+                
+                
+            } else {// no more conflict, we can now select next variable
+                break;
             }
-        } else if(result == SOLVED) {
-            return true;
+        
         }
+        
     }
+    
     return true;
+        
 }
 
 
 // TODO: Implement
-void algorithms::CDCL::pickBranchingVariable(int decisionLevel) {
+cnf::Variable* algorithms::CDCL::pickBranchingVariable() {
+    
+    // Set always to true
+    for(auto kv : this->formula.getVariableSet()) {
+        if(kv.second->getAssignment() == cnf::UNASSIGNED) {
+            kv.second->setAssignment(cnf::TRUE);
+            return kv.second;
+        }
+    }
+    
+    return nullptr;
+    
+    /**
     
     std::unordered_map<int, cnf::Clause *> clauseSet = formula.getClauseSet();
     
-    cnf::Clause* c = new cnf::Clause;
-    int nMin = std::numeric_limits<int>::max();
+    cnf::Clause* c = nullptr;
+    cnf::Variable* var = nullptr;
+    
     
     // Pick the clause with the smallest number of unassigned variables
     for(auto clausekv = clauseSet.begin(); clausekv != clauseSet.end(); clausekv++) {
         
-
         int n = 0;
         
         for(auto kv : clausekv->second->getLiterals()) {
             cnf::VariableAssignment a = kv.second.pVar->getAssignment();
             
             if (a == cnf::UNASSIGNED) {
-                n++;
+                kv.second.pVar->setAssignment(kv.second.isNegated ? cnf::TRUE : cnf::FALSE);
+                return kv.second.pVar;
             }
             
         }
-        if (!clausekv->second->isSatisfied()){
-            if (n < nMin && n > 1) {
-                nMin = n;
-                c = clausekv->second;
-            }
+        
+        if (n > 1) {
+            c = clausekv->second;
         }
+        
     }
+    
+    
     
     
     // Pick the first unassigned variable
@@ -88,29 +116,58 @@ void algorithms::CDCL::pickBranchingVariable(int decisionLevel) {
         cnf::VariableAssignment a = kv.second.pVar->getAssignment();
         bool neg = kv.second.isNegated;
         
-        cnf::Variable* var = kv.second.pVar;
+        var = kv.second.pVar;
         
         if (a == cnf::UNASSIGNED) {
             
             // Assign the variable so the literal evaluates to false
             var->setAssignment(neg ? cnf::TRUE : cnf::FALSE);
             
-            // Update the implication graph
-            this->graph.addVertex(var, decisionLevel, -1);
-            
             break;
         }
     }
+    
+    
+    
+    return var;
+     
+     **/
+
+}
+
+
+void algorithms::CDCL::addToImplicationGraph(cnf::Variable *v, int decisionLvl, int antecedentClause) {
+    this->graph.addVertex(v, decisionLvl, antecedentClause);
 }
 
 
 // TODO: Implement
 void algorithms::CDCL::backtrack(int backtrackLevel) {
     
+    auto search = this->graph.getVertex(nullptr);
+
+    if(search != boost::none) {
+        auto vex = search.get();
+        
+        this->graph.backtrack(vex, backtrackLevel);
+        
+        for(auto v : this->graph.rm) {
+            delete v;
+        }
+        this->graph.rm.clear();
+        
+    } else {
+    }
+    
+
 }
 
 void algorithms::CDCL::printGraph() {
     std::cout << graph.stringJsStyle() << std::endl;
+}
+
+cnf::Formula & algorithms::CDCL::getFormulaState() {
+    return this->formula;
 }
 
 

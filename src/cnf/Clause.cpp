@@ -63,7 +63,7 @@ bool cnf::Clause::isUnit() {
 
 
 cnf::Clause::~Clause() {
-    std::cout << "Clause pointer ended" << std::endl;
+    // std::cout << "Clause pointer ended" << std::endl;
 }
 
 std::unordered_map<int, cnf::Literal> &cnf::Clause::getLiterals() {
