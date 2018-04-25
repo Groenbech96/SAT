@@ -29,36 +29,104 @@ void util::Graph::addEdge(cnf::Variable* from, cnf::Variable* to){
 }
 
 bool util::Graph::deleteVertex(cnf::Variable* vexVar) {
-    auto vex = new vertex(vexVar, -1, -1);
+    //auto vex = new vertex(vexVar, -1, -1);
     
-    try {
-        auto vex = this->graphMap.find(vexVar);
-    } catch (...) {
-        return false;
+    auto search = getVertex(vexVar);
+    if(search != boost::none) {
+        
+        auto vex = search.get();
+        this->graphMap.erase(vexVar);
+        delete vex;
+        
+        return true;
     }
     
-    for(auto it = vex->ingoingEdges.begin(); it != vex->ingoingEdges.end(); ++it) {
-        
-        int deleteIndex = -1;
-        
-        for(auto it2 = (*it)->outgoingEdges.begin(); it2 != (*it)->outgoingEdges.end(); ++it) {
-            if ((*it2)->var == vexVar){
-                
-            }
-        }
+    return false;
+}
+
+bool util::Graph::deleteVertex(util::vertex* vex) {
+    //auto vex = new vertex(vexVar, -1, -1);
     
-        (*it)->outgoingEdges.
-        
-        
-        
+    return true;
+   
+}
+
+boost::optional<util::vertex*> util::Graph::getVertex(cnf::Variable *v) {
     
-    }
+    auto res = this->graphMap.find(v);
+    if(res != this->graphMap.end())
+        return res->second;
+    
+    return boost::none;
     
 }
 
-util::vertex* util::Graph::getVertex(cnf::Variable* v) {
-    return graphMap.find(v)->second;
+
+void util::Graph::backtrack(util::vertex *vex, int level) {
+    
+    /**
+    if(level == 0) {
+        
+        // Delete all in map
+        auto it = this->graphMap.begin();
+        while(it != this->graphMap.end()) {
+            
+            if(it->first != nullptr) {
+                it->first->setAssignment(cnf::UNASSIGNED);
+            }
+            delete it->second;
+            
+            it = this->graphMap.erase(it);
+        }
+        
+        return;
+    } else {
+     
+    **/
+        auto it = this->graphMap.begin();
+        while (it != this->graphMap.end()) {
+            
+            // For all vertecies that needs to be kept, remove any outgoing edges to vertecies with
+            // decision level higher than level
+            
+            if(it->second->decisionLevel <= level) {
+                
+                auto outgoingIt = it->second->outgoingEdges.begin();
+                while(outgoingIt != it->second->outgoingEdges.end()) {
+                    auto vertex = *outgoingIt;
+                    if(vertex->decisionLevel > level) {
+                        outgoingIt = it->second->outgoingEdges.erase(outgoingIt);
+                    } else {
+                        outgoingIt++;
+                    }
+                }
+                
+                it++;
+                
+            } else { // Remove any vertex that has dl higher than level
+                
+                if(it->second->var != nullptr) {
+                    it->second->var->setAssignment(cnf::UNASSIGNED);
+                }
+                this->rm.insert(vex);
+                it = this->graphMap.erase(it);
+            
+                
+            }
+            
+        }
+        
+        return;
+        
+    //}
+    
+   
 }
+
+
+//util::vertex* util::Graph::getVertex(cnf::Variable* v) {
+//    return graphMap.find(v)->second;
+//}
 
 std::string util::Graph::stringJsStyle() {
     std::string s = "Vertexes (\n";

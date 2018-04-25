@@ -135,34 +135,43 @@ boost::optional<cnf::Variable *> cnf::Formula::getVariable(int id) {
     
 }
 
-//TODO: Implement if needed
 bool cnf::Formula::hasUnassignedVariables() {
-    return true;
+    
+    // KV = key, value
+    // First = key
+    // Second = Clause
+    for(auto kv : this->getVariableSet()) {
+        if(kv.second->getAssignment() == cnf::UNASSIGNED)
+            return true;
+    }
+    
+    return false;
 }
 
 
 //TODO: Make heuristic selection of returned clause
 boost::optional<cnf::Clause *> cnf::Formula::getUnitClause() {
-    
     cnf::Clause* c = nullptr;
-    
     for(auto kv = this->getClauseSet().begin(); kv != this->getClauseSet().end(); kv++) {
         
         if (kv->second->isUnit()) {
             c = kv->second;
-            return c;
+            
         }
     }
-    
+    if(c != nullptr)
+        return c;
     return boost::none;
 }
 
 bool cnf::Formula::hasUnsatisfiedClauses() {
     
+    // KV = key, value
+    // First = key
+    // Second = Clause
     for(auto kv = this->getClauseSet().begin(); kv != this->getClauseSet().end(); kv++) {
-        
-        bool b = kv->second->isSatisfied();
-        if (!b) {
+        auto c = kv->second;
+        if (!c->isSatisfied()) {
             return true;
         }
     }
@@ -185,11 +194,19 @@ boost::optional<cnf::Clause *> cnf::Formula::containsConflict() {
 void cnf::Formula::addClause(std::unordered_map<int, cnf::Literal> l) {
     
     cnf::Clause *c = new Clause(this->m, l);
+    if(this->m >= 116) {
+        std::cout << "test" << std::endl;
+    }
+    this->lastAddedClause = *c;
     // Important is to update m after insert! Do to zero index in map!!!
     this->clauseSet.insert({this->m, c});
     this->m++;
     
     
+}
+
+cnf::Clause & cnf::Formula::getLastAddedClause() {
+    return lastAddedClause;
 }
 
 

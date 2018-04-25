@@ -7,8 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A258461208DD2B200ADC8A7 /* FormulaTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B409208662BE008B28D7 /* FormulaTest.cpp */; };
+		3A25846F208DD35200ADC8A7 /* Solver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3D7208660F6008B28D7 /* Solver.cpp */; };
+		3A258470208DD35200ADC8A7 /* ProbabilisticSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3DA2086611C008B28D7 /* ProbabilisticSolver.cpp */; };
+		3A258471208DD35200ADC8A7 /* CompleteSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3DD20866156008B28D7 /* CompleteSolver.cpp */; };
+		3A258472208DD35200ADC8A7 /* Schonings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E020866177008B28D7 /* Schonings.cpp */; };
+		3A258473208DD35200ADC8A7 /* Grasp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E320866187008B28D7 /* Grasp.cpp */; };
+		3A258474208DD35200ADC8A7 /* CDCL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E620866191008B28D7 /* CDCL.cpp */; };
+		3A258475208DD35200ADC8A7 /* Clause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3EC208661A8008B28D7 /* Clause.cpp */; };
+		3A258476208DD35200ADC8A7 /* Formula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E9208661A0008B28D7 /* Formula.cpp */; };
+		3A258477208DD35200ADC8A7 /* Literal.h in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F2208661C9008B28D7 /* Literal.h */; };
+		3A258478208DD35200ADC8A7 /* Variable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3EF208661B6008B28D7 /* Variable.cpp */; };
+		3A258479208DD35200ADC8A7 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F3208661DB008B28D7 /* Graph.cpp */; };
+		3A25847A208DD35200ADC8A7 /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F6208661E9008B28D7 /* Parser.cpp */; };
+		3A25847B208DD35200ADC8A7 /* Randomizer.h in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F920866209008B28D7 /* Randomizer.h */; };
+		3A258480208F201500ADC8A7 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A25847F208F201500ADC8A7 /* test.cpp */; };
+		3A25848C208F217800ADC8A7 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A25847F208F201500ADC8A7 /* test.cpp */; };
 		3AC21CC520866869004D4384 /* SolverTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B407208662B1008B28D7 /* SolverTest.cpp */; };
-		3AC21CC620866869004D4384 /* FormulaTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B409208662BE008B28D7 /* FormulaTest.cpp */; };
 		3AC21CC720866869004D4384 /* VariableTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B40B208662CB008B28D7 /* VariableTest.cpp */; };
 		3AC21CC820866869004D4384 /* ClauseTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B40D208662DC008B28D7 /* ClauseTest.cpp */; };
 		3AC21CC920866869004D4384 /* AlgorithmTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B40F208662F2008B28D7 /* AlgorithmTest.cpp */; };
@@ -30,6 +45,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		3A258483208F216E00ADC8A7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		3AE7B3BD20865FAB008B28D7 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -51,6 +75,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3A25847C208DDD8300ADC8A7 /* A_updateClauseStates.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = A_updateClauseStates.cnf; sourceTree = "<group>"; };
+		3A25847D208DE4D300ADC8A7 /* A_unitTest2.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = A_unitTest2.cnf; sourceTree = "<group>"; };
+		3A25847E208F0B4700ADC8A7 /* A_unitTest3.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = A_unitTest3.cnf; sourceTree = "<group>"; };
+		3A25847F208F201500ADC8A7 /* test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
+		3A258485208F216E00ADC8A7 /* TestTarget */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestTarget; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AC21CCF20867287004D4384 /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = lib/gtest.framework; sourceTree = "<group>"; };
 		3AC220BE2087441B004D4384 /* uf20-0778.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0778.cnf"; sourceTree = "<group>"; };
 		3AC220BF2087441B004D4384 /* uf20-0744.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0744.cnf"; sourceTree = "<group>"; };
@@ -904,7 +933,7 @@
 		3AC2240F20874420004D4384 /* uf20-0376.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0376.cnf"; sourceTree = "<group>"; };
 		3AC2241020874420004D4384 /* uf20-0410.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0410.cnf"; sourceTree = "<group>"; };
 		3AC2241120874420004D4384 /* uf20-0389.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0389.cnf"; sourceTree = "<group>"; };
-		3AC2241220874420004D4384 /* unitTest.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unitTest.cnf; sourceTree = "<group>"; };
+		3AC2241220874420004D4384 /* A_unitTest.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = A_unitTest.cnf; sourceTree = "<group>"; };
 		3AC2241320874420004D4384 /* uf20-0148.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0148.cnf"; sourceTree = "<group>"; };
 		3AC2241420874420004D4384 /* uf20-0160.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0160.cnf"; sourceTree = "<group>"; };
 		3AC2241520874420004D4384 /* uf20-0606.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0606.cnf"; sourceTree = "<group>"; };
@@ -1042,7 +1071,7 @@
 		3AC2249920874421004D4384 /* uf20-0371.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0371.cnf"; sourceTree = "<group>"; };
 		3AC2249A20874421004D4384 /* uf20-0417.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0417.cnf"; sourceTree = "<group>"; };
 		3AC2249B20874421004D4384 /* uf20-0588.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0588.cnf"; sourceTree = "<group>"; };
-		3AC2249C20874421004D4384 /* UPTest.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UPTest.cnf; sourceTree = "<group>"; };
+		3AC2249C20874421004D4384 /* A_UPTest.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = A_UPTest.cnf; sourceTree = "<group>"; };
 		3AC2249D20874421004D4384 /* uf20-0239.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0239.cnf"; sourceTree = "<group>"; };
 		3AC2249E20874421004D4384 /* uf20-0577.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0577.cnf"; sourceTree = "<group>"; };
 		3AC2249F20874421004D4384 /* uf20-0211.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0211.cnf"; sourceTree = "<group>"; };
@@ -1094,6 +1123,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3A258482208F216E00ADC8A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3AE7B3BC20865FAB008B28D7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1123,6 +1159,11 @@
 		3AC220BD2087441B004D4384 /* uf20-91 */ = {
 			isa = PBXGroup;
 			children = (
+				3AC2241220874420004D4384 /* A_unitTest.cnf */,
+				3A25847D208DE4D300ADC8A7 /* A_unitTest2.cnf */,
+				3A25847E208F0B4700ADC8A7 /* A_unitTest3.cnf */,
+				3A25847C208DDD8300ADC8A7 /* A_updateClauseStates.cnf */,
+				3AC2249C20874421004D4384 /* A_UPTest.cnf */,
 				3AC222A02087441D004D4384 /* test.cnf */,
 				3AC2220C2087441C004D4384 /* uf20-01.cnf */,
 				3AC221C82087441C004D4384 /* uf20-02.cnf */,
@@ -2124,8 +2165,6 @@
 				3AC221C62087441C004D4384 /* uf20-0998.cnf */,
 				3AC221852087441C004D4384 /* uf20-0999.cnf */,
 				3AC2231E2087441E004D4384 /* uf20-01000.cnf */,
-				3AC2241220874420004D4384 /* unitTest.cnf */,
-				3AC2249C20874421004D4384 /* UPTest.cnf */,
 			);
 			path = "uf20-91";
 			sourceTree = "<group>";
@@ -2133,12 +2172,12 @@
 		3AE7B3B620865FAB008B28D7 = {
 			isa = PBXGroup;
 			children = (
-				3AE7B3D120866069008B28D7 /* data */,
+				3AC21CCB20866D71004D4384 /* Frameworks */,
 				3AE7B3CE2086603A008B28D7 /* lib */,
 				3AE7B3C020865FAB008B28D7 /* Products */,
 				3AE7B3CC20866010008B28D7 /* src */,
 				3AE7B3CF20866049008B28D7 /* test */,
-				3AC21CCB20866D71004D4384 /* Frameworks */,
+				3AE7B3D120866069008B28D7 /* data */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2147,6 +2186,7 @@
 			children = (
 				3AE7B3BF20865FAB008B28D7 /* SAT */,
 				3AE7B42F208667D2008B28D7 /* SatTest */,
+				3A258485208F216E00ADC8A7 /* TestTarget */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2166,6 +2206,7 @@
 				3AE7B3E420866187008B28D7 /* Grasp.hpp */,
 				3AE7B3E620866191008B28D7 /* CDCL.cpp */,
 				3AE7B3E720866191008B28D7 /* CDCL.hpp */,
+				3A25847F208F201500ADC8A7 /* test.cpp */,
 			);
 			path = algorithm;
 			sourceTree = "<group>";
@@ -2273,6 +2314,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3A258484208F216E00ADC8A7 /* TestTarget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A258489208F216F00ADC8A7 /* Build configuration list for PBXNativeTarget "TestTarget" */;
+			buildPhases = (
+				3A258481208F216E00ADC8A7 /* Sources */,
+				3A258482208F216E00ADC8A7 /* Frameworks */,
+				3A258483208F216E00ADC8A7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestTarget;
+			productName = TestTarget;
+			productReference = 3A258485208F216E00ADC8A7 /* TestTarget */;
+			productType = "com.apple.product-type.tool";
+		};
 		3AE7B3BE20865FAB008B28D7 /* SAT */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3AE7B3C620865FAB008B28D7 /* Build configuration list for PBXNativeTarget "SAT" */;
@@ -2316,6 +2374,9 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = DTU;
 				TargetAttributes = {
+					3A258484208F216E00ADC8A7 = {
+						CreatedOnToolsVersion = 9.3;
+					};
 					3AE7B3BE20865FAB008B28D7 = {
 						CreatedOnToolsVersion = 9.3;
 					};
@@ -2338,11 +2399,20 @@
 			targets = (
 				3AE7B3BE20865FAB008B28D7 /* SAT */,
 				3AE7B42E208667D2008B28D7 /* SatTest */,
+				3A258484208F216E00ADC8A7 /* TestTarget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3A258481208F216E00ADC8A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A25848C208F217800ADC8A7 /* test.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3AE7B3BB20865FAB008B28D7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2367,8 +2437,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A25846F208DD35200ADC8A7 /* Solver.cpp in Sources */,
+				3A258470208DD35200ADC8A7 /* ProbabilisticSolver.cpp in Sources */,
+				3A258471208DD35200ADC8A7 /* CompleteSolver.cpp in Sources */,
+				3A258472208DD35200ADC8A7 /* Schonings.cpp in Sources */,
+				3A258473208DD35200ADC8A7 /* Grasp.cpp in Sources */,
+				3A258474208DD35200ADC8A7 /* CDCL.cpp in Sources */,
+				3A258475208DD35200ADC8A7 /* Clause.cpp in Sources */,
+				3A258476208DD35200ADC8A7 /* Formula.cpp in Sources */,
+				3A258477208DD35200ADC8A7 /* Literal.h in Sources */,
+				3A258478208DD35200ADC8A7 /* Variable.cpp in Sources */,
+				3A258479208DD35200ADC8A7 /* Graph.cpp in Sources */,
+				3A25847A208DD35200ADC8A7 /* Parser.cpp in Sources */,
+				3A25847B208DD35200ADC8A7 /* Randomizer.h in Sources */,
+				3A258480208F201500ADC8A7 /* test.cpp in Sources */,
+				3A258461208DD2B200ADC8A7 /* FormulaTest.cpp in Sources */,
 				3AC21CC520866869004D4384 /* SolverTest.cpp in Sources */,
-				3AC21CC620866869004D4384 /* FormulaTest.cpp in Sources */,
 				3AC21CC720866869004D4384 /* VariableTest.cpp in Sources */,
 				3AC21CC820866869004D4384 /* ClauseTest.cpp in Sources */,
 				3AC21CC920866869004D4384 /* AlgorithmTest.cpp in Sources */,
@@ -2379,6 +2463,24 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		3A25848A208F216F00ADC8A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3A25848B208F216F00ADC8A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		3AE7B3C420865FAB008B28D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2523,6 +2625,10 @@
 					"$(PROJECT_DIR)/googletest/googletest/xcode/includes/gtest/Build/Products/Release",
 					"$(PROJECT_DIR)/lib",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/lib",
+					/usr/local/Cellar/boost/1.66.0/include,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2536,6 +2642,10 @@
 					"$(PROJECT_DIR)/googletest/googletest/xcode/includes/gtest/Build/Products/Release",
 					"$(PROJECT_DIR)/lib",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/lib",
+					/usr/local/Cellar/boost/1.66.0/include,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -2543,6 +2653,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3A258489208F216F00ADC8A7 /* Build configuration list for PBXNativeTarget "TestTarget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A25848A208F216F00ADC8A7 /* Debug */,
+				3A25848B208F216F00ADC8A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3AE7B3BA20865FAB008B28D7 /* Build configuration list for PBXProject "SAT" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -108,6 +108,8 @@ namespace cnf {
         
         void addClause(std::unordered_map<int, Literal> l);
         
+        Clause & getLastAddedClause();
+        
     private:
         /**
          * SAT type
@@ -136,6 +138,9 @@ namespace cnf {
          * Value -> Variable X4
          */
         std::unordered_map<int, Variable *> variableSet;
+        
+        
+        Clause lastAddedClause;
         
         
     };
