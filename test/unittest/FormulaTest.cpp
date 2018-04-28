@@ -93,7 +93,7 @@ TEST_F(FormulaFixture, NoUnassignedClauses) {
     
     for(auto it = f->getClauses().begin(); it != f->getClauses().end(); ++it) {
         for(auto it1 = it->second->getLiterals().begin(); it1 != it->second->getLiterals().end(); it1++) {
-            it1->second.pVar->setAssignment(it1->second.isNegated ? cnf::FALSE : cnf::TRUE);
+            it1->second.pVar->setAssignment(it1->second.isNegated ? cnf::V_FALSE : cnf::V_TRUE);
         }
 
     }
@@ -113,7 +113,7 @@ TEST_F(FormulaFixture, UnassignedVariables) {
 TEST_F(FormulaFixture, NoUnassignedVariables) {
     
     for(auto it = randomFormula->getVariables().begin(); it != randomFormula->getVariables().end(); it++) {
-        it->second->setAssignment(cnf::TRUE);
+        it->second->setAssignment(cnf::V_TRUE);
     }
     ASSERT_FALSE(this->randomFormula->hasUnassignedVariables());
 }
@@ -133,9 +133,9 @@ TEST_F(FormulaFixture, VariableSetChangeAssignmentTestOne) {
     ASSERT_EQ(randomFormula->getVariables().at(id)->getAssignment(), cnf::UNASSIGNED);
     
     
-    randomFormula->getClauses().at(clauseN)->getLiterals().at(key).pVar->setAssignment(cnf::TRUE);
-    ASSERT_EQ(randomFormula->getClauses().at(clauseN)->getLiterals().at(key).pVar->getAssignment(), cnf::TRUE);
-    ASSERT_EQ(randomFormula->getVariables().at(id)->getAssignment(), cnf::TRUE);
+    randomFormula->getClauses().at(clauseN)->getLiterals().at(key).pVar->setAssignment(cnf::V_TRUE);
+    ASSERT_EQ(randomFormula->getClauses().at(clauseN)->getLiterals().at(key).pVar->getAssignment(), cnf::V_TRUE);
+    ASSERT_EQ(randomFormula->getVariables().at(id)->getAssignment(), cnf::V_TRUE);
     
 }
 
@@ -148,16 +148,16 @@ TEST_F(FormulaFixture, VariableSetChangeAssignmentTestTwo) {
     for(auto it = randomFormula->getVariables().begin(); it != randomFormula->getVariables().end(); ++it) {
         auto var = it->second;
         ASSERT_EQ(var->getAssignment(), cnf::UNASSIGNED);
-        var->setAssignment(cnf::TRUE);
-        ASSERT_EQ(randomFormula->getVariables().at(var->getKey())->getAssignment(), cnf::TRUE);
+        var->setAssignment(cnf::V_TRUE);
+        ASSERT_EQ(randomFormula->getVariables().at(var->getKey())->getAssignment(), cnf::V_TRUE);
     }
     
   
     for(auto var : randomFormula->getVariables()) {
         auto v = var.second;
-        ASSERT_EQ(v->getAssignment(), cnf::TRUE);
-        v->setAssignment(cnf::FALSE);
-        ASSERT_EQ(randomFormula->getVariables().at(v->getKey())->getAssignment(), cnf::FALSE);
+        ASSERT_EQ(v->getAssignment(), cnf::V_TRUE);
+        v->setAssignment(cnf::V_FALSE);
+        ASSERT_EQ(randomFormula->getVariables().at(v->getKey())->getAssignment(), cnf::V_FALSE);
         
     }
     
@@ -184,13 +184,13 @@ TEST_F(FormulaFixture, UpdateClauseStates) {
     
     cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ClauseStates.cnf").parse();
     
-    f->getVariable(0).get()->setAssignment(cnf::TRUE);
-    f->getVariable(1).get()->setAssignment(cnf::TRUE);
+    f->getVariable(0).get()->setAssignment(cnf::V_TRUE);
+    f->getVariable(1).get()->setAssignment(cnf::V_TRUE);
     
     auto res = f->updateClauseStates();
     ASSERT_TRUE(res.size() == 3);
     
-    f->getVariable(0).get()->setAssignment(cnf::FALSE);
+    f->getVariable(0).get()->setAssignment(cnf::V_FALSE);
     
     res = f->updateClauseStates();
     ASSERT_TRUE(res.size() == 0);
@@ -201,14 +201,14 @@ TEST_F(FormulaFixture, GetUnitClause) {
     
     cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ClauseStatesUnit.cnf").parse();
     
-    f->getVariable(0).get()->setAssignment(cnf::TRUE);
-    f->getVariable(1).get()->setAssignment(cnf::TRUE);
+    f->getVariable(0).get()->setAssignment(cnf::V_TRUE);
+    f->getVariable(1).get()->setAssignment(cnf::V_TRUE);
     
     ASSERT_TRUE(f->hasUnitClause());
     ASSERT_EQ(f->getUnitClause(), f->getClause(0));
     
     f->getVariable(0).get()->setAssignment(cnf::UNASSIGNED);
-    f->getVariable(2).get()->setAssignment(cnf::TRUE);
+    f->getVariable(2).get()->setAssignment(cnf::V_TRUE);
     
     ASSERT_TRUE(f->hasUnitClause());
     ASSERT_EQ(f->getUnitClause(), f->getClause(0));
@@ -222,14 +222,14 @@ TEST_F(FormulaFixture, ContainsConflict) {
     
     ASSERT_FALSE(f->hasConflictClause());
     
-    f->getVariable(0).get()->setAssignment(cnf::TRUE);
-    f->getVariable(1).get()->setAssignment(cnf::TRUE);
-    f->getVariable(2).get()->setAssignment(cnf::TRUE);
+    f->getVariable(0).get()->setAssignment(cnf::V_TRUE);
+    f->getVariable(1).get()->setAssignment(cnf::V_TRUE);
+    f->getVariable(2).get()->setAssignment(cnf::V_TRUE);
     
     ASSERT_TRUE(f->hasConflictClause());
     ASSERT_EQ(f->getConflictClause(), f->getClause(0));
     
-    f->getVariable(2).get()->setAssignment(cnf::FALSE);
+    f->getVariable(2).get()->setAssignment(cnf::V_FALSE);
    
     ASSERT_TRUE(f->hasConflictClause());
     ASSERT_EQ(f->getConflictClause(), f->getClause(2));

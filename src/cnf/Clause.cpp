@@ -29,7 +29,7 @@ void cnf::Clause::evaluate() {
             unitLiteralKey = kv.first;
         }
         
-        if((n && a == VariableAssignment::FALSE) || (!n && a == VariableAssignment::TRUE)) {
+        if((n && a == VariableAssignment::V_FALSE) || (!n && a == VariableAssignment::V_TRUE)) {
             // We know that the clause is true (disjunction property)
             SAT = true;
             break;
@@ -100,7 +100,7 @@ std::string cnf::Clause::string() {
         
         if(kv.second.isNegated) {s+="-";}
         if(a == UNASSIGNED) {s+="";}
-        else if (a == FALSE) {s+="";}
+        else if (a == V_FALSE) {s+="";}
         else {s+="";}
         
         s+= "" + std::to_string(varID) + " ";

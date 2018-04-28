@@ -10,10 +10,29 @@
 //#include "rapidjson/writer.h"
 
 int Application::App::run() {
-    
-    //algorithms::DTUSat *c = new algorithms::DTUSat();
-    algorithms::DTUSat *c = new algorithms::DTUSat();
-    
+        
+    for(int i = 1; i <= 2; i++) {
+        std::string fe = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf50-218/";
+        std::string file = fe + "uf50-0" + std::to_string(i) + ".cnf";
+        //std::cout << file << std::endl;
+        
+        cnf::Formula *f = util::Parser(file.c_str()).parse();
+        
+        algorithms::DTUSat *solver = new algorithms::DTUSat();
+        solver->setup(*f);
+        bool res = false;
+        res = solver->solve();
+        
+        if(res) {
+            std::cout << "SAT" + std::to_string(i) << std::endl;
+        } else {
+            std::cout << "UNSAT" + std::to_string(i) << std::endl;
+        }
+        
+        delete f;
+        delete solver;
+        
+    }
     
     
     return 0;

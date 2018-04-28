@@ -16,9 +16,9 @@ void algorithms::Schonings::setup(cnf::Formula formula) {
     
     for(auto kv = this->_formula.getVariables().begin(); kv != this->_formula.getVariables().end(); kv++) {
     if(util::Randomizer::GetRandomInt(0,1) == 1) {
-     kv->second->setAssignment(cnf::TRUE);
+     kv->second->setAssignment(cnf::V_TRUE);
     } else {
-     kv->second->setAssignment(cnf::FALSE);
+     kv->second->setAssignment(cnf::V_FALSE);
     }
 
     }
@@ -44,14 +44,14 @@ bool algorithms::Schonings::solve() {
         //int id = item->second.pVar->getKey();
         
         switch(item->second.pVar->getAssignment()) {
-            case cnf::TRUE:
+            case cnf::V_TRUE:
                 
-                item->second.pVar->setAssignment(cnf::FALSE);
+                item->second.pVar->setAssignment(cnf::V_FALSE);
                 break;
                 
-            case cnf::FALSE:
+            case cnf::V_FALSE:
                 
-                item->second.pVar->setAssignment(cnf::TRUE);
+                item->second.pVar->setAssignment(cnf::V_TRUE);
                 break;
                 
             case cnf::UNASSIGNED:
@@ -59,5 +59,7 @@ bool algorithms::Schonings::solve() {
                 
         }
     }
-    return false;    
+    //this->_formula.clean();
+    return false;
+    
 }

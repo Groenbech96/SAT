@@ -41,11 +41,12 @@ bool algorithms::DTUSat::solve() {
         } else {
             if(!this->_formula.hasUnsatisfiedClauses()) {
                 
+                this->_formula.clean();
                 return true;
             
             } else {
                 next = pickBranchingVariable();
-                next->setAssignment(cnf::TRUE);
+                next->setAssignment(cnf::V_TRUE);
                 this->decisionLevel++;
                 addToImplicationGraph(next, this->decisionLevel, -1);
                 
@@ -106,7 +107,7 @@ void algorithms::DTUSat::propagate() {
     auto l = unitClause->getUnitLiteral().get();
     
     //Assigns the variable to the value making the literal evaluate to true
-    l.pVar->setAssignment((!l.isNegated) ? cnf::TRUE : cnf::FALSE);
+    l.pVar->setAssignment((!l.isNegated) ? cnf::V_TRUE : cnf::V_FALSE);
     
     this->graph.addVertex(l.pVar, this->decisionLevel, unitClause->getId());
     
@@ -124,64 +125,7 @@ void algorithms::DTUSat::exhaustivePropagate() {
         propagate();
         
     }
-    
-    
-    /**
-    auto unitClause = this->_formula.getUnitClause();
-    
-    //While unsatisfied clauses still exist
-    while( unitClause != boost::none) {
-        
-        boost::optional<cnf::Literal> l = unitClause.get()->getUnitLiteral();
-        // std::cout << unitClause.get()->string() << std::endl;
-        if (l != boost::none) {
-            
-            cnf::Literal unpackedLiteral = l.get();
-            
-            //Assigns the variable to the value making the literal evaluate to true
-            unpackedLiteral.pVar->setAssignment((!unpackedLiteral.isNegated) ? cnf::TRUE : cnf::FALSE);
-            
-            // Add the implied variable to the implication graph
-            this->graph.addVertex(unpackedLiteral.pVar, decisionLevel, unitClause.get()->getId());
-            
-            // Add edges from all other variables in the same clause
-            for(auto literals = unitClause.get()->getLiterals().begin(); literals != unitClause.get()->getLiterals().end();literals++ ){
-                if (literals->second.pVar != unpackedLiteral.pVar) {
-                    // DEBUG
-                    if(literals->second.pVar->getAssignment() == cnf::UNASSIGNED) {
-                        std::cout << "ERROR FAILED" << std::endl;
-                    }
-                    this->graph.addEdge(literals->second.pVar, unpackedLiteral.pVar);
-                }
-            }
-        }
-        
-        boost::optional<cnf::Clause *> conflictClause = this->_formula.containsConflict();
-        
-        if(conflictClause != boost::none) {
-            // Add conflict vertex to implication graph
-            this->graph.addVertex(nullptr, decisionLevel, conflictClause.get()->getId());
-            
-            for(auto literals = conflictClause.get()->getLiterals().begin(); literals != conflictClause.get()->getLiterals().end();literals++ ){
-                // DEBUG
-                if(literals->second.pVar->getAssignment() == cnf::UNASSIGNED) {
-                    std::cout << "ERROR FAILED" << std::endl;
-                }
-                this->graph.addEdge(literals->second.pVar, nullptr);
-            }
-            //std::cout << "conflict found " + conflictClause.get()->string()  << std::endl;
-            
-            return CONFLICT;
-            
-        } //else if(!this->formula.hasUnsatisfiedClauses()) {
-        //   return SOLVED;
-        // }
-        
-        unitClause = this->_formula.getUnitClause();
-    }
-    
-     **/
-
+   
 }
 
 

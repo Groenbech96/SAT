@@ -24,7 +24,7 @@ namespace algorithms {
 class AlgorithmFixture : public testing::Test {
     
 public:
-    cnf::Formula *f;
+    
     int k = 3, m = 3, n = 15;
     
     int filesToTest;
@@ -37,6 +37,7 @@ protected:
     
     virtual void SetUp() {
         filesToTest = 50;
+        
     }
     
     virtual void TearDown() {
@@ -50,11 +51,12 @@ protected:
 ///
 TEST_F(AlgorithmFixture, SchoningsParserSatisfiableClausesTest) {
     
-    algorithms::Schonings * s = new algorithms::Schonings();
+   
     
     // Do this for all files in folder "uf20-91"
     for(int i = 1; i <= filesToTest; i++) {
         
+        algorithms::Schonings * s = new algorithms::Schonings();
         std::string file = this->satisfiableClauses + "uf20-0"+ std::to_string(i) + ".cnf";
         util::Parser *p = new util::Parser(file.c_str());
         cnf::Formula *f = p->parse();
@@ -68,10 +70,13 @@ TEST_F(AlgorithmFixture, SchoningsParserSatisfiableClausesTest) {
                 
             }
         }
-        delete f;
-        delete p;
         
+        delete p;
+        delete f;
+        delete s;
     }
+    
+    
     
 }
 TEST_F(AlgorithmFixture, CDCLUnitPropagationTest) {
@@ -81,9 +86,9 @@ TEST_F(AlgorithmFixture, CDCLUnitPropagationTest) {
     algorithms::DTUSat *solver = new algorithms::DTUSat();
     solver->setup(*f);
     
-    f->getVariable(0).get()->setAssignment(cnf::TRUE);
+    f->getVariable(0).get()->setAssignment(cnf::V_TRUE);
     solver->addToImplicationGraph(f->getVariable(0).get(), 1, -1);
-    f->getVariable(3).get()->setAssignment(cnf::TRUE);
+    f->getVariable(3).get()->setAssignment(cnf::V_TRUE);
     solver->addToImplicationGraph(f->getVariable(3).get(), 2, -1);
     
     solver->setDecisionLevel(2);
@@ -102,7 +107,7 @@ TEST_F(AlgorithmFixture, CDCLUnitPropagationTestTwo) {
     algorithms::DTUSat *solver = new algorithms::DTUSat();
     solver->setup(*f);
     
-    f->getVariable(3).get()->setAssignment(cnf::TRUE);
+    f->getVariable(3).get()->setAssignment(cnf::V_TRUE);
     solver->addToImplicationGraph(f->getVariable(3).get(), 1, -1);
     solver->setDecisionLevel(1);
     
@@ -111,7 +116,7 @@ TEST_F(AlgorithmFixture, CDCLUnitPropagationTestTwo) {
     ASSERT_FALSE(solver->hasConflict());
     ASSERT_EQ(solver->getGraphSize(), 2);
     
-    f->getVariable(1).get()->setAssignment(cnf::FALSE);
+    f->getVariable(1).get()->setAssignment(cnf::V_FALSE);
     solver->addToImplicationGraph(f->getVariable(1).get(), 2, -1);
     solver->setDecisionLevel(2);
     
@@ -130,7 +135,7 @@ TEST_F(AlgorithmFixture, CDCLUnitPropagationTestThree) {
     algorithms::DTUSat *solver = new algorithms::DTUSat();
     solver->setup(*f);
     
-    f->getVariable(0).get()->setAssignment(cnf::TRUE);
+    f->getVariable(0).get()->setAssignment(cnf::V_TRUE);
     solver->setDecisionLevel(1);
     solver->addToImplicationGraph(f->getVariable(0).get(), 1, -1);
     
@@ -167,7 +172,7 @@ TEST_F(AlgorithmFixture, CDCLUnitPropagationTestThree) {
     solver = new algorithms::DTUSat();
     solver->setup(*f);
     
-    f->getVariable(0).get()->setAssignment(cnf::TRUE);
+    f->getVariable(0).get()->setAssignment(cnf::V_TRUE);
     solver->setDecisionLevel(1);
     solver->addToImplicationGraph(f->getVariable(0).get(), 1, -1);
     
@@ -299,10 +304,62 @@ TEST_F(AlgorithmFixture, CompleteTestB) {
         
     }
     
+}
+    
+TEST_F(AlgorithmFixture, CompleteTestC) {
+    
+    //cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/CompleteTestB.cnf").parse();
+    
+    for(int i = 1; i <= 1000; i++) {
+        this->satisfiableClauses = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf50-218/";
+        std::string file = this->satisfiableClauses + "uf50-0" + std::to_string(i) + ".cnf";
+        //std::cout << file << std::endl;
+        
+        cnf::Formula *f = util::Parser(file.c_str()).parse();
+        
+        algorithms::DTUSat *solver = new algorithms::DTUSat();
+        solver->setup(*f);
+        bool res = false;
+        res = solver->solve();
+        
+        if(res) {
+            std::cout << "SAT" + std::to_string(i) << std::endl;
+        } else {
+            exit(10);
+        }
+        
+    }
+    
+}
+    
+    
+TEST_F(AlgorithmFixture, BenchmarkUF20) {
+    
+    for(int i = 1; i <= 1000; i++) {
+        
+        std::string file = this->satisfiableClauses + "uf20-0" + std::to_string(i) + ".cnf";
+        //std::cout << file << std::endl;
+        
+        cnf::Formula *f = util::Parser(file.c_str()).parse();
+        
+        algorithms::DTUSat *solver = new algorithms::DTUSat();
+        solver->setup(*f);
+        bool res = false;
+        res = solver->solve();
+        
+        if(res) {
+            std::cout << "SAT" + std::to_string(i) << std::endl;
+        } else {
+            exit(10);
+        }
+        
+    }
+    
     
     
     
 }
+    
 
 
 TEST_F(AlgorithmFixture, CDCLBackTrack) {

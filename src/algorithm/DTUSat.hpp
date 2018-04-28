@@ -10,7 +10,11 @@
 #define CDCL_hpp
 
 #include "CDCLSolver.hpp"
-#include "gtest/gtest_prod.h"
+
+#ifdef ADDTEST
+    #include "gtest/gtest_prod.h"
+#endif
+
 #include <stack>
 
 namespace algorithms {
@@ -35,7 +39,8 @@ namespace algorithms {
         
     private:
         
-        // Google test private method access 
+        // Google test private method access
+#ifdef ADDTEST
         FRIEND_TEST(AlgorithmFixture, CDCLUnitPropagationTest);
         FRIEND_TEST(AlgorithmFixture, CDCLUnitPropagationTestTwo);
         FRIEND_TEST(AlgorithmFixture, CDCLUnitResolutionTest);
@@ -44,7 +49,7 @@ namespace algorithms {
         FRIEND_TEST(AlgorithmFixture, CDCLBackTrack);
         FRIEND_TEST(AlgorithmFixture, CDCLResolutionOperationTest);
         FRIEND_TEST(AlgorithmFixture, CDCLUndoDecidedVar);
-        
+#endif
         
         // std::queue<int> assignments;
         ClauseLiterals learnClauseLiterals;

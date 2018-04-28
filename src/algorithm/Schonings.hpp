@@ -27,8 +27,7 @@ namespace algorithms {
         bool solve() override;
        
     private:
-        
-        
+      
     };
     
 }

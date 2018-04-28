@@ -12,6 +12,19 @@
 
 #include "Formula.hpp"
 
+
+void cnf::Formula::clean() {
+    
+    for(auto it : this->getVariables()) {
+        delete it.second;
+    }
+    
+    for(auto it : this->getClauses()) {
+        delete it.second;
+    }
+    
+}
+
 int cnf::Formula::getM() {
     return this->m;
 }

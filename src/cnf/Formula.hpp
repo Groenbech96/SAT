@@ -28,7 +28,8 @@ namespace cnf {
         
         /// Default constructor
         Formula()  = default;
-        ~Formula() = default;
+            
+        void clean();
         
         /// Create a formula u.a.r
         /// \param k defines sat type

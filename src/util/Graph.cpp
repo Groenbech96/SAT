@@ -96,7 +96,7 @@ void util::Graph::backtrack(int level) {
             if(it->second->var != nullptr) {
                 it->second->var->setAssignment(cnf::UNASSIGNED);
             }
-          
+            delete it->second;
             it = this->graphMap.erase(it);
         
             

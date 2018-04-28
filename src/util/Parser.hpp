@@ -39,6 +39,8 @@ namespace util {
         /// \param t_fn the file name
         Parser(const char* t_fn);
         
+        ~Parser();
+        
         /// Parse the file into a Formula Object
         /// \return a set of formulas (This depends on how many is in file)
         cnf::Formula* parse();
