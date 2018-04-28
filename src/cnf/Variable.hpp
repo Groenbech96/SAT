@@ -75,7 +75,6 @@ namespace cnf {
         VariableAssignment assignment;
         
         
-        
     };
 }
 

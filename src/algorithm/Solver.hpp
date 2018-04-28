@@ -10,7 +10,9 @@
 #define Solver_hpp
 
 #include "Formula.hpp"
-#include <map>
+
+// Virtual Solver Class
+// Has to be implemented by derived class
 
 namespace algorithms {
     
@@ -18,16 +20,18 @@ namespace algorithms {
     
     public:
         
-        Solver() = default;
-        virtual ~Solver() = default;
+        // Pure virtual functions
+        virtual ~Solver() = 0;
+
+    protected:
         
-        virtual void setup(cnf::Formula formula) = 0;
+        cnf::Formula _formula;
+        
+        // Pure virtual functions
+        virtual void setup(cnf::Formula f) = 0;
         virtual bool solve() = 0;
         
         
-    protected:
-        cnf::Formula formula;
-    
     };
     
 }

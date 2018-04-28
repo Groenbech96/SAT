@@ -113,7 +113,7 @@ cnf::Formula* util::Parser::parse() {
                 
                 // TODO: Implement more than 3-SAT here
                 f = new cnf::Formula(3, nClauses, nVars, variableSet, clauseSet);
-                // cnfs.insert(pFormula);
+                
                 
                 // clear containers
                 variableSet.clear();

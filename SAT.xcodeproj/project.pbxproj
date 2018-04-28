@@ -10,10 +10,10 @@
 		3A258461208DD2B200ADC8A7 /* FormulaTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B409208662BE008B28D7 /* FormulaTest.cpp */; };
 		3A25846F208DD35200ADC8A7 /* Solver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3D7208660F6008B28D7 /* Solver.cpp */; };
 		3A258470208DD35200ADC8A7 /* ProbabilisticSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3DA2086611C008B28D7 /* ProbabilisticSolver.cpp */; };
-		3A258471208DD35200ADC8A7 /* CompleteSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3DD20866156008B28D7 /* CompleteSolver.cpp */; };
+		3A258471208DD35200ADC8A7 /* CDCLSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3DD20866156008B28D7 /* CDCLSolver.cpp */; };
 		3A258472208DD35200ADC8A7 /* Schonings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E020866177008B28D7 /* Schonings.cpp */; };
 		3A258473208DD35200ADC8A7 /* Grasp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E320866187008B28D7 /* Grasp.cpp */; };
-		3A258474208DD35200ADC8A7 /* CDCL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E620866191008B28D7 /* CDCL.cpp */; };
+		3A258474208DD35200ADC8A7 /* DTUSat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E620866191008B28D7 /* DTUSat.cpp */; };
 		3A258475208DD35200ADC8A7 /* Clause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3EC208661A8008B28D7 /* Clause.cpp */; };
 		3A258476208DD35200ADC8A7 /* Formula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E9208661A0008B28D7 /* Formula.cpp */; };
 		3A258477208DD35200ADC8A7 /* Literal.h in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F2208661C9008B28D7 /* Literal.h */; };
@@ -22,6 +22,7 @@
 		3A25847A208DD35200ADC8A7 /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F6208661E9008B28D7 /* Parser.cpp */; };
 		3A25847B208DD35200ADC8A7 /* Randomizer.h in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F920866209008B28D7 /* Randomizer.h */; };
 		3A258480208F201500ADC8A7 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A25847F208F201500ADC8A7 /* test.cpp */; };
+		3A28BDF3209303E10057D840 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A25847F208F201500ADC8A7 /* test.cpp */; };
 		3AC21CC520866869004D4384 /* SolverTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B407208662B1008B28D7 /* SolverTest.cpp */; };
 		3AC21CC720866869004D4384 /* VariableTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B40B208662CB008B28D7 /* VariableTest.cpp */; };
 		3AC21CC820866869004D4384 /* ClauseTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B40D208662DC008B28D7 /* ClauseTest.cpp */; };
@@ -32,10 +33,10 @@
 		3AE7B3D6208660BC008B28D7 /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3D4208660BC008B28D7 /* App.cpp */; };
 		3AE7B3D9208660F6008B28D7 /* Solver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3D7208660F6008B28D7 /* Solver.cpp */; };
 		3AE7B3DC2086611C008B28D7 /* ProbabilisticSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3DA2086611C008B28D7 /* ProbabilisticSolver.cpp */; };
-		3AE7B3DF20866156008B28D7 /* CompleteSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3DD20866156008B28D7 /* CompleteSolver.cpp */; };
+		3AE7B3DF20866156008B28D7 /* CDCLSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3DD20866156008B28D7 /* CDCLSolver.cpp */; };
 		3AE7B3E220866177008B28D7 /* Schonings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E020866177008B28D7 /* Schonings.cpp */; };
 		3AE7B3E520866187008B28D7 /* Grasp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E320866187008B28D7 /* Grasp.cpp */; };
-		3AE7B3E820866191008B28D7 /* CDCL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E620866191008B28D7 /* CDCL.cpp */; };
+		3AE7B3E820866191008B28D7 /* DTUSat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E620866191008B28D7 /* DTUSat.cpp */; };
 		3AE7B3EB208661A0008B28D7 /* Formula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E9208661A0008B28D7 /* Formula.cpp */; };
 		3AE7B3EE208661A8008B28D7 /* Clause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3EC208661A8008B28D7 /* Clause.cpp */; };
 		3AE7B3F1208661B6008B28D7 /* Variable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3EF208661B6008B28D7 /* Variable.cpp */; };
@@ -44,6 +45,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		3A28BDEA209303CA0057D840 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		3AE7B3BD20865FAB008B28D7 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -65,10 +75,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3A25847C208DDD8300ADC8A7 /* A_updateClauseStates.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = A_updateClauseStates.cnf; sourceTree = "<group>"; };
 		3A25847D208DE4D300ADC8A7 /* A_unitTest2.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = A_unitTest2.cnf; sourceTree = "<group>"; };
 		3A25847E208F0B4700ADC8A7 /* A_unitTest3.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = A_unitTest3.cnf; sourceTree = "<group>"; };
 		3A25847F208F201500ADC8A7 /* test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
+		3A28BDE72090C4380057D840 /* A_unitTest5Res.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = A_unitTest5Res.cnf; sourceTree = "<group>"; };
+		3A28BDEC209303CA0057D840 /* test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A7147032093BD1300645DC4 /* test1.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = test1.cnf; sourceTree = "<group>"; };
+		3A7147042093BFAD00645DC4 /* ClauseStates.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = ClauseStates.cnf; sourceTree = "<group>"; };
+		3A7147052093C1FB00645DC4 /* ClauseStatesUnit.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = ClauseStatesUnit.cnf; sourceTree = "<group>"; };
+		3A7147062093C41F00645DC4 /* ParseTest.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = ParseTest.cnf; sourceTree = "<group>"; };
+		3A7147072093C64E00645DC4 /* UnitTestOne.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnitTestOne.cnf; sourceTree = "<group>"; };
+		3A7147082093C78000645DC4 /* UnitTestTwo.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnitTestTwo.cnf; sourceTree = "<group>"; };
+		3A71470A2093CCBB00645DC4 /* ResolutionTest.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = ResolutionTest.cnf; sourceTree = "<group>"; };
+		3A71470B2094904D00645DC4 /* UnitTestThree.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnitTestThree.cnf; sourceTree = "<group>"; };
+		3A71470C2094A35D00645DC4 /* CompleteTestA.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = CompleteTestA.cnf; sourceTree = "<group>"; };
+		3A71470D2094C5B700645DC4 /* CompleteTestB.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = CompleteTestB.cnf; sourceTree = "<group>"; };
 		3A74433C20908D1B00C06E67 /* A_unitTest4.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = A_unitTest4.cnf; sourceTree = "<group>"; };
 		3AC21CCF20867287004D4384 /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = lib/gtest.framework; sourceTree = "<group>"; };
 		3AC220BE2087441B004D4384 /* uf20-0778.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0778.cnf"; sourceTree = "<group>"; };
@@ -553,7 +574,6 @@
 		3AC2229D2087441D004D4384 /* uf20-0520.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0520.cnf"; sourceTree = "<group>"; };
 		3AC2229E2087441D004D4384 /* uf20-0246.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0246.cnf"; sourceTree = "<group>"; };
 		3AC2229F2087441D004D4384 /* uf20-0252.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0252.cnf"; sourceTree = "<group>"; };
-		3AC222A02087441D004D4384 /* test.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.cnf; sourceTree = "<group>"; };
 		3AC222A12087441D004D4384 /* uf20-0534.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0534.cnf"; sourceTree = "<group>"; };
 		3AC222A22087441D004D4384 /* uf20-0508.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0508.cnf"; sourceTree = "<group>"; };
 		3AC222A32087441D004D4384 /* uf20-0285.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0285.cnf"; sourceTree = "<group>"; };
@@ -1061,7 +1081,6 @@
 		3AC2249920874421004D4384 /* uf20-0371.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0371.cnf"; sourceTree = "<group>"; };
 		3AC2249A20874421004D4384 /* uf20-0417.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0417.cnf"; sourceTree = "<group>"; };
 		3AC2249B20874421004D4384 /* uf20-0588.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0588.cnf"; sourceTree = "<group>"; };
-		3AC2249C20874421004D4384 /* A_UPTest.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = A_UPTest.cnf; sourceTree = "<group>"; };
 		3AC2249D20874421004D4384 /* uf20-0239.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0239.cnf"; sourceTree = "<group>"; };
 		3AC2249E20874421004D4384 /* uf20-0577.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0577.cnf"; sourceTree = "<group>"; };
 		3AC2249F20874421004D4384 /* uf20-0211.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0211.cnf"; sourceTree = "<group>"; };
@@ -1082,14 +1101,14 @@
 		3AE7B3D8208660F6008B28D7 /* Solver.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Solver.hpp; sourceTree = "<group>"; };
 		3AE7B3DA2086611C008B28D7 /* ProbabilisticSolver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ProbabilisticSolver.cpp; sourceTree = "<group>"; };
 		3AE7B3DB2086611C008B28D7 /* ProbabilisticSolver.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ProbabilisticSolver.hpp; sourceTree = "<group>"; };
-		3AE7B3DD20866156008B28D7 /* CompleteSolver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CompleteSolver.cpp; sourceTree = "<group>"; };
-		3AE7B3DE20866156008B28D7 /* CompleteSolver.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CompleteSolver.hpp; sourceTree = "<group>"; };
+		3AE7B3DD20866156008B28D7 /* CDCLSolver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CDCLSolver.cpp; sourceTree = "<group>"; };
+		3AE7B3DE20866156008B28D7 /* CDCLSolver.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CDCLSolver.hpp; sourceTree = "<group>"; };
 		3AE7B3E020866177008B28D7 /* Schonings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Schonings.cpp; sourceTree = "<group>"; };
 		3AE7B3E120866177008B28D7 /* Schonings.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Schonings.hpp; sourceTree = "<group>"; };
 		3AE7B3E320866187008B28D7 /* Grasp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Grasp.cpp; sourceTree = "<group>"; };
 		3AE7B3E420866187008B28D7 /* Grasp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Grasp.hpp; sourceTree = "<group>"; };
-		3AE7B3E620866191008B28D7 /* CDCL.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CDCL.cpp; sourceTree = "<group>"; };
-		3AE7B3E720866191008B28D7 /* CDCL.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CDCL.hpp; sourceTree = "<group>"; };
+		3AE7B3E620866191008B28D7 /* DTUSat.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DTUSat.cpp; sourceTree = "<group>"; };
+		3AE7B3E720866191008B28D7 /* DTUSat.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DTUSat.hpp; sourceTree = "<group>"; };
 		3AE7B3E9208661A0008B28D7 /* Formula.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Formula.cpp; sourceTree = "<group>"; };
 		3AE7B3EA208661A0008B28D7 /* Formula.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Formula.hpp; sourceTree = "<group>"; };
 		3AE7B3EC208661A8008B28D7 /* Clause.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Clause.cpp; sourceTree = "<group>"; };
@@ -1113,6 +1132,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3A28BDE9209303CA0057D840 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3AE7B3BC20865FAB008B28D7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1131,6 +1157,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A7147022093BD1300645DC4 /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				3A7147032093BD1300645DC4 /* test1.cnf */,
+				3A7147042093BFAD00645DC4 /* ClauseStates.cnf */,
+				3A7147052093C1FB00645DC4 /* ClauseStatesUnit.cnf */,
+				3A7147062093C41F00645DC4 /* ParseTest.cnf */,
+				3A7147072093C64E00645DC4 /* UnitTestOne.cnf */,
+				3A7147082093C78000645DC4 /* UnitTestTwo.cnf */,
+				3A71470A2093CCBB00645DC4 /* ResolutionTest.cnf */,
+				3A71470B2094904D00645DC4 /* UnitTestThree.cnf */,
+				3A71470C2094A35D00645DC4 /* CompleteTestA.cnf */,
+				3A71470D2094C5B700645DC4 /* CompleteTestB.cnf */,
+			);
+			path = tests;
+			sourceTree = "<group>";
+		};
 		3AC21CCB20866D71004D4384 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1146,9 +1189,7 @@
 				3A25847D208DE4D300ADC8A7 /* A_unitTest2.cnf */,
 				3A25847E208F0B4700ADC8A7 /* A_unitTest3.cnf */,
 				3A74433C20908D1B00C06E67 /* A_unitTest4.cnf */,
-				3A25847C208DDD8300ADC8A7 /* A_updateClauseStates.cnf */,
-				3AC2249C20874421004D4384 /* A_UPTest.cnf */,
-				3AC222A02087441D004D4384 /* test.cnf */,
+				3A28BDE72090C4380057D840 /* A_unitTest5Res.cnf */,
 				3AC2220C2087441C004D4384 /* uf20-01.cnf */,
 				3AC221C82087441C004D4384 /* uf20-02.cnf */,
 				3AC2220B2087441C004D4384 /* uf20-03.cnf */,
@@ -2170,6 +2211,7 @@
 			children = (
 				3AE7B3BF20865FAB008B28D7 /* SAT */,
 				3AE7B42F208667D2008B28D7 /* SatTest */,
+				3A28BDEC209303CA0057D840 /* test */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2181,14 +2223,14 @@
 				3AE7B3D8208660F6008B28D7 /* Solver.hpp */,
 				3AE7B3DA2086611C008B28D7 /* ProbabilisticSolver.cpp */,
 				3AE7B3DB2086611C008B28D7 /* ProbabilisticSolver.hpp */,
-				3AE7B3DD20866156008B28D7 /* CompleteSolver.cpp */,
-				3AE7B3DE20866156008B28D7 /* CompleteSolver.hpp */,
+				3AE7B3DD20866156008B28D7 /* CDCLSolver.cpp */,
+				3AE7B3DE20866156008B28D7 /* CDCLSolver.hpp */,
 				3AE7B3E020866177008B28D7 /* Schonings.cpp */,
 				3AE7B3E120866177008B28D7 /* Schonings.hpp */,
 				3AE7B3E320866187008B28D7 /* Grasp.cpp */,
 				3AE7B3E420866187008B28D7 /* Grasp.hpp */,
-				3AE7B3E620866191008B28D7 /* CDCL.cpp */,
-				3AE7B3E720866191008B28D7 /* CDCL.hpp */,
+				3AE7B3E620866191008B28D7 /* DTUSat.cpp */,
+				3AE7B3E720866191008B28D7 /* DTUSat.hpp */,
 				3A25847F208F201500ADC8A7 /* test.cpp */,
 			);
 			path = algorithm;
@@ -2261,8 +2303,8 @@
 			isa = PBXGroup;
 			children = (
 				3AE7B407208662B1008B28D7 /* SolverTest.cpp */,
-				3AE7B409208662BE008B28D7 /* FormulaTest.cpp */,
 				3AE7B40B208662CB008B28D7 /* VariableTest.cpp */,
+				3AE7B409208662BE008B28D7 /* FormulaTest.cpp */,
 				3AE7B40D208662DC008B28D7 /* ClauseTest.cpp */,
 				3AE7B40520866283008B28D7 /* main.cpp */,
 				3AE7B40F208662F2008B28D7 /* AlgorithmTest.cpp */,
@@ -2282,6 +2324,7 @@
 		3AE7B3D220866078008B28D7 /* cnfs */ = {
 			isa = PBXGroup;
 			children = (
+				3A7147022093BD1300645DC4 /* tests */,
 				3AC220BD2087441B004D4384 /* uf20-91 */,
 			);
 			path = cnfs;
@@ -2297,6 +2340,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3A28BDEB209303CA0057D840 /* test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A28BDF0209303CA0057D840 /* Build configuration list for PBXNativeTarget "test" */;
+			buildPhases = (
+				3A28BDE8209303CA0057D840 /* Sources */,
+				3A28BDE9209303CA0057D840 /* Frameworks */,
+				3A28BDEA209303CA0057D840 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = test;
+			productName = test;
+			productReference = 3A28BDEC209303CA0057D840 /* test */;
+			productType = "com.apple.product-type.tool";
+		};
 		3AE7B3BE20865FAB008B28D7 /* SAT */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3AE7B3C620865FAB008B28D7 /* Build configuration list for PBXNativeTarget "SAT" */;
@@ -2340,6 +2400,9 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = DTU;
 				TargetAttributes = {
+					3A28BDEB209303CA0057D840 = {
+						CreatedOnToolsVersion = 9.3;
+					};
 					3AE7B3BE20865FAB008B28D7 = {
 						CreatedOnToolsVersion = 9.3;
 					};
@@ -2362,11 +2425,20 @@
 			targets = (
 				3AE7B3BE20865FAB008B28D7 /* SAT */,
 				3AE7B42E208667D2008B28D7 /* SatTest */,
+				3A28BDEB209303CA0057D840 /* test */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3A28BDE8209303CA0057D840 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A28BDF3209303E10057D840 /* test.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3AE7B3BB20865FAB008B28D7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2377,11 +2449,11 @@
 				3AE7B3E520866187008B28D7 /* Grasp.cpp in Sources */,
 				3AE7B3F5208661DB008B28D7 /* Graph.cpp in Sources */,
 				3AE7B3E220866177008B28D7 /* Schonings.cpp in Sources */,
-				3AE7B3DF20866156008B28D7 /* CompleteSolver.cpp in Sources */,
+				3AE7B3DF20866156008B28D7 /* CDCLSolver.cpp in Sources */,
 				3AE7B3DC2086611C008B28D7 /* ProbabilisticSolver.cpp in Sources */,
 				3AE7B3D6208660BC008B28D7 /* App.cpp in Sources */,
 				3AE7B3EE208661A8008B28D7 /* Clause.cpp in Sources */,
-				3AE7B3E820866191008B28D7 /* CDCL.cpp in Sources */,
+				3AE7B3E820866191008B28D7 /* DTUSat.cpp in Sources */,
 				3AE7B3F1208661B6008B28D7 /* Variable.cpp in Sources */,
 				3AE7B3F8208661E9008B28D7 /* Parser.cpp in Sources */,
 			);
@@ -2393,10 +2465,10 @@
 			files = (
 				3A25846F208DD35200ADC8A7 /* Solver.cpp in Sources */,
 				3A258470208DD35200ADC8A7 /* ProbabilisticSolver.cpp in Sources */,
-				3A258471208DD35200ADC8A7 /* CompleteSolver.cpp in Sources */,
+				3A258471208DD35200ADC8A7 /* CDCLSolver.cpp in Sources */,
 				3A258472208DD35200ADC8A7 /* Schonings.cpp in Sources */,
 				3A258473208DD35200ADC8A7 /* Grasp.cpp in Sources */,
-				3A258474208DD35200ADC8A7 /* CDCL.cpp in Sources */,
+				3A258474208DD35200ADC8A7 /* DTUSat.cpp in Sources */,
 				3A258475208DD35200ADC8A7 /* Clause.cpp in Sources */,
 				3A258476208DD35200ADC8A7 /* Formula.cpp in Sources */,
 				3A258477208DD35200ADC8A7 /* Literal.h in Sources */,
@@ -2417,6 +2489,24 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		3A28BDF1209303CA0057D840 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3A28BDF2209303CA0057D840 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		3AE7B3C420865FAB008B28D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2589,6 +2679,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3A28BDF0209303CA0057D840 /* Build configuration list for PBXNativeTarget "test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A28BDF1209303CA0057D840 /* Debug */,
+				3A28BDF2209303CA0057D840 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3AE7B3BA20865FAB008B28D7 /* Build configuration list for PBXProject "SAT" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

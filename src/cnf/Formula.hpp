@@ -68,11 +68,13 @@ namespace cnf {
         
         /// Get the variables as a map
         /// \return unordered map
-        std::unordered_map<int, Variable *> &getVariableSet();
+        std::unordered_map<int, Variable *> &getVariables();
         
         /// Return vector of cluases
         /// \return clauses
-        std::unordered_map<int, Clause *> & getClauseSet();
+        std::unordered_map<int, Clause *> & getClauses();
+        
+        Clause * getClause(int id);
         
         
         /// Update all clauses
@@ -88,8 +90,9 @@ namespace cnf {
         
         ///
         /// @return A unit clause if one exists
+        /// @depricated
         ///
-        boost::optional<Clause *> getUnitClause();
+        //boost::optional<Clause *> getUnitClause();
         
         ///
         /// @return All unsatisfied clauses (if any)
@@ -101,12 +104,30 @@ namespace cnf {
         ///
         boost::optional<Clause *> containsConflict();
         
+        /// Evaluates if the formula contains a conflict clause
+        bool hasConflictClause();
+        
+        /// Gets the most recent found conflict clause
+        cnf::Clause* getConflictClause();
+        
+        /// Evaluates if the formula contains a unit clause
+        bool hasUnitClause();
+        
+        /// Gets the most recent found conflict clause
+        cnf::Clause* getUnitClause();
+        
+        
+        
+        
+        
+        
         /// Textual representation of the formula for testing/debugging purposes.
         /// @return String containing representations of all clauses in the formula.
         ///
         std::string string();
         
         void addClause(std::unordered_map<int, Literal> l);
+        cnf::Clause* addClause();
         
         Clause & getLastAddedClause();
         
@@ -139,6 +160,10 @@ namespace cnf {
          */
         std::unordered_map<int, Variable *> variableSet;
         
+        /// The current conflict clause
+        Clause* _conflictClause = nullptr;
+        /// The current unit clause
+        Clause* _unitClause     = nullptr;
         
         Clause lastAddedClause;
         
