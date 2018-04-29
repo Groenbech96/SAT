@@ -48,6 +48,7 @@ namespace util {
         std::unordered_map<cnf::Variable*, vertex *> graphMap;
         std::stack<cnf::Variable*> *graphStack = new std::stack<cnf::Variable*>;
         
+        
         Graph() = default;
         /// Add vertex to the graph.
         /// \param variable Variable to add
@@ -61,9 +62,8 @@ namespace util {
         void addEdge(cnf::Variable* from, cnf::Variable* to);
         
         bool deleteVertex(cnf::Variable* var);
-        bool deleteVertex(util::vertex* vex);
-        
-        void backtrack(int lvl);
+       
+        void undo(int lvl);
         
         //  util::vertex* getVertex(cnf::Variable * v);
         

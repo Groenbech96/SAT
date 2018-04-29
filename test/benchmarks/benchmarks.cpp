@@ -11,6 +11,7 @@
 #include <hayai/hayai.hpp>
 #include "Parser.hpp"
 #include "DTUSat.hpp"
+#include "Schonings.hpp"
 
 
 
@@ -18,14 +19,10 @@ class BenchmarkFixture : public ::hayai::Fixture {
     
     
 public:
-    
-    int size = 50;
-    int SolveUF20Total = 1000;
-    int offset = 0;
-    int run = 0;
+
     
     virtual void SetUp() {
-         offset = SolveUF20Total / size;
+        
     }
     
     virtual void TearDown()
@@ -33,16 +30,13 @@ public:
         
     }
     
-    
-    
-    
-};
 
+};
 
 
 int main() {
     
-    std::ofstream some_file("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/test/benchmarks/CDCL.json");
+    std::ofstream some_file("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/test/benchmarks/Schonings.json");
     
     hayai::JsonOutputter json = hayai::JsonOutputter(some_file);
     hayai::ConsoleOutputter out;
@@ -54,15 +48,65 @@ int main() {
     
 }
 
-BENCHMARK_F(BenchmarkFixture, SolveUF20, 50, 1) {
+
+BENCHMARK_F(BenchmarkFixture, SOLVEUF20Prob, 4, 1) {
     
-    int i = size * run;
-    int end = (size * run) + size;
-    if(i == 0) {
-        i++;
+    int count = 0;
+    for(int j = 1; j <= 1000; j++) {
+        
+        std::string file = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/uf20-0" + std::to_string(j) + ".cnf";
+        util::Parser *p = new util::Parser(file.c_str());
+        
+        cnf::Formula *f = p->parse();
+        
+        algorithms::Schonings *solver = new algorithms::Schonings();
+        solver->setup(*f);
+        bool res = false;
+        res = solver->solve();
+        if(res)
+            count++;
+        
+        delete solver;
+        delete p;
+        delete f;
+        
     }
     
-    for(int j = i; j <= end; j++) {
+    std::cout << "corrects: " << count << std::endl;
+    
+}
+
+BENCHMARK_F(BenchmarkFixture, SOLVEUF50Prob, 4, 1) {
+    
+    int count = 0;
+    for(int j = 1; j <= 1000; j++) {
+        
+        std::string file = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf50-218/uf50-0" + std::to_string(j) + ".cnf";
+        util::Parser *p = new util::Parser(file.c_str());
+        
+        cnf::Formula *f = p->parse();
+        
+        algorithms::Schonings *solver = new algorithms::Schonings();
+        solver->setup(*f);
+        bool res = false;
+        res = solver->solve();
+        if(res)
+            count++;
+        
+        delete solver;
+        delete p;
+        delete f;
+        
+    }
+    
+    std::cout << "corrects: " << count << std::endl;
+    
+}
+
+
+BENCHMARK_F(BenchmarkFixture, SolveUF20, 4, 1) {
+    
+    for(int j = 1; j <= 1000; j++) {
         
         std::string file = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/uf20-0" + std::to_string(j) + ".cnf";
         util::Parser *p = new util::Parser(file.c_str());
@@ -74,23 +118,19 @@ BENCHMARK_F(BenchmarkFixture, SolveUF20, 50, 1) {
         bool res = false;
         res = solver->solve();
         
-        
         delete solver;
         delete p;
         delete f;
         
     }
     
-    run++;
-    
 }
 
-BENCHMARK_F(BenchmarkFixture, SolveUF20TOTAL, 2, 2) {
+BENCHMARK_F(BenchmarkFixture, SolveUF50, 4, 1) {
     
-   
-    for(int i = 1; i <= 1000; i++) {
+    for(int j = 1; j <= 1000; j++) {
         
-        std::string file = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/uf20-0" + std::to_string(i) + ".cnf";
+        std::string file = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf50-218/uf50-0" + std::to_string(j) + ".cnf";
         util::Parser *p = new util::Parser(file.c_str());
         
         cnf::Formula *f = p->parse();
@@ -107,7 +147,7 @@ BENCHMARK_F(BenchmarkFixture, SolveUF20TOTAL, 2, 2) {
         
     }
     
-    
 }
+
 
 

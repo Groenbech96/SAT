@@ -51,14 +51,16 @@ namespace algorithms {
 #endif
         
         // std::queue<int> assignments;
-        
     
+        
+        
         void backtrack() override;
         void backtrackToStart() override;
         void conflictAnalysis() override;
         void resolution(ClauseLiterals, ClauseLiterals) override;
         cnf::Variable* pickBranchingVariable() override;
         void propagate() override;
+        void updateActivity() override;
         
         void exhaustivePropagate();
         

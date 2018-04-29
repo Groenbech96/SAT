@@ -23,7 +23,6 @@
 		3A25847B208DD35200ADC8A7 /* Randomizer.h in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F920866209008B28D7 /* Randomizer.h */; };
 		3A258480208F201500ADC8A7 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A25847F208F201500ADC8A7 /* test.cpp */; };
 		3A714B042094FFA400645DC4 /* benchmarks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A714AF82094FEED00645DC4 /* benchmarks.cpp */; };
-		3A714B072095059200645DC4 /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC21CCF20867287004D4384 /* gtest.framework */; };
 		3A714B0820950B1800645DC4 /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3D4208660BC008B28D7 /* App.cpp */; };
 		3A714B0920950B1800645DC4 /* Solver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3D7208660F6008B28D7 /* Solver.cpp */; };
 		3A714B0A20950B1800645DC4 /* ProbabilisticSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3DA2086611C008B28D7 /* ProbabilisticSolver.cpp */; };
@@ -94,6 +93,8 @@
 		3A25847E208F0B4700ADC8A7 /* A_unitTest3.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = A_unitTest3.cnf; sourceTree = "<group>"; };
 		3A25847F208F201500ADC8A7 /* test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		3A28BDE72090C4380057D840 /* A_unitTest5Res.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = A_unitTest5Res.cnf; sourceTree = "<group>"; };
+		3A41A31A2095CEFC00D49C7B /* CDCLv2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CDCLv2.json; sourceTree = "<group>"; };
+		3A41A31B20962C0500D49C7B /* Schonings.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Schonings.json; sourceTree = "<group>"; };
 		3A7147032093BD1300645DC4 /* test1.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = test1.cnf; sourceTree = "<group>"; };
 		3A7147042093BFAD00645DC4 /* ClauseStates.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = ClauseStates.cnf; sourceTree = "<group>"; };
 		3A7147052093C1FB00645DC4 /* ClauseStatesUnit.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = ClauseStatesUnit.cnf; sourceTree = "<group>"; };
@@ -1107,7 +1108,7 @@
 		3A714AF82094FEED00645DC4 /* benchmarks.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = benchmarks.cpp; sourceTree = "<group>"; };
 		3A714AFD2094FF7100645DC4 /* SatBenchmark */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SatBenchmark; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A714B052095023300645DC4 /* example.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
-		3A714B062095041E00645DC4 /* CDCL.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CDCL.json; sourceTree = "<group>"; };
+		3A714B062095041E00645DC4 /* CDCLv1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CDCLv1.json; sourceTree = "<group>"; };
 		3A74433C20908D1B00C06E67 /* A_unitTest4.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = A_unitTest4.cnf; sourceTree = "<group>"; };
 		3AC21CCF20867287004D4384 /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = lib/gtest.framework; sourceTree = "<group>"; };
 		3AC220BE2087441B004D4384 /* uf20-0778.cnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uf20-0778.cnf"; sourceTree = "<group>"; };
@@ -2154,7 +2155,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A714B072095059200645DC4 /* gtest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3205,7 +3205,9 @@
 			children = (
 				3A714AF82094FEED00645DC4 /* benchmarks.cpp */,
 				3A714B052095023300645DC4 /* example.json */,
-				3A714B062095041E00645DC4 /* CDCL.json */,
+				3A714B062095041E00645DC4 /* CDCLv1.json */,
+				3A41A31A2095CEFC00D49C7B /* CDCLv2.json */,
+				3A41A31B20962C0500D49C7B /* Schonings.json */,
 			);
 			path = benchmarks;
 			sourceTree = "<group>";
@@ -4548,7 +4550,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/googletest/googletest/xcode/includes/gtest/Build/Products/Release",
 					"$(PROJECT_DIR)/lib",
 				);
 				HEADER_SEARCH_PATHS = (
@@ -4567,7 +4568,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/googletest/googletest/xcode/includes/gtest/Build/Products/Release",
 					"$(PROJECT_DIR)/lib",
 				);
 				HEADER_SEARCH_PATHS = (

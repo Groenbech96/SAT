@@ -70,6 +70,7 @@ void algorithms::CDCLSolver::addToImplicationGraph(cnf::Variable *v, int decisio
     this->graph.addVertex(v, decisionLvl, antecedentClause);
 }
 
+
 void algorithms::CDCLSolver::addConflict(cnf::Clause *c) {
     this->graph.addVertex(nullptr, this->decisionLevel, c->getId());
     
@@ -102,6 +103,7 @@ void algorithms::CDCLSolver::findUIP(cnf::Clause c1, cnf::Clause reason, int lev
             // No UIP was found
             // Last UIP is decision variable itself + all variables assigned at levels with a value less than that of the conflict level and the actual decision variable whose assignment was responsible for the confict.
             this->learnClauseLiterals.clear();
+       
             for(auto kv : this->graph.graphMap) {
                 
                 auto vex = kv.second;
@@ -118,6 +120,8 @@ void algorithms::CDCLSolver::findUIP(cnf::Clause c1, cnf::Clause reason, int lev
     }
     
 }
+
+
 
 
 algorithms::ClauseLiterals algorithms::CDCLSolver::getLearnedClause() {
@@ -143,13 +147,13 @@ int algorithms::CDCLSolver::getAssertionLevel() {
     int m2 = -1;
     
     if(this->learnClauseLiterals.size() == 1) {
-        
         auto pvar = learnClauseLiterals.begin()->second.pVar;
         auto search = this->graph.getVertex(pvar);
         auto vex = search.get();
         if(search == boost::none) {
             // Do some error handling here
         }
+        
         auto vexDL = vex->decisionLevel;
         return (vexDL == 0) ? -1 : 0;
         

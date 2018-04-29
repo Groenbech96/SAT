@@ -334,10 +334,10 @@ TEST_F(AlgorithmFixture, CompleteTestC) {
     
     //cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/CompleteTestB.cnf").parse();
     
-    for(int i = 1; i <= 5; i++) {
+    for(int i = 1; i <= 1000; i++) {
         this->satisfiableClauses = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf50-218/";
         std::string file = this->satisfiableClauses + "uf50-0" + std::to_string(i) + ".cnf";
-        //std::cout << file << std::endl;
+        std::cout << file << std::endl;
         
         cnf::Formula *f = util::Parser(file.c_str()).parse();
         
@@ -373,9 +373,6 @@ TEST_F(AlgorithmFixture, BenchmarkUF20) {
         
         
     }
-    
-    
-    
     
 }
     

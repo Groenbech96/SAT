@@ -12,8 +12,12 @@
 void algorithms::DTUSat::setup(cnf::Formula formula) {
     
     this->_formula = formula;
+    
+    for(auto it : this->_formula.getVariables()) {
+        this->activity.insert(std::make_pair(it.second, 0));
+    }
+    
     this->graph = util::Graph();
-
 }
 
 bool algorithms::DTUSat::solve() {
@@ -59,8 +63,21 @@ bool algorithms::DTUSat::solve() {
 }
 
 
-// TODO: Implement
+
 cnf::Variable* algorithms::DTUSat::pickBranchingVariable() {
+    
+    
+    float max = 0;
+    cnf::Variable *maxVar = nullptr;
+    for(auto it = this->activity.begin(); it != this->activity.end(); it++) {
+        if(it->second >= max && it->first->getAssignment() == cnf::UNASSIGNED) {
+            max = it->second;
+            maxVar = it->first;
+        }
+    }
+    //std::cout << maxVar->getKey() << " " << maxVar->getAssignment() << " score: " << max << std::endl;
+    return maxVar;
+    
     
     // Set always to true
     for(auto kv : this->_formula.getVariables()) {
@@ -73,10 +90,9 @@ cnf::Variable* algorithms::DTUSat::pickBranchingVariable() {
 }
 
 
-// TODO: Implement
 void algorithms::DTUSat::backtrack() {
     
-    this->graph.backtrack(this->beta);
+    this->graph.undo(this->beta);
     
     for(auto v : this->graph.rm) {
         delete v;
@@ -131,6 +147,23 @@ void algorithms::DTUSat::print(std::stack<cnf::Variable *> s)
     std::cout << x->getKey() << " ";
 }
 
+
+void algorithms::DTUSat::updateActivity() {
+    // Additive bump
+    for(auto it : this->getLearnedClause()) {
+        this->activity.find(it.second.pVar)->second += 1;
+    }
+    
+    // Decay
+    for(auto it = this->activity.begin(); it != this->activity.end(); it++) {
+        it->second = it->second * 0.95;
+        //std::cout << it->first->getKey() << " ";
+        //std::cout << this->activity.find(it->first)->second << std::endl;
+    }
+    
+}
+
+
 void algorithms::DTUSat::conflictAnalysis() {
     
     auto var = this->graph.getStack()->top();
@@ -151,6 +184,8 @@ void algorithms::DTUSat::conflictAnalysis() {
     findUIP(*conflict, *reason, conflictLevel);
     
     backtrack = this->getAssertionLevel();
+    
+    updateActivity();
     
     this->_formula.addClause(this->learnClauseLiterals);
     this->setBeta(backtrack);

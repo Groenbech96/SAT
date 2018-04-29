@@ -37,6 +37,8 @@ bool util::Graph::deleteVertex(cnf::Variable* vexVar) {
     if(search != boost::none) {
         
         auto vex = search.get();
+        
+            
         this->graphMap.erase(vexVar);
         delete vex;
         
@@ -50,13 +52,6 @@ std::stack<cnf::Variable*>* util::Graph::getStack() {
     return this->graphStack;
 }
 
-bool util::Graph::deleteVertex(util::vertex* vex) {
-    //auto vex = new vertex(vexVar, -1, -1);
-    
-    return true;
-   
-}
-
 boost::optional<util::vertex*> util::Graph::getVertex(cnf::Variable *v) {
     
     auto res = this->graphMap.find(v);
@@ -68,7 +63,7 @@ boost::optional<util::vertex*> util::Graph::getVertex(cnf::Variable *v) {
 }
 
 
-void util::Graph::backtrack(int level) {
+void util::Graph::undo(int level) {
     
 
     auto it = this->graphMap.begin();
@@ -96,10 +91,10 @@ void util::Graph::backtrack(int level) {
             if(it->second->var != nullptr) {
                 it->second->var->setAssignment(cnf::UNASSIGNED);
             }
+            
             delete it->second;
             it = this->graphMap.erase(it);
         
-            
         }
         
     }

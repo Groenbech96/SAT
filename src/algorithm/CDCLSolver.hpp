@@ -27,9 +27,11 @@ namespace algorithms {
         virtual void backtrack()                                                                                        = 0; // Backtrack to certain decision level
         virtual void backtrackToStart()                                                                                 = 0; // Backtrack to level 0
         virtual void conflictAnalysis()                                                                                 = 0; // Do conflict analysis
+        virtual void updateActivity() = 0;
         virtual void propagate()                                                                                        = 0; // Do unit propagation
         virtual void resolution(ClauseLiterals, ClauseLiterals)     = 0; // Do resoultion between to clauses
         virtual cnf::Variable* pickBranchingVariable()                                                                  = 0; // Pick next decided variable
+        
         
         int getGraphSize();
         
@@ -54,20 +56,23 @@ namespace algorithms {
         util::Graph graph;                  // Graph object
         ClauseLiterals learnClauseLiterals; // Learned clause
         ClauseLiterals getLearnedClause();
-        
+        std::unordered_map<cnf::Variable*, float> activity;
         // Helper functions
         
         bool isImpliedLiteralAtDesicionLevel(cnf::Clause *c, cnf::Literal l, int d);
         int getAssertionLevel(cnf::Clause *c);
         void addToImplicationGraph(cnf::Variable *v, int decisionLvl, int antecedentClause);
-        void addConflict(cnf::Clause *c);
+        
         void findUIP(cnf::Clause c1, cnf::Clause reason, int level);
         bool isUIP(ClauseLiterals, int);
         int getAssertionLevel();
         
+        // Not used atm
+        void addConflict(cnf::Clause *c);
+        
+        
     private:
-        // Used for internal structure
-        bool conflictClauseUpdated;
+        
     
         
         
