@@ -85,4 +85,29 @@ BENCHMARK_F(BenchmarkFixture, SolveUF20, 50, 1) {
     
 }
 
+BENCHMARK_F(BenchmarkFixture, SolveUF20TOTAL, 2, 2) {
+    
+   
+    for(int i = 1; i <= 1000; i++) {
+        
+        std::string file = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/uf20-0" + std::to_string(i) + ".cnf";
+        util::Parser *p = new util::Parser(file.c_str());
+        
+        cnf::Formula *f = p->parse();
+        
+        algorithms::DTUSat *solver = new algorithms::DTUSat();
+        solver->setup(*f);
+        bool res = false;
+        res = solver->solve();
+        
+        
+        delete solver;
+        delete p;
+        delete f;
+        
+    }
+    
+    
+}
+
 

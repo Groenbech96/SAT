@@ -186,7 +186,6 @@ TEST_F(AlgorithmFixture, CDCLUnitPropagationTestThree) {
 }
 
     
-
 TEST_F(AlgorithmFixture, CDCLUnitResolutionTest) {
     
     cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ResolutionTest.cnf").parse();
@@ -208,6 +207,31 @@ TEST_F(AlgorithmFixture, CDCLUnitResolutionTest) {
     
     auto m3 = solver->getLearnedClause();
     ASSERT_EQ(m3.size(), 1);
+    
+}
+    
+TEST_F(AlgorithmFixture, CDCLUnitResolutionTestTwo) {
+    
+    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ResolutionTest.cnf").parse();
+    
+    algorithms::DTUSat *solver = new algorithms::DTUSat();
+    solver->setup(*f);
+    
+    std::unordered_map<int, cnf::Literal> m1;
+    std::unordered_map<int, cnf::Literal> m2;
+    
+    m1.insert(std::make_pair(1, f->getClause(1)->getLiteral(1).get()));
+    m1.insert(std::make_pair(3, f->getClause(2)->getLiteral(3).get()));
+    m1.insert(std::make_pair(4, f->getClause(3)->getLiteral(4).get()));
+    
+    m2.insert(std::make_pair(0, f->getClause(0)->getLiteral(0).get()));
+    m2.insert(std::make_pair(1, f->getClause(1)->getLiteral(1).get()));
+    m2.insert(std::make_pair(3, f->getClause(4)->getLiteral(3).get()));
+    
+    solver->resolution(m1, m2);
+    
+    auto m3 = solver->getLearnedClause();
+    ASSERT_EQ(m3.size(), 3);
     
 }
 
@@ -296,12 +320,12 @@ TEST_F(AlgorithmFixture, CompleteTestB) {
         bool res = false;
         res = solver->solve();
         
-        if(res) {
-            std::cout << "SAT" + std::to_string(i) << std::endl;
-        } else {
-            exit(10);
-        }
+        ASSERT_TRUE(res);
+        ASSERT_FALSE(solver->getFormulaState().hasUnsatisfiedClauses());
         
+        solver->getFormulaState().clean();
+        delete f;
+        delete solver;
     }
     
 }
@@ -310,7 +334,7 @@ TEST_F(AlgorithmFixture, CompleteTestC) {
     
     //cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/CompleteTestB.cnf").parse();
     
-    for(int i = 1; i <= 1000; i++) {
+    for(int i = 1; i <= 5; i++) {
         this->satisfiableClauses = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf50-218/";
         std::string file = this->satisfiableClauses + "uf50-0" + std::to_string(i) + ".cnf";
         //std::cout << file << std::endl;
@@ -322,11 +346,8 @@ TEST_F(AlgorithmFixture, CompleteTestC) {
         bool res = false;
         res = solver->solve();
         
-        if(res) {
-            std::cout << "SAT" + std::to_string(i) << std::endl;
-        } else {
-            exit(10);
-        }
+        ASSERT_TRUE(res);
+        ASSERT_FALSE(solver->getFormulaState().hasUnsatisfiedClauses());
         
     }
     
@@ -347,11 +368,9 @@ TEST_F(AlgorithmFixture, BenchmarkUF20) {
         bool res = false;
         res = solver->solve();
         
-        if(res) {
-            std::cout << "SAT" + std::to_string(i) << std::endl;
-        } else {
-            exit(10);
-        }
+        ASSERT_TRUE(res);
+        ASSERT_FALSE(solver->getFormulaState().hasUnsatisfiedClauses());
+        
         
     }
     

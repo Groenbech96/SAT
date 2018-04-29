@@ -30,7 +30,6 @@ namespace algorithms {
         virtual void propagate()                                                                                        = 0; // Do unit propagation
         virtual void resolution(ClauseLiterals, ClauseLiterals)     = 0; // Do resoultion between to clauses
         virtual cnf::Variable* pickBranchingVariable()                                                                  = 0; // Pick next decided variable
-        virtual bool hasConflict()                                                                                      = 0; // Do a conflict exist
         
         int getGraphSize();
         
@@ -40,23 +39,35 @@ namespace algorithms {
         void setDecisionLevel(int dl);
         
         
+        cnf::Clause * getConflictClause();
+        
         bool canBacktrack();
         bool hasUnitClause();
         bool hasUndecidedVariables();
+        bool hasConflict();
         
     protected:
         
         int decisionLevel   = 0; // Current decision level
         int beta            = 0; // Current level to backtrack to
         
-        util::Graph graph; // Graph object
+        util::Graph graph;                  // Graph object
+        ClauseLiterals learnClauseLiterals; // Learned clause
+        ClauseLiterals getLearnedClause();
         
         // Helper functions
         
         bool isImpliedLiteralAtDesicionLevel(cnf::Clause *c, cnf::Literal l, int d);
         int getAssertionLevel(cnf::Clause *c);
+        void addToImplicationGraph(cnf::Variable *v, int decisionLvl, int antecedentClause);
+        void addConflict(cnf::Clause *c);
+        void findUIP(cnf::Clause c1, cnf::Clause reason, int level);
+        bool isUIP(ClauseLiterals, int);
+        int getAssertionLevel();
         
-    
+    private:
+        // Used for internal structure
+        bool conflictClauseUpdated;
     
         
         
