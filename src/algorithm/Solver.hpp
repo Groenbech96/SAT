@@ -10,6 +10,9 @@
 #define Solver_hpp
 
 #include "Formula.hpp"
+#include <string>
+#include "Output.hpp"
+#include "Config.hpp"
 
 // Virtual Solver Class
 // Has to be implemented by derived class
@@ -20,17 +23,24 @@ namespace algorithms {
     
     public:
         
+        Solver();
+        Solver(std::string outputFile);
+        
         // Pure virtual functions
         virtual ~Solver() = 0;
 
     protected:
         
         cnf::Formula _formula;
+        util::Output outputter;
         
         // Pure virtual functions
         virtual void setup(cnf::Formula f) = 0;
         virtual bool solve() = 0;
         
+    private:
+        
+        bool output;
         
     };
     

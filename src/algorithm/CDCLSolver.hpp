@@ -18,9 +18,12 @@ namespace algorithms {
     
     typedef std::unordered_map<int, cnf::Literal> ClauseLiterals;
     
-    class CDCLSolver : virtual public Solver {
+    class CDCLSolver : public Solver {
         
     public:
+        
+        CDCLSolver() : Solver() {}
+        CDCLSolver(std::string outputFile) : Solver(outputFile) {}
         
         // Pure virtual functions
         virtual ~CDCLSolver()                                                                                           = 0;
@@ -34,10 +37,9 @@ namespace algorithms {
         
         
         int getGraphSize();
-        
         int getBeta();
-        void setBeta(int b);
         int getDecisionLevel();
+        void setBeta(int b);
         void setDecisionLevel(int dl);
         
         
@@ -52,6 +54,8 @@ namespace algorithms {
         
         int decisionLevel   = 0; // Current decision level
         int beta            = 0; // Current level to backtrack to
+        bool output         = false;
+        
         
         util::Graph graph;                  // Graph object
         ClauseLiterals learnClauseLiterals; // Learned clause

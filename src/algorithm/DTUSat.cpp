@@ -45,6 +45,9 @@ bool algorithms::DTUSat::solve() {
         } else {
             if(!this->_formula.hasUnsatisfiedClauses()) {
                 
+                this->outputter.addSolution(this->_formula.getVariables());
+                this->outputter.close();
+                
                 return true;
             
             } else {
@@ -77,16 +80,7 @@ cnf::Variable* algorithms::DTUSat::pickBranchingVariable() {
     }
     //std::cout << maxVar->getKey() << " " << maxVar->getAssignment() << " score: " << max << std::endl;
     return maxVar;
-    
-    
-    // Set always to true
-    for(auto kv : this->_formula.getVariables()) {
-        if(kv.second->getAssignment() == cnf::UNASSIGNED) {
-            return kv.second;
-        }
-    }
-    
-    return nullptr;
+
 }
 
 

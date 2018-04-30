@@ -9,6 +9,7 @@
 #include "CDCLSolver.hpp"
 
 
+
 // Provide a definition for destructor.
 algorithms::CDCLSolver::~CDCLSolver() {}
 

@@ -24,14 +24,15 @@ namespace algorithms {
     class DTUSat : public CDCLSolver {
         
     public:
-        DTUSat() = default;
+        DTUSat() : CDCLSolver() {}
+        DTUSat(std::string outputFile) : CDCLSolver(outputFile) {}
         ~DTUSat()  = default;
         
         void setup(cnf::Formula formula) override;
         bool solve() override;
         
         //void printGraph();
-        
+    
         cnf::Formula & getFormulaState();
         
         

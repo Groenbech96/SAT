@@ -18,6 +18,7 @@ namespace algorithms {
         
     public:
         Schonings() : ProbabilisticSolver() {}
+        Schonings(std::string outputFile) : ProbabilisticSolver(outputFile) {}
         ~Schonings() = default;
         
         /// Setup a formula to solve

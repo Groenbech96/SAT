@@ -8,6 +8,17 @@
 
 #include "Solver.hpp"
 
+algorithms::Solver::Solver() {
+    this->output = false;
+}
+
+
+algorithms::Solver::Solver(std::string outputFile) {
+    this->output = true;
+    util::Config config = util::Config("Solver","example.json");
+    this->outputter = util::Output(config);
+}
+
 // Provide a definition for destructor.  
 algorithms::Solver::~Solver() {}
 

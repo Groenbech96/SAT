@@ -13,10 +13,11 @@
 
 namespace algorithms {
     
-    class ProbabilisticSolver : virtual public Solver {
+    class ProbabilisticSolver : public Solver {
 
     public:
-        ProbabilisticSolver() : Solver() {};
+        ProbabilisticSolver() : Solver() {}
+        ProbabilisticSolver(std::string outputFile) : Solver(outputFile) {}
         virtual ~ProbabilisticSolver() = 0;
         
         
