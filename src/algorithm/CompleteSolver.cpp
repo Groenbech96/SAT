@@ -69,116 +69,119 @@ algorithms::UnitPropagationResult algorithms::CompleteSolver::unitPropagation(in
 
 int algorithms::CompleteSolver::conflictAnalysis() {
     
-    // Get the conflict clause k
+//    // Get the conflict clause k
+//
+//    auto search = this->graph.getVertex(nullptr);
+//    util::vertex* conflictVertex = search.get();
+//
+//    if(search == boost::none) { exit(10); }
+//
+//    int currentDecisionLevel = conflictVertex->decisionLevel;
+//    int assertionLevel;
+//
+//    // Get the antecedent clause of k
+//    int antecedentClauseID = conflictVertex->antecedentClauseID;
+//    auto antecedentClause = this->formula.getClauseSet().find(antecedentClauseID)->second;
+//
+//    // Queue of literals assigned in this decision level
+//    std::queue<cnf::Literal> *q = new std::queue<cnf::Literal>;
+//    std::unordered_map<int, cnf::Literal> *visitedLiterals = new std::unordered_map<int, cnf::Literal>;
+//    // Temporary learning clause - set
+//
+//    auto tempClauseMap = convertClauseToMap(antecedentClause);
+//    //std::cout << "conflict analysis started with " + antecedentClause->string()  << std::endl;
+//
+//
+//    int literalInCurrentDL = 0;
+//    for(auto it = tempClauseMap->begin(); it != tempClauseMap->end(); ++it) {
+//
+//        auto search = this->graph.getVertex(it->second.pVar);
+//        auto vex = search.get();
+//        if(search == boost::none) {
+//            // Do some error handling here
+//            // TODO: ERROR HANDLE
+//            //std::cout << "error 2" << std::endl;
+//        }
+//        if(vex->decisionLevel == currentDecisionLevel) {
+//            literalInCurrentDL++;
+//        }
+//        //cnf::Literal l = antecedentClause->getLiteral(id).get();
+//
+//        //std::cout << "here 1" << std::endl;
+//        if(isImpliedLiteralAtDesicionLevel(it->second, currentDecisionLevel))
+//            q->push(it->second);
+//    }
+//
+//    // If the first clause what a UIP, then return it
+//    if(literalInCurrentDL == 1) {
+//        this->formula.addClause(*tempClauseMap);
+//        int lvl = getAssertionLevel(tempClauseMap);
+//        delete tempClauseMap;
+//        delete q;
+//        delete visitedLiterals;
+//        return lvl;
+//    }
+//
+//    while(!q->empty()) {
+//
+//        auto l = q->front();
+//        q->pop();
+//
+//        visitedLiterals->insert({l.pVar->getKey(), l});
+//
+//        auto search = this->graph.getVertex(l.pVar);
+//        auto v = search.get();
+//        if(search == boost::none) {
+//            // Do some error handling here
+//            // TODO: ERROR HANDLE
+//            //std::cout << "error 3" << std::endl;
+//        }
+//
+//        int antecedentClauseID = v->antecedentClauseID;
+//        auto antecedentClause = this->formula.getClauseSet().find(antecedentClauseID)->second;
+//
+//        resolutionOperation(tempClauseMap, antecedentClause, q, visitedLiterals, currentDecisionLevel);
+//
+//        int literalInCurrentDL = 0;
+//        for(auto it = tempClauseMap->begin(); it != tempClauseMap->end(); ++it) {
+//            auto search = this->graph.getVertex(it->second.pVar);
+//            auto vex = search.get();
+//            if(search == boost::none) {
+//                // Do some error handling here
+//                // TODO: ERROR HANDLE
+//                //std::cout << "error 4" << std::endl;
+//            }
+//            if(vex->decisionLevel == currentDecisionLevel) {
+//                literalInCurrentDL++;
+//            }
+//        }
+//
+//        // If learned clause is UIP, then return it
+//        if(literalInCurrentDL == 1) {
+//            this->formula.addClause(*tempClauseMap);
+//            int lvl = getAssertionLevel(tempClauseMap);
+//            delete tempClauseMap;
+//            delete q;
+//            delete visitedLiterals;
+//
+//            return lvl;
+//        }
+//
+//
+//    }
+//
+//
+//    //std::cout << "this should not" << std::endl;
+//    assertionLevel = getAssertionLevel(tempClauseMap);
+//
+//
+//    this->formula.addClause(*tempClauseMap);
+//    delete tempClauseMap;
+//    delete q;
+//    delete visitedLiterals;
+//    return assertionLevel;
     
-    auto search = this->graph.getVertex(nullptr);
-    util::vertex* conflictVertex = search.get();
-    
-    if(search == boost::none) { exit(10); }
-    
-    int currentDecisionLevel = conflictVertex->decisionLevel;
-    int assertionLevel;
-    
-    // Get the antecedent clause of k
-    int antecedentClauseID = conflictVertex->antecedentClauseID;
-    auto antecedentClause = this->formula.getClauseSet().find(antecedentClauseID)->second;
-
-    // Queue of literals assigned in this decision level
-    std::queue<cnf::Literal> *q = new std::queue<cnf::Literal>;
-    std::unordered_map<int, cnf::Literal> *visitedLiterals = new std::unordered_map<int, cnf::Literal>;
-    // Temporary learning clause - set
-    
-    auto tempClauseMap = convertClauseToMap(antecedentClause);
-    //std::cout << "conflict analysis started with " + antecedentClause->string()  << std::endl;
-    
-    
-    int literalInCurrentDL = 0;
-    for(auto it = tempClauseMap->begin(); it != tempClauseMap->end(); ++it) {
-       
-        auto search = this->graph.getVertex(it->second.pVar);
-        auto vex = search.get();
-        if(search == boost::none) {
-            // Do some error handling here
-            // TODO: ERROR HANDLE
-            //std::cout << "error 2" << std::endl;
-        }
-        if(vex->decisionLevel == currentDecisionLevel) {
-            literalInCurrentDL++;
-        }
-        //cnf::Literal l = antecedentClause->getLiteral(id).get();
-        
-        //std::cout << "here 1" << std::endl;
-        if(isImpliedLiteralAtDesicionLevel(it->second, currentDecisionLevel))
-            q->push(it->second);
-    }
-    
-    // If the first clause what a UIP, then return it
-    if(literalInCurrentDL == 1) {
-        this->formula.addClause(*tempClauseMap);
-        int lvl = getAssertionLevel(tempClauseMap);
-        delete tempClauseMap;
-        delete q;
-        delete visitedLiterals;
-        return lvl;
-    }
-    
-    while(!q->empty()) {
-
-        auto l = q->front();
-        q->pop();
-        
-        visitedLiterals->insert({l.pVar->getKey(), l});
-    
-        auto search = this->graph.getVertex(l.pVar);
-        auto v = search.get();
-        if(search == boost::none) {
-            // Do some error handling here
-            // TODO: ERROR HANDLE
-            //std::cout << "error 3" << std::endl;
-        }
-        
-        int antecedentClauseID = v->antecedentClauseID;
-        auto antecedentClause = this->formula.getClauseSet().find(antecedentClauseID)->second;
-        
-        resolutionOperation(tempClauseMap, antecedentClause, q, visitedLiterals, currentDecisionLevel);
-        
-        int literalInCurrentDL = 0;
-        for(auto it = tempClauseMap->begin(); it != tempClauseMap->end(); ++it) {
-            auto search = this->graph.getVertex(it->second.pVar);
-            auto vex = search.get();
-            if(search == boost::none) {
-                // Do some error handling here
-                // TODO: ERROR HANDLE
-                //std::cout << "error 4" << std::endl;
-            }
-            if(vex->decisionLevel == currentDecisionLevel) {
-                literalInCurrentDL++;
-            }
-        }
-        
-        // If learned clause is UIP, then return it
-        if(literalInCurrentDL == 1) {
-            this->formula.addClause(*tempClauseMap);
-            int lvl = getAssertionLevel(tempClauseMap);
-            delete tempClauseMap;
-            delete q;
-            delete visitedLiterals;
-            
-            return lvl;
-        }
-        
-    }
-    
-    
-    //std::cout << "this should not" << std::endl;
-    assertionLevel = getAssertionLevel(tempClauseMap);
-
-    
-    this->formula.addClause(*tempClauseMap);
-    delete tempClauseMap;
-    delete q;
-    delete visitedLiterals;
-    return assertionLevel;
+    return 0;
 }
 
 
