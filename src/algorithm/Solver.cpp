@@ -8,4 +8,6 @@
 
 #include "Solver.hpp"
 
+// Provide a definition for destructor.  
+algorithms::Solver::~Solver() {}
 

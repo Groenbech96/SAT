@@ -14,12 +14,17 @@
 #include "Parser.hpp"
 
 
+util::Parser::~Parser() {
+    
+}
+
 util::Parser::Parser(const char *fn) {
     this->m_fn = fn;
     struct stat info;
     if(stat(this->m_fn, &info)) {
         throw ParserException(this->m_fn, "is not in directory");
     }
+    
     this->m_input = new std::fstream(fn, std::fstream::in);
     if(this->m_input->fail())
         throw ParserException(this->m_fn, "wont open");
@@ -83,6 +88,7 @@ cnf::Formula* util::Parser::parse() {
                         
                         auto inLine = new std::istringstream(line);
                         std::unordered_map<int, cnf::Literal> clauseLiterals = this->parseLine(inLine, variableSet);
+                    
                         
                         for(auto it : clauseLiterals) {
                             usedVars.insert(it.first);
@@ -113,7 +119,7 @@ cnf::Formula* util::Parser::parse() {
                 
                 // TODO: Implement more than 3-SAT here
                 f = new cnf::Formula(3, nClauses, nVars, variableSet, clauseSet);
-                // cnfs.insert(pFormula);
+                
                 
                 // clear containers
                 variableSet.clear();
@@ -137,6 +143,8 @@ cnf::Formula* util::Parser::parse() {
     
     // We return first element
     // return *std::next(cnfs.begin());
+    delete this->m_input;
+    
     return f;
     
 }

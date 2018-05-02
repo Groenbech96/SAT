@@ -19,16 +19,15 @@ namespace algorithms {
     public:
         Schonings() : ProbabilisticSolver() {}
         ~Schonings() = default;
-        /// Setup a formula to solve
         
+        /// Setup a formula to solve
         void setup(cnf::Formula formula) override;
     
         /// Solve method for Schonings
         bool solve() override;
        
     private:
-        
-        
+      
     };
     
 }

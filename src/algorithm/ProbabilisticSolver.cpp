@@ -7,3 +7,6 @@
 //
 
 #include "ProbabilisticSolver.hpp"
+
+// Provide a definition for destructor.
+algorithms::ProbabilisticSolver::~ProbabilisticSolver() {}

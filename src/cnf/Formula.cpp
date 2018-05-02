@@ -12,6 +12,19 @@
 
 #include "Formula.hpp"
 
+
+void cnf::Formula::clean() {
+    
+    for(auto it : this->getVariables()) {
+        delete it.second;
+    }
+    
+    for(auto it : this->getClauses()) {
+        delete it.second;
+    }
+    
+}
+
 int cnf::Formula::getM() {
     return this->m;
 }
@@ -24,11 +37,11 @@ int cnf::Formula::getN() {
     return this->n;
 }
 
-std::unordered_map<int, cnf::Variable *> &cnf::Formula::getVariableSet() {
+std::unordered_map<int, cnf::Variable *> &cnf::Formula::getVariables() {
     return this->variableSet;
 }
 
-std::unordered_map<int, cnf::Clause *> &cnf::Formula::getClauseSet() {
+std::unordered_map<int, cnf::Clause *> &cnf::Formula::getClauses() {
     return this->clauseSet;
 }
 
@@ -111,7 +124,7 @@ std::vector<cnf::Clause *> cnf::Formula::updateClauseStates() {
     
     std::vector<cnf::Clause *> unsatisfied;
     
-    for(auto kv = this->getClauseSet().begin(); kv != this->getClauseSet().end(); kv++) {
+    for(auto kv = this->getClauses().begin(); kv != this->getClauses().end(); kv++) {
         
         kv->second->evaluate();
         if(!kv->second->isSatisfied()) {
@@ -140,7 +153,7 @@ bool cnf::Formula::hasUnassignedVariables() {
     // KV = key, value
     // First = key
     // Second = Clause
-    for(auto kv : this->getVariableSet()) {
+    for(auto kv : this->getVariables()) {
         if(kv.second->getAssignment() == cnf::UNASSIGNED)
             return true;
     }
@@ -149,10 +162,11 @@ bool cnf::Formula::hasUnassignedVariables() {
 }
 
 
-//TODO: Make heuristic selection of returned clause
+
+/**
 boost::optional<cnf::Clause *> cnf::Formula::getUnitClause() {
     cnf::Clause* c = nullptr;
-    for(auto kv = this->getClauseSet().begin(); kv != this->getClauseSet().end(); kv++) {
+    for(auto kv = this->getClauses().begin(); kv != this->getClauses().end(); kv++) {
         
         if (kv->second->isUnit()) {
             c = kv->second;
@@ -163,13 +177,27 @@ boost::optional<cnf::Clause *> cnf::Formula::getUnitClause() {
         return c;
     return boost::none;
 }
+**/
+
+
+bool cnf::Formula::hasUnitClause() {
+    for(auto kv = this->getClauses().begin(); kv != this->getClauses().end(); kv++) {
+        
+        if (kv->second->isUnit()) {
+            this->_unitClause = kv->second;
+            return true;
+        }
+    }
+    return false;
+}
+
 
 bool cnf::Formula::hasUnsatisfiedClauses() {
     
     // KV = key, value
     // First = key
     // Second = Clause
-    for(auto kv = this->getClauseSet().begin(); kv != this->getClauseSet().end(); kv++) {
+    for(auto kv = this->getClauses().begin(); kv != this->getClauses().end(); kv++) {
         auto c = kv->second;
         if (!c->isSatisfied()) {
             return true;
@@ -179,9 +207,28 @@ bool cnf::Formula::hasUnsatisfiedClauses() {
     return false;
 }
 
+
+cnf::Clause* cnf::Formula::getConflictClause() {
+    return this->_conflictClause;
+}
+
+cnf::Clause* cnf::Formula::getUnitClause() {
+    return this->_unitClause;
+}
+
+bool cnf::Formula::hasConflictClause() {
+    for(auto kv = this->getClauses().begin(); kv != this->getClauses().end(); kv++) {
+        if (kv->second->containsConflict()) {
+            this->_conflictClause = kv->second;
+            return true;
+        }
+    }
+    return false;
+}
+
 boost::optional<cnf::Clause *> cnf::Formula::containsConflict() {
     
-    for(auto kv = this->getClauseSet().begin(); kv != this->getClauseSet().end(); kv++) {
+    for(auto kv = this->getClauses().begin(); kv != this->getClauses().end(); kv++) {
         
         if (kv->second->containsConflict()) {
             return kv->second;
@@ -194,13 +241,27 @@ boost::optional<cnf::Clause *> cnf::Formula::containsConflict() {
 void cnf::Formula::addClause(std::unordered_map<int, cnf::Literal> l) {
     
     cnf::Clause *c = new Clause(this->m, l);
+    
+    //std::cout << c->string() << std::endl;
+    
     this->lastAddedClause = *c;
+    // std::cout << c->string() << std::endl;
     // Important is to update m after insert! Do to zero index in map!!!
     this->clauseSet.insert({this->m, c});
     this->m++;
-    
-    
 }
+
+cnf::Clause* cnf::Formula::addClause() {
+    
+    cnf::Clause *c = new Clause(this->m);
+    this->lastAddedClause = *c;
+    // std::cout << c->string() << std::endl;
+    // Important is to update m after insert! Do to zero index in map!!!
+    this->clauseSet.insert({this->m, c});
+    this->m++;
+    return c;
+}
+
 
 cnf::Clause & cnf::Formula::getLastAddedClause() {
     return lastAddedClause;
@@ -211,7 +272,7 @@ std::string cnf::Formula::string() {
     
     std::string s = "[ ";
     
-    for(auto kv = this->getClauseSet().begin(); kv != this->getClauseSet().end(); kv++) {
+    for(auto kv = this->getClauses().begin(); kv != this->getClauses().end(); kv++) {
         std::string cs = kv->second->string();
         s+=cs + " ";
     }
@@ -220,3 +281,9 @@ std::string cnf::Formula::string() {
     
     return s;
 }
+
+// TODO: handle no found
+cnf::Clause *cnf::Formula::getClause(int id) {
+    return this->clauseSet.find(id)->second;
+}
+

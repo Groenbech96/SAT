@@ -16,7 +16,7 @@
 namespace cnf {
     
     enum VariableAssignment {
-        UNASSIGNED, FALSE, TRUE
+        UNASSIGNED, V_FALSE, V_TRUE
     };
     
     class Variable {
@@ -73,7 +73,6 @@ namespace cnf {
          * The assignment can be TRUE, FAlSE, or UNASSIGNED
          */
         VariableAssignment assignment;
-        
         
         
     };

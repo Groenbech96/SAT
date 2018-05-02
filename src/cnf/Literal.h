@@ -17,11 +17,11 @@
 
 namespace cnf {
     
-    /**
-     * Literal consist of two tings
-     * (1) a pointer to a variable in the formula
-     * (2) a flag that is true if literal is negated in formula
-     */
+    ///
+    /// Literal consist of two tings
+    /// A pointer to a variable in the formula
+    /// A flag that is true if literal is negated in formula
+    ///
     struct Literal {
         Variable * pVar;
         bool isNegated;

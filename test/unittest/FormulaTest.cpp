@@ -46,7 +46,7 @@ TEST_F(FormulaFixture, ConstructorTest) {
     ASSERT_EQ(randomFormula->getM(), m);
     ASSERT_EQ(randomFormula->getN(), n);
     
-    ASSERT_EQ(randomFormula->getClauseSet().size(), m);
+    ASSERT_EQ(randomFormula->getClauses().size(), m);
 }
 
 ///
@@ -55,7 +55,7 @@ TEST_F(FormulaFixture, ConstructorTest) {
 TEST_F(FormulaFixture, VariableMapTest) {
     
     std::unordered_map<int, cnf::Variable*> vmap;
-    for(auto it = randomFormula->getClauseSet().begin(); it != randomFormula->getClauseSet().end(); it++) {
+    for(auto it = randomFormula->getClauses().begin(); it != randomFormula->getClauses().end(); it++) {
         
         auto clause = it->second;
         
@@ -67,12 +67,12 @@ TEST_F(FormulaFixture, VariableMapTest) {
         }
     }
     
-    ASSERT_TRUE(vmap.size() == randomFormula->getVariableSet().size());
+    ASSERT_TRUE(vmap.size() == randomFormula->getVariables().size());
     
     // check that they contain same elements
     for(auto it = vmap.begin(); it != vmap.end(); ++it) {
         int i = it->first;
-        ASSERT_TRUE(randomFormula->getVariableSet().find(i) != randomFormula->getVariableSet().end());
+        ASSERT_TRUE(randomFormula->getVariables().find(i) != randomFormula->getVariables().end());
     }
 }
 
@@ -89,11 +89,11 @@ TEST_F(FormulaFixture, UnassignedClauses) {
 ///
 TEST_F(FormulaFixture, NoUnassignedClauses) {
     
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/A_updateClauseStates.cnf").parse();
+    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ClauseStates.cnf").parse();
     
-    for(auto it = f->getClauseSet().begin(); it != f->getClauseSet().end(); ++it) {
+    for(auto it = f->getClauses().begin(); it != f->getClauses().end(); ++it) {
         for(auto it1 = it->second->getLiterals().begin(); it1 != it->second->getLiterals().end(); it1++) {
-            it1->second.pVar->setAssignment(it1->second.isNegated ? cnf::FALSE : cnf::TRUE);
+            it1->second.pVar->setAssignment(it1->second.isNegated ? cnf::V_FALSE : cnf::V_TRUE);
         }
 
     }
@@ -112,8 +112,8 @@ TEST_F(FormulaFixture, UnassignedVariables) {
 ///
 TEST_F(FormulaFixture, NoUnassignedVariables) {
     
-    for(auto it = randomFormula->getVariableSet().begin(); it != randomFormula->getVariableSet().end(); ++it) {
-        it->second->setAssignment(cnf::TRUE);
+    for(auto it = randomFormula->getVariables().begin(); it != randomFormula->getVariables().end(); it++) {
+        it->second->setAssignment(cnf::V_TRUE);
     }
     ASSERT_FALSE(this->randomFormula->hasUnassignedVariables());
 }
@@ -126,16 +126,16 @@ TEST_F(FormulaFixture, NoUnassignedVariables) {
 TEST_F(FormulaFixture, VariableSetChangeAssignmentTestOne) {
     
     int clauseN = 0;
-    int key = randomFormula->getClauseSet().at(clauseN)->getLiterals().begin()->first;
+    int key = randomFormula->getClauses().at(clauseN)->getLiterals().begin()->first;
     
-    int id = randomFormula->getClauseSet().at(clauseN)->getLiterals().at(key).pVar->getKey();
-    ASSERT_EQ(randomFormula->getClauseSet().at(clauseN)->getLiterals().at(key).pVar->getAssignment(), cnf::UNASSIGNED);
-    ASSERT_EQ(randomFormula->getVariableSet().at(id)->getAssignment(), cnf::UNASSIGNED);
+    int id = randomFormula->getClauses().at(clauseN)->getLiterals().at(key).pVar->getKey();
+    ASSERT_EQ(randomFormula->getClauses().at(clauseN)->getLiterals().at(key).pVar->getAssignment(), cnf::UNASSIGNED);
+    ASSERT_EQ(randomFormula->getVariables().at(id)->getAssignment(), cnf::UNASSIGNED);
     
     
-    randomFormula->getClauseSet().at(clauseN)->getLiterals().at(key).pVar->setAssignment(cnf::TRUE);
-    ASSERT_EQ(randomFormula->getClauseSet().at(clauseN)->getLiterals().at(key).pVar->getAssignment(), cnf::TRUE);
-    ASSERT_EQ(randomFormula->getVariableSet().at(id)->getAssignment(), cnf::TRUE);
+    randomFormula->getClauses().at(clauseN)->getLiterals().at(key).pVar->setAssignment(cnf::V_TRUE);
+    ASSERT_EQ(randomFormula->getClauses().at(clauseN)->getLiterals().at(key).pVar->getAssignment(), cnf::V_TRUE);
+    ASSERT_EQ(randomFormula->getVariables().at(id)->getAssignment(), cnf::V_TRUE);
     
 }
 
@@ -145,19 +145,19 @@ TEST_F(FormulaFixture, VariableSetChangeAssignmentTestOne) {
 TEST_F(FormulaFixture, VariableSetChangeAssignmentTestTwo) {
     
     
-    for(auto it = randomFormula->getVariableSet().begin(); it != randomFormula->getVariableSet().end(); ++it) {
+    for(auto it = randomFormula->getVariables().begin(); it != randomFormula->getVariables().end(); ++it) {
         auto var = it->second;
         ASSERT_EQ(var->getAssignment(), cnf::UNASSIGNED);
-        var->setAssignment(cnf::TRUE);
-        ASSERT_EQ(randomFormula->getVariableSet().at(var->getKey())->getAssignment(), cnf::TRUE);
+        var->setAssignment(cnf::V_TRUE);
+        ASSERT_EQ(randomFormula->getVariables().at(var->getKey())->getAssignment(), cnf::V_TRUE);
     }
     
   
-    for(auto var : randomFormula->getVariableSet()) {
+    for(auto var : randomFormula->getVariables()) {
         auto v = var.second;
-        ASSERT_EQ(v->getAssignment(), cnf::TRUE);
-        v->setAssignment(cnf::FALSE);
-        ASSERT_EQ(randomFormula->getVariableSet().at(v->getKey())->getAssignment(), cnf::FALSE);
+        ASSERT_EQ(v->getAssignment(), cnf::V_TRUE);
+        v->setAssignment(cnf::V_FALSE);
+        ASSERT_EQ(randomFormula->getVariables().at(v->getKey())->getAssignment(), cnf::V_FALSE);
         
     }
     
@@ -171,7 +171,7 @@ TEST_F(FormulaFixture, VariableSetChangeAssignmentTestTwo) {
 TEST_F(FormulaFixture, VariableSetGetVariableFromId) {
     
     // Get some id
-    int id = randomFormula->getClauseSet().at(0)->getLiterals().begin()->second.pVar->getKey();
+    int id = randomFormula->getClauses().at(0)->getLiterals().begin()->second.pVar->getKey();
     int idNotPresent = randomFormula->getN();
     
     ASSERT_TRUE(randomFormula->getVariable(id) != boost::none);
@@ -182,89 +182,77 @@ TEST_F(FormulaFixture, VariableSetGetVariableFromId) {
 
 TEST_F(FormulaFixture, UpdateClauseStates) {
     
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/A_updateClauseStates.cnf").parse();
+    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ClauseStates.cnf").parse();
     
-    f->getVariable(0).get()->setAssignment(cnf::TRUE);
-    f->getVariable(1).get()->setAssignment(cnf::TRUE);
+    f->getVariable(0).get()->setAssignment(cnf::V_TRUE);
+    f->getVariable(1).get()->setAssignment(cnf::V_TRUE);
     
     auto res = f->updateClauseStates();
-    ASSERT_TRUE(res.size() == 2);
+    ASSERT_TRUE(res.size() == 3);
     
-    ASSERT_TRUE(res[1] == f->getClauseSet().find(1)->second);
-    ASSERT_TRUE(res[0] == f->getClauseSet().find(2)->second);
-    
-    f->getVariable(0).get()->setAssignment(cnf::FALSE);
+    f->getVariable(0).get()->setAssignment(cnf::V_FALSE);
     
     res = f->updateClauseStates();
     ASSERT_TRUE(res.size() == 0);
-    
-    f->getVariable(1).get()->setAssignment(cnf::FALSE);
-    
-    res = f->updateClauseStates();
-    ASSERT_TRUE(res.size() == 2);
-    ASSERT_TRUE(res[1] == f->getClauseSet().find(0)->second);
-    ASSERT_TRUE(res[0] == f->getClauseSet().find(3)->second);
     
 }
 
 TEST_F(FormulaFixture, GetUnitClause) {
     
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/A_updateClauseStates.cnf").parse();
+    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ClauseStatesUnit.cnf").parse();
     
-    f->getVariable(0).get()->setAssignment(cnf::FALSE);
-    f->getVariable(1).get()->setAssignment(cnf::FALSE);
+    f->getVariable(0).get()->setAssignment(cnf::V_TRUE);
+    f->getVariable(1).get()->setAssignment(cnf::V_TRUE);
     
-    auto res = f->getUnitClause();
-    ASSERT_TRUE(res != boost::none);
-    
-    ASSERT_TRUE(res.get() == f->getClauseSet().find(0)->second);
+    ASSERT_TRUE(f->hasUnitClause());
+    ASSERT_EQ(f->getUnitClause(), f->getClause(0));
     
     f->getVariable(0).get()->setAssignment(cnf::UNASSIGNED);
-    f->getVariable(3).get()->setAssignment(cnf::FALSE);
+    f->getVariable(2).get()->setAssignment(cnf::V_TRUE);
     
-    res = f->getUnitClause();
-    ASSERT_TRUE(res != boost::none);
-    
-    ASSERT_TRUE(res.get() != f->getClauseSet().find(0)->second);
-    ASSERT_TRUE(res.get() == f->getClauseSet().find(3)->second);
+    ASSERT_TRUE(f->hasUnitClause());
+    ASSERT_EQ(f->getUnitClause(), f->getClause(0));
     
 }
 
 TEST_F(FormulaFixture, ContainsConflict) {
     
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/A_updateClauseStates.cnf").parse();
+    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ClauseStates.cnf").parse();
     
-    ASSERT_EQ(f->containsConflict(), boost::none);
     
-    f->getVariable(0).get()->setAssignment(cnf::FALSE);
-    f->getVariable(1).get()->setAssignment(cnf::FALSE);
-    f->getVariable(2).get()->setAssignment(cnf::FALSE);
+    ASSERT_FALSE(f->hasConflictClause());
     
-    ASSERT_EQ(f->containsConflict().get(), f->getClauseSet().find(0)->second);
+    f->getVariable(0).get()->setAssignment(cnf::V_TRUE);
+    f->getVariable(1).get()->setAssignment(cnf::V_TRUE);
+    f->getVariable(2).get()->setAssignment(cnf::V_TRUE);
     
-    f->getVariable(2).get()->setAssignment(cnf::TRUE);
+    ASSERT_TRUE(f->hasConflictClause());
+    ASSERT_EQ(f->getConflictClause(), f->getClause(0));
+    
+    f->getVariable(2).get()->setAssignment(cnf::V_FALSE);
    
-    ASSERT_EQ(f->containsConflict(), boost::none);
+    ASSERT_TRUE(f->hasConflictClause());
+    ASSERT_EQ(f->getConflictClause(), f->getClause(2));
     
 }
 
 TEST_F(FormulaFixture, AddClause) {
     
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/A_updateClauseStates.cnf").parse();
+    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ClauseStates.cnf").parse();
     
-    ASSERT_EQ(f->getM(), 4);
-    auto l = f->getClauseSet().find(2)->second->getLiterals();
+    ASSERT_EQ(f->getM(), 3);
+    auto l = f->getClauses().find(2)->second->getLiterals();
     
     f->addClause(l);
-    ASSERT_EQ(f->getM(), 5);
-    ASSERT_TRUE(f->getClauseSet().find(4) != f->getClauseSet().end());
+    ASSERT_EQ(f->getM(), 4);
+    ASSERT_TRUE(f->getClauses().find(3) != f->getClauses().end());
     
 }
 
 
 TEST_F(FormulaFixture, FormulaPassedByNonExsitingFile) {
     
-    ASSERT_THROW(util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/nofile.cnf"), util::ParserException);
+    ASSERT_THROW(util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/nofile.cnf"), util::ParserException);
 
 }
 
@@ -274,7 +262,7 @@ TEST_F(FormulaFixture, FormulaPassedByNonExsitingFile) {
 ///
 TEST_F(FormulaFixture, FormulaPassedByFile) {
     
-    this->fileFormula = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/A_unitTest.cnf").parse();
+    this->fileFormula = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ParseTest.cnf").parse();
     
     ASSERT_TRUE(this->fileFormula->getN() == 5);
     ASSERT_TRUE(this->fileFormula->getM() == 5);
@@ -294,7 +282,7 @@ TEST_F(FormulaFixture, FormulaPassedByFile) {
     
     for(int i = 0; i < 5; i++) {
         
-        auto c = fileFormula->getClauseSet().find(i);
+        auto c = fileFormula->getClauses().find(i);
         std::vector<int> e = elements.front();
         for(auto itClause = c->second->getLiterals().begin(); itClause != c->second->getLiterals().end(); ++itClause) {
             

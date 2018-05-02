@@ -39,6 +39,10 @@ namespace cnf {
         /// \param literals that are in this clause
         Clause(int id, std::unordered_map<int, Literal> literals) : id(id), literals(literals), satisfied(false) {}
         
+        /// Create a new clause
+        /// \param id of the clause (e.g placement in the Formula)
+        Clause(int id) : id(id), satisfied(false) {}
+        
         /// Return map of literals in the clause
         /// \return the map
         std::unordered_map<int, Literal> &getLiterals();
@@ -57,6 +61,9 @@ namespace cnf {
         bool isUnit();
         bool containsConflict();
         boost::optional<Literal> getUnitLiteral();
+        
+        bool containsLiteral(cnf::Literal l);
+        
         
         //
         // Getter and setter methods

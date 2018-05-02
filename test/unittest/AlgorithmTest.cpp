@@ -17,12 +17,14 @@
 #include <gtest/gtest.h>
 #include "Parser.hpp"
 #include "Schonings.hpp"
-#include "CDCL.hpp"
+#include "DTUSat.hpp"
+
+namespace algorithms {
 
 class AlgorithmFixture : public testing::Test {
     
 public:
-    cnf::Formula *f;
+    
     int k = 3, m = 3, n = 15;
     
     int filesToTest;
@@ -35,6 +37,7 @@ protected:
     
     virtual void SetUp() {
         filesToTest = 50;
+        
     }
     
     virtual void TearDown() {
@@ -48,11 +51,12 @@ protected:
 ///
 TEST_F(AlgorithmFixture, SchoningsParserSatisfiableClausesTest) {
     
-    algorithms::Schonings * s = new algorithms::Schonings();
+   
     
     // Do this for all files in folder "uf20-91"
     for(int i = 1; i <= filesToTest; i++) {
         
+        algorithms::Schonings * s = new algorithms::Schonings();
         std::string file = this->satisfiableClauses + "uf20-0"+ std::to_string(i) + ".cnf";
         util::Parser *p = new util::Parser(file.c_str());
         cnf::Formula *f = p->parse();
@@ -66,95 +70,159 @@ TEST_F(AlgorithmFixture, SchoningsParserSatisfiableClausesTest) {
                 
             }
         }
-        delete f;
-        delete p;
         
+        delete p;
+        delete f;
+        delete s;
     }
+    
+    
     
 }
 TEST_F(AlgorithmFixture, CDCLUnitPropagationTest) {
     
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/A_unitTest2.cnf").parse();
+    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/UnitTestOne.cnf").parse();
     
-    algorithms::CDCL *solver = new algorithms::CDCL();
+    algorithms::DTUSat *solver = new algorithms::DTUSat();
     solver->setup(*f);
     
-    f->getVariable(0).get()->setAssignment(cnf::TRUE);
+    f->getVariable(0).get()->setAssignment(cnf::V_TRUE);
     solver->addToImplicationGraph(f->getVariable(0).get(), 1, -1);
-    f->getVariable(1).get()->setAssignment(cnf::TRUE);
-    solver->addToImplicationGraph(f->getVariable(1).get(), 2, -1);
-    f->getVariable(3).get()->setAssignment(cnf::TRUE);
-    solver->addToImplicationGraph(f->getVariable(3).get(), 4, -1);
+    f->getVariable(3).get()->setAssignment(cnf::V_TRUE);
+    solver->addToImplicationGraph(f->getVariable(3).get(), 2, -1);
     
-    auto s = solver->unitPropagation(4);
-    ASSERT_TRUE(s == algorithms::CONFLICT);
-    ASSERT_EQ(solver->getGraphSize(), 9);
+    solver->setDecisionLevel(2);
+    ASSERT_TRUE(solver->hasUnitClause());
+    solver->propagate();
+    ASSERT_TRUE(solver->hasConflict());
+    ASSERT_EQ(solver->getGraphSize(), 3);
+    
 }
 
 TEST_F(AlgorithmFixture, CDCLUnitPropagationTestTwo) {
     
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/A_unitTest3.cnf").parse();
     
-    algorithms::CDCL *solver = new algorithms::CDCL();
+    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/UnitTestTwo.cnf").parse();
+    
+    algorithms::DTUSat *solver = new algorithms::DTUSat();
     solver->setup(*f);
     
-    f->getVariable(3).get()->setAssignment(cnf::FALSE);
+    f->getVariable(3).get()->setAssignment(cnf::V_TRUE);
     solver->addToImplicationGraph(f->getVariable(3).get(), 1, -1);
+    solver->setDecisionLevel(1);
     
-    auto s = solver->unitPropagation(1);
-    ASSERT_TRUE(s == algorithms::SIMPLIFIED);
-    ASSERT_EQ(solver->getGraphSize(), 1);
+    ASSERT_TRUE(solver->hasUnitClause());
+    solver->propagate();
+    ASSERT_FALSE(solver->hasConflict());
+    ASSERT_EQ(solver->getGraphSize(), 2);
     
-    f->getVariable(0).get()->setAssignment(cnf::FALSE);
-    solver->addToImplicationGraph(f->getVariable(0).get(), 2, -1);
+    f->getVariable(1).get()->setAssignment(cnf::V_FALSE);
+    solver->addToImplicationGraph(f->getVariable(1).get(), 2, -1);
+    solver->setDecisionLevel(2);
     
-    s = solver->unitPropagation(2);
-    ASSERT_TRUE(s == algorithms::SIMPLIFIED);
+    ASSERT_TRUE(solver->hasUnitClause());
+    solver->propagate();
+    ASSERT_FALSE(solver->hasConflict());
     ASSERT_EQ(solver->getGraphSize(), 4);
     
 }
 
+TEST_F(AlgorithmFixture, CDCLUnitPropagationTestThree) {
+    
+    
+    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/UnitTestThree.cnf").parse();
+    
+    algorithms::DTUSat *solver = new algorithms::DTUSat();
+    solver->setup(*f);
+    
+    f->getVariable(0).get()->setAssignment(cnf::V_TRUE);
+    solver->setDecisionLevel(1);
+    solver->addToImplicationGraph(f->getVariable(0).get(), 1, -1);
+    
+    ASSERT_TRUE(solver->hasUnitClause());
+    solver->propagate();
+    ASSERT_FALSE(solver->hasConflict());
+    ASSERT_EQ(solver->getGraphSize(), 2);
+    
+    ASSERT_TRUE(solver->hasUnitClause());
+    solver->propagate();
+    ASSERT_EQ(solver->getGraphSize(), 3);
+    ASSERT_TRUE(solver->hasUnitClause());
+    
+    ASSERT_TRUE(solver->hasUnitClause());
+    solver->propagate();
+    ASSERT_EQ(solver->getGraphSize(), 4);
+    ASSERT_TRUE(solver->hasUnitClause());
+    
+    ASSERT_TRUE(solver->hasUnitClause());
+    solver->propagate();
+    ASSERT_EQ(solver->getGraphSize(), 5);
+    ASSERT_TRUE(solver->hasUnitClause());
+    
+    ASSERT_TRUE(solver->hasUnitClause());
+    solver->propagate();
+    ASSERT_EQ(solver->getGraphSize(), 6);
+    ASSERT_FALSE(solver->hasUnitClause());
+    
+    delete solver;
+    delete f;
+    
+    f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/UnitTestThree.cnf").parse();
+    
+    solver = new algorithms::DTUSat();
+    solver->setup(*f);
+    
+    f->getVariable(0).get()->setAssignment(cnf::V_TRUE);
+    solver->setDecisionLevel(1);
+    solver->addToImplicationGraph(f->getVariable(0).get(), 1, -1);
+    
+    ASSERT_TRUE(solver->hasUnitClause());
+    solver->exhaustivePropagate();
+    ASSERT_EQ(solver->getGraphSize(), 6);
+    ASSERT_FALSE(solver->hasUnitClause());
+    
+    delete solver;
+
+}
+
+    
 
 TEST_F(AlgorithmFixture, CDCLUnitResolutionTest) {
     
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/A_unitTest4.cnf").parse();
+    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ResolutionTest.cnf").parse();
     
-    algorithms::CDCL *solver = new algorithms::CDCL();
+    algorithms::DTUSat *solver = new algorithms::DTUSat();
     solver->setup(*f);
     
-    f->getVariable(20).get()->setAssignment(cnf::FALSE);
-    solver->addToImplicationGraph(f->getVariable(20).get(), 2, -1);
-    f->getVariable(30).get()->setAssignment(cnf::FALSE);
-    solver->addToImplicationGraph(f->getVariable(30).get(), 3, -1);
-    f->getVariable(0).get()->setAssignment(cnf::FALSE);
-    solver->addToImplicationGraph(f->getVariable(0).get(), 5, -1);
+    std::unordered_map<int, cnf::Literal> m1;
+    std::unordered_map<int, cnf::Literal> m2;
     
-    auto s = solver->unitPropagation(5);
-    ASSERT_TRUE(s == algorithms::CONFLICT);
-    ASSERT_EQ(solver->getGraphSize(), 9);
+    m1.insert(std::make_pair(0, f->getClause(0)->getLiteral(0).get()));
+    m1.insert(std::make_pair(1, f->getClause(0)->getLiteral(1).get()));
     
-    // ALL ABOVE THIS WORKS
-    
-    int beta = solver->conflictAnalysis();
-    ASSERT_EQ(beta, 2);
+    m2.insert(std::make_pair(0, f->getClause(0)->getLiteral(0).get()));
+    m2.insert(std::make_pair(1, f->getClause(1)->getLiteral(1).get()));
     
     
+    solver->resolution(m1, m2);
+    
+    auto m3 = solver->getLearnedClause();
+    ASSERT_EQ(m3.size(), 1);
     
 }
-
-
-
-
-
 
 
 TEST_F(AlgorithmFixture, CDCLConflictAnalysis) {
     
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/A_unitTest2.cnf").parse();
     
-    algorithms::CDCL *solver = new algorithms::CDCL();
+    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/UnitTestThree.cnf").parse();
+    
+    algorithms::DTUSat *solver = new algorithms::DTUSat();
     solver->setup(*f);
+    solver->solve();
     
+    
+    /**
     f->getVariable(0).get()->setAssignment(cnf::TRUE);
     solver->addToImplicationGraph(f->getVariable(0).get(), 1, -1);
     f->getVariable(1).get()->setAssignment(cnf::TRUE);
@@ -172,22 +240,133 @@ TEST_F(AlgorithmFixture, CDCLConflictAnalysis) {
     f = &solver->getFormulaState();
     auto c = f->getLastAddedClause();
     ASSERT_EQ(c.getId(), 7);
-    ASSERT_EQ(c.getLiterals().size(), 2);
-    
-    ASSERT_TRUE(c.getLiteral(1).get().isNegated);
-    ASSERT_TRUE(c.getLiteral(6).get().isNegated);
- 
-    //std::cout << "new clause" <<  std::endl;
-    //std::cout << f->getLastAddedClause().string() <<  std::endl;
+    ASSERT_EQ(c.getLiterals().size(), 3);
+   **/
     
 }
+    
+TEST_F(AlgorithmFixture, CompleteTestA) {
+    
+    
+    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/CompleteTestA.cnf").parse();
+    
+    algorithms::DTUSat *solver = new algorithms::DTUSat();
+    solver->setup(*f);
+    bool res = solver->solve();
+    
+    ASSERT_FALSE(res);
+    
+    
+    /**
+     f->getVariable(0).get()->setAssignment(cnf::TRUE);
+     solver->addToImplicationGraph(f->getVariable(0).get(), 1, -1);
+     f->getVariable(1).get()->setAssignment(cnf::TRUE);
+     solver->addToImplicationGraph(f->getVariable(1).get(), 2, -1);
+     f->getVariable(3).get()->setAssignment(cnf::TRUE);
+     solver->addToImplicationGraph(f->getVariable(3).get(), 4, -1);
+     
+     auto s = solver->unitPropagation(4);
+     ASSERT_TRUE(s == algorithms::CONFLICT);
+     ASSERT_EQ(solver->getGraphSize(), 9);
+     
+     int beta = solver->conflictAnalysis();
+     ASSERT_EQ(beta, 2);
+     
+     f = &solver->getFormulaState();
+     auto c = f->getLastAddedClause();
+     ASSERT_EQ(c.getId(), 7);
+     ASSERT_EQ(c.getLiterals().size(), 3);
+     **/
+    
+}
+    
+TEST_F(AlgorithmFixture, CompleteTestB) {
+ 
+    //cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/CompleteTestB.cnf").parse();
+    
+    for(int i = 1; i <= 1000; i++) {
+        
+        std::string file = this->satisfiableClauses + "uf20-0" + std::to_string(i) + ".cnf";
+        //std::cout << file << std::endl;
+        
+        cnf::Formula *f = util::Parser(file.c_str()).parse();
+        
+        algorithms::DTUSat *solver = new algorithms::DTUSat();
+        solver->setup(*f);
+        bool res = false;
+        res = solver->solve();
+        
+        if(res) {
+            std::cout << "SAT" + std::to_string(i) << std::endl;
+        } else {
+            exit(10);
+        }
+        
+    }
+    
+}
+    
+TEST_F(AlgorithmFixture, CompleteTestC) {
+    
+    //cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/CompleteTestB.cnf").parse();
+    
+    for(int i = 1; i <= 1000; i++) {
+        this->satisfiableClauses = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf50-218/";
+        std::string file = this->satisfiableClauses + "uf50-0" + std::to_string(i) + ".cnf";
+        //std::cout << file << std::endl;
+        
+        cnf::Formula *f = util::Parser(file.c_str()).parse();
+        
+        algorithms::DTUSat *solver = new algorithms::DTUSat();
+        solver->setup(*f);
+        bool res = false;
+        res = solver->solve();
+        
+        if(res) {
+            std::cout << "SAT" + std::to_string(i) << std::endl;
+        } else {
+            exit(10);
+        }
+        
+    }
+    
+}
+    
+    
+TEST_F(AlgorithmFixture, BenchmarkUF20) {
+    
+    for(int i = 1; i <= 1000; i++) {
+        
+        std::string file = this->satisfiableClauses + "uf20-0" + std::to_string(i) + ".cnf";
+        //std::cout << file << std::endl;
+        
+        cnf::Formula *f = util::Parser(file.c_str()).parse();
+        
+        algorithms::DTUSat *solver = new algorithms::DTUSat();
+        solver->setup(*f);
+        bool res = false;
+        res = solver->solve();
+        
+        if(res) {
+            std::cout << "SAT" + std::to_string(i) << std::endl;
+        } else {
+            exit(10);
+        }
+        
+    }
+    
+    
+    
+    
+}
+    
 
 
 TEST_F(AlgorithmFixture, CDCLBackTrack) {
-    
+    /*
     cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/A_unitTest2.cnf").parse();
     
-    algorithms::CDCL *solver = new algorithms::CDCL();
+    algorithms::DTUSat *solver = new algorithms::DTUSat();
     solver->setup(*f);
     
     f->getVariable(0).get()->setAssignment(cnf::TRUE);
@@ -207,19 +386,16 @@ TEST_F(AlgorithmFixture, CDCLBackTrack) {
     f = &solver->getFormulaState();
     auto c = f->getLastAddedClause();
     ASSERT_EQ(c.getId(), 7);
-    ASSERT_EQ(c.getLiterals().size(), 2);
-    
-    ASSERT_TRUE(c.getLiteral(1).get().isNegated);
-    ASSERT_TRUE(c.getLiteral(6).get().isNegated);
-    
-    //std::cout << "new clause" <<  std::endl;
-    //std::cout << f->getLastAddedClause().string() <<  std::endl;
-    
+    ASSERT_EQ(c.getLiterals().size(), 3);
+
     solver->backtrack(beta);
     ASSERT_EQ(solver->getGraphSize(), 2);
-    
+    */
 }
 
+
+
+/**
 TEST_F(AlgorithmFixture, CDCLCombinedSimulation) {
     
     // FOLLOW THIS https://www.slideshare.net/sakai/how-a-cdcl-sat-solver-works
@@ -378,35 +554,51 @@ TEST_F(AlgorithmFixture, CDCLCombinedSimulation) {
     ASSERT_FALSE(f->hasUnassignedVariables());
     
 }
+ 
+ */
+
+TEST_F(AlgorithmFixture, CDCLResolutionOperationTest) {
+    
+    
+
+}
+
+TEST_F(AlgorithmFixture, CDCLUndoDecidedVar) {
+    /**
+    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/uf20-0112.cnf").parse();
+    
+    algorithms::DTUSat *solver = new algorithms::DTUSat();
+    solver->setup(*f);
+    bool res = solver->solve();
+    
+    
+    if(res) {
+        std::cout << "SAT" << std::endl;
+    }
+     
+    **/
+    
+    
+}
+
+
+
+
 
 ///
 /// Test that schonings can solve all satisfiable SAT problems from folder
 ///
 TEST_F(AlgorithmFixture, CDCLAlgoritmCompleteTest) {
     
-    // algorithms::CDCL * c = new algorithms::CDCL();
     
-    // Do this for all files in folder "uf20-91"
-    for(int i = 21; i <= 21; i++) {
-        algorithms::CDCL * c = new algorithms::CDCL();
-        std::string file = this->satisfiableClauses + "uf20-0"+ std::to_string(i) + ".cnf";
-        util::Parser *p = new util::Parser(file.c_str());
-        cnf::Formula *f = p->parse();
-        
-        c->setup(*f);
-        ASSERT_TRUE(c->solve());
-        //ASSERT_FALSE(c->getFormulaState().hasUnassignedVariables());
-        ASSERT_FALSE(c->getFormulaState().hasUnsatisfiedClauses());
-        std::cout << "done " << std::endl;
-        
-        delete f;
-        delete p;
-        delete c;
-    }
-        
-
-    ASSERT_EQ(true, true);
+    
+    
+    
+    
 }
+    
+    
+} // namespace
 
 
 

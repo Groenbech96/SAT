@@ -24,22 +24,6 @@ int cnf::Variable::getKey() const {
 }
 
 void cnf::Variable::setAssignment(cnf::VariableAssignment a) {
-    auto s = std::to_string(this->key);
-    std::string se = "";
-    se += s;
-    se += " ";
-    switch (a) {
-        case TRUE:
-            se += "T";
-            break;
-        case FALSE:
-            se += "F";
-            break;
-        case UNASSIGNED:
-            se += "U";
-            break;
-    }
-    // std::cout << se << std::endl;
     this->assignment = a;
 }
 

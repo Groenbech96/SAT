@@ -10,70 +10,30 @@
 //#include "rapidjson/writer.h"
 
 int Application::App::run() {
-    
-    
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/A_unitTest2.cnf").parse();
-    
-    algorithms::CDCL *solver = new algorithms::CDCL();
-    solver->setup(*f);
-    
-    f->getVariable(0).get()->setAssignment(cnf::TRUE);
-    solver->addToImplicationGraph(f->getVariable(0).get(), 1, -1);
-    f->getVariable(1).get()->setAssignment(cnf::TRUE);
-    solver->addToImplicationGraph(f->getVariable(1).get(), 2, -1);
-    //f->getVariable(2).get()->setAssignment(cnf::TRUE);
-    //solver->addToImplicationGraph(f->getVariable(2).get(), 3, -1);
-    f->getVariable(3).get()->setAssignment(cnf::TRUE);
-    solver->addToImplicationGraph(f->getVariable(3).get(), 4, -1);
-    
-    auto s = solver->unitPropagation(4);
-    
-    
-    return 0;
-    
-    try {
         
-        auto parser = new util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/uf20-05.cnf");
-        cnf::Formula *f = parser->parse();
+    for(int i = 1; i <= 2; i++) {
+        std::string fe = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf50-218/";
+        std::string file = fe + "uf50-0" + std::to_string(i) + ".cnf";
+        //std::cout << file << std::endl;
         
-        algorithms::CDCL *c = new algorithms::CDCL();
+        cnf::Formula *f = util::Parser(file.c_str()).parse();
         
-       // f->getVariableSet().find(21)->second->setAssignment(cnf::VariableAssignment::FALSE);
+        algorithms::DTUSat *solver = new algorithms::DTUSat();
+        solver->setup(*f);
+        bool res = false;
+        res = solver->solve();
         
-       // f->getVariableSet().find(31)->second->setAssignment(cnf::VariableAssignment::FALSE);
-       // f->getVariableSet().find(1)->second->setAssignment(cnf::VariableAssignment::FALSE);
-        
-        //f->getVariableSet().find(1)->second->setAssignment(cnf::VariableAssignment::TRUE);
-        
-        //f->getVariableSet().find(2)->second->setAssignment(cnf::VariableAssignment::TRUE);
-        // f->getVariableSet().find(3)->second->setAssignment(cnf::VariableAssignment::TRUE);
-        
-
-        c->setup(*f);
-        bool solve = c->solve();
-        std::string s = "";
-        if (solve) {
-            s += "SAT: ";
+        if(res) {
+            std::cout << "SAT" + std::to_string(i) << std::endl;
         } else {
-            s += "UNSAT: ";
+            std::cout << "UNSAT" + std::to_string(i) << std::endl;
         }
         
-        for(auto it : f->getVariableSet()) {
-            std::string s1 = std::to_string(it.second->getKey());
-            s.append(s1);
-            s += "->";
-            s += std::to_string(it.second->getAssignment() == cnf::TRUE ? 1 : 0);
-            s += "; ";
-        }
+        delete f;
+        delete solver;
         
-        std::cout << s << std::endl;
-    
-        
-    } catch (util::ParserException &e) {
-        std::cout << e.what() << std::endl;
     }
     
-
     
     return 0;
 }
