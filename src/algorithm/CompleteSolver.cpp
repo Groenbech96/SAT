@@ -91,8 +91,8 @@ int algorithms::CompleteSolver::conflictAnalysis() {
     auto tempClauseMap = convertClauseToMap(antecedentClause);
     std::cout << "conflict analysis started with " + antecedentClause->string()  << std::endl;
     
-    
     int literalInCurrentDL = 0;
+    
     for(auto it = tempClauseMap->begin(); it != tempClauseMap->end(); ++it) {
        
         auto search = this->graph.getVertex(it->second.pVar);
@@ -112,7 +112,7 @@ int algorithms::CompleteSolver::conflictAnalysis() {
             q->push(it->second);
     }
     
-    // If the first clause what a UIP, then return it
+    // If the first clause is a UIP, then return it
     if(literalInCurrentDL == 1) {
         this->formula.addClause(*tempClauseMap);
         int lvl = getAssertionLevel(tempClauseMap);
