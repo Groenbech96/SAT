@@ -17,6 +17,8 @@ void util::Graph::addVertex(cnf::Variable *variable, int decisionLevel, int ante
     vertex *v;
     v = new vertex(variable, decisionLevel, antecedentClauseID);
     graphMap[variable] = v;
+    if(antecedentClauseID != -1)
+        graphStack->push(variable);
     
 }
 
@@ -44,6 +46,10 @@ bool util::Graph::deleteVertex(cnf::Variable* vexVar) {
     return false;
 }
 
+std::stack<cnf::Variable*>* util::Graph::getStack() {
+    return this->graphStack;
+}
+
 bool util::Graph::deleteVertex(util::vertex* vex) {
     //auto vex = new vertex(vexVar, -1, -1);
     
@@ -62,65 +68,55 @@ boost::optional<util::vertex*> util::Graph::getVertex(cnf::Variable *v) {
 }
 
 
-void util::Graph::backtrack(util::vertex *vex, int level) {
+void util::Graph::backtrack(int level) {
     
-    /**
-    if(level == 0) {
+
+    auto it = this->graphMap.begin();
+    while (it != this->graphMap.end()) {
         
-        // Delete all in map
-        auto it = this->graphMap.begin();
-        while(it != this->graphMap.end()) {
+        // For all vertecies that needs to be kept, remove any outgoing edges to vertecies with
+        // decision level higher than level
+        
+        if(it->second->decisionLevel <= level) {
             
-            if(it->first != nullptr) {
-                it->first->setAssignment(cnf::UNASSIGNED);
+            auto outgoingIt = it->second->outgoingEdges.begin();
+            while(outgoingIt != it->second->outgoingEdges.end()) {
+                auto vertex = *outgoingIt;
+                if(vertex->decisionLevel > level) {
+                    outgoingIt = it->second->outgoingEdges.erase(outgoingIt);
+                } else {
+                    outgoingIt++;
+                }
+            }
+            
+            it++;
+            
+        } else { // Remove any vertex that has dl higher than level
+            
+            if(it->second->var != nullptr) {
+                it->second->var->setAssignment(cnf::UNASSIGNED);
             }
             delete it->second;
-            
             it = this->graphMap.erase(it);
-        }
         
-        return;
-    } else {
-     
-    **/
-        auto it = this->graphMap.begin();
-        while (it != this->graphMap.end()) {
-            
-            // For all vertecies that needs to be kept, remove any outgoing edges to vertecies with
-            // decision level higher than level
-            
-            if(it->second->decisionLevel <= level) {
-                
-                auto outgoingIt = it->second->outgoingEdges.begin();
-                while(outgoingIt != it->second->outgoingEdges.end()) {
-                    auto vertex = *outgoingIt;
-                    if(vertex->decisionLevel > level) {
-                        outgoingIt = it->second->outgoingEdges.erase(outgoingIt);
-                    } else {
-                        outgoingIt++;
-                    }
-                }
-                
-                it++;
-                
-            } else { // Remove any vertex that has dl higher than level
-                
-                if(it->second->var != nullptr) {
-                    it->second->var->setAssignment(cnf::UNASSIGNED);
-                }
-                this->rm.insert(vex);
-                it = this->graphMap.erase(it);
-            
-                
-            }
             
         }
         
-        return;
-        
-    //}
+    }
     
-   
+    // clean up stack
+    while(!graphStack->empty()) {
+        
+        auto var = graphStack->top();
+        if(this->getVertex(var) == boost::none) {
+            graphStack->pop();
+        } else {
+            break;
+        }
+    }
+    
+    return;
+    
 }
 
 

@@ -42,11 +42,11 @@ TEST_F(VariableFixture, ConstructorTestWithId) {
 TEST_F(VariableFixture, ConstructorTestWithIdAndAssignment) {
     
     auto v1 = new cnf::Variable(varId, cnf::UNASSIGNED);
-    auto v2 = new cnf::Variable(varId, cnf::TRUE);
-    auto v3 = new cnf::Variable(varId, cnf::FALSE);
+    auto v2 = new cnf::Variable(varId, cnf::V_TRUE);
+    auto v3 = new cnf::Variable(varId, cnf::V_FALSE);
     ASSERT_EQ(v1->getAssignment(), cnf::UNASSIGNED);
-    ASSERT_EQ(v2->getAssignment(), cnf::TRUE);
-    ASSERT_EQ(v3->getAssignment(), cnf::FALSE);
+    ASSERT_EQ(v2->getAssignment(), cnf::V_TRUE);
+    ASSERT_EQ(v3->getAssignment(), cnf::V_FALSE);
     
     delete v1;
     delete v2;

@@ -9,30 +9,38 @@
 #ifndef CDCL_hpp
 #define CDCL_hpp
 
-#include "CompleteSolver.hpp"
+#include "CDCLSolver.hpp"
 
 namespace algorithms {
     
-    class CDCL : public CompleteSolver {
+    class DTUSat : public CDCLSolver {
         
     public:
-        CDCL()   = default;
-        ~CDCL()  = default;
+        DTUSat() { std::cout << "init CDCL" << std::endl; }
+        ~DTUSat()  = default;
         
         void setup(cnf::Formula formula) override;
         bool solve() override;
         
+        
+        
+        
         cnf::Variable* pickBranchingVariable();
         
-        void backtrack(int beta);
         
-        void printGraph();
+        
+        // void printGraph();
         
         void addToImplicationGraph(cnf::Variable *v, int decisionLvl, int antecedentClause);
         
         cnf::Formula & getFormulaState();
         
     private:
+        
+        
+        cnf::Clause resolution();
+        void backtrack(int beta);
+        void backtrackToStart();
         
         
         

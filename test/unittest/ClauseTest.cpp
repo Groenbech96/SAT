@@ -76,25 +76,25 @@ TEST_F(ClauseFixture, AssignedClauseTest)
     auto clause = new cnf::Clause(Clause_ID, literals);
     ASSERT_FALSE(clause->isSatisfied());
     // Literals are not negated in this test
-    literals.at(0).pVar->setAssignment(cnf::TRUE);
+    literals.at(0).pVar->setAssignment(cnf::V_TRUE);
     
     // First variables have been set: clause must then still be false
     clause->evaluate();
     ASSERT_TRUE(clause->isSatisfied());
     
     // Make sure that clause state dont change if we dont call evaluate
-    literals.at(0).pVar->setAssignment(cnf::FALSE);
+    literals.at(0).pVar->setAssignment(cnf::V_FALSE);
     ASSERT_FALSE(clause->isSatisfied());
     
     
-    literals.at(0).pVar->setAssignment(cnf::TRUE);
-    literals.at(1).pVar->setAssignment(cnf::TRUE);
+    literals.at(0).pVar->setAssignment(cnf::V_TRUE);
+    literals.at(1).pVar->setAssignment(cnf::V_TRUE);
     clause->evaluate();
     ASSERT_TRUE(clause->isSatisfied());
     
-    literals.at(0).pVar->setAssignment(cnf::FALSE);
-    literals.at(1).pVar->setAssignment(cnf::FALSE);
-    literals.at(2).pVar->setAssignment(cnf::FALSE);
+    literals.at(0).pVar->setAssignment(cnf::V_FALSE);
+    literals.at(1).pVar->setAssignment(cnf::V_FALSE);
+    literals.at(2).pVar->setAssignment(cnf::V_FALSE);
     clause->evaluate();
     ASSERT_FALSE(clause->isSatisfied());
 }

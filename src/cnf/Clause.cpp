@@ -29,7 +29,7 @@ void cnf::Clause::evaluate() {
             unitLiteralKey = kv.first;
         }
         
-        if((n && a == VariableAssignment::FALSE) || (!n && a == VariableAssignment::TRUE)) {
+        if((n && a == VariableAssignment::V_FALSE) || (!n && a == VariableAssignment::V_TRUE)) {
             // We know that the clause is true (disjunction property)
             SAT = true;
             break;
@@ -81,6 +81,12 @@ boost::optional<cnf::Literal&> cnf::Clause::getLiteral(int id) {
     
 }
 
+
+bool cnf::Clause::containsLiteral(cnf::Literal l) {
+    return this->literals.find(l.pVar->getKey()) != this->literals.end();
+}
+
+
 bool cnf::Clause::containsConflict() {
     this->evaluate();
     return this->conflict;
@@ -93,11 +99,11 @@ std::string cnf::Clause::string() {
         int varID = kv.second.pVar->getKey();
         
         if(kv.second.isNegated) {s+="-";}
-        if(a == UNASSIGNED) {s+="U";}
-        else if (a == FALSE) {s+="F";}
-        else {s+="T";}
+        if(a == UNASSIGNED) {s+="";}
+        else if (a == V_FALSE) {s+="";}
+        else {s+="";}
         
-        s+= "(" + std::to_string(varID) + ") ";
+        s+= "" + std::to_string(varID) + " ";
     }
     
     s += ") ";

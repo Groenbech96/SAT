@@ -13,17 +13,15 @@
 
 namespace algorithms {
     
-    class ProbabilisticSolver : public Solver {
+    class ProbabilisticSolver : virtual public Solver {
 
     public:
         ProbabilisticSolver() : Solver() {};
-        virtual ~ProbabilisticSolver() = default;
+        virtual ~ProbabilisticSolver() = 0;
         
-        virtual void setup(cnf::Formula formula) = 0;
-        virtual bool solve() = 0;
         
     protected:
-        /// List containing unsatisfied_clauses
+        /// Vector containing unsatisfied_clauses
         std::vector<cnf::Clause *> unsatisfied_clauses;
         
     };

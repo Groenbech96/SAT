@@ -15,6 +15,7 @@
 
 #include <vector>
 #include <set>
+#include <stack>
 #include <unordered_map>
 #include <string>
 #include <boost/optional.hpp>
@@ -38,12 +39,14 @@ namespace util {
         vertex(cnf::Variable* variable, int dl, int ac) : var(variable), decisionLevel(dl), antecedentClauseID(ac) {}
     };
     
+    
     /// Graph made by a map of variable as key and vertex as value
     class Graph
     {
     public:
         /// Map og variables and vertexes 
         std::unordered_map<cnf::Variable*, vertex *> graphMap;
+        std::stack<cnf::Variable*> *graphStack = new std::stack<cnf::Variable*>;
         
         Graph() = default;
         /// Add vertex to the graph.
@@ -60,11 +63,13 @@ namespace util {
         bool deleteVertex(cnf::Variable* var);
         bool deleteVertex(util::vertex* vex);
         
-        void backtrack(util::vertex* v, int lvl);
+        void backtrack(int lvl);
         
         //  util::vertex* getVertex(cnf::Variable * v);
         
         boost::optional<util::vertex*>getVertex(cnf::Variable *v);
+        
+        std::stack<cnf::Variable*> *getStack();
         
         std::set<util::vertex *> rm;
         
