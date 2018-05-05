@@ -20,7 +20,9 @@
 #include "DTUSat.hpp"
 
 namespace algorithms {
-
+    std::string cnfPath = "/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/uf20-91/";
+    std::string cnfPath50 = "/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/uf50-218/";
+    std::string cnfTest = "/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/tests/";
 class AlgorithmFixture : public testing::Test {
     
 public:
@@ -30,7 +32,7 @@ public:
     int filesToTest;
     
     // path for satisfiable Clauses
-    std::string satisfiableClauses = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/";
+    std::string satisfiableClauses = cnfPath.c_str();
     
     
 protected:
@@ -80,8 +82,8 @@ TEST_F(AlgorithmFixture, SchoningsParserSatisfiableClausesTest) {
     
 }
 TEST_F(AlgorithmFixture, CDCLUnitPropagationTest) {
-    
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/UnitTestOne.cnf").parse();
+    std::string p = cnfTest +"UnitTestOne.cnf";
+    cnf::Formula *f = util::Parser(p.c_str()).parse();
     
     algorithms::DTUSat *solver = new algorithms::DTUSat();
     solver->setup(*f);
@@ -101,8 +103,8 @@ TEST_F(AlgorithmFixture, CDCLUnitPropagationTest) {
 
 TEST_F(AlgorithmFixture, CDCLUnitPropagationTestTwo) {
     
-    
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/UnitTestTwo.cnf").parse();
+    std::string p = cnfTest +"UnitTestTwo.cnf";
+    cnf::Formula *f = util::Parser(p.c_str()).parse();
     
     algorithms::DTUSat *solver = new algorithms::DTUSat();
     solver->setup(*f);
@@ -129,8 +131,8 @@ TEST_F(AlgorithmFixture, CDCLUnitPropagationTestTwo) {
 
 TEST_F(AlgorithmFixture, CDCLUnitPropagationTestThree) {
     
-    
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/UnitTestThree.cnf").parse();
+    std::string p = cnfTest +"UnitTestThree.cnf";
+    cnf::Formula *f = util::Parser(p.c_str()).parse();
     
     algorithms::DTUSat *solver = new algorithms::DTUSat();
     solver->setup(*f);
@@ -167,7 +169,7 @@ TEST_F(AlgorithmFixture, CDCLUnitPropagationTestThree) {
     delete solver;
     delete f;
     
-    f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/UnitTestThree.cnf").parse();
+    f = util::Parser(p.c_str()).parse();
     
     solver = new algorithms::DTUSat();
     solver->setup(*f);
@@ -187,8 +189,9 @@ TEST_F(AlgorithmFixture, CDCLUnitPropagationTestThree) {
 
     
 TEST_F(AlgorithmFixture, CDCLUnitResolutionTest) {
-    
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ResolutionTest.cnf").parse();
+    std::string p = cnfTest +"ResolutionTest.cnf";
+    cnf::Formula *f = util::Parser(p.c_str()).parse();
+
     
     algorithms::DTUSat *solver = new algorithms::DTUSat();
     solver->setup(*f);
@@ -238,8 +241,8 @@ TEST_F(AlgorithmFixture, CDCLUnitResolutionTestTwo) {
 
 TEST_F(AlgorithmFixture, CDCLConflictAnalysis) {
     
-    
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/UnitTestThree.cnf").parse();
+    std::string p = cnfTest +"UnitTestThree.cnf";
+    cnf::Formula *f = util::Parser(p.c_str()).parse();
     
     algorithms::DTUSat *solver = new algorithms::DTUSat();
     solver->setup(*f);
@@ -250,8 +253,8 @@ TEST_F(AlgorithmFixture, CDCLConflictAnalysis) {
     
 TEST_F(AlgorithmFixture, CompleteTestA) {
     
-    
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/CompleteTestA.cnf").parse();
+    std::string p = cnfTest +"CompleteTestA.cnf";
+    cnf::Formula *f = util::Parser(p.c_str()).parse();
     
     algorithms::DTUSat *solver = new algorithms::DTUSat();
     solver->setup(*f);
@@ -291,8 +294,8 @@ TEST_F(AlgorithmFixture, CompleteTestC) {
     
     //cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/CompleteTestB.cnf").parse();
     
-    for(int i = 1; i <= 10; i++) {
-        this->satisfiableClauses = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf50-218/";
+    for(int i = 1; i <= 1000; i++) {
+        this->satisfiableClauses = cnfPath50.c_str();
         std::string file = this->satisfiableClauses + "uf50-0" + std::to_string(i) + ".cnf";
         
         cnf::Formula *f = util::Parser(file.c_str()).parse();

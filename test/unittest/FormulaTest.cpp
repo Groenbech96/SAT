@@ -15,6 +15,7 @@
 #include "Parser.hpp"
 #include "Formula.hpp"
 
+std::string cnfPath = "/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/tests";
 class FormulaFixture : public testing::Test {
     
 public:
@@ -88,8 +89,8 @@ TEST_F(FormulaFixture, UnassignedClauses) {
 /// Test unassigned Variables
 ///
 TEST_F(FormulaFixture, NoUnassignedClauses) {
-    
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ClauseStates.cnf").parse();
+    std::string p = cnfPath + "/ClauseStates.cnf";
+    cnf::Formula *f = util::Parser(p.c_str()).parse();
     
     for(auto it = f->getClauses().begin(); it != f->getClauses().end(); ++it) {
         for(auto it1 = it->second->getLiterals().begin(); it1 != it->second->getLiterals().end(); it1++) {
@@ -181,8 +182,8 @@ TEST_F(FormulaFixture, VariableSetGetVariableFromId) {
 }
 
 TEST_F(FormulaFixture, UpdateClauseStates) {
-    
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ClauseStates.cnf").parse();
+    std::string p = cnfPath + "/ClauseStates.cnf";
+    cnf::Formula *f = util::Parser(p.c_str()).parse();
     
     f->getVariable(0).get()->setAssignment(cnf::V_TRUE);
     f->getVariable(1).get()->setAssignment(cnf::V_TRUE);
@@ -198,8 +199,8 @@ TEST_F(FormulaFixture, UpdateClauseStates) {
 }
 
 TEST_F(FormulaFixture, GetUnitClause) {
-    
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ClauseStatesUnit.cnf").parse();
+    std::string p = cnfPath + "/ClauseStatesUnit.cnf";
+    cnf::Formula *f = util::Parser(p.c_str()).parse();
     
     f->getVariable(0).get()->setAssignment(cnf::V_TRUE);
     f->getVariable(1).get()->setAssignment(cnf::V_TRUE);
@@ -216,8 +217,8 @@ TEST_F(FormulaFixture, GetUnitClause) {
 }
 
 TEST_F(FormulaFixture, ContainsConflict) {
-    
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ClauseStates.cnf").parse();
+    std::string p = cnfPath + "/ClauseStates.cnf";
+    cnf::Formula *f = util::Parser(p.c_str()).parse();
     
     
     ASSERT_FALSE(f->hasConflictClause());
@@ -237,8 +238,8 @@ TEST_F(FormulaFixture, ContainsConflict) {
 }
 
 TEST_F(FormulaFixture, AddClause) {
-    
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ClauseStates.cnf").parse();
+    std::string p = cnfPath + "/ClauseStates.cnf";
+    cnf::Formula *f = util::Parser(p.c_str()).parse();
     
     ASSERT_EQ(f->getM(), 3);
     auto l = f->getClauses().find(2)->second->getLiterals();
@@ -251,8 +252,8 @@ TEST_F(FormulaFixture, AddClause) {
 
 
 TEST_F(FormulaFixture, FormulaPassedByNonExsitingFile) {
-    
-    ASSERT_THROW(util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/nofile.cnf"), util::ParserException);
+    std::string p = cnfPath + "/nofile.cnf";
+    ASSERT_THROW(util::Parser(p.c_str()), util::ParserException);
 
 }
 
@@ -261,8 +262,8 @@ TEST_F(FormulaFixture, FormulaPassedByNonExsitingFile) {
 /// Test of parsing file
 ///
 TEST_F(FormulaFixture, FormulaPassedByFile) {
-    
-    this->fileFormula = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ParseTest.cnf").parse();
+    std::string p = cnfPath + "/ParseTest.cnf";
+    this->fileFormula = util::Parser(p.c_str()).parse();
     
     ASSERT_TRUE(this->fileFormula->getN() == 5);
     ASSERT_TRUE(this->fileFormula->getM() == 5);
