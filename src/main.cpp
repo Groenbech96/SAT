@@ -12,5 +12,5 @@
 int main(int argc, char * argv[]) {
     // insert code here...
     Application::App app = Application::App(argc, argv);
-    app.run();
+    return app.run();
 }

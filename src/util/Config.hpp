@@ -32,15 +32,22 @@ namespace util {
         
         time_t getTimestamp();
         
+        void setdecisionTracking(bool v);
+        bool getdecisionTracking();
+        
+        void setdecisionScoreTracking(bool v);
+        bool getdecisionScoreTracking();
+       
+        
     private:
         std::string _solverType;
         std::string _filename;
         time_t _timestamp;
         
-        //bool decisionTracking;
-        //bool decisionScoreTracking;
-        //bool implicationGraphTracking;
-        //bool graphTracking
+        bool _decisionTracking;
+        bool _decisionScoreTracking;
+        bool implicationGraphTracking;
+        bool graphTracking;
         
         
     };

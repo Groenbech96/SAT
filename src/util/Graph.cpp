@@ -20,6 +20,8 @@ void util::Graph::addVertex(cnf::Variable *variable, int decisionLevel, int ante
     if(antecedentClauseID != -1)
         graphStack->push(variable);
     
+    this->_lastEdit = v;
+    
 }
 
 void util::Graph::addEdge(cnf::Variable* from, cnf::Variable* to){
@@ -74,9 +76,11 @@ void util::Graph::undo(int level) {
         
         if(it->second->decisionLevel <= level) {
             
+            
             auto outgoingIt = it->second->outgoingEdges.begin();
             while(outgoingIt != it->second->outgoingEdges.end()) {
                 auto vertex = *outgoingIt;
+                
                 if(vertex->decisionLevel > level) {
                     outgoingIt = it->second->outgoingEdges.erase(outgoingIt);
                 } else {
@@ -91,8 +95,8 @@ void util::Graph::undo(int level) {
             if(it->second->var != nullptr) {
                 it->second->var->setAssignment(cnf::UNASSIGNED);
             }
-            
-            delete it->second;
+            rm.insert(it->second);
+            //delete it->second;
             it = this->graphMap.erase(it);
         
         }
@@ -112,6 +116,10 @@ void util::Graph::undo(int level) {
     
     return;
     
+}
+
+util::vertex* util::Graph::getLastEdited() {
+    return this->_lastEdit;
 }
 
 
@@ -138,5 +146,7 @@ std::string util::Graph::stringJsStyle() {
     s += ")";
     return s;
 }
+
+
 
 

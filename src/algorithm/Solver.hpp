@@ -24,7 +24,7 @@ namespace algorithms {
     public:
         
         Solver();
-        Solver(std::string outputFile);
+        Solver(std::string type, std::string outputFile, bool verbose);
         
         // Pure virtual functions
         virtual ~Solver() = 0;
@@ -37,10 +37,13 @@ namespace algorithms {
         // Pure virtual functions
         virtual void setup(cnf::Formula f) = 0;
         virtual bool solve() = 0;
+        bool output;
+        bool verbose;
+        int  propagationCount = 0;
         
     private:
         
-        bool output;
+        
         
     };
     

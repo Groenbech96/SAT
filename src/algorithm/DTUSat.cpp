@@ -17,6 +17,10 @@ void algorithms::DTUSat::setup(cnf::Formula formula) {
         this->activity.insert(std::make_pair(it.second, 0));
     }
     
+    if(this->verbose) {
+        outputter.addFormulaAtStart(formula.getClauses());
+    }
+    
     this->graph = util::Graph();
 }
 
@@ -30,13 +34,17 @@ bool algorithms::DTUSat::solve() {
     while(true) {
         
         exhaustivePropagate();
-        
+    
         if(hasConflict()) {
+            
             conflictAnalysis();
             
             backtrack();
             
             if(getBeta() < 0) {
+                if(this->verbose) {
+                    this->outputter.addUnsat();
+                }
                 return false;
             }
             
@@ -45,9 +53,14 @@ bool algorithms::DTUSat::solve() {
         } else {
             if(!this->_formula.hasUnsatisfiedClauses()) {
                 
-                this->outputter.addSolution(this->_formula.getVariables());
-                this->outputter.close();
-                
+                // Todo change:
+                if(this->verbose) {
+                    this->outputter.addFormulaAtEnd(this->_formula.getClauses());
+                }
+                if(this->output) {
+                    this->outputter.addSolution(this->_formula.getVariables());
+                    this->outputter.close();
+                }
                 return true;
             
             } else {
@@ -55,6 +68,11 @@ bool algorithms::DTUSat::solve() {
                 next->setAssignment(cnf::V_TRUE);
                 this->decisionLevel++;
                 addToImplicationGraph(next, this->decisionLevel, -1);
+                
+                if(this->verbose) {
+                    this->outputter.addStep("branch", &this->graph, next, this->decisionLevel);
+                }
+                
                 
             }
         }
@@ -65,10 +83,13 @@ bool algorithms::DTUSat::solve() {
   
 }
 
+void algorithms::DTUSat::failed() {
+    this->outputter.failure();
+    this->outputter.close();
+}
 
 
 cnf::Variable* algorithms::DTUSat::pickBranchingVariable() {
-    
     
     float max = 0;
     cnf::Variable *maxVar = nullptr;
@@ -87,6 +108,10 @@ cnf::Variable* algorithms::DTUSat::pickBranchingVariable() {
 void algorithms::DTUSat::backtrack() {
     
     this->graph.undo(this->beta);
+    
+    if(this->verbose) {
+        this->outputter.addStep("backtrack", this->graph.rm, this->beta);
+    }
     
     for(auto v : this->graph.rm) {
         delete v;
@@ -115,6 +140,11 @@ void algorithms::DTUSat::propagate() {
             this->graph.addEdge(literal->second.pVar, l.pVar);
         }
     }
+    
+    if(this->verbose) {
+        this->outputter.addStep("unit_resolution", &this->graph, l.pVar, this->decisionLevel);
+    }
+    
 }
 
 void algorithms::DTUSat::exhaustivePropagate() {
@@ -123,22 +153,6 @@ void algorithms::DTUSat::exhaustivePropagate() {
         propagate();
     }
    
-}
-
-
-
-void algorithms::DTUSat::print(std::stack<cnf::Variable *> s)
-{
-    if(s.empty())
-    {
-        std::cout << std::endl;
-        return;
-    }
-    cnf::Variable *x = s.top();
-    s.pop();
-    print(s);
-    s.push(x);
-    std::cout << x->getKey() << " ";
 }
 
 
@@ -151,8 +165,7 @@ void algorithms::DTUSat::updateActivity() {
     // Decay
     for(auto it = this->activity.begin(); it != this->activity.end(); it++) {
         it->second = it->second * 0.95;
-        //std::cout << it->first->getKey() << " ";
-        //std::cout << this->activity.find(it->first)->second << std::endl;
+      
     }
     
 }
@@ -172,12 +185,21 @@ void algorithms::DTUSat::conflictAnalysis() {
     int backtrack = 0;
     
     cnf::Clause *conflict = this->_formula.getConflictClause();
+    
+    if(this->verbose) {
+        this->outputter.addConflictClause(conflict);
+    }
+    
     int reasonID = this->graph.getVertex(var).get()->antecedentClauseID;
     cnf::Clause *reason = this->_formula.getClause(reasonID);
     
     findUIP(*conflict, *reason, conflictLevel);
     
     backtrack = this->getAssertionLevel();
+    
+    if(this->verbose) {
+        this->outputter.addStep("conflict", this->learnClauseLiterals, conflictLevel, backtrack);
+    }
     
     updateActivity();
     

@@ -75,6 +75,13 @@ namespace util {
         
         std::string stringJsStyle();
         
+        util::vertex* getLastEdited();
+        
+    private:
+        
+        util::vertex* _lastEdit;
+        
+        
     };
 }
 

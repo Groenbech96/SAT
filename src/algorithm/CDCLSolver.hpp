@@ -23,7 +23,7 @@ namespace algorithms {
     public:
         
         CDCLSolver() : Solver() {}
-        CDCLSolver(std::string outputFile) : Solver(outputFile) {}
+        CDCLSolver(std::string type, std::string outputFile, bool verbose) : Solver(type, outputFile, verbose) {}
         
         // Pure virtual functions
         virtual ~CDCLSolver()                                                                                           = 0;
@@ -54,7 +54,7 @@ namespace algorithms {
         
         int decisionLevel   = 0; // Current decision level
         int beta            = 0; // Current level to backtrack to
-        bool output         = false;
+        
         
         
         util::Graph graph;                  // Graph object

@@ -13,7 +13,9 @@
 #include <fstream>
 #include <string>
 #include "Variable.hpp"
+#include "Clause.hpp"
 #include "Config.hpp"
+#include "Graph.hpp"
 #include <unordered_map>
 #include <rapidjson/document.h>
 #include <rapidjson/prettywriter.h>
@@ -33,14 +35,30 @@ public:
     
     void add(std::string);
     void addSolution(std::unordered_map<int, cnf::Variable*> solution);
+    void addStep(std::string s, util::Graph *g, cnf::Variable *v, int decisionLevel);
+    void addStep(std::string s, std::unordered_map<int, cnf::Literal> solution, int decisionLevel, int backtrackLevel);
+    void addStep(std::string s, std::set<util::vertex *> rm, int beta);
+    
+    void addConflictClause(cnf::Clause *);
+    void addUIP(int id);
+    void addFormulaAtStart(std::unordered_map<int, cnf::Clause*>);
+    void addFormulaAtEnd(std::unordered_map<int, cnf::Clause *>);
     void close();
+    void failure();
+    void addUnsat();
+    
+    void addIGraph(util::Graph *g);
     
 private:
-    std::string name;
-    std::ofstream outfile;
-    bool enable;
+    std::string     _name;
+    std::ofstream   _outfile;
+    int             _step;
+    int             _stepInternal;
+    int             _conflictClause;
+    int             _UIP;
     
-    rapidjson::Document document;
+    
+    rapidjson::Document _document;
     
     
 };

@@ -17,7 +17,7 @@ namespace algorithms {
 
     public:
         ProbabilisticSolver() : Solver() {}
-        ProbabilisticSolver(std::string outputFile) : Solver(outputFile) {}
+        ProbabilisticSolver(std::string type, std::string outputFile, bool verbose) : Solver(type, outputFile, verbose) {}
         virtual ~ProbabilisticSolver() = 0;
         
         

@@ -111,10 +111,15 @@ void algorithms::CDCLSolver::findUIP(cnf::Clause c1, cnf::Clause reason, int lev
                 if(vex->antecedentClauseID == -1 && vex->decisionLevel <= level) {
                     cnf::Literal l = {kv.first, true};
                     this->learnClauseLiterals.insert({kv.first->getKey(), l});
+                    
+                    // Add UIP
+                    if(vex->decisionLevel == level && this->verbose) {
+                        this->outputter.addUIP(vex->var->getKey());
+                    }
                 }
-                
+            
             }
-            return;
+            //return;
             
         }
         
@@ -135,8 +140,14 @@ bool algorithms::CDCLSolver::isUIP(algorithms::ClauseLiterals m1, int level) {
     for (auto it : m1) {
         
         auto vex = this->graph.getVertex(it.second.pVar).get();
-        if(vex->decisionLevel == level)
+        if(vex->decisionLevel == level) {
             count++;
+            
+            if(verbose) {
+                this->outputter.addUIP(it.first);
+            }
+            
+        }
         
     }
     return count == 1;

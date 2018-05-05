@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3AE7B3BE20865FAB008B28D7"
-               BuildableName = "SAT"
-               BlueprintName = "SAT"
+               BlueprintIdentifier = "3AE7B42E208667D2008B28D7"
+               BuildableName = "SatTest"
+               BlueprintName = "SatTest"
                ReferencedContainer = "container:SAT.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3AE7B3BE20865FAB008B28D7"
-            BuildableName = "SAT"
-            BlueprintName = "SAT"
+            BlueprintIdentifier = "3AE7B42E208667D2008B28D7"
+            BuildableName = "SatTest"
+            BlueprintName = "SatTest"
             ReferencedContainer = "container:SAT.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -55,30 +55,19 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3AE7B3BE20865FAB008B28D7"
-            BuildableName = "SAT"
-            BlueprintName = "SAT"
+            BlueprintIdentifier = "3AE7B42E208667D2008B28D7"
+            BuildableName = "SatTest"
+            BlueprintName = "SatTest"
             ReferencedContainer = "container:SAT.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "-f"
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "DYLD_FRAMEWORK_PATH"
+            value = "../../../../../lib"
             isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "input"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "-o"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "test"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -92,9 +81,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3AE7B3BE20865FAB008B28D7"
-            BuildableName = "SAT"
-            BlueprintName = "SAT"
+            BlueprintIdentifier = "3AE7B42E208667D2008B28D7"
+            BuildableName = "SatTest"
+            BlueprintName = "SatTest"
             ReferencedContainer = "container:SAT.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
