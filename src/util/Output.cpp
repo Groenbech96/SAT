@@ -236,7 +236,7 @@ void util::Output::addUnsat() {
     rapidjson::Value& s = _document["steps"];
     s.SetInt(this->_step);
     rapidjson::Value& s1 = _document["status"];
-    s1.SetString("unsat", 4);
+    s1.SetString("unsat", 5);
 }
 
 void util::Output::addSolution(std::unordered_map<int, cnf::Variable*> solution) {
@@ -250,7 +250,7 @@ void util::Output::addSolution(std::unordered_map<int, cnf::Variable*> solution)
     rapidjson::Value& s = _document["steps"];
     s.SetInt(this->_step);
     rapidjson::Value& s1 = _document["status"];
-    s1.SetString("sat", 4);
+    s1.SetString("sat", 3);
     
     rapidjson::StringBuffer sb;
     rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);

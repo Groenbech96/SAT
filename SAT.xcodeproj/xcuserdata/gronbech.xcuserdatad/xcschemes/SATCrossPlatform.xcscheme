@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3AE7B3BE20865FAB008B28D7"
-               BuildableName = "SAT"
-               BlueprintName = "SAT"
+               BlueprintIdentifier = "3AEA29E6209DC3A400B5CB2F"
+               BuildableName = "SATCrossPlatform"
+               BlueprintName = "SATCrossPlatform"
                ReferencedContainer = "container:SAT.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3AE7B3BE20865FAB008B28D7"
-            BuildableName = "SAT"
-            BlueprintName = "SAT"
-            ReferencedContainer = "container:SAT.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -51,26 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3AE7B3BE20865FAB008B28D7"
-            BuildableName = "SAT"
-            BlueprintName = "SAT"
+            BlueprintIdentifier = "3AEA29E6209DC3A400B5CB2F"
+            BuildableName = "SATCrossPlatform"
+            BlueprintName = "SATCrossPlatform"
             ReferencedContainer = "container:SAT.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "-f"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "input"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -80,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3AE7B3BE20865FAB008B28D7"
-            BuildableName = "SAT"
-            BlueprintName = "SAT"
+            BlueprintIdentifier = "3AEA29E6209DC3A400B5CB2F"
+            BuildableName = "SATCrossPlatform"
+            BlueprintName = "SATCrossPlatform"
             ReferencedContainer = "container:SAT.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

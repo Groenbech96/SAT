@@ -15,12 +15,13 @@ Application::App::App(int argc, char* argv[]) {
 
 int Application::App::run() {
     
-    if(this->m_argc != 3 || this->m_argc != 6 || this->m_argc != 5) {
+    if(this->m_argc != 3 && this->m_argc != 6 && this->m_argc != 5) {
         return -1;
     } else {
         
         if(this->m_argc == 3) {
-            if(std::strcmp(this->m_argv[1], "-f"))  {
+     
+            if(std::strcmp(this->m_argv[1], "-f") == 0)  {
                 
                 cnf::Formula *f;
                 algorithms::DTUSat *solver;
@@ -50,7 +51,8 @@ int Application::App::run() {
                 return -1;
             }
         } else if (this->m_argc == 5) {
-            if(std::strcmp(this->m_argv[1], "-f") && std::strcmp(this->m_argv[3], "-o"))  {
+            
+            if(std::strcmp(this->m_argv[1], "-f") == 0 && std::strcmp(this->m_argv[3], "-o") == 0)  {
                 
                 cnf::Formula *f;
                 algorithms::DTUSat *solver;
@@ -71,13 +73,17 @@ int Application::App::run() {
                 delete f;
                 delete solver;
                 
-                return 0;
+                if(res)
+                    return 0;
+                
+                return -1;
                 
             } else {
                 return -1;
             }
         } else {
-            if(std::strcmp(this->m_argv[1], "-f") && std::strcmp(this->m_argv[3], "-o") && std::strcmp(this->m_argv[5], "--verbose") )  {
+            
+            if(std::strcmp(this->m_argv[1], "-f") == 0 && std::strcmp(this->m_argv[3], "-o") == 0 && std::strcmp(this->m_argv[5], "--verbose") == 0)  {
             
                 cnf::Formula *f;
                 algorithms::DTUSat *solver;
@@ -98,7 +104,10 @@ int Application::App::run() {
                 delete f;
                 delete solver;
                 
-                return 0;
+                if(res)
+                    return 0;
+                
+                return -1;
             
             } else {
                 return -1;

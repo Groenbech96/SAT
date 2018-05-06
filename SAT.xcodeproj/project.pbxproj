@@ -4815,6 +4815,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/lib",
 					/usr/local/Cellar/boost/1.66.0/include,
@@ -4828,6 +4829,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/lib",
 					/usr/local/Cellar/boost/1.66.0/include,
