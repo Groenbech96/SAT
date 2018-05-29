@@ -20,9 +20,9 @@
 #include "DTUSat.hpp"
 
 namespace algorithms {
-    std::string cnfPath = "/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/uf20-91/";
-    std::string cnfPath50 = "/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/uf50-218/";
-    std::string cnfTest = "/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/tests/";
+    std::string cnfPath = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/";
+    std::string cnfPath50 = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf50-218/";
+    std::string cnfTest = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/";
 class AlgorithmFixture : public testing::Test {
     
 public:
