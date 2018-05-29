@@ -21,7 +21,6 @@
 		3A258479208DD35200ADC8A7 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F3208661DB008B28D7 /* Graph.cpp */; };
 		3A25847A208DD35200ADC8A7 /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F6208661E9008B28D7 /* Parser.cpp */; };
 		3A25847B208DD35200ADC8A7 /* Randomizer.h in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F920866209008B28D7 /* Randomizer.h */; };
-		3A258480208F201500ADC8A7 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A25847F208F201500ADC8A7 /* test.cpp */; };
 		3A2C71CF2097A4020092C2CC /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A2C71CD2097A4020092C2CC /* Config.cpp */; };
 		3A2C71D02097A4020092C2CC /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A2C71CD2097A4020092C2CC /* Config.cpp */; };
 		3A2C71D12097A4020092C2CC /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A2C71CD2097A4020092C2CC /* Config.cpp */; };
@@ -97,7 +96,6 @@
 /* Begin PBXFileReference section */
 		3A25847D208DE4D300ADC8A7 /* A_unitTest2.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = A_unitTest2.cnf; sourceTree = "<group>"; };
 		3A25847E208F0B4700ADC8A7 /* A_unitTest3.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = A_unitTest3.cnf; sourceTree = "<group>"; };
-		3A25847F208F201500ADC8A7 /* test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		3A28BDE72090C4380057D840 /* A_unitTest5Res.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = A_unitTest5Res.cnf; sourceTree = "<group>"; };
 		3A2C71A6209777A30092C2CC /* fwd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fwd.h; sourceTree = "<group>"; };
 		3A2C71A7209777A30092C2CC /* memorystream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memorystream.h; sourceTree = "<group>"; };
@@ -2288,6 +2286,13 @@
 			path = msinttypes;
 			sourceTree = "<group>";
 		};
+		3A6B5FB420BDBF3200B74D28 /* test */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
 		3A7147022093BD1300645DC4 /* tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -4381,7 +4386,6 @@
 				3AE7B3E420866187008B28D7 /* Grasp.hpp */,
 				3AE7B3E620866191008B28D7 /* DTUSat.cpp */,
 				3AE7B3E720866191008B28D7 /* DTUSat.hpp */,
-				3A25847F208F201500ADC8A7 /* test.cpp */,
 			);
 			path = algorithm;
 			sourceTree = "<group>";
@@ -4470,6 +4474,7 @@
 		3AE7B3D120866069008B28D7 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				3A6B5FB420BDBF3200B74D28 /* test */,
 				3AE7B3D320866088008B28D7 /* plots */,
 				3AE7B3D220866078008B28D7 /* cnfs */,
 			);
@@ -4650,7 +4655,6 @@
 				3A258479208DD35200ADC8A7 /* Graph.cpp in Sources */,
 				3A25847A208DD35200ADC8A7 /* Parser.cpp in Sources */,
 				3A25847B208DD35200ADC8A7 /* Randomizer.h in Sources */,
-				3A258480208F201500ADC8A7 /* test.cpp in Sources */,
 				3A258461208DD2B200ADC8A7 /* FormulaTest.cpp in Sources */,
 				3AC21CC520866869004D4384 /* SolverTest.cpp in Sources */,
 				3AC21CC720866869004D4384 /* VariableTest.cpp in Sources */,
