@@ -12,7 +12,7 @@
 int Application::App::run() {
         
     for(int i = 1; i <= 2; i++) {
-        std::string fe = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf50-218/";
+        std::string fe = "/Users/christianschmidt/Documents/Uddannelse/DTU/Semester4/Fagprojekt/SAT/data/2cnfs/uf50-218/";
         std::string file = fe + "uf50-0" + std::to_string(i) + ".cnf";
         //std::cout << file << std::endl;
         
