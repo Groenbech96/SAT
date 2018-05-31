@@ -39,13 +39,13 @@ let rec Distribute prop =
     |Imp(_,_) -> failwith "Not done RemoveBI/imp"
     |Or(a,b) -> match a with
                 | Var(k)    -> match b with
-                               | And(c,d)   -> And( Distribute (Or(Distribute a, Distribute c)), 
-                                                    Distribute (Or(Distribute a, Distribute d)))
+                               | And(c,d)   -> And(Distribute (Or(Distribute a, Distribute c)), 
+                                                   Distribute (Or(Distribute a, Distribute d)))
                                | Par(c)     -> Distribute (Or(a,c))
                                | _          -> prop
                 | And(c,d)  -> match b with
-                               | Var(k)     -> And( Distribute (Or(Distribute b, Distribute c)), 
-                                                    Distribute (Or(Distribute b, Distribute d)))
+                               | Var(k)     -> And(Distribute (Or(Distribute b, Distribute c)), 
+                                                   Distribute (Or(Distribute b, Distribute d)))
                                | Par(e)     -> Distribute (Or(a,e))
                                | _          -> prop
                 | Or(c,d)   -> match b with
@@ -54,7 +54,6 @@ let rec Distribute prop =
                                | Par(c)     -> Distribute (Or(a,c))
                                | _          -> prop
                 | Par(c)    -> Distribute (Or(c,b))
-
                 | _         -> prop    
 
     | Par(a) -> Distribute a
@@ -73,14 +72,36 @@ let PropToCNF prop =
 // Build string for CNF-file
 //
 
-//let rec stringBuilderClause vars clauses =
+let rec stringBuilderClause vars s =
+    match s with
+    | Or(a,b)   -> let (s1, v1) = stringBuilderClause vars a
+                   let (s2, v2) = stringBuilderClause v1 b
+                   (s1 + s2, Set.union v1 v2)
+    | Var(a)    -> (a + " ", Set.empty.Add a)
+    | Neg(a)    -> let (s1, v1) = stringBuilderClause vars a
+                   let s2 = "-" + s1
+                   (s2, v1)
+    | _         -> failwith("string clause failed")
 
-//let rec stringBuilder sarray vars clauses = function
-    //| And(a,b) -> let s1 = stringBuilder sarray vars clauses a
-    //              stringBuilder s1 vars clauses b
-    //| Or(a,b) -> 
-    //| Var(a) -> 
+let rec stringBuilder sarray vars s =
+    match s with
+    | And(a,b)                  -> let (s1, v1) = stringBuilder sarray vars a
+                                   let (s2, v2) = stringBuilder s1 v1 b
+                                   (s1@s2, Set.union v1 v2)
+    | Or(_) | Var(_) | Neg(_)   -> let (s1, v1) = stringBuilderClause vars s
+                                   let s2 = s1 + "0\n"
+                                   ([s2], v1)
+    | _                         -> failwith("string failed")
 
+
+let cnfToString s =
+    let (s,v) = stringBuilder [] Set.empty s
+    let ls = List.length s
+    let lv = Seq.length v
+    let sHeader = "p cnf" + " " + string lv + " " + string ls + "\n"
+    let s1 = s |> String.Concat
+    let s2 = sHeader + s1
+    s2
 
 
 //
@@ -93,7 +114,7 @@ let parse input =
     let res = PreLogicParser.start PreLogicLexer.tokenize lexbuf
     // return the result of parsing (i.e. value of type "expr")  
     res
-              
+
 
 // We implement here the function that interacts with the user
 let rec compute n =
@@ -104,14 +125,19 @@ let rec compute n =
         try 
         // We parse the input string
         let e = parse (Console.ReadLine())
-        //let cnf = PropToCNF e
-        printfn "%A" (e)
-        printfn "%A" (PropToCNF e)
+
+        let cnf = PropToCNF e
+        printfn "CNF: %A" cnf
+
+        let s = cnfToString cnf
+
+        File.WriteAllText("test123.txt", s )
+
         printfn "ok"
         compute n
-        //compute n
-        with err -> printfn "ko"; compute (n-1)
 
+        with err -> printfn "ko"; compute (n-1)
+         
 // Start interacting with the user
 compute 3
 
