@@ -8,9 +8,22 @@
 
 #ifndef PropositionOperator_h
 #define PropositionOperator_h
+#include "Literal.h"
 
 enum Operator{
     AND, OR, IMPLICATION, BI_IMPLICATION
+};
+
+class PropositionalOperator {
+    
+    public:
+        PropositionalOperator() = default;
+        virtual ~PropositionalOperator();
+    
+    private:
+        cnf::Literal lhs;
+        cnf::Literal rhs;
+        Operator op;
 };
 
 #endif /* PropositionOperator_h */
