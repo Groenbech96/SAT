@@ -1,0 +1,46 @@
+%{
+open PreLogicTypes
+%}
+
+//Values
+%token <string> VAR
+
+//Operators
+%token AND OR 
+%token IMPLICATION BIIMPLICATION
+%token NEGATION
+%token LPAR RPAR
+%token EOF
+
+//Setting precedence and associativity of operators
+%left BIIMPLICATION
+%left IMPLICATION
+%left OR 
+%left AND 
+%right NEGATION
+%nonassoc LPAR RPAR
+
+
+// Declaring initial non-terminal
+%start start
+
+// declare returntype of non-terminal symbols
+%type <logic> start
+%type <logic> logic
+
+%%
+
+start: logic EOF 			{ $1 }
+
+logic:
+	| logic AND logic				{ And($1,$3) }
+	| logic OR logic				{ Or($1,$3) }
+	| logic IMPLICATION logic		{ Imp($1,$3) }
+	| logic BIIMPLICATION logic		{ Bi($1,$3) }
+	| NEGATION logic				{ Neg($2)}
+	| LPAR logic RPAR				{ Par($2) }
+	| VAR                   		{ Var($1)}
+
+
+%%	
+
