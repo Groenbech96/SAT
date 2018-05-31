@@ -2,7 +2,11 @@
 //  Schonings.hpp
 //  SAT
 //
-//  Created by Magnus Hartvig Grønbech on 17/04/2018.
+//  Created by
+//  Christian Schmidt - DTU,
+//  Casper Skjærris    - DTU,
+//  Magnus Grønbech   - DTU
+//  Date: 17/04/2018.
 //  Copyright © 2018 DTU. All rights reserved.
 //
 
@@ -18,6 +22,7 @@ namespace algorithms {
         
     public:
         Schonings() : ProbabilisticSolver() {}
+        Schonings(std::string type, std::string outputFile, bool verbose) : ProbabilisticSolver(type, outputFile, verbose) {}
         ~Schonings() = default;
         
         /// Setup a formula to solve

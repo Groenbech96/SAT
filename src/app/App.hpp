@@ -2,7 +2,11 @@
 //  App.hpp
 //  SAT
 //
-//  Created by Magnus Hartvig Grønbech on 17/04/2018.
+//  Created by
+//  Christian Schmidt - DTU,
+//  Casper Skjærris    - DTU,
+//  Magnus Grønbech   - DTU
+//  Date: 17/04/2018.
 //  Copyright © 2018 DTU. All rights reserved.
 //
 
@@ -22,7 +26,7 @@ namespace Application {
         /// \param argc is the number of arguments. If n args is passed, then argv is n+1 !
         /// \param argv is a pointer to the arguments. They are of type char
         ///
-        App(int argc, char* argv[]) : m_argc(argc), m_argv(argv) {}
+        App(int argc, char* argv[]);
         
         ///
         ///Run application

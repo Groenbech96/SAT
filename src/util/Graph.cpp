@@ -20,6 +20,8 @@ void util::Graph::addVertex(cnf::Variable *variable, int decisionLevel, int ante
     if(antecedentClauseID != -1)
         graphStack->push(variable);
     
+    this->_lastEdit = v;
+    
 }
 
 void util::Graph::addEdge(cnf::Variable* from, cnf::Variable* to){
@@ -37,6 +39,8 @@ bool util::Graph::deleteVertex(cnf::Variable* vexVar) {
     if(search != boost::none) {
         
         auto vex = search.get();
+        
+            
         this->graphMap.erase(vexVar);
         delete vex;
         
@@ -50,13 +54,6 @@ std::stack<cnf::Variable*>* util::Graph::getStack() {
     return this->graphStack;
 }
 
-bool util::Graph::deleteVertex(util::vertex* vex) {
-    //auto vex = new vertex(vexVar, -1, -1);
-    
-    return true;
-   
-}
-
 boost::optional<util::vertex*> util::Graph::getVertex(cnf::Variable *v) {
     
     auto res = this->graphMap.find(v);
@@ -68,7 +65,7 @@ boost::optional<util::vertex*> util::Graph::getVertex(cnf::Variable *v) {
 }
 
 
-void util::Graph::backtrack(int level) {
+void util::Graph::undo(int level) {
     
 
     auto it = this->graphMap.begin();
@@ -79,9 +76,11 @@ void util::Graph::backtrack(int level) {
         
         if(it->second->decisionLevel <= level) {
             
+            
             auto outgoingIt = it->second->outgoingEdges.begin();
             while(outgoingIt != it->second->outgoingEdges.end()) {
                 auto vertex = *outgoingIt;
+                
                 if(vertex->decisionLevel > level) {
                     outgoingIt = it->second->outgoingEdges.erase(outgoingIt);
                 } else {
@@ -96,10 +95,10 @@ void util::Graph::backtrack(int level) {
             if(it->second->var != nullptr) {
                 it->second->var->setAssignment(cnf::UNASSIGNED);
             }
-            delete it->second;
+            rm.insert(it->second);
+            //delete it->second;
             it = this->graphMap.erase(it);
         
-            
         }
         
     }
@@ -117,6 +116,10 @@ void util::Graph::backtrack(int level) {
     
     return;
     
+}
+
+util::vertex* util::Graph::getLastEdited() {
+    return this->_lastEdit;
 }
 
 
@@ -143,5 +146,7 @@ std::string util::Graph::stringJsStyle() {
     s += ")";
     return s;
 }
+
+
 
 

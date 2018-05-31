@@ -2,7 +2,11 @@
 //  ProbabilisticSolver.hpp
 //  SAT
 //
-//  Created by Magnus Hartvig Grønbech on 17/04/2018.
+//  Created by
+//  Christian Schmidt - DTU,
+//  Casper Skjærris    - DTU,
+//  Magnus Grønbech   - DTU
+//  Date: 17/04/2018.
 //  Copyright © 2018 DTU. All rights reserved.
 //
 
@@ -13,10 +17,11 @@
 
 namespace algorithms {
     
-    class ProbabilisticSolver : virtual public Solver {
+    class ProbabilisticSolver : public Solver {
 
     public:
-        ProbabilisticSolver() : Solver() {};
+        ProbabilisticSolver() : Solver() {}
+        ProbabilisticSolver(std::string type, std::string outputFile, bool verbose) : Solver(type, outputFile, verbose) {}
         virtual ~ProbabilisticSolver() = 0;
         
         
