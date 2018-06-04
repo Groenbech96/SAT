@@ -67,6 +67,7 @@
 		6F2A47462099C3A6002E6E3A /* PropositionClause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F2A47442099C3A6002E6E3A /* PropositionClause.cpp */; };
 		6F2A47472099C3A6002E6E3A /* PropositionClause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F2A47442099C3A6002E6E3A /* PropositionClause.cpp */; };
 		6F2A47482099C3A6002E6E3A /* PropositionClause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F2A47442099C3A6002E6E3A /* PropositionClause.cpp */; };
+		EBB01824209A01E9004C617D /* PropositionalOperator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB01823209A01E9004C617D /* PropositionalOperator.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -2203,6 +2204,7 @@
 		6F2A47442099C3A6002E6E3A /* PropositionClause.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PropositionClause.cpp; sourceTree = "<group>"; };
 		6F2A47452099C3A6002E6E3A /* PropositionClause.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PropositionClause.hpp; sourceTree = "<group>"; };
 		6F365A41208783D200F4AB30 /* rapidjson */ = {isa = PBXFileReference; lastKnownFileType = folder; path = rapidjson; sourceTree = "<group>"; };
+		EBB01823209A01E9004C617D /* PropositionalOperator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PropositionalOperator.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -4519,6 +4521,7 @@
 				6F2A47432099C333002E6E3A /* PropositionOperator.h */,
 				6F2A47442099C3A6002E6E3A /* PropositionClause.cpp */,
 				6F2A47452099C3A6002E6E3A /* PropositionClause.hpp */,
+				EBB01823209A01E9004C617D /* PropositionalOperator.cpp */,
 			);
 			path = propositionformula;
 			sourceTree = "<group>";
@@ -4658,6 +4661,7 @@
 				3AE7B3DF20866156008B28D7 /* CDCLSolver.cpp in Sources */,
 				3AE7B3DC2086611C008B28D7 /* ProbabilisticSolver.cpp in Sources */,
 				6F2A47462099C3A6002E6E3A /* PropositionClause.cpp in Sources */,
+				EBB01824209A01E9004C617D /* PropositionalOperator.cpp in Sources */,
 				3AE7B3D6208660BC008B28D7 /* App.cpp in Sources */,
 				3AE7B3EE208661A8008B28D7 /* Clause.cpp in Sources */,
 				3AE7B3E820866191008B28D7 /* DTUSat.cpp in Sources */,
