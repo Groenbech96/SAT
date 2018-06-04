@@ -42,7 +42,7 @@ let rec MoveNegationsInward prop =
     | _         -> prop
 
 let rec Distribute prop =
-    printfn "%A" prop
+    printfn "Dist: %A" prop
     match prop with
     |Bi(_,_) -> failwith "Not done RemoveBI/imp"
     |Imp(_,_) -> failwith "Not done RemoveBI/imp"
@@ -64,7 +64,7 @@ let rec Distribute prop =
                                | _          -> prop
                 | Or(c,d)   -> match b with
                                | And(e,f)   -> Distribute (Or(c, Distribute (Or(d,b))))
-                               | Var(g)     -> Distribute (Or((Distribute a), b))
+                               | Var(g)     -> (Or((Distribute a), b))
                                | Or(e,f)    -> printfn "OrOr %A %A" a b
                                                Distribute (Or(Distribute a, Distribute b))
                                | Par(e)     -> Distribute (Or(a,e))
@@ -150,9 +150,9 @@ let rec compute n =
         let cnf = PropToCNF e
         printfn "CNF: %A" cnf
 
-        let s = cnfToString cnf
+        //let s = cnfToString cnf
 
-        File.WriteAllText("cnf.txt", s)
+        //File.WriteAllText("cnf.txt", s)
 
         printfn "ok"
         compute n
