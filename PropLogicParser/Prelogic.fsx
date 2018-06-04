@@ -16,6 +16,7 @@ open PreLogicLexer
 //
 
 let rec RemoveBiAndImp prop = 
+    printfn "S1: %A" prop
     match prop with
     | Bi(a,b)   -> And(
                         Or(RemoveBiAndImp a,Neg(RemoveBiAndImp b)),
@@ -48,28 +49,41 @@ let rec Distribute prop =
     |Imp(_,_) -> failwith "Not done RemoveBI/imp"
     |Or(a,b) -> match a with
                 | Var(k)    -> match b with
-                               | And(c,d)   -> And(Distribute (Or(Distribute a, Distribute c)), 
-                                                   Distribute (Or(Distribute a, Distribute d)))
-                               | Par(c)     -> Distribute (Or(a,c))
+                               | And(c,d)   -> And(Distribute (Or(a, Distribute c)), 
+                                                   Distribute (Or(a, Distribute d)))
+                               | Par(c)     -> Distribute (Or(a,Distribute c))
                                | _          -> prop
                 | And(c,d)  -> match b with
-                               | Var(k)     -> And(Distribute (Or(Distribute b, Distribute c)), 
-                                                   Distribute (Or(Distribute b, Distribute d)))
-                               | Par(e)     -> Distribute (Or(a,e))
+                               | Var(k)     -> And(Distribute (Or(b, Distribute c)), 
+                                                   Distribute (Or(b, Distribute d)))
+                               | Par(e)     -> Distribute (Or(a,Distribute e))
                                | And(e,f)   -> And(And(And( 
                                                             Distribute (Or(Distribute c, Distribute e)),
                                                             Distribute (Or(Distribute c, Distribute f))), 
                                                             Distribute (Or(Distribute d, Distribute e))), 
                                                             Distribute (Or(Distribute d, Distribute f)))
                                | _          -> prop
-                | Or(c,d)   -> match b with
-                               | And(e,f)   -> Distribute (Or(c, Distribute (Or(d,b))))
-                               | Var(g)     -> (Or((Distribute a), b))
-                               | Or(e,f)    -> printfn "OrOr %A %A" a b
-                                               Distribute (Or(Distribute a, Distribute b))
-                               | Par(e)     -> Distribute (Or(a,e))
-                               | _          -> prop
-                | Par(c)    -> Distribute (Or(c,b))
+                | Or(c,d)   -> printfn "Hej or"
+                               match b with
+                               | And(e,f)   -> printfn "A"
+                                               And(And(And( 
+                                                            Distribute (And(Distribute c, Distribute e)),
+                                                            Distribute (And(Distribute c, Distribute f))), 
+                                                            Distribute (And(Distribute d, Distribute e))), 
+                                                            Distribute (And(Distribute d, Distribute f)))
+                               | Var(g)     ->  printfn "V %A" b
+                                                Distribute (Or(Distribute a, b))
+                               | Or(e,f)    ->  printfn "hej"
+                                                Distribute (Or(Or(Or(
+                                                                    Distribute(Or(Distribute c, Distribute e)),
+                                                                    Distribute(Or(Distribute c, Distribute f))),
+                                                                    Distribute(Or(Distribute d, Distribute e))),
+                                                                    Distribute(Or(Distribute d, Distribute f ))))
+                               | Par(e)     -> printfn "P"
+                                               Distribute (Or(a, Distribute e))
+                               | _          -> printfn "_"
+                                               prop
+                | Par(c)    -> Distribute (Or(Distribute c,b))
                 | _         -> prop    
 
     | And(a,b)  -> And(Distribute a, Distribute b)
