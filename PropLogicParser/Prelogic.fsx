@@ -50,10 +50,10 @@ let rec Distribute prop =
     |Bi(_,_) -> failwith "Not done RemoveBI/imp"
     |Imp(_,_) -> failwith "Not done RemoveBI/imp"
     |Or(a,b) -> match a with
-                | Var(k)    -> DistributeVar (a,b)
-                | And(c,d)  -> DistributeAnd ((c,d),b)
-                | Or(c,d)   -> DistributeOr ((c,d),b)
-                | _         -> prop    
+                | Var(k) | Neg(Var(k))   -> DistributeVar (a,b)
+                | And(c,d)               -> DistributeAnd ((c,d),b)
+                | Or(c,d)                -> DistributeOr ((c,d),b)
+                | _                      -> prop    
     | And(a,b)  -> And(Distribute a, Distribute b)
     | Par(a)    -> Distribute a
     |_ -> prop
@@ -72,32 +72,33 @@ and DistributeVar (a,b) =
 and DistributeAnd ((c,d),b) =
     let a = And(c,d)
     match b with
-    | Var(k)     -> And(Distribute (Or(b, Distribute c)), 
-                        Distribute (Or(b, Distribute d)))
-    | And(e,f)   -> And(And(And( 
-                                 Distribute (Or(Distribute c, Distribute e)),
-                                 Distribute (Or(Distribute c, Distribute f))), 
-                                 Distribute (Or(Distribute d, Distribute e))), 
-                                 Distribute (Or(Distribute d, Distribute f)))
-    | _          -> Or(a,b)
+    | Var(k) | Neg(Var(k)) -> And(Distribute (Or(b, Distribute c)), 
+                                  Distribute (Or(b, Distribute d)))
+    | And(e,f)             -> And(And(And( 
+                                         Distribute (Or(Distribute c, Distribute e)),
+                                         Distribute (Or(Distribute c, Distribute f))), 
+                                         Distribute (Or(Distribute d, Distribute e))), 
+                                         Distribute (Or(Distribute d, Distribute f)))
+    | Or(e,f)              -> Distribute (Or(Distribute (Or(a,e)), Distribute f))
+    | _                    -> Or(a,b)
 
 and DistributeOr ((c,d),b) =
     let a = Or(c,d)
     match b with      
-    | And(e,f)   -> Distribute (Or(c, Distribute (Or(d,b))))
-    | Var(g)     ->  let res =  Or(Distribute a, b)
-                     match res with
-                     |Or(And(_),b) -> Distribute res
-                     |Or(Or(_),b)  -> res
-                     |_              -> failwith "Unexpected res"
-    | Or(e,f)    -> let res = Or(Distribute a, Distribute b)
-                    match res with
-                    | Or(Or(_),Or(_))    -> res
-                    | Or(And(_), Or(_))  -> Distribute res
-                    | Or(Or(_), And(_))  -> Distribute res
-                    | Or(And(_), And(_)) -> Distribute res
-                    | _                  -> failwith "Unexpected res"
-    | _          -> Or(a,b)
+    | And(e,f)             -> Distribute (Or(Distribute c, Distribute (Or(d,b))))
+    | Var(g) | Neg(Var(g)) -> let res =  Or(Distribute a, b)
+                              match res with
+                              |Or(And(_),b) -> Distribute res
+                              |Or(Or(_),b)  -> res
+                              |_              -> failwith "Unexpected res"
+    | Or(e,f)              -> let res = Or(Distribute a, Distribute b)
+                              match res with
+                              | Or(Or(_),Or(_))    -> res
+                              | Or(And(_), Or(_))  -> Distribute res
+                              | Or(Or(_), And(_))  -> Distribute res
+                              | Or(And(_), And(_)) -> Distribute res
+                              | _                  -> failwith "Unexpected res"
+    | _                    -> Or(a,b)
 
 
 let PropToCNF prop =
