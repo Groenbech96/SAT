@@ -23,6 +23,22 @@ int Application::App::run() {
         return -1;
     } else {
         
+<<<<<<< HEAD
+    for(int i = 1; i <= 2; i++) {
+        std::string fe = "/Users/christianschmidt/Documents/Uddannelse/DTU/Semester4/Fagprojekt/SAT/data/2cnfs/uf50-218/";
+        std::string file = fe + "uf50-0" + std::to_string(i) + ".cnf";
+        //std::cout << file << std::endl;
+        
+        cnf::Formula *f = util::Parser(file.c_str()).parse();
+        
+        algorithms::DTUSat *solver = new algorithms::DTUSat();
+        solver->setup(*f);
+        bool res = false;
+        res = solver->solve();
+        
+        if(res) {
+            std::cout << "SAT" + std::to_string(i) << std::endl;
+=======
         if(this->m_argc == 3) {
      
             if(std::strcmp(this->m_argv[1], "-f") == 0)  {
@@ -85,6 +101,7 @@ int Application::App::run() {
             } else {
                 return -1;
             }
+>>>>>>> ead72f096fc38349de54213b70ceb4d8e42723c7
         } else {
             
             if(std::strcmp(this->m_argv[1], "-f") == 0 && std::strcmp(this->m_argv[3], "-o") == 0 && std::strcmp(this->m_argv[5], "--verbose") == 0)  {
