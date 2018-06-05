@@ -15,6 +15,7 @@ open PreLogicLexer
 //  Convert propositional logic to CNF
 //
 
+// Step 1 : Remove (bi)implications
 let rec RemoveBiAndImp prop = 
     match prop with
     | Bi(a,b)   -> And(
@@ -23,11 +24,13 @@ let rec RemoveBiAndImp prop =
     | Imp(a,b)  -> Or(Neg(RemoveBiAndImp a),RemoveBiAndImp b)
     | Or(a, b)  -> Or(RemoveBiAndImp a, RemoveBiAndImp b)
     | And(a, b) -> And(RemoveBiAndImp a, RemoveBiAndImp b)
-    | Par(a)    -> Par(RemoveBiAndImp a)
+    | Par(a)    -> RemoveBiAndImp a
     | Neg(a)    -> Neg(RemoveBiAndImp a)
     | _         -> prop
 
+// Step 2 : Move negations inward
 let rec MoveNegationsInward prop =
+    printfn "Neg %A" prop
     match prop with
     | Neg(a)    -> match a with
                    | Par(b)   -> MoveNegationsInward (Neg(b))
@@ -40,61 +43,61 @@ let rec MoveNegationsInward prop =
     | Par(a)    -> MoveNegationsInward a
     | _         -> prop
 
+// Step 3 : Distribute Or's inward over And's repeatedly
 let rec Distribute prop =
-    printfn "D1: %A" prop
+    printfn "Dist %A" prop
     match prop with
     |Bi(_,_) -> failwith "Not done RemoveBI/imp"
     |Imp(_,_) -> failwith "Not done RemoveBI/imp"
-    |Or(a,b) -> printfn "D2 %A or %A" a b
-                match a with
-                | Var(k)    -> printfn "D3 a is var" 
-                               match b with
-                               | And(c,d)   -> And(Distribute (Or(a, Distribute c)), 
-                                                   Distribute (Or(a, Distribute d)))
-                               | Or(c,d)    -> let test =  Or(a, Distribute b)
-                                               match test with
-                                               |Or(a,And(i,j)) -> Distribute test
-                                               |Or(a, Or(i,j)) -> test
-                                               |_ -> failwith "må ikke"
-                               | Par(c)     -> Distribute (Or(a,Distribute c))
-                               | _          -> prop
-                | And(c,d)  -> printfn "D3 a is and" 
-                               match b with
-                               | Var(k)     -> And(Distribute (Or(b, Distribute c)), 
-                                                   Distribute (Or(b, Distribute d)))
-                               | Par(e)     -> Distribute (Or(a,Distribute e))
-                               | And(e,f)   -> And(And(And( 
-                                                            Distribute (Or(Distribute c, Distribute e)),
-                                                            Distribute (Or(Distribute c, Distribute f))), 
-                                                            Distribute (Or(Distribute d, Distribute e))), 
-                                                            Distribute (Or(Distribute d, Distribute f)))
-                               | _          -> prop
-                | Or(c,d)   -> printfn "D3 a is Or"
-                               match b with
-                               | And(e,f)   -> And(And(And( 
-                                                            Distribute (And(Distribute c, Distribute e)),
-                                                            Distribute (And(Distribute c, Distribute f))), 
-                                                            Distribute (And(Distribute d, Distribute e))), 
-                                                            Distribute (And(Distribute d, Distribute f)))
-                               | Var(g)     ->  let test =  Or(Distribute a, b)
-                                                match test with
-                                                |Or(And(i,j),b) -> Distribute test
-                                                |Or(Or(i,j),b) -> test
-                                                |_ -> failwith "må ikke"
-                               | Or(e,f)    ->  Distribute (Or(Or(Or(
-                                                                    Distribute(Or(Distribute c, Distribute e)),
-                                                                    Distribute(Or(Distribute c, Distribute f))),
-                                                                    Distribute(Or(Distribute d, Distribute e))),
-                                                                    Distribute(Or(Distribute d, Distribute f ))))
-                               | Par(e)     -> Distribute (Or(a, Distribute e))
-                               | _          -> prop
-                | Par(c)    -> printfn "D3 a is Par"
-                               Distribute (Or(Distribute c,b))
+    |Or(a,b) -> match a with
+                | Var(k)    -> DistributeVar (a,b)
+                | And(c,d)  -> DistributeAnd ((c,d),b)
+                | Or(c,d)   -> DistributeOr ((c,d),b)
                 | _         -> prop    
-
     | And(a,b)  -> And(Distribute a, Distribute b)
     | Par(a)    -> Distribute a
     |_ -> prop
+    
+and DistributeVar (a,b) =
+    match b with
+    | And(c,d)   -> And(Distribute (Or(a, Distribute c)), 
+                        Distribute (Or(a, Distribute d)))
+    | Or(c,d)    -> let res =  Or(a, Distribute b)
+                    match res with
+                    |Or(a,And(_)) -> Distribute res
+                    |Or(a,Or(_)) -> res
+                    |_              -> failwith "Unexpected res"
+    | _          -> Or(a,b)
+
+and DistributeAnd ((c,d),b) =
+    let a = And(c,d)
+    match b with
+    | Var(k)     -> And(Distribute (Or(b, Distribute c)), 
+                        Distribute (Or(b, Distribute d)))
+    | And(e,f)   -> And(And(And( 
+                                 Distribute (Or(Distribute c, Distribute e)),
+                                 Distribute (Or(Distribute c, Distribute f))), 
+                                 Distribute (Or(Distribute d, Distribute e))), 
+                                 Distribute (Or(Distribute d, Distribute f)))
+    | _          -> Or(a,b)
+
+and DistributeOr ((c,d),b) =
+    let a = Or(c,d)
+    match b with      
+    | And(e,f)   -> Distribute (Or(c, Distribute (Or(d,b))))
+    | Var(g)     ->  let res =  Or(Distribute a, b)
+                     match res with
+                     |Or(And(_),b) -> Distribute res
+                     |Or(Or(_),b)  -> res
+                     |_              -> failwith "Unexpected res"
+    | Or(e,f)    -> let res = Or(Distribute a, Distribute b)
+                    match res with
+                    | Or(Or(_),Or(_))    -> res
+                    | Or(And(_), Or(_))  -> Distribute res
+                    | Or(Or(_), And(_))  -> Distribute res
+                    | Or(And(_), And(_)) -> Distribute res
+                    | _                  -> failwith "Unexpected res"
+    | _          -> Or(a,b)
 
 
 let PropToCNF prop =

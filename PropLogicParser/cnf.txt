@@ -1,5 +1,7 @@
-p cnf 5 2
-e a b c 0
-e a b d 0
+p cnf 6 4
+-x1 y1 0
+-x2 y2 0
+x3 0
+-x4 0
 % 
 0
