@@ -2,10 +2,13 @@
 //  CDCL.hpp
 //  SAT
 //
-//  Created by Magnus Hartvig Grønbech on 17/04/2018.
+//  Created by
+//  Christian Schmidt - DTU,
+//  Casper Skjærris    - DTU,
+//  Magnus Grønbech   - DTU
+//  Date: 17/04/2018.
 //  Copyright © 2018 DTU. All rights reserved.
 //
-
 #ifndef CDCL_hpp
 #define CDCL_hpp
 
@@ -24,18 +27,20 @@ namespace algorithms {
     class DTUSat : public CDCLSolver {
         
     public:
-        DTUSat() = default;
+        DTUSat() : CDCLSolver() {}
+        DTUSat(std::string type, std::string outputFile, bool verbose) : CDCLSolver(type, outputFile, verbose) {}
         ~DTUSat()  = default;
         
         void setup(cnf::Formula formula) override;
+        void extracted();
+        
         bool solve() override;
+        void failed();
         
         //void printGraph();
-        
-        
-        
+    
         cnf::Formula & getFormulaState();
-        ClauseLiterals getLearnedClause();
+        
         
     private:
         
@@ -44,6 +49,7 @@ namespace algorithms {
         FRIEND_TEST(AlgorithmFixture, CDCLUnitPropagationTest);
         FRIEND_TEST(AlgorithmFixture, CDCLUnitPropagationTestTwo);
         FRIEND_TEST(AlgorithmFixture, CDCLUnitResolutionTest);
+        FRIEND_TEST(AlgorithmFixture, CDCLUnitResolutionTestTwo);
         FRIEND_TEST(AlgorithmFixture, CDCLConflictAnalysis);
         FRIEND_TEST(AlgorithmFixture, CDCLUnitPropagationTestThree);
         FRIEND_TEST(AlgorithmFixture, CDCLBackTrack);
@@ -52,24 +58,20 @@ namespace algorithms {
 #endif
         
         // std::queue<int> assignments;
-        ClauseLiterals learnClauseLiterals;
     
+        
+        
         void backtrack() override;
         void backtrackToStart() override;
         void conflictAnalysis() override;
         void resolution(ClauseLiterals, ClauseLiterals) override;
         cnf::Variable* pickBranchingVariable() override;
         void propagate() override;
+        void updateActivity() override;
+        
         void exhaustivePropagate();
-        void addToImplicationGraph(cnf::Variable *v, int decisionLvl, int antecedentClause);
-        void addConflict(cnf::Clause *c);
-        void findUIP(cnf::Clause c1, cnf::Clause reason, int level);
         
-        bool hasConflict() override;
-        void learn(int i);
         
-        bool isUIP(ClauseLiterals, int);
-        int getAssertionLevel();
         void print(std::stack<cnf::Variable*> s);
         
     };

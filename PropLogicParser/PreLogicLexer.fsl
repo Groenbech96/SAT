@@ -1,0 +1,25 @@
+{
+module PreLogicLexer
+open Microsoft.FSharp.Text.Lexing
+// open the module that defines the tokens
+open PreLogicParser
+}
+
+// Defining macros
+let digit       = ['0'-'9']
+let whitespace  = [' ' '\n' '\r' '\t']
+let char        = ['a'-'z' 'A'-'Z']
+let identifier    = char(char|digit)*
+
+// Defining the rules for building tokens
+rule tokenize = parse
+| whitespace    { tokenize lexbuf }
+| "&" 	{AND}
+| "|"  	{OR}
+| "->"  {IMPLICATION}
+| "<=>" {BIIMPLICATION}
+| "!"	{NEGATION}
+| "("	{LPAR}
+| ")"	{RPAR}
+| identifier { VAR (LexBuffer<_>.LexemeString lexbuf) }
+| eof           { EOF }
