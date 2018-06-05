@@ -41,16 +41,25 @@ let rec MoveNegationsInward prop =
     | _         -> prop
 
 let rec Distribute prop =
+    printfn "D1: %A" prop
     match prop with
     |Bi(_,_) -> failwith "Not done RemoveBI/imp"
     |Imp(_,_) -> failwith "Not done RemoveBI/imp"
-    |Or(a,b) -> match a with
-                | Var(k)    -> match b with
+    |Or(a,b) -> printfn "D2 %A or %A" a b
+                match a with
+                | Var(k)    -> printfn "D3 a is var" 
+                               match b with
                                | And(c,d)   -> And(Distribute (Or(a, Distribute c)), 
                                                    Distribute (Or(a, Distribute d)))
+                               | Or(c,d)    -> let test =  Or(a, Distribute b)
+                                               match test with
+                                               |Or(a,And(i,j)) -> Distribute test
+                                               |Or(a, Or(i,j)) -> test
+                                               |_ -> failwith "må ikke"
                                | Par(c)     -> Distribute (Or(a,Distribute c))
                                | _          -> prop
-                | And(c,d)  -> match b with
+                | And(c,d)  -> printfn "D3 a is and" 
+                               match b with
                                | Var(k)     -> And(Distribute (Or(b, Distribute c)), 
                                                    Distribute (Or(b, Distribute d)))
                                | Par(e)     -> Distribute (Or(a,Distribute e))
@@ -60,13 +69,18 @@ let rec Distribute prop =
                                                             Distribute (Or(Distribute d, Distribute e))), 
                                                             Distribute (Or(Distribute d, Distribute f)))
                                | _          -> prop
-                | Or(c,d)   -> match b with
+                | Or(c,d)   -> printfn "D3 a is Or"
+                               match b with
                                | And(e,f)   -> And(And(And( 
                                                             Distribute (And(Distribute c, Distribute e)),
                                                             Distribute (And(Distribute c, Distribute f))), 
                                                             Distribute (And(Distribute d, Distribute e))), 
                                                             Distribute (And(Distribute d, Distribute f)))
-                               | Var(g)     ->  Distribute (Or(Distribute a, b))
+                               | Var(g)     ->  let test =  Or(Distribute a, b)
+                                                match test with
+                                                |Or(And(i,j),b) -> Distribute test
+                                                |Or(Or(i,j),b) -> test
+                                                |_ -> failwith "må ikke"
                                | Or(e,f)    ->  Distribute (Or(Or(Or(
                                                                     Distribute(Or(Distribute c, Distribute e)),
                                                                     Distribute(Or(Distribute c, Distribute f))),
@@ -74,7 +88,8 @@ let rec Distribute prop =
                                                                     Distribute(Or(Distribute d, Distribute f ))))
                                | Par(e)     -> Distribute (Or(a, Distribute e))
                                | _          -> prop
-                | Par(c)    -> Distribute (Or(Distribute c,b))
+                | Par(c)    -> printfn "D3 a is Par"
+                               Distribute (Or(Distribute c,b))
                 | _         -> prop    
 
     | And(a,b)  -> And(Distribute a, Distribute b)

@@ -49,7 +49,8 @@ int Application::App::run() {
                 
                 return 0;
 
-            } else {
+            }
+            else {
                 return -1;
             }
         } else if (this->m_argc == 5) {
