@@ -16,7 +16,6 @@ open PreLogicLexer
 //
 
 let rec RemoveBiAndImp prop = 
-    printfn "S1: %A" prop
     match prop with
     | Bi(a,b)   -> And(
                         Or(RemoveBiAndImp a,Neg(RemoveBiAndImp b)),
@@ -29,7 +28,6 @@ let rec RemoveBiAndImp prop =
     | _         -> prop
 
 let rec MoveNegationsInward prop =
-    printfn "Neg: %A" prop
     match prop with
     | Neg(a)    -> match a with
                    | Par(b)   -> MoveNegationsInward (Neg(b))
@@ -43,7 +41,6 @@ let rec MoveNegationsInward prop =
     | _         -> prop
 
 let rec Distribute prop =
-    printfn "Dist: %A" prop
     match prop with
     |Bi(_,_) -> failwith "Not done RemoveBI/imp"
     |Imp(_,_) -> failwith "Not done RemoveBI/imp"
@@ -63,26 +60,20 @@ let rec Distribute prop =
                                                             Distribute (Or(Distribute d, Distribute e))), 
                                                             Distribute (Or(Distribute d, Distribute f)))
                                | _          -> prop
-                | Or(c,d)   -> printfn "Hej or"
-                               match b with
-                               | And(e,f)   -> printfn "A"
-                                               And(And(And( 
+                | Or(c,d)   -> match b with
+                               | And(e,f)   -> And(And(And( 
                                                             Distribute (And(Distribute c, Distribute e)),
                                                             Distribute (And(Distribute c, Distribute f))), 
                                                             Distribute (And(Distribute d, Distribute e))), 
                                                             Distribute (And(Distribute d, Distribute f)))
-                               | Var(g)     ->  printfn "V %A" b
-                                                Distribute (Or(Distribute a, b))
-                               | Or(e,f)    ->  printfn "hej"
-                                                Distribute (Or(Or(Or(
+                               | Var(g)     ->  Distribute (Or(Distribute a, b))
+                               | Or(e,f)    ->  Distribute (Or(Or(Or(
                                                                     Distribute(Or(Distribute c, Distribute e)),
                                                                     Distribute(Or(Distribute c, Distribute f))),
                                                                     Distribute(Or(Distribute d, Distribute e))),
                                                                     Distribute(Or(Distribute d, Distribute f ))))
-                               | Par(e)     -> printfn "P"
-                                               Distribute (Or(a, Distribute e))
-                               | _          -> printfn "_"
-                                               prop
+                               | Par(e)     -> Distribute (Or(a, Distribute e))
+                               | _          -> prop
                 | Par(c)    -> Distribute (Or(Distribute c,b))
                 | _         -> prop    
 
@@ -164,9 +155,9 @@ let rec compute n =
         let cnf = PropToCNF e
         printfn "CNF: %A" cnf
 
-        //let s = cnfToString cnf
+        let s = cnfToString cnf
 
-        //File.WriteAllText("cnf.txt", s)
+        File.WriteAllText("cnf.txt", s)
 
         printfn "ok"
         compute n
