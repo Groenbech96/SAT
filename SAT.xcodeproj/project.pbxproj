@@ -2191,6 +2191,7 @@
 		3AE7B40D208662DC008B28D7 /* ClauseTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ClauseTest.cpp; sourceTree = "<group>"; };
 		3AE7B40F208662F2008B28D7 /* AlgorithmTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AlgorithmTest.cpp; sourceTree = "<group>"; };
 		3AE7B42F208667D2008B28D7 /* SatTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SatTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F6A99BD20C6930600E0E59B /* fail.cnf */ = {isa = PBXFileReference; lastKnownFileType = text; path = fail.cnf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2306,6 +2307,7 @@
 				3A71470B2094904D00645DC4 /* UnitTestThree.cnf */,
 				3A71470C2094A35D00645DC4 /* CompleteTestA.cnf */,
 				3A71470D2094C5B700645DC4 /* CompleteTestB.cnf */,
+				6F6A99BD20C6930600E0E59B /* fail.cnf */,
 			);
 			path = tests;
 			sourceTree = "<group>";
