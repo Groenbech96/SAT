@@ -61,13 +61,6 @@
 		3AE7B3F1208661B6008B28D7 /* Variable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3EF208661B6008B28D7 /* Variable.cpp */; };
 		3AE7B3F5208661DB008B28D7 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F3208661DB008B28D7 /* Graph.cpp */; };
 		3AE7B3F8208661E9008B28D7 /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F6208661E9008B28D7 /* Parser.cpp */; };
-		6F2A473F2099BE73002E6E3A /* PropositionFormula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F2A473D2099BE73002E6E3A /* PropositionFormula.cpp */; };
-		6F2A47402099BE73002E6E3A /* PropositionFormula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F2A473D2099BE73002E6E3A /* PropositionFormula.cpp */; };
-		6F2A47412099BE73002E6E3A /* PropositionFormula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F2A473D2099BE73002E6E3A /* PropositionFormula.cpp */; };
-		6F2A47462099C3A6002E6E3A /* PropositionClause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F2A47442099C3A6002E6E3A /* PropositionClause.cpp */; };
-		6F2A47472099C3A6002E6E3A /* PropositionClause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F2A47442099C3A6002E6E3A /* PropositionClause.cpp */; };
-		6F2A47482099C3A6002E6E3A /* PropositionClause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F2A47442099C3A6002E6E3A /* PropositionClause.cpp */; };
-		EBB01824209A01E9004C617D /* PropositionalOperator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBB01823209A01E9004C617D /* PropositionalOperator.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -2198,13 +2191,6 @@
 		3AE7B40D208662DC008B28D7 /* ClauseTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ClauseTest.cpp; sourceTree = "<group>"; };
 		3AE7B40F208662F2008B28D7 /* AlgorithmTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AlgorithmTest.cpp; sourceTree = "<group>"; };
 		3AE7B42F208667D2008B28D7 /* SatTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SatTest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F2A473D2099BE73002E6E3A /* PropositionFormula.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PropositionFormula.cpp; sourceTree = "<group>"; };
-		6F2A473E2099BE73002E6E3A /* PropositionFormula.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PropositionFormula.hpp; sourceTree = "<group>"; };
-		6F2A47432099C333002E6E3A /* PropositionOperator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PropositionOperator.h; sourceTree = "<group>"; };
-		6F2A47442099C3A6002E6E3A /* PropositionClause.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PropositionClause.cpp; sourceTree = "<group>"; };
-		6F2A47452099C3A6002E6E3A /* PropositionClause.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PropositionClause.hpp; sourceTree = "<group>"; };
-		6F365A41208783D200F4AB30 /* rapidjson */ = {isa = PBXFileReference; lastKnownFileType = folder; path = rapidjson; sourceTree = "<group>"; };
-		EBB01823209A01E9004C617D /* PropositionalOperator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PropositionalOperator.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -4437,7 +4423,6 @@
 		3AE7B3CC20866010008B28D7 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				6F2A47422099C2A3002E6E3A /* propositionformula */,
 				3AE7B3C220865FAB008B28D7 /* main.cpp */,
 				3AE7B3CD20866030008B28D7 /* app */,
 				3AE7B3C920865FE3008B28D7 /* algorithm */,
@@ -4511,19 +4496,6 @@
 			children = (
 			);
 			path = plots;
-			sourceTree = "<group>";
-		};
-		6F2A47422099C2A3002E6E3A /* propositionformula */ = {
-			isa = PBXGroup;
-			children = (
-				6F2A473D2099BE73002E6E3A /* PropositionFormula.cpp */,
-				6F2A473E2099BE73002E6E3A /* PropositionFormula.hpp */,
-				6F2A47432099C333002E6E3A /* PropositionOperator.h */,
-				6F2A47442099C3A6002E6E3A /* PropositionClause.cpp */,
-				6F2A47452099C3A6002E6E3A /* PropositionClause.hpp */,
-				EBB01823209A01E9004C617D /* PropositionalOperator.cpp */,
-			);
-			path = propositionformula;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -4626,9 +4598,7 @@
 			files = (
 				3A714B1520950B2F00645DC4 /* Randomizer.h in Sources */,
 				3A714B0820950B1800645DC4 /* App.cpp in Sources */,
-				6F2A47482099C3A6002E6E3A /* PropositionClause.cpp in Sources */,
 				3A714B0920950B1800645DC4 /* Solver.cpp in Sources */,
-				6F2A47412099BE73002E6E3A /* PropositionFormula.cpp in Sources */,
 				3A714B0A20950B1800645DC4 /* ProbabilisticSolver.cpp in Sources */,
 				3A714B0B20950B1800645DC4 /* CDCLSolver.cpp in Sources */,
 				3A714B0C20950B1800645DC4 /* Schonings.cpp in Sources */,
@@ -4660,14 +4630,11 @@
 				3A41A31E20968A2700D49C7B /* Output.cpp in Sources */,
 				3AE7B3DF20866156008B28D7 /* CDCLSolver.cpp in Sources */,
 				3AE7B3DC2086611C008B28D7 /* ProbabilisticSolver.cpp in Sources */,
-				6F2A47462099C3A6002E6E3A /* PropositionClause.cpp in Sources */,
-				EBB01824209A01E9004C617D /* PropositionalOperator.cpp in Sources */,
 				3AE7B3D6208660BC008B28D7 /* App.cpp in Sources */,
 				3AE7B3EE208661A8008B28D7 /* Clause.cpp in Sources */,
 				3AE7B3E820866191008B28D7 /* DTUSat.cpp in Sources */,
 				3AE7B3F1208661B6008B28D7 /* Variable.cpp in Sources */,
 				3AE7B3F8208661E9008B28D7 /* Parser.cpp in Sources */,
-				6F2A473F2099BE73002E6E3A /* PropositionFormula.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4681,10 +4648,8 @@
 				3A258472208DD35200ADC8A7 /* Schonings.cpp in Sources */,
 				3A258473208DD35200ADC8A7 /* Grasp.cpp in Sources */,
 				3A258474208DD35200ADC8A7 /* DTUSat.cpp in Sources */,
-				6F2A47402099BE73002E6E3A /* PropositionFormula.cpp in Sources */,
 				3A258475208DD35200ADC8A7 /* Clause.cpp in Sources */,
 				3A258476208DD35200ADC8A7 /* Formula.cpp in Sources */,
-				6F2A47472099C3A6002E6E3A /* PropositionClause.cpp in Sources */,
 				3A258477208DD35200ADC8A7 /* Literal.h in Sources */,
 				3A258478208DD35200ADC8A7 /* Variable.cpp in Sources */,
 				3A258479208DD35200ADC8A7 /* Graph.cpp in Sources */,
