@@ -11,6 +11,9 @@
 //
 
 #include "App.hpp"
+#include "Formula.hpp"
+#include <ctime>
+#include <cstdio>
 
 Application::App::App(int argc, char* argv[]) {
     this->m_argc = argc;
@@ -79,7 +82,57 @@ int Application::App::run() {
                 return 0;
 
                 
-            } else {
+            }
+            else if(std::strcmp(this->m_argv[1], "CDCL") == 0 && std::strcmp(m_argv[2], "-pt") == 0){
+                int n = std::stoi(m_argv[3]);
+                int m = std::stoi(m_argv[4]);
+                int k = 3;
+                auto f = new cnf::Formula(k,m,n);
+                auto solver = new algorithms::DTUSat();
+                
+                solver->setup(*f);
+                bool res = false;
+                clock_t start = clock();
+                res = solver->solve();
+                clock_t end = clock();
+                unsigned int totalTime = (unsigned int)(end-start);
+                
+                if (res)
+                    std::cout << "t" << std::endl;
+                else
+                    std::cout << "f" << std::endl;
+                std::cout << std::to_string(totalTime) << std::endl;
+                
+                delete f;
+                delete solver;
+                
+                return 0;
+            }
+            else if (std::strcmp(this->m_argv[1], "SCH") == 0){
+                int n = std::stoi(m_argv[3]);
+                int m = std::stoi(m_argv[4]);
+                int k = 3;
+                auto f = new cnf::Formula(k,m,n);
+                auto solver = new algorithms::Schonings();
+                
+                solver->setup(*f);
+                bool res = false;
+                clock_t start = clock();
+                res = solver->solve();
+                clock_t end = clock();
+                unsigned int totalTime = (unsigned int)(end-start);
+                
+                if (res)
+                    std::cout << "t" << std::endl;
+                else
+                    std::cout << "f" << std::endl;
+                std::cout << std::to_string(totalTime) << std::endl;
+                
+                delete f;
+                delete solver;
+                
+                return 0;            }
+            else {
                 return -1;
             }
         } else {
