@@ -244,6 +244,11 @@ void util::Output::addUnsat() {
     s.SetInt(this->_step);
     rapidjson::Value& s1 = _document["status"];
     s1.SetString("unsat", 5);
+    rapidjson::StringBuffer sb;
+    rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
+    this->_document.Accept(writer);
+    
+    this->_outfile << sb.GetString() << std::endl;
 }
 
 void util::Output::addSolution(std::unordered_map<int, cnf::Variable*> solution) {

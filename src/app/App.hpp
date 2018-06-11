@@ -14,6 +14,7 @@
 #define App_hpp
 
 #include "DTUSat.hpp"
+#include "Schonings.hpp"
 #include "Parser.hpp"
 
 namespace Application {

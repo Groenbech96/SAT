@@ -45,7 +45,7 @@ bool algorithms::DTUSat::solve() {
             backtrack();
             
             if(getBeta() < 0) {
-                if(this->verbose) {
+                if(this->output) {
                     this->outputter.addUnsat();
                 }
                 return false;
