@@ -77,7 +77,6 @@ namespace cnf {
         ///
         std::string string();
         
-        void addLiteral();
         void removeLiteral(int id);
         
         

@@ -140,7 +140,7 @@ void util::Output::addStep(std::string type, std::unordered_map<int, cnf::Litera
     this->_step++;
 }
 
-void util::Output::addStep(std::string type, std::set<util::vertex *> rm, int backtrackLevel) {
+void util::Output::addStep(std::string type, std::set<util::Vertex *> rm, int backtrackLevel) {
     
     rapidjson::Value& track = this->_document["tracking"];
     track.AddMember(rapidjson::Value(std::to_string(this->_step).c_str(), _document.GetAllocator()), rapidjson::Value(rapidjson::kObjectType), this->_document.GetAllocator());

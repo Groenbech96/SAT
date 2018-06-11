@@ -162,9 +162,9 @@ namespace cnf {
         std::unordered_map<int, Variable *> variableSet;
         
         /// The current conflict clause
-        Clause* _conflictClause = nullptr;
+        Clause* conflictClause = nullptr;
         /// The current unit clause
-        Clause* _unitClause     = nullptr;
+        Clause* unitClause     = nullptr;
         
         Clause lastAddedClause;
         

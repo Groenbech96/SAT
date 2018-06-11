@@ -14,9 +14,9 @@
 
 void algorithms::DTUSat::setup(cnf::Formula formula) {
     
-    this->_formula = formula;
+    this->formula = formula;
     
-    for(auto it : this->_formula.getVariables()) {
+    for(auto it : this->formula.getVariables()) {
         this->activity.insert(std::make_pair(it.second, 0));
     }
     
@@ -54,14 +54,14 @@ bool algorithms::DTUSat::solve() {
             this->setDecisionLevel(this->getBeta());
             
         } else {
-            if(!this->_formula.hasUnsatisfiedClauses()) {
+            if(!this->formula.hasUnsatisfiedClauses()) {
                 
                 // Todo change:
                 if(this->verbose) {
-                    this->outputter.addFormulaAtEnd(this->_formula.getClauses());
+                    this->outputter.addFormulaAtEnd(this->formula.getClauses());
                 }
                 if(this->output) {
-                    this->outputter.addSolution(this->_formula.getVariables());
+                    this->outputter.addSolution(this->formula.getVariables());
                     this->outputter.close();
                 }
                 return true;
@@ -129,7 +129,7 @@ void algorithms::DTUSat::backtrackToStart() {
 
 void algorithms::DTUSat::propagate() {
     
-    auto unitClause = this->_formula.getUnitClause();
+    auto unitClause = this->formula.getUnitClause();
     
     auto l = unitClause->getUnitLiteral().get();
     
@@ -187,14 +187,14 @@ void algorithms::DTUSat::conflictAnalysis() {
     
     int backtrack = 0;
     
-    cnf::Clause *conflict = this->_formula.getConflictClause();
+    cnf::Clause *conflict = this->formula.getConflictClause();
     
     if(this->verbose) {
         this->outputter.addConflictClause(conflict);
     }
     
     int reasonID = this->graph.getVertex(var).get()->antecedentClauseID;
-    cnf::Clause *reason = this->_formula.getClause(reasonID);
+    cnf::Clause *reason = this->formula.getClause(reasonID);
     
     findUIP(*conflict, *reason, conflictLevel);
     
@@ -206,7 +206,7 @@ void algorithms::DTUSat::conflictAnalysis() {
     
     updateActivity();
     
-    this->_formula.addClause(this->learnClauseLiterals);
+    this->formula.addClause(this->learnClauseLiterals);
     this->setBeta(backtrack);
     
 }
@@ -251,7 +251,7 @@ void algorithms::DTUSat::resolution(ClauseLiterals cl1, ClauseLiterals cl2) {
 }*/
 
 cnf::Formula & algorithms::DTUSat::getFormulaState() {
-    return this->_formula;
+    return this->formula;
 }
 
 

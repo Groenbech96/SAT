@@ -12,7 +12,6 @@
 		3A258470208DD35200ADC8A7 /* ProbabilisticSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3DA2086611C008B28D7 /* ProbabilisticSolver.cpp */; };
 		3A258471208DD35200ADC8A7 /* CDCLSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3DD20866156008B28D7 /* CDCLSolver.cpp */; };
 		3A258472208DD35200ADC8A7 /* Schonings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E020866177008B28D7 /* Schonings.cpp */; };
-		3A258473208DD35200ADC8A7 /* Grasp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E320866187008B28D7 /* Grasp.cpp */; };
 		3A258474208DD35200ADC8A7 /* DTUSat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E620866191008B28D7 /* DTUSat.cpp */; };
 		3A258475208DD35200ADC8A7 /* Clause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3EC208661A8008B28D7 /* Clause.cpp */; };
 		3A258476208DD35200ADC8A7 /* Formula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E9208661A0008B28D7 /* Formula.cpp */; };
@@ -33,7 +32,6 @@
 		3A714B0A20950B1800645DC4 /* ProbabilisticSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3DA2086611C008B28D7 /* ProbabilisticSolver.cpp */; };
 		3A714B0B20950B1800645DC4 /* CDCLSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3DD20866156008B28D7 /* CDCLSolver.cpp */; };
 		3A714B0C20950B1800645DC4 /* Schonings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E020866177008B28D7 /* Schonings.cpp */; };
-		3A714B0D20950B1800645DC4 /* Grasp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E320866187008B28D7 /* Grasp.cpp */; };
 		3A714B0E20950B1800645DC4 /* DTUSat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E620866191008B28D7 /* DTUSat.cpp */; };
 		3A714B0F20950B1800645DC4 /* Clause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3EC208661A8008B28D7 /* Clause.cpp */; };
 		3A714B1020950B1800645DC4 /* Formula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E9208661A0008B28D7 /* Formula.cpp */; };
@@ -54,7 +52,6 @@
 		3AE7B3DC2086611C008B28D7 /* ProbabilisticSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3DA2086611C008B28D7 /* ProbabilisticSolver.cpp */; };
 		3AE7B3DF20866156008B28D7 /* CDCLSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3DD20866156008B28D7 /* CDCLSolver.cpp */; };
 		3AE7B3E220866177008B28D7 /* Schonings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E020866177008B28D7 /* Schonings.cpp */; };
-		3AE7B3E520866187008B28D7 /* Grasp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E320866187008B28D7 /* Grasp.cpp */; };
 		3AE7B3E820866191008B28D7 /* DTUSat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E620866191008B28D7 /* DTUSat.cpp */; };
 		3AE7B3EB208661A0008B28D7 /* Formula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3E9208661A0008B28D7 /* Formula.cpp */; };
 		3AE7B3EE208661A8008B28D7 /* Clause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3EC208661A8008B28D7 /* Clause.cpp */; };
@@ -2168,8 +2165,6 @@
 		3AE7B3DE20866156008B28D7 /* CDCLSolver.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CDCLSolver.hpp; sourceTree = "<group>"; };
 		3AE7B3E020866177008B28D7 /* Schonings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Schonings.cpp; sourceTree = "<group>"; };
 		3AE7B3E120866177008B28D7 /* Schonings.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Schonings.hpp; sourceTree = "<group>"; };
-		3AE7B3E320866187008B28D7 /* Grasp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Grasp.cpp; sourceTree = "<group>"; };
-		3AE7B3E420866187008B28D7 /* Grasp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Grasp.hpp; sourceTree = "<group>"; };
 		3AE7B3E620866191008B28D7 /* DTUSat.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DTUSat.cpp; sourceTree = "<group>"; };
 		3AE7B3E720866191008B28D7 /* DTUSat.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DTUSat.hpp; sourceTree = "<group>"; };
 		3AE7B3E9208661A0008B28D7 /* Formula.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Formula.cpp; sourceTree = "<group>"; };
@@ -4384,8 +4379,6 @@
 				3AE7B3DE20866156008B28D7 /* CDCLSolver.hpp */,
 				3AE7B3E020866177008B28D7 /* Schonings.cpp */,
 				3AE7B3E120866177008B28D7 /* Schonings.hpp */,
-				3AE7B3E320866187008B28D7 /* Grasp.cpp */,
-				3AE7B3E420866187008B28D7 /* Grasp.hpp */,
 				3AE7B3E620866191008B28D7 /* DTUSat.cpp */,
 				3AE7B3E720866191008B28D7 /* DTUSat.hpp */,
 			);
@@ -4604,7 +4597,6 @@
 				3A714B0A20950B1800645DC4 /* ProbabilisticSolver.cpp in Sources */,
 				3A714B0B20950B1800645DC4 /* CDCLSolver.cpp in Sources */,
 				3A714B0C20950B1800645DC4 /* Schonings.cpp in Sources */,
-				3A714B0D20950B1800645DC4 /* Grasp.cpp in Sources */,
 				3A714B0E20950B1800645DC4 /* DTUSat.cpp in Sources */,
 				3A714B0F20950B1800645DC4 /* Clause.cpp in Sources */,
 				3A714B1020950B1800645DC4 /* Formula.cpp in Sources */,
@@ -4626,7 +4618,6 @@
 				3AE7B3D9208660F6008B28D7 /* Solver.cpp in Sources */,
 				3AE7B3C320865FAB008B28D7 /* main.cpp in Sources */,
 				3A2C71CF2097A4020092C2CC /* Config.cpp in Sources */,
-				3AE7B3E520866187008B28D7 /* Grasp.cpp in Sources */,
 				3AE7B3F5208661DB008B28D7 /* Graph.cpp in Sources */,
 				3AE7B3E220866177008B28D7 /* Schonings.cpp in Sources */,
 				3A41A31E20968A2700D49C7B /* Output.cpp in Sources */,
@@ -4648,7 +4639,6 @@
 				3A258470208DD35200ADC8A7 /* ProbabilisticSolver.cpp in Sources */,
 				3A258471208DD35200ADC8A7 /* CDCLSolver.cpp in Sources */,
 				3A258472208DD35200ADC8A7 /* Schonings.cpp in Sources */,
-				3A258473208DD35200ADC8A7 /* Grasp.cpp in Sources */,
 				3A258474208DD35200ADC8A7 /* DTUSat.cpp in Sources */,
 				3A258475208DD35200ADC8A7 /* Clause.cpp in Sources */,
 				3A258476208DD35200ADC8A7 /* Formula.cpp in Sources */,

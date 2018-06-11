@@ -41,7 +41,7 @@ public:
     void addSolution(std::unordered_map<int, cnf::Variable*> solution);
     void addStep(std::string s, util::Graph *g, cnf::Variable *v, int decisionLevel);
     void addStep(std::string s, std::unordered_map<int, cnf::Literal> solution, int decisionLevel, int backtrackLevel);
-    void addStep(std::string s, std::set<util::vertex *> rm, int beta);
+    void addStep(std::string s, std::set<util::Vertex *> rm, int beta);
     
     void addConflictClause(cnf::Clause *);
     void addUIP(int id);

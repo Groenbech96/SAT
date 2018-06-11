@@ -27,7 +27,7 @@ namespace algorithms {
         
     protected:
         /// Vector containing unsatisfied_clauses
-        std::vector<cnf::Clause *> unsatisfied_clauses;
+        std::vector<cnf::Clause *> unsatisfiedClauses;
         
     };
 }
