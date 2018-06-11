@@ -88,6 +88,39 @@ int Application::App::run() {
 
                 
             }
+            else if(std::strcmp(this->m_argv[1], "-f") == 0 && std::strcmp(this->m_argv[3], "-ben") == 0) {
+                                
+                cnf::Formula *f;
+                algorithms::DTUSat *solver;
+                
+                try {
+                    std::string file = std::string(this->m_argv[2]) + ".cnf";
+                    solver = new algorithms::DTUSat();
+                    f = util::Parser(file.c_str()).parse();
+                } catch(util::ParserException p) {
+                    solver->failed();
+                    return -1;
+                }
+                
+                solver->setup(*f);
+                bool res = false;
+                clock_t start = clock();
+                res = solver->solve();
+                clock_t end = clock();
+                unsigned int totalTime = (unsigned int)(end-start);
+                if (res)
+                    std::cout << "t" << std::endl;
+                else
+                    std::cout << "f" << std::endl;
+                std::cout << std::to_string(totalTime) << std::endl;
+                
+                delete f;
+                delete solver;
+                
+                return 0;
+                
+                
+            }
             else if(std::strcmp(this->m_argv[1], "CDCL") == 0 && std::strcmp(m_argv[2], "-pt") == 0){
                 int n = std::stoi(m_argv[3]);
                 int m = std::stoi(m_argv[4]);

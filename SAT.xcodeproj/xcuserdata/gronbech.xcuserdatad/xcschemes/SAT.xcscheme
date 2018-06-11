@@ -67,6 +67,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
+<<<<<<< HEAD
             argument = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/src/test"
             isEnabled = "YES">
          </CommandLineArgument>
@@ -80,6 +81,17 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--verbose"
+=======
+            argument = "uf20-01"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-ben"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "no"
+>>>>>>> ae39a5a288b1ed50e4ba05477e02c79cef89a7dc
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
