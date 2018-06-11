@@ -67,7 +67,15 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "input"
+            argument = "uf20-01"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-ben"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "no"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
