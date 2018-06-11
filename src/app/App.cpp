@@ -19,6 +19,8 @@ Application::App::App(int argc, char* argv[]) {
 
 int Application::App::run() {
     
+    std::cout << this->m_argc << std::endl;
+    
     if(this->m_argc != 3 && this->m_argc != 6 && this->m_argc != 5) {
         return -1;
     } else {
@@ -58,6 +60,9 @@ int Application::App::run() {
             
             if(std::strcmp(this->m_argv[1], "-f") == 0 && std::strcmp(this->m_argv[3], "-o") == 0)  {
                 
+                std::cout << this->m_argv[2] << std::endl;
+                std::cout << this->m_argv[4] << std::endl;
+                
                 cnf::Formula *f;
                 algorithms::DTUSat *solver;
                 
@@ -91,7 +96,10 @@ int Application::App::run() {
             
                 cnf::Formula *f;
                 algorithms::DTUSat *solver;
-
+                
+                std::cout << this->m_argv[2] << std::endl;
+                std::cout << this->m_argv[4] << std::endl;
+                
                 try {
                     std::string file = std::string(this->m_argv[2]) + ".cnf";
                     solver = new algorithms::DTUSat("CDCL", std::string(this->m_argv[4])+".json", true);

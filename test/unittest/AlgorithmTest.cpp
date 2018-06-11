@@ -294,7 +294,7 @@ TEST_F(AlgorithmFixture, CompleteTestC) {
     
     //cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/CompleteTestB.cnf").parse();
     
-    for(int i = 1; i <= 1000; i++) {
+    for(int i = 1; i <= 1; i++) {
         this->satisfiableClauses = cnfPath50.c_str();
         std::string file = this->satisfiableClauses + "uf50-0" + std::to_string(i) + ".cnf";
         

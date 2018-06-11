@@ -7,6 +7,6 @@ mkdir gcc
 cp src/**/*.* gcc
 cp src/*.* gcc
 cp -R lib gcc
-
-#gcc gcc/*.cpp -std=c++17 -I lib -I /usr/local/Cellar/boost/1.66.0 -o sat
-g++ gcc/*.cpp -std=c++11 -I lib -I /usr/include/boost -o sat
+   
+#g++ gcc/*.cpp -std=c++17 -I lib -I /usr/local/Cellar/boost/1.66.0 -o satnew
+#g++ gcc/*.cpp -std=c++17 -I lib -I /usr/include/boost -o sat

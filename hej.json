@@ -1,0 +1,4331 @@
+{
+    "status": "sat",
+    "sat_solver": "CDCL",
+    "timestamp": "1528135720",
+    "tracking": {
+        "0": {
+            "type": "unit_resolution",
+            "dlvl": "0",
+            "variable": "4",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "4",
+                    "value": true,
+                    "dl": "0"
+                },
+                "edges": []
+            }
+        },
+        "1": {
+            "type": "branch",
+            "dlvl": "1",
+            "variable": "18",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "18",
+                    "value": true,
+                    "dl": "1"
+                },
+                "edges": []
+            }
+        },
+        "2": {
+            "type": "unit_resolution",
+            "dlvl": "1",
+            "variable": "14",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "14",
+                    "value": true,
+                    "dl": "1"
+                },
+                "edges": [
+                    {
+                        "antecedent": "71",
+                        "source": "4",
+                        "target": "14"
+                    },
+                    {
+                        "antecedent": "71",
+                        "source": "18",
+                        "target": "14"
+                    }
+                ]
+            }
+        },
+        "3": {
+            "type": "branch",
+            "dlvl": "2",
+            "variable": "6",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "6",
+                    "value": true,
+                    "dl": "2"
+                },
+                "edges": []
+            }
+        },
+        "4": {
+            "type": "branch",
+            "dlvl": "3",
+            "variable": "17",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "17",
+                    "value": true,
+                    "dl": "3"
+                },
+                "edges": []
+            }
+        },
+        "5": {
+            "type": "unit_resolution",
+            "dlvl": "3",
+            "variable": "8",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "8",
+                    "value": false,
+                    "dl": "3"
+                },
+                "edges": [
+                    {
+                        "antecedent": "12",
+                        "source": "17",
+                        "target": "8"
+                    },
+                    {
+                        "antecedent": "12",
+                        "source": "6",
+                        "target": "8"
+                    }
+                ]
+            }
+        },
+        "6": {
+            "type": "branch",
+            "dlvl": "4",
+            "variable": "5",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "5",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": []
+            }
+        },
+        "7": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "19",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "19",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "86",
+                        "source": "17",
+                        "target": "19"
+                    },
+                    {
+                        "antecedent": "86",
+                        "source": "5",
+                        "target": "19"
+                    }
+                ]
+            }
+        },
+        "8": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "13",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "13",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "77",
+                        "source": "17",
+                        "target": "13"
+                    },
+                    {
+                        "antecedent": "77",
+                        "source": "5",
+                        "target": "13"
+                    }
+                ]
+            }
+        },
+        "9": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "1",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "1",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "57",
+                        "source": "5",
+                        "target": "1"
+                    },
+                    {
+                        "antecedent": "57",
+                        "source": "13",
+                        "target": "1"
+                    }
+                ]
+            }
+        },
+        "10": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "9",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "9",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "88",
+                        "source": "5",
+                        "target": "9"
+                    },
+                    {
+                        "antecedent": "88",
+                        "source": "1",
+                        "target": "9"
+                    }
+                ]
+            }
+        },
+        "11": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "15",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "15",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "68",
+                        "source": "17",
+                        "target": "15"
+                    },
+                    {
+                        "antecedent": "68",
+                        "source": "9",
+                        "target": "15"
+                    }
+                ]
+            }
+        },
+        "12": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "3",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "3",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "81",
+                        "source": "6",
+                        "target": "3"
+                    },
+                    {
+                        "antecedent": "81",
+                        "source": "15",
+                        "target": "3"
+                    }
+                ]
+            }
+        },
+        "13": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "2",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "2",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "82",
+                        "source": "13",
+                        "target": "2"
+                    },
+                    {
+                        "antecedent": "82",
+                        "source": "3",
+                        "target": "2"
+                    }
+                ]
+            }
+        },
+        "14": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "11",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "11",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "79",
+                        "source": "3",
+                        "target": "11"
+                    },
+                    {
+                        "antecedent": "79",
+                        "source": "18",
+                        "target": "11"
+                    }
+                ]
+            }
+        },
+        "15": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "10",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "10",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "78",
+                        "source": "18",
+                        "target": "10"
+                    },
+                    {
+                        "antecedent": "78",
+                        "source": "2",
+                        "target": "10"
+                    }
+                ]
+            }
+        },
+        "16": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "20",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "20",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "59",
+                        "source": "19",
+                        "target": "20"
+                    },
+                    {
+                        "antecedent": "59",
+                        "source": "1",
+                        "target": "20"
+                    }
+                ]
+            }
+        },
+        "17": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "16",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "16",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "85",
+                        "source": "15",
+                        "target": "16"
+                    },
+                    {
+                        "antecedent": "85",
+                        "source": "20",
+                        "target": "16"
+                    }
+                ]
+            }
+        },
+        "18": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "7",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "7",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "34",
+                        "source": "10",
+                        "target": "7"
+                    },
+                    {
+                        "antecedent": "34",
+                        "source": "16",
+                        "target": "7"
+                    }
+                ]
+            }
+        },
+        "19": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "12",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "12",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "32",
+                        "source": "13",
+                        "target": "12"
+                    },
+                    {
+                        "antecedent": "32",
+                        "source": "14",
+                        "target": "12"
+                    }
+                ]
+            }
+        },
+        "20": {
+            "type": "conflict",
+            "dlvl": "4",
+            "backtracklvl": "3",
+            "uip": "5",
+            "conflict": "69",
+            "learned": [
+                "-17",
+                "-5",
+                "-18",
+                "-6"
+            ]
+        },
+        "21": {
+            "type": "backtrack",
+            "backtracklvl": "3",
+            "igraph": {
+                "nodes": [
+                    {
+                        "variable": "3"
+                    },
+                    {
+                        "variable": "5"
+                    },
+                    {
+                        "variable": "19"
+                    },
+                    {
+                        "variable": "13"
+                    },
+                    {
+                        "variable": "1"
+                    },
+                    {
+                        "variable": "9"
+                    },
+                    {
+                        "variable": "15"
+                    },
+                    {
+                        "variable": "2"
+                    },
+                    {
+                        "variable": "11"
+                    },
+                    {
+                        "variable": "10"
+                    },
+                    {
+                        "variable": "20"
+                    },
+                    {
+                        "variable": "16"
+                    },
+                    {
+                        "variable": "7"
+                    },
+                    {
+                        "variable": "12"
+                    }
+                ],
+                "edges": [
+                    {
+                        "source": "6",
+                        "target": "3"
+                    },
+                    {
+                        "source": "15",
+                        "target": "3"
+                    },
+                    {
+                        "source": "17",
+                        "target": "19"
+                    },
+                    {
+                        "source": "5",
+                        "target": "19"
+                    },
+                    {
+                        "source": "17",
+                        "target": "13"
+                    },
+                    {
+                        "source": "5",
+                        "target": "13"
+                    },
+                    {
+                        "source": "5",
+                        "target": "1"
+                    },
+                    {
+                        "source": "13",
+                        "target": "1"
+                    },
+                    {
+                        "source": "5",
+                        "target": "9"
+                    },
+                    {
+                        "source": "1",
+                        "target": "9"
+                    },
+                    {
+                        "source": "17",
+                        "target": "15"
+                    },
+                    {
+                        "source": "9",
+                        "target": "15"
+                    },
+                    {
+                        "source": "13",
+                        "target": "2"
+                    },
+                    {
+                        "source": "3",
+                        "target": "2"
+                    },
+                    {
+                        "source": "3",
+                        "target": "11"
+                    },
+                    {
+                        "source": "18",
+                        "target": "11"
+                    },
+                    {
+                        "source": "18",
+                        "target": "10"
+                    },
+                    {
+                        "source": "2",
+                        "target": "10"
+                    },
+                    {
+                        "source": "19",
+                        "target": "20"
+                    },
+                    {
+                        "source": "1",
+                        "target": "20"
+                    },
+                    {
+                        "source": "15",
+                        "target": "16"
+                    },
+                    {
+                        "source": "20",
+                        "target": "16"
+                    },
+                    {
+                        "source": "10",
+                        "target": "7"
+                    },
+                    {
+                        "source": "16",
+                        "target": "7"
+                    },
+                    {
+                        "source": "13",
+                        "target": "12"
+                    },
+                    {
+                        "source": "14",
+                        "target": "12"
+                    }
+                ]
+            }
+        },
+        "22": {
+            "type": "unit_resolution",
+            "dlvl": "3",
+            "variable": "5",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "5",
+                    "value": false,
+                    "dl": "3"
+                },
+                "edges": [
+                    {
+                        "antecedent": "92",
+                        "source": "17",
+                        "target": "5"
+                    },
+                    {
+                        "antecedent": "92",
+                        "source": "18",
+                        "target": "5"
+                    },
+                    {
+                        "antecedent": "92",
+                        "source": "6",
+                        "target": "5"
+                    }
+                ]
+            }
+        },
+        "23": {
+            "type": "branch",
+            "dlvl": "4",
+            "variable": "11",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "11",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": []
+            }
+        },
+        "24": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "20",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "20",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "23",
+                        "source": "17",
+                        "target": "20"
+                    },
+                    {
+                        "antecedent": "23",
+                        "source": "11",
+                        "target": "20"
+                    }
+                ]
+            }
+        },
+        "25": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "10",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "10",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "20",
+                        "source": "8",
+                        "target": "10"
+                    },
+                    {
+                        "antecedent": "20",
+                        "source": "11",
+                        "target": "10"
+                    }
+                ]
+            }
+        },
+        "26": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "19",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "19",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "74",
+                        "source": "14",
+                        "target": "19"
+                    },
+                    {
+                        "antecedent": "74",
+                        "source": "10",
+                        "target": "19"
+                    }
+                ]
+            }
+        },
+        "27": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "1",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "1",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "59",
+                        "source": "19",
+                        "target": "1"
+                    },
+                    {
+                        "antecedent": "59",
+                        "source": "20",
+                        "target": "1"
+                    }
+                ]
+            }
+        },
+        "28": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "13",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "13",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "45",
+                        "source": "10",
+                        "target": "13"
+                    },
+                    {
+                        "antecedent": "45",
+                        "source": "4",
+                        "target": "13"
+                    }
+                ]
+            }
+        },
+        "29": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "9",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "9",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "40",
+                        "source": "13",
+                        "target": "9"
+                    },
+                    {
+                        "antecedent": "40",
+                        "source": "4",
+                        "target": "9"
+                    }
+                ]
+            }
+        },
+        "30": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "15",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "15",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "68",
+                        "source": "17",
+                        "target": "15"
+                    },
+                    {
+                        "antecedent": "68",
+                        "source": "9",
+                        "target": "15"
+                    }
+                ]
+            }
+        },
+        "31": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "3",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "3",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "81",
+                        "source": "6",
+                        "target": "3"
+                    },
+                    {
+                        "antecedent": "81",
+                        "source": "15",
+                        "target": "3"
+                    }
+                ]
+            }
+        },
+        "32": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "2",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "2",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "82",
+                        "source": "13",
+                        "target": "2"
+                    },
+                    {
+                        "antecedent": "82",
+                        "source": "3",
+                        "target": "2"
+                    }
+                ]
+            }
+        },
+        "33": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "12",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "12",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "64",
+                        "source": "15",
+                        "target": "12"
+                    },
+                    {
+                        "antecedent": "64",
+                        "source": "5",
+                        "target": "12"
+                    }
+                ]
+            }
+        },
+        "34": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "16",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "16",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "50",
+                        "source": "3",
+                        "target": "16"
+                    },
+                    {
+                        "antecedent": "50",
+                        "source": "11",
+                        "target": "16"
+                    }
+                ]
+            }
+        },
+        "35": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "7",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "7",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "41",
+                        "source": "11",
+                        "target": "7"
+                    },
+                    {
+                        "antecedent": "41",
+                        "source": "12",
+                        "target": "7"
+                    }
+                ]
+            }
+        },
+        "36": {
+            "type": "conflict",
+            "dlvl": "4",
+            "backtracklvl": "3",
+            "uip": "11",
+            "conflict": "49",
+            "learned": [
+                "-11",
+                "-17",
+                "-18",
+                "-6"
+            ]
+        },
+        "37": {
+            "type": "backtrack",
+            "backtracklvl": "3",
+            "igraph": {
+                "nodes": [
+                    {
+                        "variable": "12"
+                    },
+                    {
+                        "variable": "16"
+                    },
+                    {
+                        "variable": "7"
+                    },
+                    {
+                        "variable": "3"
+                    },
+                    {
+                        "variable": "2"
+                    },
+                    {
+                        "variable": "10"
+                    },
+                    {
+                        "variable": "13"
+                    },
+                    {
+                        "variable": "19"
+                    },
+                    {
+                        "variable": "1"
+                    },
+                    {
+                        "variable": "11"
+                    },
+                    {
+                        "variable": "20"
+                    },
+                    {
+                        "variable": "9"
+                    },
+                    {
+                        "variable": "15"
+                    }
+                ],
+                "edges": [
+                    {
+                        "source": "15",
+                        "target": "12"
+                    },
+                    {
+                        "source": "5",
+                        "target": "12"
+                    },
+                    {
+                        "source": "3",
+                        "target": "16"
+                    },
+                    {
+                        "source": "11",
+                        "target": "16"
+                    },
+                    {
+                        "source": "11",
+                        "target": "7"
+                    },
+                    {
+                        "source": "12",
+                        "target": "7"
+                    },
+                    {
+                        "source": "6",
+                        "target": "3"
+                    },
+                    {
+                        "source": "15",
+                        "target": "3"
+                    },
+                    {
+                        "source": "13",
+                        "target": "2"
+                    },
+                    {
+                        "source": "3",
+                        "target": "2"
+                    },
+                    {
+                        "source": "8",
+                        "target": "10"
+                    },
+                    {
+                        "source": "11",
+                        "target": "10"
+                    },
+                    {
+                        "source": "10",
+                        "target": "13"
+                    },
+                    {
+                        "source": "4",
+                        "target": "13"
+                    },
+                    {
+                        "source": "14",
+                        "target": "19"
+                    },
+                    {
+                        "source": "10",
+                        "target": "19"
+                    },
+                    {
+                        "source": "19",
+                        "target": "1"
+                    },
+                    {
+                        "source": "20",
+                        "target": "1"
+                    },
+                    {
+                        "source": "17",
+                        "target": "20"
+                    },
+                    {
+                        "source": "11",
+                        "target": "20"
+                    },
+                    {
+                        "source": "13",
+                        "target": "9"
+                    },
+                    {
+                        "source": "4",
+                        "target": "9"
+                    },
+                    {
+                        "source": "17",
+                        "target": "15"
+                    },
+                    {
+                        "source": "9",
+                        "target": "15"
+                    }
+                ]
+            }
+        },
+        "38": {
+            "type": "unit_resolution",
+            "dlvl": "3",
+            "variable": "11",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "11",
+                    "value": false,
+                    "dl": "3"
+                },
+                "edges": [
+                    {
+                        "antecedent": "93",
+                        "source": "17",
+                        "target": "11"
+                    },
+                    {
+                        "antecedent": "93",
+                        "source": "18",
+                        "target": "11"
+                    },
+                    {
+                        "antecedent": "93",
+                        "source": "6",
+                        "target": "11"
+                    }
+                ]
+            }
+        },
+        "39": {
+            "type": "unit_resolution",
+            "dlvl": "3",
+            "variable": "20",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "20",
+                    "value": false,
+                    "dl": "3"
+                },
+                "edges": [
+                    {
+                        "antecedent": "87",
+                        "source": "11",
+                        "target": "20"
+                    },
+                    {
+                        "antecedent": "87",
+                        "source": "18",
+                        "target": "20"
+                    }
+                ]
+            }
+        },
+        "40": {
+            "type": "unit_resolution",
+            "dlvl": "3",
+            "variable": "3",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "3",
+                    "value": true,
+                    "dl": "3"
+                },
+                "edges": [
+                    {
+                        "antecedent": "79",
+                        "source": "11",
+                        "target": "3"
+                    },
+                    {
+                        "antecedent": "79",
+                        "source": "18",
+                        "target": "3"
+                    }
+                ]
+            }
+        },
+        "41": {
+            "type": "unit_resolution",
+            "dlvl": "3",
+            "variable": "15",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "15",
+                    "value": false,
+                    "dl": "3"
+                },
+                "edges": [
+                    {
+                        "antecedent": "81",
+                        "source": "3",
+                        "target": "15"
+                    },
+                    {
+                        "antecedent": "81",
+                        "source": "6",
+                        "target": "15"
+                    }
+                ]
+            }
+        },
+        "42": {
+            "type": "unit_resolution",
+            "dlvl": "3",
+            "variable": "9",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "9",
+                    "value": true,
+                    "dl": "3"
+                },
+                "edges": [
+                    {
+                        "antecedent": "68",
+                        "source": "15",
+                        "target": "9"
+                    },
+                    {
+                        "antecedent": "68",
+                        "source": "17",
+                        "target": "9"
+                    }
+                ]
+            }
+        },
+        "43": {
+            "type": "unit_resolution",
+            "dlvl": "3",
+            "variable": "13",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "13",
+                    "value": true,
+                    "dl": "3"
+                },
+                "edges": [
+                    {
+                        "antecedent": "72",
+                        "source": "9",
+                        "target": "13"
+                    },
+                    {
+                        "antecedent": "72",
+                        "source": "15",
+                        "target": "13"
+                    }
+                ]
+            }
+        },
+        "44": {
+            "type": "unit_resolution",
+            "dlvl": "3",
+            "variable": "19",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "19",
+                    "value": false,
+                    "dl": "3"
+                },
+                "edges": [
+                    {
+                        "antecedent": "66",
+                        "source": "5",
+                        "target": "19"
+                    },
+                    {
+                        "antecedent": "66",
+                        "source": "13",
+                        "target": "19"
+                    }
+                ]
+            }
+        },
+        "45": {
+            "type": "unit_resolution",
+            "dlvl": "3",
+            "variable": "2",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "2",
+                    "value": false,
+                    "dl": "3"
+                },
+                "edges": [
+                    {
+                        "antecedent": "76",
+                        "source": "19",
+                        "target": "2"
+                    },
+                    {
+                        "antecedent": "76",
+                        "source": "9",
+                        "target": "2"
+                    }
+                ]
+            }
+        },
+        "46": {
+            "type": "unit_resolution",
+            "dlvl": "3",
+            "variable": "10",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "10",
+                    "value": false,
+                    "dl": "3"
+                },
+                "edges": [
+                    {
+                        "antecedent": "78",
+                        "source": "18",
+                        "target": "10"
+                    },
+                    {
+                        "antecedent": "78",
+                        "source": "2",
+                        "target": "10"
+                    }
+                ]
+            }
+        },
+        "47": {
+            "type": "unit_resolution",
+            "dlvl": "3",
+            "variable": "12",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "12",
+                    "value": false,
+                    "dl": "3"
+                },
+                "edges": [
+                    {
+                        "antecedent": "32",
+                        "source": "13",
+                        "target": "12"
+                    },
+                    {
+                        "antecedent": "32",
+                        "source": "14",
+                        "target": "12"
+                    }
+                ]
+            }
+        },
+        "48": {
+            "type": "unit_resolution",
+            "dlvl": "3",
+            "variable": "7",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "7",
+                    "value": false,
+                    "dl": "3"
+                },
+                "edges": [
+                    {
+                        "antecedent": "33",
+                        "source": "14",
+                        "target": "7"
+                    },
+                    {
+                        "antecedent": "33",
+                        "source": "12",
+                        "target": "7"
+                    }
+                ]
+            }
+        },
+        "49": {
+            "type": "conflict",
+            "dlvl": "3",
+            "backtracklvl": "2",
+            "uip": "17",
+            "conflict": "40",
+            "learned": [
+                "-17",
+                "-18",
+                "-6"
+            ]
+        },
+        "50": {
+            "type": "backtrack",
+            "backtracklvl": "2",
+            "igraph": {
+                "nodes": [
+                    {
+                        "variable": "3"
+                    },
+                    {
+                        "variable": "12"
+                    },
+                    {
+                        "variable": "7"
+                    },
+                    {
+                        "variable": "9"
+                    },
+                    {
+                        "variable": "15"
+                    },
+                    {
+                        "variable": "13"
+                    },
+                    {
+                        "variable": "19"
+                    },
+                    {
+                        "variable": "2"
+                    },
+                    {
+                        "variable": "10"
+                    },
+                    {
+                        "variable": "11"
+                    },
+                    {
+                        "variable": "20"
+                    },
+                    {
+                        "variable": "5"
+                    },
+                    {
+                        "variable": "17"
+                    },
+                    {
+                        "variable": "8"
+                    }
+                ],
+                "edges": [
+                    {
+                        "source": "11",
+                        "target": "3"
+                    },
+                    {
+                        "source": "18",
+                        "target": "3"
+                    },
+                    {
+                        "source": "13",
+                        "target": "12"
+                    },
+                    {
+                        "source": "14",
+                        "target": "12"
+                    },
+                    {
+                        "source": "14",
+                        "target": "7"
+                    },
+                    {
+                        "source": "12",
+                        "target": "7"
+                    },
+                    {
+                        "source": "15",
+                        "target": "9"
+                    },
+                    {
+                        "source": "17",
+                        "target": "9"
+                    },
+                    {
+                        "source": "3",
+                        "target": "15"
+                    },
+                    {
+                        "source": "6",
+                        "target": "15"
+                    },
+                    {
+                        "source": "9",
+                        "target": "13"
+                    },
+                    {
+                        "source": "15",
+                        "target": "13"
+                    },
+                    {
+                        "source": "5",
+                        "target": "19"
+                    },
+                    {
+                        "source": "13",
+                        "target": "19"
+                    },
+                    {
+                        "source": "19",
+                        "target": "2"
+                    },
+                    {
+                        "source": "9",
+                        "target": "2"
+                    },
+                    {
+                        "source": "18",
+                        "target": "10"
+                    },
+                    {
+                        "source": "2",
+                        "target": "10"
+                    },
+                    {
+                        "source": "17",
+                        "target": "11"
+                    },
+                    {
+                        "source": "18",
+                        "target": "11"
+                    },
+                    {
+                        "source": "6",
+                        "target": "11"
+                    },
+                    {
+                        "source": "11",
+                        "target": "20"
+                    },
+                    {
+                        "source": "18",
+                        "target": "20"
+                    },
+                    {
+                        "source": "17",
+                        "target": "5"
+                    },
+                    {
+                        "source": "18",
+                        "target": "5"
+                    },
+                    {
+                        "source": "6",
+                        "target": "5"
+                    },
+                    {
+                        "source": "17",
+                        "target": "8"
+                    },
+                    {
+                        "source": "6",
+                        "target": "8"
+                    }
+                ]
+            }
+        },
+        "51": {
+            "type": "unit_resolution",
+            "dlvl": "2",
+            "variable": "17",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "17",
+                    "value": false,
+                    "dl": "2"
+                },
+                "edges": [
+                    {
+                        "antecedent": "94",
+                        "source": "18",
+                        "target": "17"
+                    },
+                    {
+                        "antecedent": "94",
+                        "source": "6",
+                        "target": "17"
+                    }
+                ]
+            }
+        },
+        "52": {
+            "type": "unit_resolution",
+            "dlvl": "2",
+            "variable": "5",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "5",
+                    "value": true,
+                    "dl": "2"
+                },
+                "edges": [
+                    {
+                        "antecedent": "65",
+                        "source": "17",
+                        "target": "5"
+                    },
+                    {
+                        "antecedent": "65",
+                        "source": "6",
+                        "target": "5"
+                    }
+                ]
+            }
+        },
+        "53": {
+            "type": "unit_resolution",
+            "dlvl": "2",
+            "variable": "19",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "19",
+                    "value": true,
+                    "dl": "2"
+                },
+                "edges": [
+                    {
+                        "antecedent": "69",
+                        "source": "18",
+                        "target": "19"
+                    },
+                    {
+                        "antecedent": "69",
+                        "source": "5",
+                        "target": "19"
+                    }
+                ]
+            }
+        },
+        "54": {
+            "type": "unit_resolution",
+            "dlvl": "2",
+            "variable": "9",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "9",
+                    "value": true,
+                    "dl": "2"
+                },
+                "edges": [
+                    {
+                        "antecedent": "89",
+                        "source": "17",
+                        "target": "9"
+                    },
+                    {
+                        "antecedent": "89",
+                        "source": "19",
+                        "target": "9"
+                    }
+                ]
+            }
+        },
+        "55": {
+            "type": "unit_resolution",
+            "dlvl": "2",
+            "variable": "1",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "1",
+                    "value": true,
+                    "dl": "2"
+                },
+                "edges": [
+                    {
+                        "antecedent": "88",
+                        "source": "5",
+                        "target": "1"
+                    },
+                    {
+                        "antecedent": "88",
+                        "source": "9",
+                        "target": "1"
+                    }
+                ]
+            }
+        },
+        "56": {
+            "type": "unit_resolution",
+            "dlvl": "2",
+            "variable": "7",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "7",
+                    "value": true,
+                    "dl": "2"
+                },
+                "edges": [
+                    {
+                        "antecedent": "80",
+                        "source": "9",
+                        "target": "7"
+                    },
+                    {
+                        "antecedent": "80",
+                        "source": "17",
+                        "target": "7"
+                    }
+                ]
+            }
+        },
+        "57": {
+            "type": "unit_resolution",
+            "dlvl": "2",
+            "variable": "10",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "10",
+                    "value": true,
+                    "dl": "2"
+                },
+                "edges": [
+                    {
+                        "antecedent": "74",
+                        "source": "14",
+                        "target": "10"
+                    },
+                    {
+                        "antecedent": "74",
+                        "source": "19",
+                        "target": "10"
+                    }
+                ]
+            }
+        },
+        "58": {
+            "type": "unit_resolution",
+            "dlvl": "2",
+            "variable": "2",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "2",
+                    "value": true,
+                    "dl": "2"
+                },
+                "edges": [
+                    {
+                        "antecedent": "78",
+                        "source": "18",
+                        "target": "2"
+                    },
+                    {
+                        "antecedent": "78",
+                        "source": "10",
+                        "target": "2"
+                    }
+                ]
+            }
+        },
+        "59": {
+            "type": "unit_resolution",
+            "dlvl": "2",
+            "variable": "12",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "12",
+                    "value": true,
+                    "dl": "2"
+                },
+                "edges": [
+                    {
+                        "antecedent": "90",
+                        "source": "17",
+                        "target": "12"
+                    },
+                    {
+                        "antecedent": "90",
+                        "source": "2",
+                        "target": "12"
+                    }
+                ]
+            }
+        },
+        "60": {
+            "type": "unit_resolution",
+            "dlvl": "2",
+            "variable": "3",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "3",
+                    "value": false,
+                    "dl": "2"
+                },
+                "edges": [
+                    {
+                        "antecedent": "84",
+                        "source": "17",
+                        "target": "3"
+                    },
+                    {
+                        "antecedent": "84",
+                        "source": "2",
+                        "target": "3"
+                    }
+                ]
+            }
+        },
+        "61": {
+            "type": "unit_resolution",
+            "dlvl": "2",
+            "variable": "13",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "13",
+                    "value": false,
+                    "dl": "2"
+                },
+                "edges": [
+                    {
+                        "antecedent": "82",
+                        "source": "3",
+                        "target": "13"
+                    },
+                    {
+                        "antecedent": "82",
+                        "source": "2",
+                        "target": "13"
+                    }
+                ]
+            }
+        },
+        "62": {
+            "type": "unit_resolution",
+            "dlvl": "2",
+            "variable": "11",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "11",
+                    "value": true,
+                    "dl": "2"
+                },
+                "edges": [
+                    {
+                        "antecedent": "79",
+                        "source": "3",
+                        "target": "11"
+                    },
+                    {
+                        "antecedent": "79",
+                        "source": "18",
+                        "target": "11"
+                    }
+                ]
+            }
+        },
+        "63": {
+            "type": "unit_resolution",
+            "dlvl": "2",
+            "variable": "15",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "15",
+                    "value": true,
+                    "dl": "2"
+                },
+                "edges": [
+                    {
+                        "antecedent": "72",
+                        "source": "13",
+                        "target": "15"
+                    },
+                    {
+                        "antecedent": "72",
+                        "source": "9",
+                        "target": "15"
+                    }
+                ]
+            }
+        },
+        "64": {
+            "type": "unit_resolution",
+            "dlvl": "2",
+            "variable": "8",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "8",
+                    "value": true,
+                    "dl": "2"
+                },
+                "edges": [
+                    {
+                        "antecedent": "70",
+                        "source": "10",
+                        "target": "8"
+                    },
+                    {
+                        "antecedent": "70",
+                        "source": "12",
+                        "target": "8"
+                    }
+                ]
+            }
+        },
+        "65": {
+            "type": "unit_resolution",
+            "dlvl": "2",
+            "variable": "16",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "16",
+                    "value": true,
+                    "dl": "2"
+                },
+                "edges": [
+                    {
+                        "antecedent": "50",
+                        "source": "3",
+                        "target": "16"
+                    },
+                    {
+                        "antecedent": "50",
+                        "source": "11",
+                        "target": "16"
+                    }
+                ]
+            }
+        },
+        "66": {
+            "type": "unit_resolution",
+            "dlvl": "2",
+            "variable": "20",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "20",
+                    "value": true,
+                    "dl": "2"
+                },
+                "edges": [
+                    {
+                        "antecedent": "85",
+                        "source": "16",
+                        "target": "20"
+                    },
+                    {
+                        "antecedent": "85",
+                        "source": "15",
+                        "target": "20"
+                    }
+                ]
+            }
+        },
+        "67": {
+            "type": "conflict",
+            "dlvl": "2",
+            "backtracklvl": "1",
+            "uip": "6",
+            "conflict": "63",
+            "learned": [
+                "-18",
+                "-6"
+            ]
+        },
+        "68": {
+            "type": "backtrack",
+            "backtracklvl": "1",
+            "igraph": {
+                "nodes": [
+                    {
+                        "variable": "11"
+                    },
+                    {
+                        "variable": "15"
+                    },
+                    {
+                        "variable": "8"
+                    },
+                    {
+                        "variable": "16"
+                    },
+                    {
+                        "variable": "20"
+                    },
+                    {
+                        "variable": "2"
+                    },
+                    {
+                        "variable": "12"
+                    },
+                    {
+                        "variable": "3"
+                    },
+                    {
+                        "variable": "13"
+                    },
+                    {
+                        "variable": "9"
+                    },
+                    {
+                        "variable": "1"
+                    },
+                    {
+                        "variable": "19"
+                    },
+                    {
+                        "variable": "7"
+                    },
+                    {
+                        "variable": "10"
+                    },
+                    {
+                        "variable": "17"
+                    },
+                    {
+                        "variable": "5"
+                    },
+                    {
+                        "variable": "6"
+                    }
+                ],
+                "edges": [
+                    {
+                        "source": "3",
+                        "target": "11"
+                    },
+                    {
+                        "source": "18",
+                        "target": "11"
+                    },
+                    {
+                        "source": "13",
+                        "target": "15"
+                    },
+                    {
+                        "source": "9",
+                        "target": "15"
+                    },
+                    {
+                        "source": "10",
+                        "target": "8"
+                    },
+                    {
+                        "source": "12",
+                        "target": "8"
+                    },
+                    {
+                        "source": "3",
+                        "target": "16"
+                    },
+                    {
+                        "source": "11",
+                        "target": "16"
+                    },
+                    {
+                        "source": "16",
+                        "target": "20"
+                    },
+                    {
+                        "source": "15",
+                        "target": "20"
+                    },
+                    {
+                        "source": "18",
+                        "target": "2"
+                    },
+                    {
+                        "source": "10",
+                        "target": "2"
+                    },
+                    {
+                        "source": "17",
+                        "target": "12"
+                    },
+                    {
+                        "source": "2",
+                        "target": "12"
+                    },
+                    {
+                        "source": "17",
+                        "target": "3"
+                    },
+                    {
+                        "source": "2",
+                        "target": "3"
+                    },
+                    {
+                        "source": "3",
+                        "target": "13"
+                    },
+                    {
+                        "source": "2",
+                        "target": "13"
+                    },
+                    {
+                        "source": "17",
+                        "target": "9"
+                    },
+                    {
+                        "source": "19",
+                        "target": "9"
+                    },
+                    {
+                        "source": "5",
+                        "target": "1"
+                    },
+                    {
+                        "source": "9",
+                        "target": "1"
+                    },
+                    {
+                        "source": "18",
+                        "target": "19"
+                    },
+                    {
+                        "source": "5",
+                        "target": "19"
+                    },
+                    {
+                        "source": "9",
+                        "target": "7"
+                    },
+                    {
+                        "source": "17",
+                        "target": "7"
+                    },
+                    {
+                        "source": "14",
+                        "target": "10"
+                    },
+                    {
+                        "source": "19",
+                        "target": "10"
+                    },
+                    {
+                        "source": "18",
+                        "target": "17"
+                    },
+                    {
+                        "source": "6",
+                        "target": "17"
+                    },
+                    {
+                        "source": "17",
+                        "target": "5"
+                    },
+                    {
+                        "source": "6",
+                        "target": "5"
+                    }
+                ]
+            }
+        },
+        "69": {
+            "type": "unit_resolution",
+            "dlvl": "1",
+            "variable": "6",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "6",
+                    "value": false,
+                    "dl": "1"
+                },
+                "edges": [
+                    {
+                        "antecedent": "95",
+                        "source": "18",
+                        "target": "6"
+                    }
+                ]
+            }
+        },
+        "70": {
+            "type": "branch",
+            "dlvl": "2",
+            "variable": "17",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "17",
+                    "value": true,
+                    "dl": "2"
+                },
+                "edges": []
+            }
+        },
+        "71": {
+            "type": "branch",
+            "dlvl": "3",
+            "variable": "11",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "11",
+                    "value": true,
+                    "dl": "3"
+                },
+                "edges": []
+            }
+        },
+        "72": {
+            "type": "unit_resolution",
+            "dlvl": "3",
+            "variable": "20",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "20",
+                    "value": true,
+                    "dl": "3"
+                },
+                "edges": [
+                    {
+                        "antecedent": "23",
+                        "source": "17",
+                        "target": "20"
+                    },
+                    {
+                        "antecedent": "23",
+                        "source": "11",
+                        "target": "20"
+                    }
+                ]
+            }
+        },
+        "73": {
+            "type": "branch",
+            "dlvl": "4",
+            "variable": "5",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "5",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": []
+            }
+        },
+        "74": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "19",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "19",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "86",
+                        "source": "17",
+                        "target": "19"
+                    },
+                    {
+                        "antecedent": "86",
+                        "source": "5",
+                        "target": "19"
+                    }
+                ]
+            }
+        },
+        "75": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "13",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "13",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "77",
+                        "source": "17",
+                        "target": "13"
+                    },
+                    {
+                        "antecedent": "77",
+                        "source": "5",
+                        "target": "13"
+                    }
+                ]
+            }
+        },
+        "76": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "1",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "1",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "59",
+                        "source": "19",
+                        "target": "1"
+                    },
+                    {
+                        "antecedent": "59",
+                        "source": "20",
+                        "target": "1"
+                    }
+                ]
+            }
+        },
+        "77": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "9",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "9",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "73",
+                        "source": "1",
+                        "target": "9"
+                    },
+                    {
+                        "antecedent": "73",
+                        "source": "5",
+                        "target": "9"
+                    }
+                ]
+            }
+        },
+        "78": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "2",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "2",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "76",
+                        "source": "19",
+                        "target": "2"
+                    },
+                    {
+                        "antecedent": "76",
+                        "source": "9",
+                        "target": "2"
+                    }
+                ]
+            }
+        },
+        "79": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "10",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "10",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "78",
+                        "source": "18",
+                        "target": "10"
+                    },
+                    {
+                        "antecedent": "78",
+                        "source": "2",
+                        "target": "10"
+                    }
+                ]
+            }
+        },
+        "80": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "8",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "8",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "42",
+                        "source": "19",
+                        "target": "8"
+                    },
+                    {
+                        "antecedent": "42",
+                        "source": "5",
+                        "target": "8"
+                    }
+                ]
+            }
+        },
+        "81": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "7",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "7",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "35",
+                        "source": "10",
+                        "target": "7"
+                    },
+                    {
+                        "antecedent": "35",
+                        "source": "6",
+                        "target": "7"
+                    }
+                ]
+            }
+        },
+        "82": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "12",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "12",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "41",
+                        "source": "11",
+                        "target": "12"
+                    },
+                    {
+                        "antecedent": "41",
+                        "source": "7",
+                        "target": "12"
+                    }
+                ]
+            }
+        },
+        "83": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "16",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "16",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "34",
+                        "source": "10",
+                        "target": "16"
+                    },
+                    {
+                        "antecedent": "34",
+                        "source": "7",
+                        "target": "16"
+                    }
+                ]
+            }
+        },
+        "84": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "15",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "15",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "49",
+                        "source": "1",
+                        "target": "15"
+                    },
+                    {
+                        "antecedent": "49",
+                        "source": "16",
+                        "target": "15"
+                    }
+                ]
+            }
+        },
+        "85": {
+            "type": "conflict",
+            "dlvl": "4",
+            "backtracklvl": "3",
+            "uip": "5",
+            "conflict": "69",
+            "learned": [
+                "-11",
+                "-5",
+                "-17",
+                "-18"
+            ]
+        },
+        "86": {
+            "type": "backtrack",
+            "backtracklvl": "3",
+            "igraph": {
+                "nodes": [
+                    {
+                        "variable": "10"
+                    },
+                    {
+                        "variable": "8"
+                    },
+                    {
+                        "variable": "9"
+                    },
+                    {
+                        "variable": "2"
+                    },
+                    {
+                        "variable": "19"
+                    },
+                    {
+                        "variable": "13"
+                    },
+                    {
+                        "variable": "1"
+                    },
+                    {
+                        "variable": "5"
+                    },
+                    {
+                        "variable": "7"
+                    },
+                    {
+                        "variable": "12"
+                    },
+                    {
+                        "variable": "16"
+                    },
+                    {
+                        "variable": "15"
+                    }
+                ],
+                "edges": [
+                    {
+                        "source": "18",
+                        "target": "10"
+                    },
+                    {
+                        "source": "2",
+                        "target": "10"
+                    },
+                    {
+                        "source": "19",
+                        "target": "8"
+                    },
+                    {
+                        "source": "5",
+                        "target": "8"
+                    },
+                    {
+                        "source": "1",
+                        "target": "9"
+                    },
+                    {
+                        "source": "5",
+                        "target": "9"
+                    },
+                    {
+                        "source": "19",
+                        "target": "2"
+                    },
+                    {
+                        "source": "9",
+                        "target": "2"
+                    },
+                    {
+                        "source": "17",
+                        "target": "19"
+                    },
+                    {
+                        "source": "5",
+                        "target": "19"
+                    },
+                    {
+                        "source": "17",
+                        "target": "13"
+                    },
+                    {
+                        "source": "5",
+                        "target": "13"
+                    },
+                    {
+                        "source": "19",
+                        "target": "1"
+                    },
+                    {
+                        "source": "20",
+                        "target": "1"
+                    },
+                    {
+                        "source": "10",
+                        "target": "7"
+                    },
+                    {
+                        "source": "6",
+                        "target": "7"
+                    },
+                    {
+                        "source": "11",
+                        "target": "12"
+                    },
+                    {
+                        "source": "7",
+                        "target": "12"
+                    },
+                    {
+                        "source": "10",
+                        "target": "16"
+                    },
+                    {
+                        "source": "7",
+                        "target": "16"
+                    },
+                    {
+                        "source": "1",
+                        "target": "15"
+                    },
+                    {
+                        "source": "16",
+                        "target": "15"
+                    }
+                ]
+            }
+        },
+        "87": {
+            "type": "unit_resolution",
+            "dlvl": "3",
+            "variable": "5",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "5",
+                    "value": false,
+                    "dl": "3"
+                },
+                "edges": [
+                    {
+                        "antecedent": "96",
+                        "source": "11",
+                        "target": "5"
+                    },
+                    {
+                        "antecedent": "96",
+                        "source": "17",
+                        "target": "5"
+                    },
+                    {
+                        "antecedent": "96",
+                        "source": "18",
+                        "target": "5"
+                    }
+                ]
+            }
+        },
+        "88": {
+            "type": "branch",
+            "dlvl": "4",
+            "variable": "16",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "16",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": []
+            }
+        },
+        "89": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "7",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "7",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "4",
+                        "source": "16",
+                        "target": "7"
+                    },
+                    {
+                        "antecedent": "4",
+                        "source": "20",
+                        "target": "7"
+                    }
+                ]
+            }
+        },
+        "90": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "12",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "12",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "41",
+                        "source": "11",
+                        "target": "12"
+                    },
+                    {
+                        "antecedent": "41",
+                        "source": "7",
+                        "target": "12"
+                    }
+                ]
+            }
+        },
+        "91": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "15",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "15",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "64",
+                        "source": "12",
+                        "target": "15"
+                    },
+                    {
+                        "antecedent": "64",
+                        "source": "5",
+                        "target": "15"
+                    }
+                ]
+            }
+        },
+        "92": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "9",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "9",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "68",
+                        "source": "15",
+                        "target": "9"
+                    },
+                    {
+                        "antecedent": "68",
+                        "source": "17",
+                        "target": "9"
+                    }
+                ]
+            }
+        },
+        "93": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "13",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "13",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "72",
+                        "source": "9",
+                        "target": "13"
+                    },
+                    {
+                        "antecedent": "72",
+                        "source": "15",
+                        "target": "13"
+                    }
+                ]
+            }
+        },
+        "94": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "19",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "19",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "66",
+                        "source": "5",
+                        "target": "19"
+                    },
+                    {
+                        "antecedent": "66",
+                        "source": "13",
+                        "target": "19"
+                    }
+                ]
+            }
+        },
+        "95": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "2",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "2",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "76",
+                        "source": "19",
+                        "target": "2"
+                    },
+                    {
+                        "antecedent": "76",
+                        "source": "9",
+                        "target": "2"
+                    }
+                ]
+            }
+        },
+        "96": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "10",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "10",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "78",
+                        "source": "18",
+                        "target": "10"
+                    },
+                    {
+                        "antecedent": "78",
+                        "source": "2",
+                        "target": "10"
+                    }
+                ]
+            }
+        },
+        "97": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "1",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "1",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "59",
+                        "source": "19",
+                        "target": "1"
+                    },
+                    {
+                        "antecedent": "59",
+                        "source": "20",
+                        "target": "1"
+                    }
+                ]
+            }
+        },
+        "98": {
+            "type": "conflict",
+            "dlvl": "4",
+            "backtracklvl": "3",
+            "uip": "16",
+            "conflict": "40",
+            "learned": [
+                "-16",
+                "-11",
+                "-17",
+                "-18"
+            ]
+        },
+        "99": {
+            "type": "backtrack",
+            "backtracklvl": "3",
+            "igraph": {
+                "nodes": [
+                    {
+                        "variable": "19"
+                    },
+                    {
+                        "variable": "9"
+                    },
+                    {
+                        "variable": "13"
+                    },
+                    {
+                        "variable": "2"
+                    },
+                    {
+                        "variable": "10"
+                    },
+                    {
+                        "variable": "7"
+                    },
+                    {
+                        "variable": "16"
+                    },
+                    {
+                        "variable": "1"
+                    },
+                    {
+                        "variable": "12"
+                    },
+                    {
+                        "variable": "15"
+                    }
+                ],
+                "edges": [
+                    {
+                        "source": "5",
+                        "target": "19"
+                    },
+                    {
+                        "source": "13",
+                        "target": "19"
+                    },
+                    {
+                        "source": "15",
+                        "target": "9"
+                    },
+                    {
+                        "source": "17",
+                        "target": "9"
+                    },
+                    {
+                        "source": "9",
+                        "target": "13"
+                    },
+                    {
+                        "source": "15",
+                        "target": "13"
+                    },
+                    {
+                        "source": "19",
+                        "target": "2"
+                    },
+                    {
+                        "source": "9",
+                        "target": "2"
+                    },
+                    {
+                        "source": "18",
+                        "target": "10"
+                    },
+                    {
+                        "source": "2",
+                        "target": "10"
+                    },
+                    {
+                        "source": "16",
+                        "target": "7"
+                    },
+                    {
+                        "source": "20",
+                        "target": "7"
+                    },
+                    {
+                        "source": "19",
+                        "target": "1"
+                    },
+                    {
+                        "source": "20",
+                        "target": "1"
+                    },
+                    {
+                        "source": "11",
+                        "target": "12"
+                    },
+                    {
+                        "source": "7",
+                        "target": "12"
+                    },
+                    {
+                        "source": "12",
+                        "target": "15"
+                    },
+                    {
+                        "source": "5",
+                        "target": "15"
+                    }
+                ]
+            }
+        },
+        "100": {
+            "type": "unit_resolution",
+            "dlvl": "3",
+            "variable": "16",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "16",
+                    "value": false,
+                    "dl": "3"
+                },
+                "edges": [
+                    {
+                        "antecedent": "97",
+                        "source": "11",
+                        "target": "16"
+                    },
+                    {
+                        "antecedent": "97",
+                        "source": "17",
+                        "target": "16"
+                    },
+                    {
+                        "antecedent": "97",
+                        "source": "18",
+                        "target": "16"
+                    }
+                ]
+            }
+        },
+        "101": {
+            "type": "unit_resolution",
+            "dlvl": "3",
+            "variable": "3",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "3",
+                    "value": true,
+                    "dl": "3"
+                },
+                "edges": [
+                    {
+                        "antecedent": "50",
+                        "source": "11",
+                        "target": "3"
+                    },
+                    {
+                        "antecedent": "50",
+                        "source": "16",
+                        "target": "3"
+                    }
+                ]
+            }
+        },
+        "102": {
+            "type": "branch",
+            "dlvl": "4",
+            "variable": "10",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "10",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": []
+            }
+        },
+        "103": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "2",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "2",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "78",
+                        "source": "18",
+                        "target": "2"
+                    },
+                    {
+                        "antecedent": "78",
+                        "source": "10",
+                        "target": "2"
+                    }
+                ]
+            }
+        },
+        "104": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "8",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "8",
+                    "value": true,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "20",
+                        "source": "11",
+                        "target": "8"
+                    },
+                    {
+                        "antecedent": "20",
+                        "source": "10",
+                        "target": "8"
+                    }
+                ]
+            }
+        },
+        "105": {
+            "type": "unit_resolution",
+            "dlvl": "4",
+            "variable": "13",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "13",
+                    "value": false,
+                    "dl": "4"
+                },
+                "edges": [
+                    {
+                        "antecedent": "60",
+                        "source": "8",
+                        "target": "13"
+                    },
+                    {
+                        "antecedent": "60",
+                        "source": "2",
+                        "target": "13"
+                    }
+                ]
+            }
+        },
+        "106": {
+            "type": "branch",
+            "dlvl": "5",
+            "variable": "19",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "19",
+                    "value": true,
+                    "dl": "5"
+                },
+                "edges": []
+            }
+        },
+        "107": {
+            "type": "unit_resolution",
+            "dlvl": "5",
+            "variable": "1",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "1",
+                    "value": false,
+                    "dl": "5"
+                },
+                "edges": [
+                    {
+                        "antecedent": "30",
+                        "source": "19",
+                        "target": "1"
+                    },
+                    {
+                        "antecedent": "30",
+                        "source": "17",
+                        "target": "1"
+                    }
+                ]
+            }
+        },
+        "108": {
+            "type": "unit_resolution",
+            "dlvl": "5",
+            "variable": "7",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "7",
+                    "value": false,
+                    "dl": "5"
+                },
+                "edges": [
+                    {
+                        "antecedent": "38",
+                        "source": "20",
+                        "target": "7"
+                    },
+                    {
+                        "antecedent": "38",
+                        "source": "1",
+                        "target": "7"
+                    }
+                ]
+            }
+        },
+        "109": {
+            "type": "unit_resolution",
+            "dlvl": "5",
+            "variable": "9",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "9",
+                    "value": true,
+                    "dl": "5"
+                },
+                "edges": [
+                    {
+                        "antecedent": "22",
+                        "source": "1",
+                        "target": "9"
+                    },
+                    {
+                        "antecedent": "22",
+                        "source": "6",
+                        "target": "9"
+                    }
+                ]
+            }
+        },
+        "110": {
+            "type": "unit_resolution",
+            "dlvl": "5",
+            "variable": "15",
+            "value": true,
+            "igraph": {
+                "nodes": {
+                    "variable": "15",
+                    "value": true,
+                    "dl": "5"
+                },
+                "edges": [
+                    {
+                        "antecedent": "72",
+                        "source": "13",
+                        "target": "15"
+                    },
+                    {
+                        "antecedent": "72",
+                        "source": "9",
+                        "target": "15"
+                    }
+                ]
+            }
+        },
+        "111": {
+            "type": "unit_resolution",
+            "dlvl": "5",
+            "variable": "12",
+            "value": false,
+            "igraph": {
+                "nodes": {
+                    "variable": "12",
+                    "value": false,
+                    "dl": "5"
+                },
+                "edges": [
+                    {
+                        "antecedent": "64",
+                        "source": "15",
+                        "target": "12"
+                    },
+                    {
+                        "antecedent": "64",
+                        "source": "5",
+                        "target": "12"
+                    }
+                ]
+            }
+        }
+    },
+    "formula_begin": {
+        "91": [
+            "-5",
+            "-16",
+            "4"
+        ],
+        "90": [
+            "17",
+            "-2",
+            "12"
+        ],
+        "89": [
+            "17",
+            "9",
+            "-19"
+        ],
+        "88": [
+            "-5",
+            "1",
+            "-9"
+        ],
+        "87": [
+            "11",
+            "-18",
+            "-20"
+        ],
+        "86": [
+            "-19",
+            "-17",
+            "-5"
+        ],
+        "85": [
+            "-16",
+            "-15",
+            "20"
+        ],
+        "84": [
+            "-3",
+            "17",
+            "-2"
+        ],
+        "83": [
+            "3",
+            "-2",
+            "12"
+        ],
+        "82": [
+            "-13",
+            "3",
+            "-2"
+        ],
+        "81": [
+            "-3",
+            "-6",
+            "-15"
+        ],
+        "80": [
+            "-9",
+            "17",
+            "7"
+        ],
+        "79": [
+            "11",
+            "3",
+            "-18"
+        ],
+        "78": [
+            "-18",
+            "-10",
+            "2"
+        ],
+        "77": [
+            "-17",
+            "13",
+            "-5"
+        ],
+        "76": [
+            "-2",
+            "19",
+            "-9"
+        ],
+        "75": [
+            "4",
+            "9",
+            "20"
+        ],
+        "74": [
+            "-14",
+            "-19",
+            "10"
+        ],
+        "73": [
+            "-1",
+            "-5",
+            "9"
+        ],
+        "72": [
+            "13",
+            "-9",
+            "15"
+        ],
+        "71": [
+            "-4",
+            "14",
+            "-18"
+        ],
+        "70": [
+            "-10",
+            "8",
+            "-12"
+        ],
+        "69": [
+            "-18",
+            "19",
+            "-5"
+        ],
+        "68": [
+            "15",
+            "-17",
+            "9"
+        ],
+        "67": [
+            "14",
+            "-1",
+            "20"
+        ],
+        "66": [
+            "-19",
+            "5",
+            "-13"
+        ],
+        "65": [
+            "5",
+            "17",
+            "-6"
+        ],
+        "64": [
+            "-12",
+            "-15",
+            "5"
+        ],
+        "63": [
+            "-2",
+            "-15",
+            "-6"
+        ],
+        "62": [
+            "9",
+            "14",
+            "-11"
+        ],
+        "61": [
+            "4",
+            "18",
+            "15"
+        ],
+        "60": [
+            "-8",
+            "-13",
+            "-2"
+        ],
+        "59": [
+            "19",
+            "-20",
+            "1"
+        ],
+        "58": [
+            "12",
+            "-2",
+            "-7"
+        ],
+        "57": [
+            "-1",
+            "-5",
+            "-13"
+        ],
+        "56": [
+            "11",
+            "6",
+            "1"
+        ],
+        "55": [
+            "12",
+            "-6",
+            "14"
+        ],
+        "54": [
+            "-5",
+            "12",
+            "-8"
+        ],
+        "53": [
+            "11",
+            "-16",
+            "-10"
+        ],
+        "52": [
+            "-3",
+            "-15",
+            "4"
+        ],
+        "51": [
+            "4",
+            "-10",
+            "-15"
+        ],
+        "50": [
+            "3",
+            "-11",
+            "16"
+        ],
+        "49": [
+            "-15",
+            "-1",
+            "-16"
+        ],
+        "48": [
+            "-19",
+            "1",
+            "10"
+        ],
+        "47": [
+            "9",
+            "20",
+            "-5"
+        ],
+        "46": [
+            "10",
+            "7",
+            "14"
+        ],
+        "45": [
+            "10",
+            "-4",
+            "13"
+        ],
+        "44": [
+            "-14",
+            "-15",
+            "20"
+        ],
+        "43": [
+            "17",
+            "16",
+            "1"
+        ],
+        "42": [
+            "-8",
+            "19",
+            "-5"
+        ],
+        "41": [
+            "-11",
+            "-7",
+            "12"
+        ],
+        "40": [
+            "-13",
+            "-9",
+            "-4"
+        ],
+        "39": [
+            "12",
+            "15",
+            "-5"
+        ],
+        "38": [
+            "-20",
+            "1",
+            "-7"
+        ],
+        "37": [
+            "11",
+            "17",
+            "-19"
+        ],
+        "36": [
+            "-16",
+            "14",
+            "20"
+        ],
+        "35": [
+            "7",
+            "10",
+            "6"
+        ],
+        "34": [
+            "10",
+            "16",
+            "-7"
+        ],
+        "33": [
+            "-14",
+            "-7",
+            "12"
+        ],
+        "32": [
+            "-13",
+            "-14",
+            "-12"
+        ],
+        "31": [
+            "10",
+            "15",
+            "-13"
+        ],
+        "30": [
+            "-19",
+            "-17",
+            "-1"
+        ],
+        "29": [
+            "-4",
+            "18",
+            "-16"
+        ],
+        "28": [
+            "11",
+            "14",
+            "19"
+        ],
+        "27": [
+            "4",
+            "12",
+            "20"
+        ],
+        "26": [
+            "20",
+            "-2",
+            "-18"
+        ],
+        "25": [
+            "-17",
+            "-7",
+            "12"
+        ],
+        "24": [
+            "13",
+            "-15",
+            "9"
+        ],
+        "23": [
+            "-17",
+            "20",
+            "-11"
+        ],
+        "22": [
+            "1",
+            "6",
+            "9"
+        ],
+        "21": [
+            "-11",
+            "-15",
+            "2"
+        ],
+        "20": [
+            "8",
+            "-11",
+            "-10"
+        ],
+        "19": [
+            "-14",
+            "-7",
+            "12"
+        ],
+        "18": [
+            "-15",
+            "17",
+            "7"
+        ],
+        "17": [
+            "4",
+            "-9",
+            "-8"
+        ],
+        "16": [
+            "7",
+            "4",
+            "-8"
+        ],
+        "15": [
+            "-19",
+            "18",
+            "12"
+        ],
+        "14": [
+            "10",
+            "-15",
+            "-19"
+        ],
+        "13": [
+            "1",
+            "14",
+            "-18"
+        ],
+        "12": [
+            "-8",
+            "-17",
+            "-6"
+        ],
+        "11": [
+            "12",
+            "11",
+            "-3"
+        ],
+        "10": [
+            "-10",
+            "13",
+            "18"
+        ],
+        "9": [
+            "-14",
+            "-5",
+            "11"
+        ],
+        "8": [
+            "15",
+            "9",
+            "-16"
+        ],
+        "7": [
+            "5",
+            "19",
+            "17"
+        ],
+        "6": [
+            "-9",
+            "17",
+            "-12"
+        ],
+        "5": [
+            "-7",
+            "-13",
+            "10"
+        ],
+        "4": [
+            "-16",
+            "7",
+            "-20"
+        ],
+        "3": [
+            "-8",
+            "-15",
+            "-5"
+        ],
+        "2": [
+            "-5",
+            "18",
+            "3"
+        ],
+        "1": [
+            "4"
+        ]
+    },
+    "formula_end": {
+        "1": [
+            "4"
+        ],
+        "2": [
+            "-5",
+            "18",
+            "3"
+        ],
+        "3": [
+            "-8",
+            "-15",
+            "-5"
+        ],
+        "4": [
+            "-16",
+            "7",
+            "-20"
+        ],
+        "5": [
+            "-7",
+            "-13",
+            "10"
+        ],
+        "6": [
+            "-9",
+            "17",
+            "-12"
+        ],
+        "7": [
+            "5",
+            "19",
+            "17"
+        ],
+        "8": [
+            "15",
+            "9",
+            "-16"
+        ],
+        "9": [
+            "-14",
+            "-5",
+            "11"
+        ],
+        "10": [
+            "-10",
+            "13",
+            "18"
+        ],
+        "11": [
+            "12",
+            "11",
+            "-3"
+        ],
+        "12": [
+            "-8",
+            "-17",
+            "-6"
+        ],
+        "13": [
+            "1",
+            "14",
+            "-18"
+        ],
+        "14": [
+            "10",
+            "-15",
+            "-19"
+        ],
+        "15": [
+            "-19",
+            "18",
+            "12"
+        ],
+        "16": [
+            "7",
+            "4",
+            "-8"
+        ],
+        "17": [
+            "4",
+            "-9",
+            "-8"
+        ],
+        "18": [
+            "-15",
+            "17",
+            "7"
+        ],
+        "19": [
+            "-14",
+            "-7",
+            "12"
+        ],
+        "20": [
+            "8",
+            "-11",
+            "-10"
+        ],
+        "21": [
+            "-11",
+            "-15",
+            "2"
+        ],
+        "22": [
+            "1",
+            "6",
+            "9"
+        ],
+        "23": [
+            "-17",
+            "20",
+            "-11"
+        ],
+        "24": [
+            "13",
+            "-15",
+            "9"
+        ],
+        "25": [
+            "-17",
+            "-7",
+            "12"
+        ],
+        "26": [
+            "20",
+            "-2",
+            "-18"
+        ],
+        "27": [
+            "4",
+            "12",
+            "20"
+        ],
+        "28": [
+            "11",
+            "14",
+            "19"
+        ],
+        "29": [
+            "-4",
+            "18",
+            "-16"
+        ],
+        "30": [
+            "-19",
+            "-17",
+            "-1"
+        ],
+        "31": [
+            "10",
+            "15",
+            "-13"
+        ],
+        "32": [
+            "-13",
+            "-14",
+            "-12"
+        ],
+        "33": [
+            "-14",
+            "-7",
+            "12"
+        ],
+        "34": [
+            "10",
+            "16",
+            "-7"
+        ],
+        "35": [
+            "7",
+            "10",
+            "6"
+        ],
+        "36": [
+            "-16",
+            "14",
+            "20"
+        ],
+        "37": [
+            "11",
+            "17",
+            "-19"
+        ],
+        "38": [
+            "-20",
+            "1",
+            "-7"
+        ],
+        "39": [
+            "12",
+            "15",
+            "-5"
+        ],
+        "40": [
+            "-13",
+            "-9",
+            "-4"
+        ],
+        "41": [
+            "-11",
+            "-7",
+            "12"
+        ],
+        "42": [
+            "-8",
+            "19",
+            "-5"
+        ],
+        "43": [
+            "17",
+            "16",
+            "1"
+        ],
+        "44": [
+            "-14",
+            "-15",
+            "20"
+        ],
+        "45": [
+            "10",
+            "-4",
+            "13"
+        ],
+        "46": [
+            "10",
+            "7",
+            "14"
+        ],
+        "47": [
+            "9",
+            "20",
+            "-5"
+        ],
+        "48": [
+            "-19",
+            "1",
+            "10"
+        ],
+        "49": [
+            "-15",
+            "-1",
+            "-16"
+        ],
+        "50": [
+            "3",
+            "-11",
+            "16"
+        ],
+        "51": [
+            "4",
+            "-10",
+            "-15"
+        ],
+        "52": [
+            "-3",
+            "-15",
+            "4"
+        ],
+        "53": [
+            "11",
+            "-16",
+            "-10"
+        ],
+        "54": [
+            "-5",
+            "12",
+            "-8"
+        ],
+        "55": [
+            "12",
+            "-6",
+            "14"
+        ],
+        "56": [
+            "11",
+            "6",
+            "1"
+        ],
+        "57": [
+            "-1",
+            "-5",
+            "-13"
+        ],
+        "58": [
+            "12",
+            "-2",
+            "-7"
+        ],
+        "59": [
+            "19",
+            "-20",
+            "1"
+        ],
+        "60": [
+            "-8",
+            "-13",
+            "-2"
+        ],
+        "61": [
+            "4",
+            "18",
+            "15"
+        ],
+        "62": [
+            "9",
+            "14",
+            "-11"
+        ],
+        "63": [
+            "-2",
+            "-15",
+            "-6"
+        ],
+        "64": [
+            "-12",
+            "-15",
+            "5"
+        ],
+        "65": [
+            "5",
+            "17",
+            "-6"
+        ],
+        "66": [
+            "-19",
+            "5",
+            "-13"
+        ],
+        "67": [
+            "14",
+            "-1",
+            "20"
+        ],
+        "68": [
+            "15",
+            "-17",
+            "9"
+        ],
+        "69": [
+            "-18",
+            "19",
+            "-5"
+        ],
+        "70": [
+            "-10",
+            "8",
+            "-12"
+        ],
+        "71": [
+            "-4",
+            "14",
+            "-18"
+        ],
+        "72": [
+            "13",
+            "-9",
+            "15"
+        ],
+        "73": [
+            "-1",
+            "-5",
+            "9"
+        ],
+        "74": [
+            "-14",
+            "-19",
+            "10"
+        ],
+        "75": [
+            "4",
+            "9",
+            "20"
+        ],
+        "76": [
+            "-2",
+            "19",
+            "-9"
+        ],
+        "77": [
+            "-17",
+            "13",
+            "-5"
+        ],
+        "78": [
+            "-18",
+            "-10",
+            "2"
+        ],
+        "79": [
+            "11",
+            "3",
+            "-18"
+        ],
+        "80": [
+            "-9",
+            "17",
+            "7"
+        ],
+        "81": [
+            "-3",
+            "-6",
+            "-15"
+        ],
+        "82": [
+            "-13",
+            "3",
+            "-2"
+        ],
+        "83": [
+            "3",
+            "-2",
+            "12"
+        ],
+        "84": [
+            "-3",
+            "17",
+            "-2"
+        ],
+        "85": [
+            "-16",
+            "-15",
+            "20"
+        ],
+        "86": [
+            "-19",
+            "-17",
+            "-5"
+        ],
+        "87": [
+            "11",
+            "-18",
+            "-20"
+        ],
+        "88": [
+            "-5",
+            "1",
+            "-9"
+        ],
+        "89": [
+            "17",
+            "9",
+            "-19"
+        ],
+        "90": [
+            "17",
+            "-2",
+            "12"
+        ],
+        "91": [
+            "-5",
+            "-16",
+            "4"
+        ],
+        "92": [
+            "-17",
+            "-5",
+            "-18",
+            "-6"
+        ],
+        "93": [
+            "-11",
+            "-17",
+            "-18",
+            "-6"
+        ],
+        "94": [
+            "-17",
+            "-18",
+            "-6"
+        ],
+        "95": [
+            "-18",
+            "-6"
+        ],
+        "96": [
+            "-11",
+            "-5",
+            "-17",
+            "-18"
+        ],
+        "97": [
+            "-16",
+            "-11",
+            "-17",
+            "-18"
+        ]
+    },
+    "steps": 112,
+    "solution": {
+        "1": "F",
+        "2": "T",
+        "3": "T",
+        "4": "T",
+        "5": "F",
+        "6": "F",
+        "7": "F",
+        "8": "T",
+        "9": "T",
+        "10": "T",
+        "11": "T",
+        "12": "F",
+        "13": "F",
+        "14": "T",
+        "15": "T",
+        "16": "F",
+        "17": "T",
+        "18": "T",
+        "19": "T",
+        "20": "T"
+    }
+}

@@ -164,6 +164,9 @@ void util::Output::addStep(std::string type, std::set<util::vertex *> rm, int ba
 
         rapidjson::Value vNode = rapidjson::Value(rapidjson::kObjectType);
         vNode.AddMember("variable", rapidjson::Value(std::to_string(v->var->getKey()+1).c_str(), this->_document.GetAllocator()), this->_document.GetAllocator());
+        bool a = v->var->getAssignment() == cnf::V_TRUE ? true : false;
+        vNode.AddMember("value", a, this->_document.GetAllocator());
+        vNode.AddMember("dl", rapidjson::Value(std::to_string(v->decisionLevel).c_str(), this->_document.GetAllocator()), this->_document.GetAllocator());
         
         nodes.PushBack(vNode, this->_document.GetAllocator());
         
@@ -207,9 +210,9 @@ void util::Output::addIGraph(util::Graph *g) {
         
         rapidjson::Value vEdge = rapidjson::Value(rapidjson::kObjectType);
         
-        vEdge.AddMember("antecedent", rapidjson::Value(std::to_string(vex->antecedentClauseID).c_str(), this->_document.GetAllocator()).Move(), this->_document.GetAllocator());
-        vEdge.AddMember("source", rapidjson::Value(std::to_string(node->var->getKey()+1).c_str(), this->_document.GetAllocator()).Move(), this->_document.GetAllocator());
-        vEdge.AddMember("target", rapidjson::Value(std::to_string(vex->var->getKey()+1).c_str(), this->_document.GetAllocator()).Move(), this->_document.GetAllocator());
+        vEdge.AddMember("antecedent", rapidjson::Value(std::to_string(node->antecedentClauseID+1).c_str(), this->_document.GetAllocator()).Move(), this->_document.GetAllocator());
+        vEdge.AddMember("source", rapidjson::Value(std::to_string(vex->var->getKey()+1).c_str(), this->_document.GetAllocator()).Move(), this->_document.GetAllocator());
+        vEdge.AddMember("target", rapidjson::Value(std::to_string(node->var->getKey()+1).c_str(), this->_document.GetAllocator()).Move(), this->_document.GetAllocator());
         
         edges.PushBack(vEdge, this->_document.GetAllocator());
     }
