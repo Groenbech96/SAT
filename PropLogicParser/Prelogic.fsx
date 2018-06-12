@@ -30,7 +30,6 @@ let rec RemoveBiAndImp prop =
 
 // Step 2 : Move negations inward
 let rec MoveNegationsInward prop =
-    printfn "Neg %A" prop
     match prop with
     | Neg(a)    -> match a with
                    | Par(b)   -> MoveNegationsInward (Neg(b))
@@ -45,7 +44,6 @@ let rec MoveNegationsInward prop =
 
 // Step 3 : Distribute Or's inward over And's repeatedly
 let rec Distribute prop =
-    printfn "Dist %A" prop
     match prop with
     |Bi(_,_) -> failwith "Not done RemoveBI/imp"
     |Imp(_,_) -> failwith "Not done RemoveBI/imp"
@@ -64,8 +62,8 @@ and DistributeVar (a,b) =
                         Distribute (Or(a, Distribute d)))
     | Or(c,d)    -> let res =  Or(a, Distribute b)
                     match res with
-                    |Or(a,And(_)) -> Distribute res
-                    |Or(a,Or(_)) -> res
+                    |Or(a,And(_))   -> Distribute res
+                    |Or(a,Or(_))    -> res
                     |_              -> failwith "Unexpected res"
     | _          -> Or(a,b)
 
@@ -88,9 +86,9 @@ and DistributeOr ((c,d),b) =
     | And(e,f)             -> Distribute (Or(Distribute c, Distribute (Or(d,b))))
     | Var(g) | Neg(Var(g)) -> let res =  Or(Distribute a, b)
                               match res with
-                              |Or(And(_),b) -> Distribute res
-                              |Or(Or(_),b)  -> res
-                              |_              -> failwith "Unexpected res"
+                              |Or(And(_),b)        -> Distribute res
+                              |Or(Or(_),b)         -> res
+                              |_                   -> failwith "Unexpected res"
     | Or(e,f)              -> let res = Or(Distribute a, Distribute b)
                               match res with
                               | Or(Or(_),Or(_))    -> res

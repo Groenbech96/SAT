@@ -40,12 +40,10 @@
 		3A714B1320950B1800645DC4 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F3208661DB008B28D7 /* Graph.cpp */; };
 		3A714B1420950B1800645DC4 /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F6208661E9008B28D7 /* Parser.cpp */; };
 		3A714B1520950B2F00645DC4 /* Randomizer.h in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F920866209008B28D7 /* Randomizer.h */; };
-		3AC21CC520866869004D4384 /* SolverTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B407208662B1008B28D7 /* SolverTest.cpp */; };
 		3AC21CC720866869004D4384 /* VariableTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B40B208662CB008B28D7 /* VariableTest.cpp */; };
 		3AC21CC820866869004D4384 /* ClauseTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B40D208662DC008B28D7 /* ClauseTest.cpp */; };
 		3AC21CC920866869004D4384 /* AlgorithmTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B40F208662F2008B28D7 /* AlgorithmTest.cpp */; };
 		3AC21CCA20866869004D4384 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B40520866283008B28D7 /* main.cpp */; };
-		3AC21CD020867287004D4384 /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC21CCF20867287004D4384 /* gtest.framework */; };
 		3AE7B3C320865FAB008B28D7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3C220865FAB008B28D7 /* main.cpp */; };
 		3AE7B3D6208660BC008B28D7 /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3D4208660BC008B28D7 /* App.cpp */; };
 		3AE7B3D9208660F6008B28D7 /* Solver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3D7208660F6008B28D7 /* Solver.cpp */; };
@@ -58,6 +56,7 @@
 		3AE7B3F1208661B6008B28D7 /* Variable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3EF208661B6008B28D7 /* Variable.cpp */; };
 		3AE7B3F5208661DB008B28D7 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F3208661DB008B28D7 /* Graph.cpp */; };
 		3AE7B3F8208661E9008B28D7 /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F6208661E9008B28D7 /* Parser.cpp */; };
+		EB322F0120C95C9800D90354 /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC21CCF20867287004D4384 /* gtest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -2180,7 +2179,6 @@
 		3AE7B3F7208661E9008B28D7 /* Parser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Parser.hpp; sourceTree = "<group>"; };
 		3AE7B3F920866209008B28D7 /* Randomizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Randomizer.h; sourceTree = "<group>"; };
 		3AE7B40520866283008B28D7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		3AE7B407208662B1008B28D7 /* SolverTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SolverTest.cpp; sourceTree = "<group>"; };
 		3AE7B409208662BE008B28D7 /* FormulaTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FormulaTest.cpp; sourceTree = "<group>"; };
 		3AE7B40B208662CB008B28D7 /* VariableTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VariableTest.cpp; sourceTree = "<group>"; };
 		3AE7B40D208662DC008B28D7 /* ClauseTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ClauseTest.cpp; sourceTree = "<group>"; };
@@ -2208,7 +2206,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AC21CD020867287004D4384 /* gtest.framework in Frameworks */,
+				EB322F0120C95C9800D90354 /* gtest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4456,7 +4454,6 @@
 		3AE7B3D02086605C008B28D7 /* unittest */ = {
 			isa = PBXGroup;
 			children = (
-				3AE7B407208662B1008B28D7 /* SolverTest.cpp */,
 				3AE7B40B208662CB008B28D7 /* VariableTest.cpp */,
 				3AE7B409208662BE008B28D7 /* FormulaTest.cpp */,
 				3AE7B40D208662DC008B28D7 /* ClauseTest.cpp */,
@@ -4648,7 +4645,6 @@
 				3A25847A208DD35200ADC8A7 /* Parser.cpp in Sources */,
 				3A25847B208DD35200ADC8A7 /* Randomizer.h in Sources */,
 				3A258461208DD2B200ADC8A7 /* FormulaTest.cpp in Sources */,
-				3AC21CC520866869004D4384 /* SolverTest.cpp in Sources */,
 				3AC21CC720866869004D4384 /* VariableTest.cpp in Sources */,
 				3AC21CC820866869004D4384 /* ClauseTest.cpp in Sources */,
 				3AC21CC920866869004D4384 /* AlgorithmTest.cpp in Sources */,
