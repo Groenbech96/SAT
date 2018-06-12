@@ -11,6 +11,9 @@
 //
 
 #include "App.hpp"
+#include "Formula.hpp"
+#include <ctime>
+#include <cstdio>
 
 Application::App::App(int argc, char* argv[]) {
     this->m_argc = argc;
@@ -18,8 +21,6 @@ Application::App::App(int argc, char* argv[]) {
 }
 
 int Application::App::run() {
-    
-    std::cout << this->m_argc << std::endl;
     
     if(this->m_argc != 3 && this->m_argc != 6 && this->m_argc != 5) {
         return -1;
@@ -48,20 +49,15 @@ int Application::App::run() {
                 delete f;
                 delete solver;
                 
-                if(res)
-                    return 0;
-                    
-                return -1;
-                
-            } else {
+                return 0;
+
+            }
+            else {
                 return -1;
             }
         } else if (this->m_argc == 5) {
             
             if(std::strcmp(this->m_argv[1], "-f") == 0 && std::strcmp(this->m_argv[3], "-o") == 0)  {
-                
-                std::cout << this->m_argv[2] << std::endl;
-                std::cout << this->m_argv[4] << std::endl;
                 
                 cnf::Formula *f;
                 algorithms::DTUSat *solver;
@@ -82,12 +78,126 @@ int Application::App::run() {
                 delete f;
                 delete solver;
                 
-                if(res)
-                    return 0;
+                return 0;
+
                 
-                return -1;
+            }
+            else if(std::strcmp(this->m_argv[1], "-f") == 0 && std::strcmp(this->m_argv[3], "-ben") == 0 && std::strcmp(this->m_argv[4], "CDCL") == 0) {
+                                
+                cnf::Formula *f;
+                algorithms::DTUSat *solver;
                 
-            } else {
+                try {
+                    std::string file = std::string(this->m_argv[2]) + ".cnf";
+                    solver = new algorithms::DTUSat();
+                    f = util::Parser(file.c_str()).parse();
+                } catch(util::ParserException p) {
+                    solver->failed();
+                    return -1;
+                }
+                
+                solver->setup(*f);
+                bool res = false;
+                clock_t start = clock();
+                res = solver->solve();
+                clock_t end = clock();
+                unsigned int totalTime = (unsigned int)(end-start);
+                if (res)
+                    std::cout << "t" << std::endl;
+                else
+                    std::cout << "f" << std::endl;
+                std::cout << std::to_string((float) totalTime/CLOCKS_PER_SEC) << std::endl;
+                
+                delete f;
+                delete solver;
+                
+                return 0;
+                
+                
+            }
+            else if(std::strcmp(this->m_argv[1], "-f") == 0 && std::strcmp(this->m_argv[3], "-ben") == 0 && std::strcmp(this->m_argv[4], "S") == 0) {
+                
+                cnf::Formula *f;
+                algorithms::Schonings *solver;
+                
+                try {
+                    std::string file = std::string(this->m_argv[2]) + ".cnf";
+                    solver = new algorithms::Schonings();
+                    f = util::Parser(file.c_str()).parse();
+                } catch(util::ParserException p) {
+                    return -1;
+                }
+                
+                solver->setup(*f);
+                bool res = false;
+                clock_t start = clock();
+                res = solver->solve();
+                clock_t end = clock();
+                unsigned int totalTime = (unsigned int)(end-start);
+                if (res)
+                    std::cout << "t" << std::endl;
+                else
+                    std::cout << "f" << std::endl;
+                std::cout << std::to_string((float) totalTime/CLOCKS_PER_SEC) << std::endl;
+                
+                delete f;
+                delete solver;
+                
+                return 0;
+                
+                
+                
+            }
+            else if(std::strcmp(this->m_argv[1], "CDCL") == 0 && std::strcmp(m_argv[2], "-pt") == 0){
+                int n = std::stoi(m_argv[3]);
+                int m = std::stoi(m_argv[4]);
+                int k = 3;
+                auto f = new cnf::Formula(k,m,n);
+                auto solver = new algorithms::DTUSat();
+                
+                solver->setup(*f);
+                bool res = false;
+                clock_t start = clock();
+                res = solver->solve();
+                clock_t end = clock();
+                unsigned int totalTime = (unsigned int)(end-start);
+                
+                if (res)
+                    std::cout << "t" << std::endl;
+                else
+                    std::cout << "f" << std::endl;
+                std::cout << std::to_string(totalTime) << std::endl;
+                
+                delete f;
+                delete solver;
+                
+                return 0;
+            }
+            else if (std::strcmp(this->m_argv[1], "SCH") == 0){
+                int n = std::stoi(m_argv[3]);
+                int m = std::stoi(m_argv[4]);
+                int k = 3;
+                auto f = new cnf::Formula(k,m,n);
+                auto solver = new algorithms::Schonings();
+                
+                solver->setup(*f);
+                bool res = false;
+                clock_t start = clock();
+                res = solver->solve();
+                clock_t end = clock();
+                unsigned int totalTime = (unsigned int)(end-start);
+                
+                if (res)
+                    std::cout << "t" << std::endl;
+                else
+                    std::cout << "f" << std::endl;
+                std::cout << std::to_string(totalTime) << std::endl;
+                
+                delete f;
+                delete solver;
+                
+                return 0;            }
+            else {
                 return -1;
             }
         } else {
@@ -116,10 +226,7 @@ int Application::App::run() {
                 delete f;
                 delete solver;
                 
-                if(res)
-                    return 0;
-                
-                return -1;
+                return 0;
             
             } else {
                 return -1;

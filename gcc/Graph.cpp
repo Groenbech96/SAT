@@ -92,10 +92,12 @@ void util::Graph::undo(int level) {
             
         } else { // Remove any vertex that has dl higher than level
             
+            
+            rm.insert(it->second);
             if(it->second->var != nullptr) {
                 it->second->var->setAssignment(cnf::UNASSIGNED);
             }
-            rm.insert(it->second);
+            
             //delete it->second;
             it = this->graphMap.erase(it);
         

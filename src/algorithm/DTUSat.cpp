@@ -79,11 +79,9 @@ bool algorithms::DTUSat::solve() {
                 
             }
         }
-    
-    
+
     }
-        
-  
+    
 }
 
 void algorithms::DTUSat::failed() {
