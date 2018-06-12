@@ -14,20 +14,20 @@
 
 void util::Graph::addVertex(cnf::Variable *variable, int decisionLevel, int antecedentClauseID)
 {
-    vertex *v;
-    v = new vertex(variable, decisionLevel, antecedentClauseID);
+    Vertex *v;
+    v = new Vertex(variable, decisionLevel, antecedentClauseID);
     graphMap[variable] = v;
     if(antecedentClauseID != -1)
         graphStack->push(variable);
     
-    this->_lastEdit = v;
+    this->lastEdit = v;
     
 }
 
 void util::Graph::addEdge(cnf::Variable* from, cnf::Variable* to){
     
-    vertex *f = (graphMap.find(from)->second);
-    vertex *t = (graphMap.find(to)->second);
+    Vertex *f = (graphMap.find(from)->second);
+    Vertex *t = (graphMap.find(to)->second);
     f->outgoingEdges.push_back(t);
     t->ingoingEdges.push_back(f);
 }
@@ -54,7 +54,7 @@ std::stack<cnf::Variable*>* util::Graph::getStack() {
     return this->graphStack;
 }
 
-boost::optional<util::vertex*> util::Graph::getVertex(cnf::Variable *v) {
+boost::optional<util::Vertex*> util::Graph::getVertex(cnf::Variable *v) {
     
     auto res = this->graphMap.find(v);
     if(res != this->graphMap.end())
@@ -118,8 +118,8 @@ void util::Graph::undo(int level) {
     
 }
 
-util::vertex* util::Graph::getLastEdited() {
-    return this->_lastEdit;
+util::Vertex* util::Graph::getLastEdited() {
+    return this->lastEdit;
 }
 
 
@@ -130,15 +130,15 @@ util::vertex* util::Graph::getLastEdited() {
 std::string util::Graph::stringJsStyle() {
     std::string s = "Vertexes (\n";
     for(auto g = graphMap.begin(); g != graphMap.end(); g++ ) {
-        vertex* v = g->second;
+        Vertex* v = g->second;
         s += "{id: " + std::to_string(v->var->getKey()) + ", label: V" + std::to_string(v->var->getKey()) +"}\n";
     }
     
     s += ")\nEdges: (\n";
     for(auto g = graphMap.begin(); g != graphMap.end(); g++ ) {
-        vertex* v = g->second;
+        Vertex* v = g->second;
         
-        std::vector<vertex*> ve = v->outgoingEdges;
+        std::vector<Vertex*> ve = v->outgoingEdges;
         for(auto vex : ve) {
             s += "{from: " + std::to_string(v->var->getKey()) + ", to: " + std::to_string(vex->var->getKey()) + ", arrows:'to', label: " + std::to_string(vex->antecedentClauseID) + "}\n";
         }

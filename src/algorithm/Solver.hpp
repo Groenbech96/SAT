@@ -35,7 +35,7 @@ namespace algorithms {
 
     protected:
         
-        cnf::Formula _formula;
+        cnf::Formula formula;
         util::Output outputter;
         
         // Pure virtual functions
@@ -43,7 +43,6 @@ namespace algorithms {
         virtual bool solve() = 0;
         bool output;
         bool verbose;
-        int  propagationCount = 0;
         
     private:
         

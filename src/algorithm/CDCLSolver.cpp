@@ -21,13 +21,13 @@ bool algorithms::CDCLSolver::canBacktrack() {
 }
 
 bool algorithms::CDCLSolver::hasUnitClause() {
-    return this->_formula.hasUnitClause();
+    return this->formula.hasUnitClause();
 }
 bool algorithms::CDCLSolver::hasConflict () {
-    return this->_formula.hasConflictClause();
+    return this->formula.hasConflictClause();
 }
 bool algorithms::CDCLSolver::hasUndecidedVariables() {
-    return this->_formula.hasUnassignedVariables();
+    return this->formula.hasUnassignedVariables();
 }
 
 
@@ -98,7 +98,7 @@ void algorithms::CDCLSolver::findUIP(cnf::Clause c1, cnf::Clause reason, int lev
             auto var = this->graph.getStack()->top();
             this->graph.getStack()->pop();
             int reasonID = this->graph.getVertex(var).get()->antecedentClauseID;
-            cnf::Clause *reason = this->_formula.getClause(reasonID);
+            cnf::Clause *reason = this->formula.getClause(reasonID);
             
             resolution(this->learnClauseLiterals, reason->getLiterals());
             

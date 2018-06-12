@@ -15,18 +15,18 @@
 
 void algorithms::Schonings::setup(cnf::Formula formula) {
     
-    this->_formula = formula;
+    this->formula = formula;
     
 }
 
 bool algorithms::Schonings::solve() {
     // Calculate number of iterations
-    int n = this->_formula.getN();
-    uint64_t S = ((std::pow(n, 2))*std::pow(4.0/3.0,n));
+    int n = this->formula.getN();
+    uint64_t S = (uint64_t)((std::pow(n, 2))*std::pow(4.0/3.0,n));
     //Run the algorithm
-    for(int s = 0; s<S;s++){
+    for(uint64_t s = 0; s<S;s++){
         //Give random assignments to all variables
-        for(auto kv = this->_formula.getVariables().begin(); kv != this->_formula.getVariables().end(); kv++) {
+        for(auto kv = this->formula.getVariables().begin(); kv != this->formula.getVariables().end(); kv++) {
             if(util::Randomizer::GetRandomInt(0,1) == 1) {
                 kv->second->setAssignment(cnf::V_TRUE);
             } else {
@@ -37,13 +37,13 @@ bool algorithms::Schonings::solve() {
         //Flip values of variables in clauses that are not satisfied
         for (int i = 0; i < (3*n); ++i) {
             
-            this->unsatisfied_clauses = this->_formula.updateClauseStates();
+            this->unsatisfiedClauses = this->formula.updateClauseStates();
             //If all clauses are satisfied return SAT
-            if(this->unsatisfied_clauses.empty())
+            if(this->unsatisfiedClauses.empty())
                 return true;
             
-            int index = util::Randomizer::GetRandomInt(0, (int)this->unsatisfied_clauses.size()-1);
-            auto c = this->unsatisfied_clauses.at(index);
+            int index = util::Randomizer::GetRandomInt(0, (int)this->unsatisfiedClauses.size()-1);
+            auto c = this->unsatisfiedClauses.at(index);
             
             // pick random literal in clause
             auto item = c->getLiterals().begin();

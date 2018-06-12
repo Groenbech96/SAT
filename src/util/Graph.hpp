@@ -30,13 +30,13 @@ namespace util {
     /// where it was assigned it's value, and
     ///
     /// adjacency list of outgoing edges
-    struct vertex {
-        std::vector<vertex*> outgoingEdges;
-        std::vector<vertex*> ingoingEdges;
+    struct Vertex {
+        std::vector<Vertex*> outgoingEdges;
+        std::vector<Vertex*> ingoingEdges;
         int decisionLevel;
         int antecedentClauseID;
         cnf::Variable* var;
-        vertex(cnf::Variable* variable, int dl, int ac) : var(variable), decisionLevel(dl), antecedentClauseID(ac) {}
+        Vertex(cnf::Variable* variable, int dl, int ac) : var(variable), decisionLevel(dl), antecedentClauseID(ac) {}
     };
     
     
@@ -45,7 +45,7 @@ namespace util {
     {
     public:
         /// Map og variables and vertexes 
-        std::unordered_map<cnf::Variable*, vertex *> graphMap;
+        std::unordered_map<cnf::Variable*, Vertex *> graphMap;
         std::stack<cnf::Variable*> *graphStack = new std::stack<cnf::Variable*>;
         
         
@@ -67,19 +67,19 @@ namespace util {
         
         //  util::vertex* getVertex(cnf::Variable * v);
         
-        boost::optional<util::vertex*>getVertex(cnf::Variable *v);
+        boost::optional<util::Vertex*>getVertex(cnf::Variable *v);
         
         std::stack<cnf::Variable*> *getStack();
         
-        std::set<util::vertex *> rm;
+        std::set<util::Vertex *> rm;
         
         std::string stringJsStyle();
         
-        util::vertex* getLastEdited();
+        util::Vertex* getLastEdited();
         
     private:
         
-        util::vertex* _lastEdit;
+        util::Vertex* lastEdit;
         
         
     };

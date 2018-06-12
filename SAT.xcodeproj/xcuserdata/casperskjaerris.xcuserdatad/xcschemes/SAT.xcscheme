@@ -63,7 +63,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "CDCL"
+            argument = "SCH"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
@@ -71,11 +71,11 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "10"
+            argument = "20"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "10"
+            argument = "80"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
