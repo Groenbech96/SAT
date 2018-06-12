@@ -15,7 +15,7 @@
 #include "Parser.hpp"
 #include "Formula.hpp"
 
-std::string cnfPath = "/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/tests";
+std::string cnfPath = "/Users/christianschmidt/Documents/Uddannelse/DTU/Semester4/Fagprojekt/SAT/data/cnfs/tests";
 class FormulaFixture : public testing::Test {
     
 public:

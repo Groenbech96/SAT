@@ -20,9 +20,9 @@
 #include "DTUSat.hpp"
 
 namespace algorithms {
-    std::string cnfPath = "/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/uf20-91/";
-    std::string cnfPath50 = "/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/uf50-218/";
-    std::string cnfTest = "/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/tests/";
+    std::string cnfPath = "/Users/christianschmidt/Documents/Uddannelse/DTU/Semester4/Fagprojekt/SAT/data/cnfs/uf20-91/";
+    std::string cnfPath50 = "/Users/christianschmidt/Documents/Uddannelse/DTU/Semester4/Fagprojekt/SAT/data/cnfs/uf50-218/";
+    std::string cnfTest = "/Users/christianschmidt/Documents/Uddannelse/DTU/Semester4/Fagprojekt/SAT/data/cnfs/tests/";
 class AlgorithmFixture : public testing::Test {
     
 public:
@@ -47,6 +47,36 @@ protected:
     }
     
 };
+    
+///
+/// Test that schonings can solve all satisfiable SAT problems from folder
+///
+TEST_F(AlgorithmFixture, SchoningSolveRatio) {
+    
+    int count = 0;
+    for(int j = 1; j <= 1000; j++) {
+        
+        std::string file = cnfPath50 + "uf50-0" + std::to_string(j) + ".cnf";
+        util::Parser *p = new util::Parser(file.c_str());
+        
+        cnf::Formula *f = p->parse();
+        
+        algorithms::Schonings *solver = new algorithms::Schonings();
+        solver->setup(*f);
+        bool res = false;
+        res = solver->solve();
+        if(res)
+            count++;
+        
+        delete solver;
+        delete p;
+        delete f;
+    }
+    
+    ASSERT_GE(count, 500);
+    std::cout  << count;
+}
+
 
 ///
 /// Test that schonings can solve all satisfiable SAT problems from folder
@@ -215,7 +245,7 @@ TEST_F(AlgorithmFixture, CDCLUnitResolutionTest) {
     
 TEST_F(AlgorithmFixture, CDCLUnitResolutionTestTwo) {
     
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ResolutionTest.cnf").parse();
+    cnf::Formula *f = util::Parser("/Users/christianschmidt/Documents/Uddannelse/DTU/Semester4/Fagprojekt/SAT/data/cnfs/tests/ResolutionTest.cnf").parse();
     
     algorithms::DTUSat *solver = new algorithms::DTUSat();
     solver->setup(*f);
@@ -350,18 +380,7 @@ TEST_F(AlgorithmFixture, CDCLUndoDecidedVar) {
 
 
 
-///
-/// Test that schonings can solve all satisfiable SAT problems from folder
-///
-TEST_F(AlgorithmFixture, CDCLAlgoritmCompleteTest) {
-    
-    
-    
-    
-    
-    
-}
-    
+
     
 } // namespace
 

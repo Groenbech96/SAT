@@ -47,7 +47,6 @@
 		3AC21CC820866869004D4384 /* ClauseTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B40D208662DC008B28D7 /* ClauseTest.cpp */; };
 		3AC21CC920866869004D4384 /* AlgorithmTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B40F208662F2008B28D7 /* AlgorithmTest.cpp */; };
 		3AC21CCA20866869004D4384 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B40520866283008B28D7 /* main.cpp */; };
-		3AC21CD020867287004D4384 /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC21CCF20867287004D4384 /* gtest.framework */; };
 		3AE7B3C320865FAB008B28D7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3C220865FAB008B28D7 /* main.cpp */; };
 		3AE7B3D6208660BC008B28D7 /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3D4208660BC008B28D7 /* App.cpp */; };
 		3AE7B3D9208660F6008B28D7 /* Solver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3D7208660F6008B28D7 /* Solver.cpp */; };
@@ -61,6 +60,7 @@
 		3AE7B3F1208661B6008B28D7 /* Variable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3EF208661B6008B28D7 /* Variable.cpp */; };
 		3AE7B3F5208661DB008B28D7 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F3208661DB008B28D7 /* Graph.cpp */; };
 		3AE7B3F8208661E9008B28D7 /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7B3F6208661E9008B28D7 /* Parser.cpp */; };
+		EB322F0120C95C9800D90354 /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC21CCF20867287004D4384 /* gtest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -2213,7 +2213,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AC21CD020867287004D4384 /* gtest.framework in Frameworks */,
+				EB322F0120C95C9800D90354 /* gtest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

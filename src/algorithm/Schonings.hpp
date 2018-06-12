@@ -15,6 +15,8 @@
 
 #include "ProbabilisticSolver.hpp"
 #include "Randomizer.h"
+#include <cstdint>
+#include <stdint.h>
 
 namespace algorithms {
     
