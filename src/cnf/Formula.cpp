@@ -287,3 +287,7 @@ cnf::Clause *cnf::Formula::getClause(int id) {
     return this->clauseSet.find(id)->second;
 }
 
+void cnf::Formula::setClauseSet(std::unordered_map<int, cnf::Clause *> newClauseSet){
+    this->clauseSet = newClauseSet;
+}
+

@@ -19,6 +19,7 @@
 #include "Clause.hpp"
 #include "Randomizer.h"
 
+
 namespace cnf {
     
     /// A CNF-Formula
@@ -133,6 +134,7 @@ namespace cnf {
         Clause & getLastAddedClause();
         
     private:
+
         /**
          * SAT type
          */
@@ -154,6 +156,8 @@ namespace cnf {
          */
         std::unordered_map<int, Clause *> clauseSet;
         
+        void setClauseSet(std::unordered_map<int, Clause *> newClauseSet);
+        
         /**
          * Map of variables in formula
          * Key -> Id (e.g: X4 -> key(4))
@@ -168,6 +172,7 @@ namespace cnf {
         
         Clause lastAddedClause;
         
+
         
     };
 }

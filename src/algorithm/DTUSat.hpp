@@ -50,7 +50,8 @@ namespace algorithms {
         FRIEND_TEST(AlgorithmFixture, CDCLUnitPropagationTestTwo);
         FRIEND_TEST(AlgorithmFixture, CDCLUnitResolutionTest);
         FRIEND_TEST(AlgorithmFixture, CDCLUnitResolutionTestTwo);
-        FRIEND_TEST(AlgorithmFixture, CDCLConflictAnalysis);
+        FRIEND_TEST(AlgorithmFixture, CDCLConflictAnalysisConflicLevel0);
+        FRIEND_TEST(AlgorithmFixture, CDCLConflictAnalysisConflicLevelNot0);
         FRIEND_TEST(AlgorithmFixture, CDCLUnitPropagationTestThree);
         FRIEND_TEST(AlgorithmFixture, CDCLBackTrack);
         FRIEND_TEST(AlgorithmFixture, CDCLResolutionOperationTest);
