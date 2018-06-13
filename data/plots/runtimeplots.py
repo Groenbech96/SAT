@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
-f1 = 'rU20SAT_CDCL.out'
-f2 = 'rU20SAT_CRYPTO.out'
-f3 = 'rU20SAT_S.out'
-f4 = 'rU20SAT_S_C.out'
+f1 = 'rU50SAT_CDCL.out'
+f2 = 'rU50SAT_CRYPTO.out'
+f3 = 'rU50SAT_S.out'
+f4 = 'rU50SAT_S_C.out'
 
 def sumStat(file):
     d = {}

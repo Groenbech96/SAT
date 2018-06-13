@@ -56,7 +56,6 @@ bool algorithms::DTUSat::solve() {
         } else {
             if(!this->_formula.hasUnsatisfiedClauses()) {
                 
-                // Todo change:
                 if(this->verbose) {
                     this->outputter.addFormulaAtEnd(this->_formula.getClauses());
                 }
