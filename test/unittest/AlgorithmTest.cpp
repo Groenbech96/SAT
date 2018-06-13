@@ -56,63 +56,63 @@ protected:
 ///
 /// Test that schonings can solve more than 50% of satisfiable SAT problems from folder
 ///
-//TEST_F(AlgorithmFixture, SchoningSolveRatio) {
-//
-//    int count = 0;
-//    for(int j = 1; j <= 1000; j++) {
-//
-//        std::string file = cnfPath50 + "uf50-0" + std::to_string(j) + ".cnf";
-//        util::Parser *p = new util::Parser(file.c_str());
-//
-//        cnf::Formula *f = p->parse();
-//
-//        algorithms::Schonings *solver = new algorithms::Schonings();
-//        solver->setup(*f);
-//        bool res = false;
-//        res = solver->solve();
-//        if(res)
-//            count++;
-//
-//        delete solver;
-//        delete p;
-//        delete f;
-//    }
-//
-//    ASSERT_GE(count, 500);
-//    std::cout  << count;
-//}
+TEST_F(AlgorithmFixture, SchoningSolveRatio) {
+
+    int count = 0;
+    for(int j = 1; j <= 1000; j++) {
+
+        std::string file = cnfPath50 + "uf50-0" + std::to_string(j) + ".cnf";
+        util::Parser *p = new util::Parser(file.c_str());
+
+        cnf::Formula *f = p->parse();
+
+        algorithms::Schonings *solver = new algorithms::Schonings();
+        solver->setup(*f);
+        bool res = false;
+        res = solver->solve();
+        if(res)
+            count++;
+
+        delete solver;
+        delete p;
+        delete f;
+    }
+
+    ASSERT_GE(count, 500);
+    std::cout  << count;
+}
 
 
 ///
 /// Test that schonings can solve more than 50% of satisfiable SAT problems from folder
 ///
-//TEST_F(AlgorithmFixture, SchoningsParserSatisfiableClausesTest) {
-//
-//
-//
-//    // Do this for all files in folder "uf20-91"
-//    int count = 0;
-//    for(int i = 1; i <= filesToTest; i++) {
-//
-//        std::string file = this->satisfiableClauses + "uf20-0"+ std::to_string(i) + ".cnf";
-//        util::Parser *p = new util::Parser(file.c_str());
-//
-//        cnf::Formula *f = p->parse();
-//
-//        algorithms::Schonings *solver = new algorithms::Schonings();
-//        solver->setup(*f);
-//        bool res = false;
-//        res = solver->solve();
-//        if(res)
-//            count++;
-//
-//        delete solver;
-//        delete p;
-//        delete f;
-//    }
-//    ASSERT_GE(count, 500);
-//    std::cout  << count;
-//}
+TEST_F(AlgorithmFixture, SchoningsParserSatisfiableClausesTest) {
+
+
+
+    // Do this for all files in folder "uf20-91"
+    int count = 0;
+    for(int i = 1; i <= filesToTest; i++) {
+
+        std::string file = this->satisfiableClauses + "uf20-0"+ std::to_string(i) + ".cnf";
+        util::Parser *p = new util::Parser(file.c_str());
+
+        cnf::Formula *f = p->parse();
+
+        algorithms::Schonings *solver = new algorithms::Schonings();
+        solver->setup(*f);
+        bool res = false;
+        res = solver->solve();
+        if(res)
+            count++;
+
+        delete solver;
+        delete p;
+        delete f;
+    }
+    ASSERT_GE(count, 500);
+    std::cout  << count;
+}
     
 TEST_F(AlgorithmFixture, CDCLUnitPropagationTest) {
     std::string p = cnfTest +"UnitTestOne.cnf";
@@ -328,7 +328,7 @@ TEST_F(AlgorithmFixture, CompleteTestB) {
     
     for(int i = 1; i <= 1000; i++) {
         
-        std::string file = this->satisfiableClauses + "uf20-0" + std::to_string(i) + ".cnf";
+        std::string file = this->satisfiableClauses + "/uf20-0" + std::to_string(i) + ".cnf";
         //std::cout << file << std::endl;
         
         cnf::Formula *f = util::Parser(file.c_str()).parse();
