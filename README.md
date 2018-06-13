@@ -1,4 +1,15 @@
 # SAT
-SAT Solver in C++
+SAT Solver in C++ based on CDCL 
 
-This repo is created from old repo in Clion.
+Object Oriented solution.
+
+Written in Xcode 9.
+
+Currently using:
+- Google Test
+- Rapidjson
+- Boost
+
+
+
+
