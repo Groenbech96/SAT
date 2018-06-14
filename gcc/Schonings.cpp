@@ -22,7 +22,7 @@ void algorithms::Schonings::setup(cnf::Formula formula) {
 bool algorithms::Schonings::solve() {
     // Calculate number of iterations
     int n = this->_formula.getN();
-    uint64_t S = (uint64_t)(std::pow(4.0/3.0,n));
+    uint64_t S = (uint64_t)((std::pow(n, 2))*std::pow(4.0/3.0,n));
     //Run the algorithm
     for(int s = 0; s<S;s++){
         //Give random assignments to all variables
