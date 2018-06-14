@@ -18,11 +18,15 @@
 #include "Parser.hpp"
 #include "Schonings.hpp"
 #include "DTUSat.hpp"
+#include "Variable.hpp"
+#include "Clause.hpp"
 
 namespace algorithms {
-    std::string cnfPath = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91/";
-    std::string cnfPath50 = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf50-218/";
-    std::string cnfTest = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/";
+
+    std::string cnfPath = "/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/uf20-91";
+    std::string cnfPath50 = "/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/uf50-218/";
+    std::string cnfTest = "/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/tests/";
+
 class AlgorithmFixture : public testing::Test {
     
 public:
@@ -48,39 +52,68 @@ protected:
     
 };
 
-///
-/// Test that schonings can solve all satisfiable SAT problems from folder
-///
-TEST_F(AlgorithmFixture, SchoningsParserSatisfiableClausesTest) {
     
-   
-    
-    // Do this for all files in folder "uf20-91"
-    for(int i = 1; i <= filesToTest; i++) {
-        
-        algorithms::Schonings * s = new algorithms::Schonings();
-        std::string file = this->satisfiableClauses + "uf20-0"+ std::to_string(i) + ".cnf";
+///
+/// Test that schonings can solve more than 50% of satisfiable SAT problems from folder
+///
+TEST_F(AlgorithmFixture, SchoningSolveRatio) {
+
+    int count = 0;
+    for(int j = 1; j <= 1000; j++) {
+
+        std::string file = cnfPath50 + "uf50-0" + std::to_string(j) + ".cnf";
         util::Parser *p = new util::Parser(file.c_str());
+
         cnf::Formula *f = p->parse();
-        
-        bool found = false;
-        while(!found) {
-            
-            s->setup(*f);
-            if(s->solve()) {
-                found = true;
-                
-            }
-        }
-        
+
+        algorithms::Schonings *solver = new algorithms::Schonings();
+        solver->setup(*f);
+        bool res = false;
+        res = solver->solve();
+        if(res)
+            count++;
+
+        delete solver;
         delete p;
         delete f;
-        delete s;
     }
-    
-    
-    
+
+    ASSERT_GE(count, 500);
+    std::cout  << count;
 }
+
+
+///
+/// Test that schonings can solve more than 50% of satisfiable SAT problems from folder
+///
+TEST_F(AlgorithmFixture, SchoningsParserSatisfiableClausesTest) {
+
+
+
+    // Do this for all files in folder "uf20-91"
+    int count = 0;
+    for(int i = 1; i <= filesToTest; i++) {
+
+        std::string file = this->satisfiableClauses + "/uf20-0"+ std::to_string(i) + ".cnf";
+        util::Parser *p = new util::Parser(file.c_str());
+
+        cnf::Formula *f = p->parse();
+
+        algorithms::Schonings *solver = new algorithms::Schonings();
+        solver->setup(*f);
+        bool res = false;
+        res = solver->solve();
+        if(res)
+            count++;
+
+        delete solver;
+        delete p;
+        delete f;
+    }
+    ASSERT_GE(count, filesToTest/2);
+    std::cout  << count;
+}
+    
 TEST_F(AlgorithmFixture, CDCLUnitPropagationTest) {
     std::string p = cnfTest +"UnitTestOne.cnf";
     cnf::Formula *f = util::Parser(p.c_str()).parse();
@@ -99,6 +132,8 @@ TEST_F(AlgorithmFixture, CDCLUnitPropagationTest) {
     ASSERT_TRUE(solver->hasConflict());
     ASSERT_EQ(solver->getGraphSize(), 3);
     
+    delete f;
+    delete solver;
 }
 
 TEST_F(AlgorithmFixture, CDCLUnitPropagationTestTwo) {
@@ -126,6 +161,9 @@ TEST_F(AlgorithmFixture, CDCLUnitPropagationTestTwo) {
     solver->propagate();
     ASSERT_FALSE(solver->hasConflict());
     ASSERT_EQ(solver->getGraphSize(), 4);
+    
+    delete f;
+    delete solver;
     
 }
 
@@ -211,11 +249,15 @@ TEST_F(AlgorithmFixture, CDCLUnitResolutionTest) {
     auto m3 = solver->getLearnedClause();
     ASSERT_EQ(m3.size(), 1);
     
+    delete f;
+    delete solver;
+    
 }
     
 TEST_F(AlgorithmFixture, CDCLUnitResolutionTestTwo) {
     
-    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ResolutionTest.cnf").parse();
+    cnf::Formula *f = util::Parser("/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/tests/ResolutionTest.cnf").parse();
+
     
     algorithms::DTUSat *solver = new algorithms::DTUSat();
     solver->setup(*f);
@@ -236,20 +278,33 @@ TEST_F(AlgorithmFixture, CDCLUnitResolutionTestTwo) {
     auto m3 = solver->getLearnedClause();
     ASSERT_EQ(m3.size(), 3);
     
+    delete f;
+    delete solver;
 }
 
 
-TEST_F(AlgorithmFixture, CDCLConflictAnalysis) {
-    
-    std::string p = cnfTest +"UnitTestThree.cnf";
-    cnf::Formula *f = util::Parser(p.c_str()).parse();
-    
+TEST_F(AlgorithmFixture, CDCLConflictAnalysisConflicLevel0) {
+    //Arrange
     algorithms::DTUSat *solver = new algorithms::DTUSat();
-    solver->setup(*f);
-    solver->solve();
+    auto clauseSet = std::unordered_map<int, cnf::Clause*>();
+    auto cl = new cnf::Clause(2);
+    clauseSet.insert({1,cl});
+    auto form = new cnf::Formula(1,1,1, std::unordered_map<int, cnf::Variable *>(), clauseSet);
+    solver->setup(*form);
+    solver->graph.addVertex(new cnf::Variable(1), 0, 2);
+    auto originalClauses = solver->formula.getClauses();
     
+    //Act
+    solver->conflictAnalysis();
     
+    //Assert
+    ASSERT_EQ(-1, solver->getBeta());
+    ASSERT_EQ(solver->formula.getClauses(), originalClauses);
+    
+    delete solver;
 }
+    
+
     
 TEST_F(AlgorithmFixture, CompleteTestA) {
     
@@ -262,6 +317,9 @@ TEST_F(AlgorithmFixture, CompleteTestA) {
     
     ASSERT_FALSE(res);
     
+    delete f;
+    delete solver;
+    
 }
     
 TEST_F(AlgorithmFixture, CompleteTestB) {
@@ -270,7 +328,7 @@ TEST_F(AlgorithmFixture, CompleteTestB) {
     
     for(int i = 1; i <= 1000; i++) {
         
-        std::string file = this->satisfiableClauses + "uf20-0" + std::to_string(i) + ".cnf";
+        std::string file = this->satisfiableClauses + "/uf20-0" + std::to_string(i) + ".cnf";
         //std::cout << file << std::endl;
         
         cnf::Formula *f = util::Parser(file.c_str()).parse();
@@ -307,7 +365,8 @@ TEST_F(AlgorithmFixture, CompleteTestC) {
         
         ASSERT_TRUE(res);
         ASSERT_FALSE(solver->getFormulaState().hasUnsatisfiedClauses());
-        
+        delete f;
+        delete solver;
     }
     
 }
@@ -317,7 +376,7 @@ TEST_F(AlgorithmFixture, OutputTest) {
     
     for(int i = 1; i <= 5; i++) {
         
-        std::string file = this->satisfiableClauses + "uf20-0" + std::to_string(i) + ".cnf";
+        std::string file = this->satisfiableClauses + "/uf20-0" + std::to_string(i) + ".cnf";
         
         cnf::Formula *f = util::Parser(file.c_str()).parse();
         
@@ -329,40 +388,29 @@ TEST_F(AlgorithmFixture, OutputTest) {
         ASSERT_TRUE(res);
         ASSERT_FALSE(solver->getFormulaState().hasUnsatisfiedClauses());
         
-        
+        delete f;
+        delete solver;
     }
     
 }
     
-
-
-TEST_F(AlgorithmFixture, CDCLResolutionOperationTest) {
-    
-    
-
-}
-
 TEST_F(AlgorithmFixture, CDCLUndoDecidedVar) {
+    //Arrange
+    auto solver = new algorithms::DTUSat();
+    solver->graph.addVertex(new cnf::Variable(1), 1, -1);
+    solver->graph.addVertex(new cnf::Variable(2), 2, -1);
+    solver->setBeta(1);
     
+    //Act
+    solver->backtrack();
+    
+    //Assert
+    ASSERT_EQ(1, solver->getGraphSize());
+    
+    delete solver;
 }
 
 
-
-
-
-///
-/// Test that schonings can solve all satisfiable SAT problems from folder
-///
-TEST_F(AlgorithmFixture, CDCLAlgoritmCompleteTest) {
-    
-    
-    
-    
-    
-    
-}
-    
-    
 } // namespace
 
 

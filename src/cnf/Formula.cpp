@@ -184,7 +184,7 @@ bool cnf::Formula::hasUnitClause() {
     for(auto kv = this->getClauses().begin(); kv != this->getClauses().end(); kv++) {
         
         if (kv->second->isUnit()) {
-            this->_unitClause = kv->second;
+            this->unitClause = kv->second;
             return true;
         }
     }
@@ -209,17 +209,17 @@ bool cnf::Formula::hasUnsatisfiedClauses() {
 
 
 cnf::Clause* cnf::Formula::getConflictClause() {
-    return this->_conflictClause;
+    return this->conflictClause;
 }
 
 cnf::Clause* cnf::Formula::getUnitClause() {
-    return this->_unitClause;
+    return this->unitClause;
 }
 
 bool cnf::Formula::hasConflictClause() {
     for(auto kv = this->getClauses().begin(); kv != this->getClauses().end(); kv++) {
         if (kv->second->containsConflict()) {
-            this->_conflictClause = kv->second;
+            this->conflictClause = kv->second;
             return true;
         }
     }
@@ -285,5 +285,9 @@ std::string cnf::Formula::string() {
 // TODO: handle no found
 cnf::Clause *cnf::Formula::getClause(int id) {
     return this->clauseSet.find(id)->second;
+}
+
+void cnf::Formula::setClauseSet(std::unordered_map<int, cnf::Clause *> newClauseSet){
+    this->clauseSet = newClauseSet;
 }
 

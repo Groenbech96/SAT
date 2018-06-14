@@ -185,7 +185,7 @@ int Application::App::run() {
                 clock_t start = clock();
                 res = solver->solve();
                 clock_t end = clock();
-                unsigned int totalTime = (unsigned int)(end-start);
+                uint64_t totalTime = (uint64_t)(end-start); 
                 
                 if (res)
                     std::cout << "t" << std::endl;
