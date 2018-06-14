@@ -94,7 +94,7 @@ TEST_F(AlgorithmFixture, SchoningsParserSatisfiableClausesTest) {
     int count = 0;
     for(int i = 1; i <= filesToTest; i++) {
 
-        std::string file = this->satisfiableClauses + "uf20-0"+ std::to_string(i) + ".cnf";
+        std::string file = this->satisfiableClauses + "/uf20-0"+ std::to_string(i) + ".cnf";
         util::Parser *p = new util::Parser(file.c_str());
 
         cnf::Formula *f = p->parse();
@@ -110,7 +110,7 @@ TEST_F(AlgorithmFixture, SchoningsParserSatisfiableClausesTest) {
         delete p;
         delete f;
     }
-    ASSERT_GE(count, 500);
+    ASSERT_GE(count, filesToTest/2);
     std::cout  << count;
 }
     
@@ -376,7 +376,7 @@ TEST_F(AlgorithmFixture, OutputTest) {
     
     for(int i = 1; i <= 5; i++) {
         
-        std::string file = this->satisfiableClauses + "uf20-0" + std::to_string(i) + ".cnf";
+        std::string file = this->satisfiableClauses + "/uf20-0" + std::to_string(i) + ".cnf";
         
         cnf::Formula *f = util::Parser(file.c_str()).parse();
         
