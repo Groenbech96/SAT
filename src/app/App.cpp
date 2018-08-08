@@ -22,6 +22,8 @@ Application::App::App(int argc, char* argv[]) {
 
 int Application::App::run() {
     
+    // Some basic run configs
+    
     if(this->m_argc != 3 && this->m_argc != 6 && this->m_argc != 5) {
         return -1;
     } else {
@@ -166,7 +168,7 @@ int Application::App::run() {
                     std::cout << "t" << std::endl;
                 else
                     std::cout << "f" << std::endl;
-                std::cout << std::to_string(totalTime) << std::endl;
+                std::cout << std::to_string((float) totalTime/CLOCKS_PER_SEC) << std::endl;
                 
                 delete f;
                 delete solver;
@@ -191,7 +193,7 @@ int Application::App::run() {
                     std::cout << "t" << std::endl;
                 else
                     std::cout << "f" << std::endl;
-                std::cout << std::to_string(totalTime) << std::endl;
+                std::cout << std::to_string((float) totalTime/CLOCKS_PER_SEC) << std::endl;
                 
                 delete f;
                 delete solver;

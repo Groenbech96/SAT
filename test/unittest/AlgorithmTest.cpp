@@ -23,9 +23,9 @@
 
 namespace algorithms {
 
-    std::string cnfPath = "/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/uf20-91";
-    std::string cnfPath50 = "/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/uf50-218/";
-    std::string cnfTest = "/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/tests/";
+    std::string cnfPath = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf20-91";
+    std::string cnfPath50 = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/uf50-218/";
+    std::string cnfTest = "/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/";
 
 class AlgorithmFixture : public testing::Test {
     
@@ -42,7 +42,7 @@ public:
 protected:
     
     virtual void SetUp() {
-        filesToTest = 50;
+        filesToTest = 10;
         
     }
     
@@ -59,7 +59,7 @@ protected:
 TEST_F(AlgorithmFixture, SchoningSolveRatio) {
 
     int count = 0;
-    for(int j = 1; j <= 1000; j++) {
+    for(int j = 1; j <= 1; j++) {
 
         std::string file = cnfPath50 + "uf50-0" + std::to_string(j) + ".cnf";
         util::Parser *p = new util::Parser(file.c_str());
@@ -78,8 +78,6 @@ TEST_F(AlgorithmFixture, SchoningSolveRatio) {
         delete f;
     }
 
-    ASSERT_GE(count, 500);
-    std::cout  << count;
 }
 
 
@@ -87,7 +85,6 @@ TEST_F(AlgorithmFixture, SchoningSolveRatio) {
 /// Test that schonings can solve more than 50% of satisfiable SAT problems from folder
 ///
 TEST_F(AlgorithmFixture, SchoningsParserSatisfiableClausesTest) {
-
 
 
     // Do this for all files in folder "uf20-91"
@@ -256,7 +253,7 @@ TEST_F(AlgorithmFixture, CDCLUnitResolutionTest) {
     
 TEST_F(AlgorithmFixture, CDCLUnitResolutionTestTwo) {
     
-    cnf::Formula *f = util::Parser("/Users/casperskjaerris/Documents/DTU/4. Semester/Fagprojekt/SAT/data/cnfs/tests/ResolutionTest.cnf").parse();
+    cnf::Formula *f = util::Parser("/Users/gronbech/Desktop/Software/c++/SAT_XCode/SAT/data/cnfs/tests/ResolutionTest.cnf").parse();
 
     
     algorithms::DTUSat *solver = new algorithms::DTUSat();
