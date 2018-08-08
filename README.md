@@ -4,9 +4,7 @@ Written in Xcode 9
 
 #### Tools used
 Google Test - Unit tests
-
 RapidJSON - JSON library to output solution in a general format 
-
 
 
 
